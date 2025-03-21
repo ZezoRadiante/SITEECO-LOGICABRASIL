@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,6 +53,28 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+        eco: {
+          100: '#E8F5E9',
+          200: '#C8E6C9',
+          300: '#A5D6A7',
+          400: '#81C784',
+          500: '#66BB6A',
+          600: '#4CAF50',
+          700: '#43A047',
+          800: '#388E3C',
+          900: '#2E7D32',
+        },
+        earth: {
+          100: '#F1EBE4',
+          200: '#E0D6C9',
+          300: '#C9B8A8',
+          400: '#B09E8B',
+          500: '#8D7B66',
+          600: '#6D5E4B',
+          700: '#574B3A',
+          800: '#423A2F',
+          900: '#2D2823',
+        },
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -84,11 +107,44 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        'fade-in-right': {
+          '0%': { opacity: '0', transform: 'translateX(-20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' }
+        },
+        'fade-in-left': {
+          '0%': { opacity: '0', transform: 'translateX(20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' }
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' }
+        },
+        'pulse-gentle': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.8' }
+        },
+        'spin-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.8s ease-out forwards',
+        'fade-in-delay-1': 'fade-in 0.8s ease-out 0.2s forwards',
+        'fade-in-delay-2': 'fade-in 0.8s ease-out 0.4s forwards',
+        'fade-in-delay-3': 'fade-in 0.8s ease-out 0.6s forwards',
+        'fade-in-right': 'fade-in-right 0.8s ease-out forwards',
+        'fade-in-left': 'fade-in-left 0.8s ease-out forwards',
+        'float': 'float 4s ease-in-out infinite',
+        'pulse-gentle': 'pulse-gentle 3s ease-in-out infinite',
+        'spin-slow': 'spin-slow 20s linear infinite'
 			}
 		}
 	},
