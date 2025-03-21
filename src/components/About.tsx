@@ -4,10 +4,10 @@ import { Clover, CheckCircle2 } from 'lucide-react';
 
 const About = () => {
   const values = [
-    "Ecological Integrity",
-    "Sustainability Leadership",
-    "Innovation & Expertise",
-    "Client Partnership"
+    "Integridade Ecológica",
+    "Liderança em Sustentabilidade",
+    "Inovação e Expertise",
+    "Parceria com Clientes"
   ];
 
   return (
@@ -23,14 +23,14 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
             <span className="inline-block text-eco-600 bg-eco-50 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in-right">
-              About Us
+              Sobre Nós
             </span>
             <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-right" style={{ animationDelay: '0.1s' }}>
-              Committed to Environmental Excellence
+              Comprometidos com a Excelência Ambiental
             </h2>
             
             <p className="text-foreground/70 mb-8 opacity-0 animate-fade-in-right" style={{ animationDelay: '0.2s' }}>
-              Founded on the principles of ecological stewardship and sustainable development, our team of environmental specialists brings decades of combined expertise to every project. We believe that environmental responsibility and business success can—and should—go hand in hand.
+              Fundada nos princípios de administração ecológica e desenvolvimento sustentável, nossa equipe de especialistas ambientais traz décadas de experiência combinada para cada projeto. Acreditamos que responsabilidade ambiental e sucesso empresarial podem — e devem — andar de mãos dadas.
             </p>
             
             <div className="space-y-4 mb-8 opacity-0 animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
@@ -47,7 +47,7 @@ const About = () => {
               className="inline-block px-8 py-3 border border-eco-600 text-eco-600 rounded-full font-medium hover:bg-eco-600/10 transition-all duration-300 opacity-0 animate-fade-in-right"
               style={{ animationDelay: '0.4s' }}
             >
-              Learn More
+              Saiba Mais
             </a>
           </div>
 
@@ -56,17 +56,17 @@ const About = () => {
               <div className="w-full h-80 md:h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-xl">
                 <img 
                   src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80" 
-                  alt="Beautiful natural landscape" 
+                  alt="Paisagem natural exuberante" 
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 glass rounded-lg p-4 max-w-xs shadow-lg">
                 <div className="flex items-center mb-2">
                   <Clover size={20} className="text-eco-600 mr-2" />
-                  <h4 className="font-semibold">Our Mission</h4>
+                  <h4 className="font-semibold">Nossa Missão</h4>
                 </div>
                 <p className="text-sm text-foreground/70">
-                  To drive positive environmental change through innovative solutions and education.
+                  Impulsionar mudanças ambientais positivas através de soluções inovadoras e educação.
                 </p>
               </div>
             </div>

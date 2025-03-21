@@ -26,8 +26,8 @@ const Contact = () => {
       setIsSubmitting(false);
       setFormData({ name: '', email: '', message: '' });
       toast({
-        title: "Message Sent",
-        description: "We'll get back to you as soon as possible.",
+        title: "Mensagem Enviada",
+        description: "Entraremos em contato o mais breve possível.",
       });
     }, 1500);
   };
@@ -42,13 +42,13 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="inline-block text-eco-600 bg-eco-50 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in">
-            Get in Touch
+            Entre em Contato
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-delay-1">
-            Contact Us
+            Fale Conosco
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-foreground/70 opacity-0 animate-fade-in-delay-2">
-            Ready to start your journey towards environmental sustainability? Reach out to our team of experts today.
+            Pronto para iniciar sua jornada em direção à sustentabilidade ambiental? Entre em contato com nossa equipe de especialistas hoje mesmo.
           </p>
         </div>
 
@@ -57,18 +57,18 @@ const Contact = () => {
             <div className="glass rounded-lg p-8 h-full">
               <h3 className="text-2xl font-semibold mb-6 flex items-center">
                 <Clover size={24} className="text-eco-600 mr-2" />
-                <span>Let's Connect</span>
+                <span>Vamos Conectar</span>
               </h3>
               
               <p className="text-foreground/70 mb-8">
-                Have questions or ready to discuss your environmental needs? Fill out the form and our team will be in touch shortly.
+                Tem perguntas ou está pronto para discutir suas necessidades ambientais? Preencha o formulário e nossa equipe entrará em contato em breve.
               </p>
               
               <div className="space-y-6">
                 <div className="flex items-start">
                   <Mail className="text-eco-600 mr-4 mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium">Email Us</h4>
+                    <h4 className="font-medium">Email</h4>
                     <p className="text-foreground/70">info@ecoconsult.com</p>
                   </div>
                 </div>
@@ -76,16 +76,16 @@ const Contact = () => {
                 <div className="flex items-start">
                   <Phone className="text-eco-600 mr-4 mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium">Call Us</h4>
-                    <p className="text-foreground/70">(555) 123-4567</p>
+                    <h4 className="font-medium">Telefone</h4>
+                    <p className="text-foreground/70">(11) 3456-7890</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start">
                   <MapPin className="text-eco-600 mr-4 mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-medium">Visit Us</h4>
-                    <p className="text-foreground/70">123 Eco Drive, Green City, EC 12345</p>
+                    <h4 className="font-medium">Endereço</h4>
+                    <p className="text-foreground/70">Rua Eco 123, São Paulo, SP 01234-567</p>
                   </div>
                 </div>
               </div>
@@ -97,7 +97,7 @@ const Contact = () => {
               <div className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2">
-                    Name
+                    Nome
                   </label>
                   <input
                     id="name"
@@ -107,7 +107,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-md border border-border bg-background/50 focus:border-eco-600 focus:ring focus:ring-eco-600/20 focus:outline-none transition-all duration-300"
-                    placeholder="Your name"
+                    placeholder="Seu nome"
                   />
                 </div>
                 
@@ -123,13 +123,13 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-md border border-border bg-background/50 focus:border-eco-600 focus:ring focus:ring-eco-600/20 focus:outline-none transition-all duration-300"
-                    placeholder="Your email"
+                    placeholder="Seu email"
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Message
+                    Mensagem
                   </label>
                   <textarea
                     id="message"
@@ -139,7 +139,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-md border border-border bg-background/50 focus:border-eco-600 focus:ring focus:ring-eco-600/20 focus:outline-none transition-all duration-300 resize-none"
-                    placeholder="How can we help you?"
+                    placeholder="Como podemos ajudar?"
                   />
                 </div>
                 
@@ -149,9 +149,9 @@ const Contact = () => {
                   className="w-full flex items-center justify-center px-8 py-3 bg-eco-600 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 disabled:opacity-70"
                 >
                   {isSubmitting ? (
-                    <>Processing<span className="ml-2 animate-pulse">...</span></>
+                    <>Processando<span className="ml-2 animate-pulse">...</span></>
                   ) : (
-                    <>Send Message <Send size={18} className="ml-2" /></>
+                    <>Enviar Mensagem <Send size={18} className="ml-2" /></>
                   )}
                 </button>
               </div>

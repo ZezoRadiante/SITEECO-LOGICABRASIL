@@ -18,7 +18,7 @@ const Footer = () => {
               <span className="text-xl font-semibold tracking-tight">EcoConsult</span>
             </div>
             <p className="text-background/70 mb-6">
-              Providing sustainable environmental solutions with integrity and expertise for a greener tomorrow.
+              Fornecendo soluções ambientais sustentáveis com integridade e expertise para um amanhã mais verde.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
@@ -37,67 +37,67 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-xl font-semibold mb-6">Services</h3>
+            <h3 className="text-xl font-semibold mb-6">Serviços</h3>
             <ul className="space-y-4">
               <li>
                 <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
-                  Environmental Consulting
+                  Consultoria Ambiental
                 </a>
               </li>
               <li>
                 <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
-                  Waste Management
+                  Gestão de Resíduos
                 </a>
               </li>
               <li>
                 <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
-                  Environmental Education
+                  Educação Ambiental
                 </a>
               </li>
               <li>
                 <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
-                  Sustainability Planning
+                  Planejamento de Sustentabilidade
                 </a>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-xl font-semibold mb-6">Company</h3>
+            <h3 className="text-xl font-semibold mb-6">Empresa</h3>
             <ul className="space-y-4">
               <li>
                 <a href="#about" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
-                  About Us
+                  Sobre Nós
                 </a>
               </li>
               <li>
                 <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
-                  Our Team
+                  Nossa Equipe
                 </a>
               </li>
               <li>
                 <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
-                  Careers
+                  Carreiras
                 </a>
               </li>
               <li>
                 <a href="#contact" className="text-background/70 hover:text-eco-400 transition-colors duration-300">
-                  Contact Us
+                  Contato
                 </a>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-xl font-semibold mb-6">Contact</h3>
+            <h3 className="text-xl font-semibold mb-6">Contato</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <MapPin className="text-eco-400 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-background/70">123 Eco Drive, Green City, EC 12345</span>
+                <span className="text-background/70">Rua Eco 123, São Paulo, SP 01234-567</span>
               </li>
               <li className="flex items-start">
                 <Phone className="text-eco-400 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-background/70">(555) 123-4567</span>
+                <span className="text-background/70">(11) 3456-7890</span>
               </li>
               <li className="flex items-start">
                 <Mail className="text-eco-400 mr-3 mt-1 flex-shrink-0" />
@@ -112,14 +112,14 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-background/70 text-sm">
-            © {currentYear} EcoConsult. All rights reserved.
+            © {currentYear} EcoConsult. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
             <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300 text-sm">
-              Privacy Policy
+              Política de Privacidade
             </a>
             <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300 text-sm">
-              Terms of Service
+              Termos de Serviço
             </a>
           </div>
         </div>

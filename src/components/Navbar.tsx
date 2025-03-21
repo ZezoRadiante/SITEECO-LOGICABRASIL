@@ -20,9 +20,9 @@ const Navbar = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const navLinks = [
-    { href: '#services', label: 'Services' },
-    { href: '#about', label: 'About' },
-    { href: '#contact', label: 'Contact' }
+    { href: '#services', label: 'Serviços' },
+    { href: '#about', label: 'Sobre' },
+    { href: '#contact', label: 'Contato' }
   ];
 
   return (
@@ -62,7 +62,7 @@ const Navbar = () => {
         <button 
           onClick={toggleMobileMenu} 
           className="md:hidden text-foreground opacity-0 animate-fade-in"
-          aria-label="Toggle mobile menu"
+          aria-label="Abrir menu mobile"
         >
           {isMobileMenuOpen ? (
             <X size={24} className="transition-all duration-300" />

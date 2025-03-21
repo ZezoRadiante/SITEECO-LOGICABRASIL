@@ -39,12 +39,12 @@ const Hero = () => {
         </div>
         
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-          <span className="text-eco-700 block mb-2">Sustainable Solutions</span>
-          <span className="text-foreground/80 font-light">for a Greener Tomorrow</span>
+          <span className="text-eco-700 block mb-2">Soluções Sustentáveis</span>
+          <span className="text-foreground/80 font-light">para um Futuro Mais Verde</span>
         </h1>
         
         <p className="max-w-3xl mx-auto text-xl md:text-2xl text-foreground/70 opacity-0 animate-fade-in-delay-2 text-balance">
-          Providing expert environmental consulting services that balance ecological responsibility with practical business solutions.
+          Fornecendo serviços especializados de consultoria ambiental que equilibram responsabilidade ecológica com soluções empresariais práticas.
         </p>
         
         <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3">
@@ -52,13 +52,13 @@ const Hero = () => {
             href="#services" 
             className="px-8 py-3 bg-eco-600 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1"
           >
-            Our Services
+            Nossos Serviços
           </a>
           <a 
             href="#contact" 
             className="px-8 py-3 border border-eco-600 text-eco-600 rounded-full font-medium hover:bg-eco-600/10 transition-all duration-300"
           >
-            Get in Touch
+            Entre em Contato
           </a>
         </div>
       </div>
@@ -69,7 +69,7 @@ const Hero = () => {
           href="#services" 
           className="flex flex-col items-center text-foreground/60 hover:text-eco-600 transition-all duration-300"
         >
-          <span className="text-sm mb-2">Discover More</span>
+          <span className="text-sm mb-2">Descubra Mais</span>
           <ArrowDown className="animate-bounce" />
         </a>
       </div>

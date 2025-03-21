@@ -34,18 +34,18 @@ const ServiceCard = ({ title, description, icon, index }: ServiceCardProps) => {
 const Services = () => {
   const services = [
     {
-      title: "Environmental Consulting",
-      description: "Comprehensive assessments and tailored solutions to ensure regulatory compliance while advancing sustainability goals for your organization.",
+      title: "Consultoria Ambiental",
+      description: "Avaliações abrangentes e soluções personalizadas para garantir conformidade regulatória enquanto avançamos nas metas de sustentabilidade para sua organização.",
       icon: <Leaf size={32} />
     },
     {
-      title: "Waste Management",
-      description: "Strategic planning and implementation of efficient waste reduction systems designed to minimize environmental impact and maximize resource recovery.",
+      title: "Gestão de Resíduos",
+      description: "Planejamento estratégico e implementação de sistemas eficientes de redução de resíduos projetados para minimizar o impacto ambiental e maximizar a recuperação de recursos.",
       icon: <Recycle size={32} />
     },
     {
-      title: "Environmental Education",
-      description: "Engaging programs and workshops that cultivate environmental awareness and empower sustainable practices within communities and organizations.",
+      title: "Educação Ambiental",
+      description: "Programas e workshops envolventes que cultivam a conscientização ambiental e promovem práticas sustentáveis dentro de comunidades e organizações.",
       icon: <Sprout size={32} />
     }
   ];
@@ -63,14 +63,14 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="inline-block text-eco-600 bg-eco-50 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in">
-            Our Expertise
+            Nossa Especialidade
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-delay-1">
-            Our Professional Services
+            Nossos Serviços Profissionais
           </h2>
           <p className="max-w-3xl mx-auto text-lg text-foreground/70 opacity-0 animate-fade-in-delay-2">
-            We offer specialized environmental solutions tailored to your specific needs, 
-            focusing on sustainable practices and ecological responsibility.
+            Oferecemos soluções ambientais especializadas e adaptadas às suas necessidades específicas, 
+            com foco em práticas sustentáveis e responsabilidade ecológica.
           </p>
         </div>
 
