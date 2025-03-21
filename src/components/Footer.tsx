@@ -15,7 +15,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 text-background font-medium mb-6">
               <Clover size={24} className="text-eco-400" />
-              <span className="text-xl font-semibold tracking-tight">EcoConsult</span>
+              <span className="text-xl font-semibold tracking-tight">Eco-logica Brasil</span>
             </div>
             <p className="text-background/70 mb-6">
               Fornecendo soluções ambientais sustentáveis com integridade e expertise para um amanhã mais verde.
@@ -101,7 +101,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <Mail className="text-eco-400 mr-3 mt-1 flex-shrink-0" />
-                <span className="text-background/70">info@ecoconsult.com</span>
+                <span className="text-background/70">info@ecologicabrasil.com</span>
               </li>
             </ul>
           </div>
@@ -112,7 +112,7 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-background/70 text-sm">
-            © {currentYear} EcoConsult. Todos os direitos reservados.
+            © {currentYear} Eco-logica Brasil. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
             <a href="#" className="text-background/70 hover:text-eco-400 transition-colors duration-300 text-sm">

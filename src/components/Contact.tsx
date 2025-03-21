@@ -69,7 +69,7 @@ const Contact = () => {
                   <Mail className="text-eco-600 mr-4 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <p className="text-foreground/70">info@ecoconsult.com</p>
+                    <p className="text-foreground/70">info@ecologicabrasil.com</p>
                   </div>
                 </div>
                 
