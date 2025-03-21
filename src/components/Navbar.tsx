@@ -38,7 +38,7 @@ const Navbar = () => {
           className="flex items-center space-x-2 text-primary font-medium opacity-0 animate-fade-in"
         >
           <Clover size={24} className="text-eco-600 animate-pulse-gentle" />
-          <span className="text-xl font-semibold tracking-tight">EcoConsult</span>
+          <span className="text-xl font-semibold tracking-tight">Eco-logica Brasil</span>
         </a>
 
         {/* Desktop Navigation */}
