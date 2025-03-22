@@ -55,7 +55,7 @@ const About = () => {
             <div className="relative">
               <div className="w-full h-80 md:h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80" 
+                  src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80" 
                   alt="Paisagem natural exuberante" 
                   className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                 />
