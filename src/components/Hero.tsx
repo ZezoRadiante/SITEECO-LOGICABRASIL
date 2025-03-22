@@ -1,19 +1,32 @@
+
 import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: "url('https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80')",
-      backgroundPosition: "center 30%"
-    }}>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/40"></div>
+      {/* Background Video with Fallback Image */}
+      <div className="absolute inset-0">
+        {/* Video Background */}
+        <video 
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80"
+        >
+          {/* Replace this source with your actual video file */}
+          <source src="/background-nature.mp4" type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/40 z-10"></div>
       </div>
 
       {/* Animated Particles */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-20">
         {/* More Floating Leaves with different sizes, positions and animations */}
         <div className="absolute top-1/4 left-1/4 opacity-20 animate-float">
           <Leaf size={120} className="text-eco-600 rotate-12" />
@@ -61,7 +74,7 @@ const Hero = () => {
       </div>
 
       {/* Interactive Floating Element */}
-      <div className="absolute right-10 top-1/3 hidden lg:block">
+      <div className="absolute right-10 top-1/3 hidden lg:block z-30">
         <div className="relative group cursor-pointer">
           <div className="absolute -inset-1 bg-gradient-to-r from-eco-400 to-eco-600 rounded-full opacity-70 group-hover:opacity-100 blur transition duration-500 group-hover:duration-200 animate-pulse-gentle"></div>
           <div className="relative flex items-center justify-center rounded-full bg-eco-600 p-6 hover:bg-eco-700 transition duration-300 transform hover:scale-110">
@@ -71,20 +84,20 @@ const Hero = () => {
       </div>
 
       {/* Cultivation Images Gallery */}
-      <div className="absolute left-4 top-1/4 hidden lg:block z-10 w-56 transform -rotate-6 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
+      <div className="absolute left-4 top-1/4 hidden lg:block z-30 w-56 transform -rotate-6 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
         <AspectRatio ratio={3 / 4}>
           <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Person planting seeds in garden" className="object-cover w-full h-full" />
         </AspectRatio>
       </div>
       
-      <div className="absolute right-4 bottom-1/4 hidden lg:block z-10 w-48 transform rotate-3 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
+      <div className="absolute right-4 bottom-1/4 hidden lg:block z-30 w-48 transform rotate-3 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
         <AspectRatio ratio={1 / 1}>
           <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Person holding a plant" className="object-cover w-full h-full" />
         </AspectRatio>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center space-y-8 bg-background/40 backdrop-blur-sm py-12 rounded-xl">
+      <div className="relative z-30 max-w-5xl mx-auto px-6 lg:px-8 text-center space-y-8 bg-background/40 backdrop-blur-sm py-12 rounded-xl">
         <div className="flex items-center justify-center opacity-0 animate-fade-in hover:scale-110 transition-transform duration-500">
           <div className="relative">
             <Leaf size={48} className="text-eco-600 absolute -top-6 -left-6 opacity-20 animate-pulse-gentle opacity-20" />
@@ -117,7 +130,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator with enhanced animation */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3 z-30">
         <a href="#services" className="flex flex-col items-center text-foreground/60 hover:text-eco-600 transition-all duration-300 group">
           <span className="text-sm mb-2 group-hover:-translate-y-1 transition-transform duration-300">Descubra Mais</span>
           <div className="relative">
