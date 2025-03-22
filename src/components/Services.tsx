@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Clover, Leaf, Recycle, Sprout } from 'lucide-react';
+import { Leaf, Recycle, Sprout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ServiceCardProps {
@@ -52,12 +52,12 @@ const Services = () => {
 
   return (
     <section id="services" className="py-24 relative overflow-hidden">
-      {/* Decorative Clovers */}
+      {/* Decorative Leaves */}
       <div className="absolute top-20 left-10 text-eco-100 opacity-20 -z-10">
-        <Clover size={200} className="animate-spin-slow" />
+        <Leaf size={200} className="animate-spin-slow" />
       </div>
       <div className="absolute bottom-20 right-10 text-eco-100 opacity-20 -z-10">
-        <Clover size={150} className="animate-spin-slow" style={{ animationDirection: 'reverse' }} />
+        <Leaf size={150} className="animate-spin-slow" style={{ animationDirection: 'reverse' }} />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

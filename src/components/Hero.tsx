@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Clover, ArrowDown } from 'lucide-react';
+import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 
@@ -20,30 +20,30 @@ const Hero = () => {
 
       {/* Animated Particles */}
       <div className="absolute inset-0 z-0">
-        {/* More Floating Clovers with different sizes, positions and animations */}
+        {/* More Floating Leaves with different sizes, positions and animations */}
         <div className="absolute top-1/4 left-1/4 opacity-20 animate-float">
-          <Clover size={120} className="text-eco-600 rotate-12" />
+          <Leaf size={120} className="text-eco-600 rotate-12" />
         </div>
         <div className="absolute bottom-1/3 right-1/5 opacity-15 animate-float" style={{ animationDelay: '1s' }}>
-          <Clover size={80} className="text-eco-500 -rotate-12" />
+          <Leaf size={80} className="text-eco-500 -rotate-12" />
         </div>
         <div className="absolute top-1/2 left-3/4 opacity-10 animate-float" style={{ animationDelay: '2s' }}>
-          <Clover size={100} className="text-eco-400 rotate-45" />
+          <Leaf size={100} className="text-eco-400 rotate-45" />
         </div>
         <div className="absolute top-1/3 left-1/6 opacity-25 animate-float" style={{ animationDelay: '1.5s', animationDuration: '5s' }}>
-          <Clover size={60} className="text-eco-700 rotate-90" />
+          <Leaf size={60} className="text-eco-700 rotate-90" />
         </div>
         <div className="absolute bottom-1/4 right-1/4 opacity-20 animate-float" style={{ animationDelay: '2.5s', animationDuration: '6s' }}>
-          <Clover size={90} className="text-eco-500 -rotate-45" />
+          <Leaf size={90} className="text-eco-500 -rotate-45" />
         </div>
         <div className="absolute top-2/3 left-1/3 opacity-15 animate-float" style={{ animationDelay: '3s', animationDuration: '7s' }}>
-          <Clover size={70} className="text-eco-600 rotate-180" />
+          <Leaf size={70} className="text-eco-600 rotate-180" />
         </div>
         <div className="absolute top-1/5 right-1/3 opacity-10 animate-float" style={{ animationDelay: '0.5s', animationDuration: '4.5s' }}>
-          <Clover size={110} className="text-eco-400 rotate-135" />
+          <Leaf size={110} className="text-eco-400 rotate-135" />
         </div>
         <div className="absolute bottom-1/5 left-1/2 opacity-20 animate-float" style={{ animationDelay: '3.5s', animationDuration: '5.5s' }}>
-          <Clover size={65} className="text-eco-600 -rotate-135" />
+          <Leaf size={65} className="text-eco-600 -rotate-135" />
         </div>
       </div>
 
@@ -52,7 +52,7 @@ const Hero = () => {
         <div className="relative group cursor-pointer">
           <div className="absolute -inset-1 bg-gradient-to-r from-eco-400 to-eco-600 rounded-full opacity-70 group-hover:opacity-100 blur transition duration-500 group-hover:duration-200 animate-pulse-gentle"></div>
           <div className="relative flex items-center justify-center rounded-full bg-eco-600 p-6 hover:bg-eco-700 transition duration-300 transform hover:scale-110">
-            <Clover size={32} className="text-white group-hover:animate-spin-slow transition duration-300" />
+            <Leaf size={32} className="text-white group-hover:animate-spin-slow transition duration-300" />
           </div>
         </div>
       </div>
@@ -82,9 +82,9 @@ const Hero = () => {
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center space-y-8 bg-background/40 backdrop-blur-sm py-12 rounded-xl">
         <div className="flex items-center justify-center opacity-0 animate-fade-in hover:scale-110 transition-transform duration-500">
           <div className="relative">
-            <Clover size={48} className="text-eco-600 absolute -top-6 -left-6 opacity-20 animate-pulse-gentle" />
-            <Clover size={48} className="text-eco-600 absolute -bottom-6 -right-6 opacity-20 animate-pulse-gentle" style={{ animationDelay: '1.5s' }} />
-            <Clover size={64} className="text-eco-600 hover:rotate-45 transition-transform duration-500" />
+            <Leaf size={48} className="text-eco-600 absolute -top-6 -left-6 opacity-20 animate-pulse-gentle" />
+            <Leaf size={48} className="text-eco-600 absolute -bottom-6 -right-6 opacity-20 animate-pulse-gentle" style={{ animationDelay: '1.5s' }} />
+            <Leaf size={64} className="text-eco-600 hover:rotate-45 transition-transform duration-500" />
           </div>
         </div>
         
