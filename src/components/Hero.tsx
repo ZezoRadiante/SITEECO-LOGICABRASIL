@@ -88,9 +88,9 @@ const Hero = () => {
         <div className="flex items-center justify-center opacity-0 animate-fade-in hover:scale-110 transition-transform duration-500">
           <div className="relative">
             <Leaf size={48} className="text-eco-600 absolute -top-6 -left-6 opacity-20 animate-pulse-gentle opacity-20" />
-            <Leaf size={48} className="text-eco-600 absolute -bottom-6 -right-6 opacity-20 animate-pulse-gentle" style={{
+            <Leaf size={48} style={{
             animationDelay: '1.5s'
-          }} />
+          }} className="text-eco-600 absolute -bottom-6 -right-6 opacity-20 animate-pulse-gentle opacity-10" />
             <Leaf size={64} className="text-eco-600 hover:rotate-45 transition-transform duration-500 opacity-30" />
           </div>
         </div>
