@@ -1,7 +1,14 @@
 
 import React from 'react';
 
+// Quando você tiver o seu próprio SVG, pode importá-lo aqui e usá-lo no lugar do SVG atual
+// import CustomLogoSVG from '../assets/logo.svg';
+
 const Logo = ({ className = "", size = 24 }: { className?: string; size?: number }) => {
+  // Se você tiver um arquivo SVG personalizado:
+  // return <img src={CustomLogoSVG} width={size} height={size} className={className} alt="Eco-logica Brasil" />;
+  
+  // SVG temporário até que você forneça o seu próprio logo
   return (
     <svg 
       width={size} 
