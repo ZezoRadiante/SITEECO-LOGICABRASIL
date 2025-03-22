@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Clover, CheckCircle2 } from 'lucide-react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const About = () => {
   const values = [
@@ -51,14 +52,40 @@ const About = () => {
             </a>
           </div>
 
-          <div className="order-1 lg:order-2 opacity-0 animate-fade-in-left">
+          <div className="order-1 lg:order-2 opacity-0 animate-fade-in-left grid grid-cols-2 gap-4">
+            <div className="relative col-span-2">
+              <div className="w-full rounded-lg overflow-hidden shadow-xl">
+                <AspectRatio ratio={16/9}>
+                  <img 
+                    src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                    alt="Pessoas plantando árvores em comunidade" 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </AspectRatio>
+              </div>
+            </div>
+            
             <div className="relative">
-              <div className="w-full h-80 md:h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80" 
-                  alt="Paisagem natural exuberante" 
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
+              <div className="w-full rounded-lg overflow-hidden shadow-xl">
+                <AspectRatio ratio={1/1}>
+                  <img 
+                    src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                    alt="Mãos segurando muda de planta" 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </AspectRatio>
+              </div>
+            </div>
+            
+            <div className="relative">
+              <div className="w-full rounded-lg overflow-hidden shadow-xl">
+                <AspectRatio ratio={1/1}>
+                  <img 
+                    src="https://images.unsplash.com/photo-1620052581237-5d36667be337?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                    alt="Plantação de sementes em solo fértil" 
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </AspectRatio>
               </div>
               <div className="absolute -bottom-6 -right-6 glass rounded-lg p-4 max-w-xs shadow-lg">
                 <div className="flex items-center mb-2">
