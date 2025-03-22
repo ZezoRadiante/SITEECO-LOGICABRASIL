@@ -14,8 +14,7 @@ const Hero = () => {
           backgroundPosition: "center 30%"
         }}
       >
-        {/* Reduzindo a opacidade do gradient para destacar mais a imagem da natureza */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/50 to-background/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/40"></div>
       </div>
 
       {/* Floating Clovers */}
@@ -39,31 +38,28 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Adicionando um fundo semi-transparente para melhorar a legibilidade do texto */}
-        <div className="bg-background/40 backdrop-blur-sm p-6 rounded-xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-            <span className="text-eco-700 block mb-2">Soluções Sustentáveis</span>
-            <span className="text-foreground/90 font-light">para um Futuro Mais Verde</span>
-          </h1>
-          
-          <p className="max-w-3xl mx-auto text-xl md:text-2xl text-foreground/80 opacity-0 animate-fade-in-delay-2 text-balance">
-            Fornecendo serviços especializados de consultoria ambiental que equilibram responsabilidade ecológica com soluções empresariais práticas.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3">
-            <a 
-              href="#services" 
-              className="px-8 py-3 bg-eco-600 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1"
-            >
-              Nossos Serviços
-            </a>
-            <a 
-              href="#contact" 
-              className="px-8 py-3 border border-eco-600 text-eco-600 rounded-full font-medium hover:bg-eco-600/10 transition-all duration-300"
-            >
-              Entre em Contato
-            </a>
-          </div>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
+          <span className="text-eco-700 block mb-2">Soluções Sustentáveis</span>
+          <span className="text-foreground/80 font-light">para um Futuro Mais Verde</span>
+        </h1>
+        
+        <p className="max-w-3xl mx-auto text-xl md:text-2xl text-foreground/70 opacity-0 animate-fade-in-delay-2 text-balance">
+          Fornecendo serviços especializados de consultoria ambiental que equilibram responsabilidade ecológica com soluções empresariais práticas.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3">
+          <a 
+            href="#services" 
+            className="px-8 py-3 bg-eco-600 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1"
+          >
+            Nossos Serviços
+          </a>
+          <a 
+            href="#contact" 
+            className="px-8 py-3 border border-eco-600 text-eco-600 rounded-full font-medium hover:bg-eco-600/10 transition-all duration-300"
+          >
+            Entre em Contato
+          </a>
         </div>
       </div>
 
@@ -71,9 +67,9 @@ const Hero = () => {
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3">
         <a 
           href="#services" 
-          className="flex flex-col items-center text-foreground/70 hover:text-eco-600 transition-all duration-300"
+          className="flex flex-col items-center text-foreground/60 hover:text-eco-600 transition-all duration-300"
         >
-          <span className="text-sm mb-2 bg-background/50 px-3 py-1 rounded-full">Descubra Mais</span>
+          <span className="text-sm mb-2">Descubra Mais</span>
           <ArrowDown className="animate-bounce" />
         </a>
       </div>
