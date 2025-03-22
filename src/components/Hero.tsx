@@ -2,6 +2,7 @@
 import React from 'react';
 import { Clover, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const Hero = () => {
   return (
@@ -56,8 +57,29 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Cultivation Images Gallery */}
+      <div className="absolute left-4 top-1/4 hidden lg:block z-10 w-56 transform -rotate-6 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
+        <AspectRatio ratio={3/4}>
+          <img 
+            src="https://images.unsplash.com/photo-1531094439740-f21df598c3d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+            alt="Hands planting seedlings" 
+            className="object-cover w-full h-full"
+          />
+        </AspectRatio>
+      </div>
+      
+      <div className="absolute right-4 bottom-1/4 hidden lg:block z-10 w-48 transform rotate-3 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
+        <AspectRatio ratio={1/1}>
+          <img 
+            src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+            alt="Person holding a plant" 
+            className="object-cover w-full h-full"
+          />
+        </AspectRatio>
+      </div>
+
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center space-y-8">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center space-y-8 bg-background/40 backdrop-blur-sm py-12 rounded-xl">
         <div className="flex items-center justify-center opacity-0 animate-fade-in hover:scale-110 transition-transform duration-500">
           <div className="relative">
             <Clover size={48} className="text-eco-600 absolute -top-6 -left-6 opacity-20 animate-pulse-gentle" />
