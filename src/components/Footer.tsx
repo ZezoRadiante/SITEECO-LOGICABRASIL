@@ -1,6 +1,6 @@
-
 import React from 'react';
-import { Clover, Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import Logo from './Logo';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <div className="flex items-center space-x-2 text-background font-medium mb-6">
-              <Clover size={24} className="text-white" />
+              <Logo size={24} className="text-white" />
               <span className="text-xl font-semibold tracking-tight">Eco-logica Brasil</span>
             </div>
             <p className="text-background/70 mb-6">

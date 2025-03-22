@@ -1,7 +1,8 @@
 
 import React from 'react';
-import { Clover, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import Logo from './Logo';
 
 const About = () => {
   const values = [
@@ -17,7 +18,7 @@ const About = () => {
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent"></div>
       <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-background to-transparent"></div>
       <div className="absolute -left-16 top-1/3 opacity-10">
-        <Clover size={300} className="text-eco-600 transform rotate-12" />
+        <Logo size={300} className="text-eco-600 transform rotate-12" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -89,7 +90,7 @@ const About = () => {
               </div>
               <div className="absolute -bottom-6 -right-6 glass rounded-lg p-4 max-w-xs shadow-lg">
                 <div className="flex items-center mb-2">
-                  <Clover size={20} className="text-eco-600 mr-2" />
+                  <Logo size={20} className="text-eco-600 mr-2" />
                   <h4 className="font-semibold">Nossa Missão</h4>
                 </div>
                 <p className="text-sm text-foreground/70">

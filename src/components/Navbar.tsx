@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { Clover, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +38,7 @@ const Navbar = () => {
           href="#" 
           className="flex items-center space-x-2 text-primary font-medium opacity-0 animate-fade-in"
         >
-          <Clover size={24} className="text-eco-600 animate-pulse-gentle" />
+          <Logo size={24} className="text-eco-600 animate-pulse-gentle" />
           <span className="text-xl font-semibold tracking-tight">Eco-logica Brasil</span>
         </a>
 
