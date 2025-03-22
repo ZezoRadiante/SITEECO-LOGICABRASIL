@@ -61,8 +61,8 @@ const Hero = () => {
       <div className="absolute left-4 top-1/4 hidden lg:block z-10 w-56 transform -rotate-6 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
         <AspectRatio ratio={3/4}>
           <img 
-            src="https://images.unsplash.com/photo-1531094439740-f21df598c3d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-            alt="Hands planting seedlings" 
+            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+            alt="Person planting seeds in garden" 
             className="object-cover w-full h-full"
           />
         </AspectRatio>
