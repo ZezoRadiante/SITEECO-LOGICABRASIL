@@ -70,7 +70,7 @@ const About = () => {
               <div className="w-full rounded-lg overflow-hidden shadow-xl">
                 <AspectRatio ratio={1/1}>
                   <img 
-                    src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                    src="https://drive.google.com/file/d/1S2nYaMOdwPpSrjnBtfuuqjV_JnxByesU/view?usp=drive_link" 
                     alt="Mãos segurando muda de planta" 
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
