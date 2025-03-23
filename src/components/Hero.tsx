@@ -1,22 +1,13 @@
-
 import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video with Fallback Image */}
       <div className="absolute inset-0">
         {/* Video Background */}
-        <video 
-          className="absolute inset-0 w-full h-full object-cover z-0" 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80"
-        >
+        <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay muted loop playsInline poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80">
           {/* Replace this source with your downloaded YouTube video */}
           <source src="/background-nature.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
@@ -86,7 +77,7 @@ const Hero = () => {
       {/* Cultivation Images Gallery */}
       <div className="absolute left-4 top-1/4 hidden lg:block z-30 w-56 transform -rotate-6 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
         <AspectRatio ratio={3 / 4}>
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Person planting seeds in garden" className="object-cover w-full h-full" />
+          <img alt="Person planting seeds in garden" className="object-cover w-full h-full" src="https://unsplash.com/pt-br/fotografias/lISHEONmIX8" />
         </AspectRatio>
       </div>
       
@@ -141,5 +132,4 @@ const Hero = () => {
       </div>
     </section>;
 };
-
 export default Hero;
