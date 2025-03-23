@@ -3,6 +3,13 @@ import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import Logo from './Logo';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const About = () => {
   const values = [
@@ -10,6 +17,19 @@ const About = () => {
     "Liderança em Sustentabilidade",
     "Inovação e Expertise",
     "Parceria com Clientes"
+  ];
+
+  const plantingImages = [
+    "/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png",
+    "/lovable-uploads/23b71c4a-ae05-4ad7-b477-b35c8f494d1a.png",
+    "/lovable-uploads/b90b4872-c28b-4a9e-967c-ee3cd4bbcdfe.png",
+    "/lovable-uploads/4e99cd90-92f7-4e37-b085-3c4d9182f2a7.png",
+    "/lovable-uploads/48d7d076-02b1-4af7-bff8-3b0d88c735fc.png",
+    "/lovable-uploads/b3bda120-cadf-4783-ba66-df239127e92e.png",
+    "/lovable-uploads/9f04c017-2367-4865-b366-bed9918fc72b.png",
+    "/lovable-uploads/e6fb9dd0-19b4-4d25-8b88-21e934258792.png",
+    "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png",
+    "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png",
   ];
 
   return (
@@ -53,50 +73,37 @@ const About = () => {
             </a>
           </div>
 
-          <div className="order-1 lg:order-2 opacity-0 animate-fade-in-left grid grid-cols-2 gap-4">
-            <div className="relative col-span-2">
-              <div className="w-full rounded-lg overflow-hidden shadow-xl">
-                <AspectRatio ratio={16/9}>
-                  <img 
-                    src="https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-                    alt="Pessoas plantando árvores em comunidade" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                </AspectRatio>
-              </div>
-            </div>
+          <div className="order-1 lg:order-2 opacity-0 animate-fade-in-left">
+            <Carousel className="w-full">
+              <CarouselContent>
+                {plantingImages.map((image, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <div className="rounded-lg overflow-hidden shadow-xl">
+                        <AspectRatio ratio={1/1}>
+                          <img 
+                            src={image}
+                            alt={`Crianças plantando ou cuidando de mudas de plantas - imagem ${index + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                          />
+                        </AspectRatio>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-2" />
+              <CarouselNext className="right-2" />
+            </Carousel>
             
-            <div className="relative">
-              <div className="w-full rounded-lg overflow-hidden shadow-xl">
-                <AspectRatio ratio={1/1}>
-                  <img 
-                    src="https://drive.google.com/file/d/1S2nYaMOdwPpSrjnBtfuuqjV_JnxByesU/view?usp=drive_link" 
-                    alt="Mãos segurando muda de planta" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                </AspectRatio>
+            <div className="mt-8 glass rounded-lg p-4 max-w-xs shadow-lg ml-auto">
+              <div className="flex items-center mb-2">
+                <Logo size={20} className="text-eco-600 mr-2" />
+                <h4 className="font-semibold">Nossa Missão</h4>
               </div>
-            </div>
-            
-            <div className="relative">
-              <div className="w-full rounded-lg overflow-hidden shadow-xl">
-                <AspectRatio ratio={1/1}>
-                  <img 
-                    src="https://images.unsplash.com/photo-1620052581237-5d36667be337?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                    alt="Plantação de sementes em solo fértil" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                </AspectRatio>
-              </div>
-              <div className="absolute -bottom-6 -right-6 glass rounded-lg p-4 max-w-xs shadow-lg">
-                <div className="flex items-center mb-2">
-                  <Logo size={20} className="text-eco-600 mr-2" />
-                  <h4 className="font-semibold">Nossa Missão</h4>
-                </div>
-                <p className="text-sm text-foreground/70">
-                  Impulsionar mudanças ambientais positivas através de soluções inovadoras e educação.
-                </p>
-              </div>
+              <p className="text-sm text-foreground/70">
+                Impulsionar mudanças ambientais positivas através de soluções inovadoras e educação.
+              </p>
             </div>
           </div>
         </div>
