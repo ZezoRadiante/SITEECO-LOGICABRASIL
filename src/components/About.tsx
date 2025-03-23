@@ -10,6 +10,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
 const About = () => {
   const values = [
@@ -31,6 +33,15 @@ const About = () => {
     "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png",
     "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png",
   ];
+
+  // Create autoplay plugin instance
+  const autoplayPlugin = React.useRef(
+    Autoplay({ 
+      delay: 3000, // 3 seconds between slides
+      stopOnInteraction: true, // pause on user interaction
+      stopOnMouseEnter: true, // pause on mouse hover
+    })
+  );
 
   return (
     <section id="about" className="py-24 bg-secondary/70 relative overflow-hidden">
@@ -74,7 +85,15 @@ const About = () => {
           </div>
 
           <div className="order-1 lg:order-2 opacity-0 animate-fade-in-left">
-            <Carousel className="w-full">
+            <Carousel 
+              className="w-full" 
+              opts={{
+                loop: true,
+              }}
+              plugins={[autoplayPlugin.current]}
+              onMouseEnter={() => autoplayPlugin.current.stop()}
+              onMouseLeave={() => autoplayPlugin.current.play()}
+            >
               <CarouselContent>
                 {plantingImages.map((image, index) => (
                   <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
