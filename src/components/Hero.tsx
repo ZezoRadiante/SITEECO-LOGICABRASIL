@@ -1,31 +1,11 @@
-
 import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 const Hero = () => {
   const isMobile = useIsMobile();
-  const plantingImages = [
-    "/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png",
-    "/lovable-uploads/23b71c4a-ae05-4ad7-b477-b35c8f494d1a.png",
-    "/lovable-uploads/b90b4872-c28b-4a9e-967c-ee3cd4bbcdfe.png",
-    "/lovable-uploads/4e99cd90-92f7-4e37-b085-3c4d9182f2a7.png",
-    "/lovable-uploads/48d7d076-02b1-4af7-bff8-3b0d88c735fc.png",
-    "/lovable-uploads/b3bda120-cadf-4783-ba66-df239127e92e.png",
-    "/lovable-uploads/9f04c017-2367-4865-b366-bed9918fc72b.png",
-    "/lovable-uploads/e6fb9dd0-19b4-4d25-8b88-21e934258792.png",
-    "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png",
-    "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png",
-  ];
-
+  const plantingImages = ["/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png", "/lovable-uploads/23b71c4a-ae05-4ad7-b477-b35c8f494d1a.png", "/lovable-uploads/b90b4872-c28b-4a9e-967c-ee3cd4bbcdfe.png", "/lovable-uploads/4e99cd90-92f7-4e37-b085-3c4d9182f2a7.png", "/lovable-uploads/48d7d076-02b1-4af7-bff8-3b0d88c735fc.png", "/lovable-uploads/b3bda120-cadf-4783-ba66-df239127e92e.png", "/lovable-uploads/9f04c017-2367-4865-b366-bed9918fc72b.png", "/lovable-uploads/e6fb9dd0-19b4-4d25-8b88-21e934258792.png", "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png", "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png"];
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video with Fallback Image */}
       <div className="absolute inset-0">
@@ -50,45 +30,43 @@ const Hero = () => {
       }}>
           <Leaf size={isMobile ? 50 : 80} className="text-eco-500 -rotate-12" />
         </div>
-        {!isMobile && (
-          <>
+        {!isMobile && <>
             <div className="absolute top-1/2 left-3/4 opacity-10 animate-float" style={{
-              animationDelay: '2s'
-            }}>
+          animationDelay: '2s'
+        }}>
               <Leaf size={100} className="text-eco-400 rotate-45" />
             </div>
             <div className="absolute top-1/3 left-1/6 opacity-25 animate-float" style={{
-              animationDelay: '1.5s',
-              animationDuration: '5s'
-            }}>
+          animationDelay: '1.5s',
+          animationDuration: '5s'
+        }}>
               <Leaf size={60} className="text-eco-700 rotate-90" />
             </div>
             <div className="absolute bottom-1/4 right-1/4 opacity-20 animate-float" style={{
-              animationDelay: '2.5s',
-              animationDuration: '6s'
-            }}>
+          animationDelay: '2.5s',
+          animationDuration: '6s'
+        }}>
               <Leaf size={90} className="text-eco-500 -rotate-45" />
             </div>
             <div className="absolute top-2/3 left-1/3 opacity-15 animate-float" style={{
-              animationDelay: '3s',
-              animationDuration: '7s'
-            }}>
+          animationDelay: '3s',
+          animationDuration: '7s'
+        }}>
               <Leaf size={70} className="text-eco-600 rotate-180" />
             </div>
             <div className="absolute top-1/5 right-1/3 opacity-10 animate-float" style={{
-              animationDelay: '0.5s',
-              animationDuration: '4.5s'
-            }}>
+          animationDelay: '0.5s',
+          animationDuration: '4.5s'
+        }}>
               <Leaf size={110} className="text-eco-400 rotate-135" />
             </div>
             <div className="absolute bottom-1/5 left-1/2 opacity-20 animate-float" style={{
-              animationDelay: '3.5s',
-              animationDuration: '5.5s'
-            }}>
+          animationDelay: '3.5s',
+          animationDuration: '5.5s'
+        }}>
               <Leaf size={65} className="text-eco-600 -rotate-135" />
             </div>
-          </>
-        )}
+          </>}
       </div>
 
       {/* Interactive Floating Element */}
