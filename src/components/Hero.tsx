@@ -3,12 +3,33 @@ import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
 const Hero = () => {
+  const plantingImages = [
+    "/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png",
+    "/lovable-uploads/23b71c4a-ae05-4ad7-b477-b35c8f494d1a.png",
+    "/lovable-uploads/b90b4872-c28b-4a9e-967c-ee3cd4bbcdfe.png",
+    "/lovable-uploads/4e99cd90-92f7-4e37-b085-3c4d9182f2a7.png",
+    "/lovable-uploads/48d7d076-02b1-4af7-bff8-3b0d88c735fc.png",
+    "/lovable-uploads/b3bda120-cadf-4783-ba66-df239127e92e.png",
+    "/lovable-uploads/9f04c017-2367-4865-b366-bed9918fc72b.png",
+    "/lovable-uploads/e6fb9dd0-19b4-4d25-8b88-21e934258792.png",
+    "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png",
+    "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png",
+  ];
+
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video with Fallback Image */}
       <div className="absolute inset-0">
-        {/* Video Background */}
-        <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay muted loop playsInline poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80">
+        {/* Video Background - removed poster attribute */}
+        <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay muted loop playsInline>
           {/* Replace this source with your downloaded YouTube video */}
           <source src="/background-nature.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
@@ -75,17 +96,41 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Cultivation Images Gallery */}
-      <div className="absolute left-4 top-1/4 hidden lg:block z-30 w-56 transform -rotate-6 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
-        <AspectRatio ratio={3 / 4}>
-          <img alt="Mudinha de planta em solo fértil" className="object-cover w-full h-full" src="/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png" />
-        </AspectRatio>
+      {/* Image Carousel */}
+      <div className="absolute left-4 top-1/4 hidden lg:block z-30 w-64 transform -rotate-6 shadow-xl rounded-lg overflow-hidden">
+        <Carousel className="w-full">
+          <CarouselContent>
+            {plantingImages.slice(0, 5).map((image, index) => (
+              <CarouselItem key={index}>
+                <AspectRatio ratio={3 / 4}>
+                  <img 
+                    src={image} 
+                    alt={`Imagem de plantação ${index + 1}`} 
+                    className="object-cover w-full h-full" 
+                  />
+                </AspectRatio>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
       
-      <div className="absolute right-4 bottom-1/4 hidden lg:block z-30 w-48 transform rotate-3 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
-        <AspectRatio ratio={1 / 1}>
-          <img src="/lovable-uploads/7ee50906-e943-432a-b64f-c2aa2647c59b.png" alt="Trabalhador com capacete verde segurando uma muda" className="object-cover w-full h-full" />
-        </AspectRatio>
+      <div className="absolute right-4 bottom-1/4 hidden lg:block z-30 w-56 transform rotate-3 shadow-xl rounded-lg overflow-hidden">
+        <Carousel className="w-full">
+          <CarouselContent>
+            {plantingImages.slice(5, 10).map((image, index) => (
+              <CarouselItem key={index}>
+                <AspectRatio ratio={1 / 1}>
+                  <img 
+                    src={image} 
+                    alt={`Imagem de plantação ${index + 6}`} 
+                    className="object-cover w-full h-full" 
+                  />
+                </AspectRatio>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
       </div>
 
       {/* Content */}
