@@ -2,29 +2,8 @@
 import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
-} from '@/components/ui/carousel';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-
 const Hero = () => {
-  const imagesPaths = [
-    "/lovable-uploads/475a986b-a28a-4aa2-a9ab-53d9e8cfce6a.png",
-    "/lovable-uploads/04b63af2-fbb2-4dec-bc92-4ea293f03892.png",
-    "/lovable-uploads/c1351876-82d1-47f2-9ede-8639922674a3.png",
-    "/lovable-uploads/fad05c7e-57f8-459f-97eb-5c259de14221.png",
-    "/lovable-uploads/a3e0ae89-efac-4660-951d-d971ba7f66aa.png",
-    "/lovable-uploads/e61859ee-d878-412b-bd15-4174bbc828d6.png",
-    "/lovable-uploads/d632e928-b0f9-4b24-8f6e-dc7576dcd2d5.png",
-    "/lovable-uploads/bf7939c8-a156-4c94-8c0c-5c17bbf940ba.png",
-    "/lovable-uploads/441cd145-24eb-47b6-aad9-a8d3458512b1.png",
-    "/lovable-uploads/0aa8b01a-3872-432a-a5cf-221f4fbd7cd0.png"
-  ];
-
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video with Fallback Image */}
       <div className="absolute inset-0">
@@ -96,33 +75,17 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Cultivation Images Carousel */}
-      <div className="absolute z-30 w-full max-w-5xl px-10 hidden lg:block">
-        <Carousel 
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent>
-            {imagesPaths.map((src, index) => (
-              <CarouselItem key={index} className="basis-1/3 md:basis-1/4">
-                <div className={`p-1 transform ${index % 2 === 0 ? "rotate-2" : "-rotate-2"} hover:scale-105 transition-transform duration-500`}>
-                  <AspectRatio ratio={index % 3 === 0 ? 3/4 : index % 3 === 1 ? 1/1 : 4/3} className="bg-muted rounded-xl overflow-hidden shadow-xl">
-                    <img 
-                      src={src} 
-                      alt={`Crianças plantando e cultivando mudas de plantas`} 
-                      className="object-cover w-full h-full"
-                    />
-                  </AspectRatio>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="left-0 bg-eco-600 text-white hover:bg-eco-700 hover:text-white" />
-          <CarouselNext className="right-0 bg-eco-600 text-white hover:bg-eco-700 hover:text-white" />
-        </Carousel>
+      {/* Cultivation Images Gallery */}
+      <div className="absolute left-4 top-1/4 hidden lg:block z-30 w-56 transform -rotate-6 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
+        <AspectRatio ratio={3 / 4}>
+          <img alt="Mudinha de planta em solo fértil" className="object-cover w-full h-full" src="/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png" />
+        </AspectRatio>
+      </div>
+      
+      <div className="absolute right-4 bottom-1/4 hidden lg:block z-30 w-48 transform rotate-3 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
+        <AspectRatio ratio={1 / 1}>
+          <img src="/lovable-uploads/7ee50906-e943-432a-b64f-c2aa2647c59b.png" alt="Trabalhador com capacete verde segurando uma muda" className="object-cover w-full h-full" />
+        </AspectRatio>
       </div>
 
       {/* Content */}
