@@ -1,19 +1,28 @@
+
 import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
+
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video with Fallback Image */}
       <div className="absolute inset-0">
         {/* Video Background */}
-        <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay muted loop playsInline poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80">
-          {/* Replace this source with your actual video file */}
+        <video 
+          className="absolute inset-0 w-full h-full object-cover z-0" 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80"
+        >
+          {/* Replace this source with your downloaded YouTube video */}
           <source src="/background-nature.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/10 z-10"></div>
       </div>
 
       {/* Animated Particles */}
@@ -132,4 +141,5 @@ const Hero = () => {
       </div>
     </section>;
 };
+
 export default Hero;
