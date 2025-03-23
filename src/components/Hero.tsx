@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -22,7 +21,7 @@ const Hero = () => {
           {/* Fallback for browsers that don't support video */}
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/90 to-background/40 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10"></div>
       </div>
 
       {/* Animated Particles */}
