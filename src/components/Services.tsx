@@ -52,14 +52,6 @@ const Services = () => {
 
   return (
     <section id="services" className="py-24 relative overflow-hidden">
-      {/* Decorative Leaves */}
-      <div className="absolute top-20 left-10 text-eco-100 opacity-20 -z-10">
-        <Leaf size={200} className="animate-spin-slow" />
-      </div>
-      <div className="absolute bottom-20 right-10 text-eco-100 opacity-20 -z-10">
-        <Leaf size={150} className="animate-spin-slow" style={{ animationDirection: 'reverse' }} />
-      </div>
-
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="inline-block text-eco-600 bg-eco-50 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in">
