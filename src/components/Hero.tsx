@@ -2,7 +2,6 @@
 import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Carousel,
@@ -101,68 +100,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Image Carousel - Only visible on desktop */}
-      <div className="absolute left-4 top-1/4 hidden lg:block z-30 w-64 transform -rotate-6 shadow-xl rounded-lg overflow-hidden">
-        <Carousel className="w-full">
-          <CarouselContent>
-            {plantingImages.slice(0, 5).map((image, index) => (
-              <CarouselItem key={index}>
-                <AspectRatio ratio={3 / 4}>
-                  <img 
-                    src={image} 
-                    alt={`Imagem de plantação ${index + 1}`} 
-                    className="object-cover w-full h-full" 
-                  />
-                </AspectRatio>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
-      
-      <div className="absolute right-4 bottom-1/4 hidden lg:block z-30 w-56 transform rotate-3 shadow-xl rounded-lg overflow-hidden">
-        <Carousel className="w-full">
-          <CarouselContent>
-            {plantingImages.slice(5, 10).map((image, index) => (
-              <CarouselItem key={index}>
-                <AspectRatio ratio={1 / 1}>
-                  <img 
-                    src={image} 
-                    alt={`Imagem de plantação ${index + 6}`} 
-                    className="object-cover w-full h-full" 
-                  />
-                </AspectRatio>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-      </div>
-
-      {/* Mobile-optimized carousel */}
-      {isMobile && (
-        <div className="absolute bottom-[25%] left-0 right-0 z-30 px-4">
-          <Carousel className="w-full">
-            <CarouselContent>
-              {plantingImages.map((image, index) => (
-                <CarouselItem key={index} className="basis-2/3">
-                  <div className="p-1">
-                    <AspectRatio ratio={1 / 1} className="rounded-xl overflow-hidden shadow-md">
-                      <img 
-                        src={image} 
-                        alt={`Imagem de plantação ${index + 1}`} 
-                        className="object-cover w-full h-full" 
-                      />
-                    </AspectRatio>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-2 h-8 w-8" />
-            <CarouselNext className="right-2 h-8 w-8" />
-          </Carousel>
-        </div>
-      )}
 
       {/* Content - Improved for mobile */}
       <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8 backdrop-blur-sm py-8 sm:py-12 bg-black/0 rounded-full">
