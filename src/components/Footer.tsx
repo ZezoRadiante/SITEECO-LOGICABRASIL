@@ -1,9 +1,11 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import Logo from './Logo';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  return <footer className="bg-eco-600 text-background/90 relative overflow-hidden">
+  
+  return <footer className="bg-earth-800 text-background/90 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent"></div>
       
       {/* Main Footer Content */}
@@ -123,4 +125,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 export default Footer;
