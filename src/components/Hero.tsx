@@ -2,20 +2,12 @@ import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
-
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video with Fallback Image */}
       <div className="absolute inset-0">
         {/* Video Background */}
-        <video 
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          autoPlay 
-          muted 
-          loop 
-          playsInline
-          poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80"
-        >
+        <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay muted loop playsInline poster="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=80">
           {/* Replace this source with your actual video file */}
           <source src="/background-nature.mp4" type="video/mp4" />
           {/* Fallback for browsers that don't support video */}
@@ -96,14 +88,14 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-30 max-w-5xl mx-auto px-6 lg:px-8 text-center space-y-8 bg-background/40 backdrop-blur-sm py-12 rounded-xl">
+      <div className="relative z-30 max-w-5xl mx-auto px-6 lg:px-8 text-center space-y-8 backdrop-blur-sm py-12 bg-black/0 rounded-full">
         <div className="flex items-center justify-center opacity-0 animate-fade-in hover:scale-110 transition-transform duration-500">
           <div className="relative">
             <Leaf size={48} className="text-eco-600 absolute -top-6 -left-6 opacity-20 animate-pulse-gentle opacity-20" />
             <Leaf size={48} style={{
             animationDelay: '1.5s'
           }} className="text-eco-600 absolute -bottom-6 -right-6 opacity-20 animate-pulse-gentle opacity-10" />
-            <Leaf size={64} className="text-eco-600 hover:rotate-45 transition-transform duration-500 opacity-30" />
+            <Leaf size={64} className="text-eco-600 hover:rotate-45 transition-transform duration-500 opacity-30 bg-black/0" />
           </div>
         </div>
         
