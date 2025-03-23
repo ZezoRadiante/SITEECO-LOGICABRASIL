@@ -1,12 +1,9 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 import Logo from './Logo';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-eco-600 text-background/90 relative overflow-hidden">
+  return <footer className="bg-eco-600 text-background/90 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent"></div>
       
       {/* Main Footer Content */}
@@ -15,7 +12,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 text-background font-medium mb-6">
               <Logo size={24} className="text-white" />
-              <span className="text-xl font-semibold tracking-tight">Eco-logica Brasil</span>
+              
             </div>
             <p className="text-background/70 mb-6">
               Fornecendo soluções ambientais sustentáveis com integridade e expertise para um amanhã mais verde.
@@ -124,8 +121,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
