@@ -34,12 +34,13 @@ const About = () => {
     "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png",
   ];
 
-  // Create autoplay plugin instance
+  // Create autoplay plugin instance with continuous slow movement
   const autoplayPlugin = React.useRef(
     Autoplay({ 
-      delay: 3000, // 3 seconds between slides
-      stopOnInteraction: true, // pause on user interaction
-      stopOnMouseEnter: true, // pause on mouse hover
+      delay: 6000, // 6 seconds between slides (slower)
+      stopOnInteraction: false, // don't pause on user interaction
+      stopOnMouseEnter: false, // don't pause on mouse hover
+      jump: false, // prevents jumping between slides - smoother transitions
     })
   );
 
@@ -89,10 +90,10 @@ const About = () => {
               className="w-full" 
               opts={{
                 loop: true,
+                dragFree: true, // allows continuous dragging
+                duration: 100, // slower transitions
               }}
               plugins={[autoplayPlugin.current]}
-              onMouseEnter={() => autoplayPlugin.current.stop()}
-              onMouseLeave={() => autoplayPlugin.current.play()}
             >
               <CarouselContent>
                 {plantingImages.map((image, index) => (
