@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
 import Logo from './Logo';
 
 const Footer = () => {
@@ -20,16 +20,13 @@ const Footer = () => {
               Fornecendo soluções ambientais sustentáveis com integridade e expertise para um amanhã mais verde.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
+              <a href="https://www.facebook.com/eco.logicabrasilltda/?locale=pt_BR" target="_blank" rel="noopener noreferrer" className="text-background/70 hover:text-white transition-colors duration-300">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
+              <a href="https://br.linkedin.com/company/eco-l%C3%B3gica-brasil-ltda-eco-l%C3%B3gica-tem-uma-conta" target="_blank" rel="noopener noreferrer" className="text-background/70 hover:text-white transition-colors duration-300">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
+              <a href="https://www.instagram.com/brasilecologica/" target="_blank" rel="noopener noreferrer" className="text-background/70 hover:text-white transition-colors duration-300">
                 <Instagram size={20} />
               </a>
             </div>
@@ -107,7 +104,6 @@ const Footer = () => {
         </div>
       </div>
       
-      {/* Copyright */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-background/70 text-sm">
