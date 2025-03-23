@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Leaf, ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -77,13 +78,13 @@ const Hero = () => {
       {/* Cultivation Images Gallery */}
       <div className="absolute left-4 top-1/4 hidden lg:block z-30 w-56 transform -rotate-6 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
         <AspectRatio ratio={3 / 4}>
-          <img alt="Person planting seeds in garden" className="object-cover w-full h-full" src="https://unsplash.com/pt-br/fotografias/lISHEONmIX8" />
+          <img alt="Mudinha de planta em solo fértil" className="object-cover w-full h-full" src="/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png" />
         </AspectRatio>
       </div>
       
       <div className="absolute right-4 bottom-1/4 hidden lg:block z-30 w-48 transform rotate-3 shadow-xl rounded-lg overflow-hidden hover:scale-105 transition-transform duration-500">
         <AspectRatio ratio={1 / 1}>
-          <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Person holding a plant" className="object-cover w-full h-full" />
+          <img src="/lovable-uploads/7ee50906-e943-432a-b64f-c2aa2647c59b.png" alt="Trabalhador com capacete verde segurando uma muda" className="object-cover w-full h-full" />
         </AspectRatio>
       </div>
 
