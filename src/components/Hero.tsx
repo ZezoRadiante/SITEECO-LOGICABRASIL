@@ -11,46 +11,47 @@ const Hero = () => {
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video with Fallback Image */}
+      {/* Background Video with Overlay */}
       <div className="absolute inset-0">
         {/* Video Background */}
         <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay muted loop playsInline>
           <source src="/background-nature.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-gradient-to-t from-eco-900/90 via-eco-800/50 to-eco-700/30 z-10"></div>
+        {/* Enhanced gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-eco-900/95 via-eco-800/70 to-eco-700/40 z-10"></div>
       </div>
 
-      {/* Content - Improved for mobile */}
-      <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 sm:space-y-8 backdrop-blur-sm py-8 sm:py-12 bg-black/0 rounded-full border border-eco-100/10">        
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-          <span className="text-eco-100 block mb-2 hover:text-eco-50 transition-colors duration-300">Soluções Sustentáveis</span>
-          <span className="text-foreground/90 font-light">para um Futuro Mais Verde</span>
+      {/* Content with improved styling */}
+      <div className="relative z-30 max-w-5xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-8 backdrop-blur-sm py-12 sm:py-16 bg-black/0 rounded-3xl border border-eco-100/15 shadow-lg shadow-eco-900/20">        
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
+          <span className="text-eco-100 block mb-3 hover:text-eco-50 transition-colors duration-300 drop-shadow-md">Soluções Sustentáveis</span>
+          <span className="text-foreground/95 font-light italic">para um Futuro Mais Verde</span>
         </h1>
         
-        <p className="max-w-3xl mx-auto text-lg sm:text-xl md:text-2xl text-foreground/80 opacity-0 animate-fade-in-delay-2 text-balance">
+        <p className="max-w-3xl mx-auto text-xl sm:text-2xl md:text-2xl text-foreground/90 opacity-0 animate-fade-in-delay-2 text-balance leading-relaxed font-light">
           Fornecendo serviços especializados de consultoria ambiental que equilibram responsabilidade ecológica com soluções empresariais práticas.
         </p>
         
-        <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3">
-          <a href="#services" className="px-6 sm:px-8 py-3 bg-eco-600 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-1 group relative overflow-hidden border border-eco-300">
+        <div className="flex flex-col sm:flex-row justify-center gap-6 opacity-0 animate-fade-in-delay-3">
+          <a href="#services" className="px-8 sm:px-10 py-4 bg-eco-600 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden border border-eco-300 text-lg">
             <span className="relative z-10">Nossos Serviços</span>
             <span className="absolute inset-0 bg-eco-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
           </a>
-          <a href="#contact" className="px-6 sm:px-8 py-3 border border-eco-400 text-eco-100 rounded-full font-medium hover:bg-eco-700/70 hover:text-white transition-all duration-300 group relative overflow-hidden">
+          <a href="#contact" className="px-8 sm:px-10 py-4 border-2 border-eco-400 text-eco-50 rounded-full font-medium hover:bg-eco-700/70 hover:text-white transition-all duration-300 group relative overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 text-lg">
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">Entre em Contato</span>
             <span className="absolute inset-0 bg-eco-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </a>
         </div>
       </div>
 
-      {/* Scroll Indicator with enhanced animation */}
-      <div className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3 z-30">
-        <a href="#services" className="flex flex-col items-center text-eco-100 hover:text-eco-300 transition-all duration-300 group">
-          <span className="text-xs sm:text-sm mb-2 group-hover:-translate-y-1 transition-transform duration-300">Descubra Mais</span>
+      {/* Enhanced scroll indicator */}
+      <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3 z-30">
+        <a href="#services" className="flex flex-col items-center text-eco-50 hover:text-eco-300 transition-all duration-300 group">
+          <span className="text-sm sm:text-base mb-3 group-hover:-translate-y-1 transition-transform duration-300 font-medium">Descubra Mais</span>
           <div className="relative">
             <div className="absolute -inset-1 bg-eco-400/30 rounded-full opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
-            <ArrowDown className="animate-bounce group-hover:text-white group-hover:bg-eco-600 rounded-full group-hover:p-1 transition-all duration-300" />
+            <ArrowDown className="animate-bounce group-hover:text-white group-hover:bg-eco-600 rounded-full group-hover:p-1 transition-all duration-300 w-8 h-8" />
           </div>
         </a>
       </div>
