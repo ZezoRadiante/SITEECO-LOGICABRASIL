@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Seedling, Recycle, Sprout } from 'lucide-react';
+import { Leaf, Recycle, Sprout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ServiceCardProps {
@@ -36,7 +36,7 @@ const Services = () => {
     {
       title: "Consultoria Ambiental",
       description: "Avaliações abrangentes e soluções personalizadas para garantir conformidade regulatória enquanto avançamos nas metas de sustentabilidade para sua organização.",
-      icon: <Seedling size={32} />
+      icon: <Leaf size={32} />
     },
     {
       title: "Gestão de Resíduos",
