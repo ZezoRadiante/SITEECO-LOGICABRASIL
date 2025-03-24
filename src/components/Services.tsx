@@ -14,7 +14,7 @@ const ServiceCard = ({ title, description, icon, index }: ServiceCardProps) => {
   return (
     <div 
       className={cn(
-        "glass rounded-lg p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 opacity-0 border-l-4 border-eco-600/50 hover:border-eco-600",
+        "glass rounded-lg p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-1 opacity-0 border-l-4 border-eco-600/50 hover:border-eco-700",
         index === 0 ? "animate-fade-in" : 
         index === 1 ? "animate-fade-in-delay-1" : 
         "animate-fade-in-delay-2"
@@ -25,7 +25,7 @@ const ServiceCard = ({ title, description, icon, index }: ServiceCardProps) => {
           {icon}
         </div>
       </div>
-      <h3 className="text-xl font-semibold mb-4 text-eco-800">{title}</h3>
+      <h3 className="text-xl font-semibold mb-4 text-eco-700">{title}</h3>
       <p className="text-foreground/70">{description}</p>
     </div>
   );
@@ -59,7 +59,7 @@ const Services = () => {
           <span className="inline-block text-eco-700 bg-eco-100 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in">
             Nossa Especialidade
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-delay-1 text-eco-800">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-delay-1 text-eco-700">
             Nossos Serviços Profissionais
           </h2>
           <p className="max-w-3xl mx-auto text-lg text-foreground/70 opacity-0 animate-fade-in-delay-2">

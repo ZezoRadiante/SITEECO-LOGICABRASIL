@@ -18,12 +18,12 @@ const Hero = () => {
           <source src="/background-nature.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/* Enhanced gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-eco-900/95 via-eco-800/70 to-eco-700/40 z-10"></div>
+        {/* Enhanced gradient overlay with new colors */}
+        <div className="absolute inset-0 bg-gradient-to-t from-eco-700/95 via-eco-600/70 to-eco-600/40 z-10"></div>
       </div>
 
       {/* Content with improved styling */}
-      <div className="relative z-30 max-w-5xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-8 backdrop-blur-sm py-12 sm:py-16 bg-black/0 rounded-3xl border border-eco-100/15 shadow-lg shadow-eco-900/20">        
+      <div className="relative z-30 max-w-5xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-8 backdrop-blur-sm py-12 sm:py-16 bg-black/0 rounded-3xl border border-eco-100/15 shadow-lg shadow-eco-700/20">        
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
           <span className="text-eco-100 block mb-3 hover:text-eco-50 transition-colors duration-300 drop-shadow-md">Soluções Sustentáveis</span>
           <span className="text-foreground/95 font-light italic">para um Futuro Mais Verde</span>
@@ -50,7 +50,7 @@ const Hero = () => {
         <a href="#services" className="flex flex-col items-center text-eco-50 hover:text-eco-300 transition-all duration-300 group">
           <span className="text-sm sm:text-base mb-3 group-hover:-translate-y-1 transition-transform duration-300 font-medium">Descubra Mais</span>
           <div className="relative">
-            <div className="absolute -inset-1 bg-eco-400/30 rounded-full opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
+            <div className="absolute -inset-1 bg-eco-600/30 rounded-full opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
             <ArrowDown className="animate-bounce group-hover:text-white group-hover:bg-eco-600 rounded-full group-hover:p-1 transition-all duration-300 w-8 h-8" />
           </div>
         </a>
