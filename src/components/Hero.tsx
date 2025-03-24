@@ -26,17 +26,17 @@ const Hero = () => {
           Your browser does not support the video tag.
         </video>
         {/* Lightened overlay to make video more prominent */}
-        <div className="absolute inset-0 bg-gradient-to-t from-eco-700/60 via-eco-600/30 to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-eco-700/40 via-eco-600/20 to-transparent z-10"></div>
       </div>
 
-      {/* Content with more transparency and smaller footprint */}
-      <div className="relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6 backdrop-blur-sm py-8 sm:py-10 bg-black/10 rounded-3xl border border-eco-100/15 shadow-lg shadow-eco-700/20">        
+      {/* Content with no background, only text */}
+      <div className="relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6">        
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-          <span className="text-white block mb-2 drop-shadow-lg hover:text-eco-50 transition-colors duration-300">Soluções Sustentáveis</span>
-          <span className="text-white/95 font-light italic drop-shadow-lg">para um Futuro Mais Verde</span>
+          <span className="text-white block mb-2 drop-shadow-xl hover:text-eco-50 transition-colors duration-300">Soluções Sustentáveis</span>
+          <span className="text-white/95 font-light italic drop-shadow-xl">para um Futuro Mais Verde</span>
         </h1>
         
-        <p className="max-w-2xl mx-auto text-lg sm:text-xl text-white/90 opacity-0 animate-fade-in-delay-2 text-balance leading-relaxed font-light drop-shadow-md">
+        <p className="max-w-2xl mx-auto text-lg sm:text-xl text-white/90 opacity-0 animate-fade-in-delay-2 text-balance leading-relaxed font-light drop-shadow-lg">
           Fornecendo serviços especializados de consultoria ambiental que equilibram responsabilidade ecológica com soluções empresariais práticas.
         </p>
         
