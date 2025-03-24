@@ -30,7 +30,7 @@ const Hero = () => {
       </div>
 
       {/* Content with no background, only text */}
-      <div className="relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6">        
+      <div className="relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-10">        
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
           <span className="text-white block mb-2 drop-shadow-xl hover:text-eco-50 transition-colors duration-300">Soluções Sustentáveis</span>
           <span className="text-white/95 font-light italic drop-shadow-xl">para um Futuro Mais Verde</span>
@@ -40,7 +40,7 @@ const Hero = () => {
           Fornecendo serviços especializados de consultoria ambiental que equilibram responsabilidade ecológica com soluções empresariais práticas.
         </p>
         
-        <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3 mt-8">
           <a href="#services" className="px-6 sm:px-8 py-3 bg-eco-600/80 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden border border-eco-300/50 text-base sm:text-lg">
             <span className="relative z-10">Nossos Serviços</span>
             <span className="absolute inset-0 bg-eco-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
