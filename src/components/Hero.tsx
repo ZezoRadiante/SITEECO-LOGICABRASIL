@@ -1,14 +1,11 @@
-
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
 const Hero = () => {
   const isMobile = useIsMobile();
   const plantingImages = ["/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png", "/lovable-uploads/23b71c4a-ae05-4ad7-b477-b35c8f494d1a.png", "/lovable-uploads/b90b4872-c28b-4a9e-967c-ee3cd4bbcdfe.png", "/lovable-uploads/4e99cd90-92f7-4e37-b085-3c4d9182f2a7.png", "/lovable-uploads/48d7d076-02b1-4af7-bff8-3b0d88c735fc.png", "/lovable-uploads/b3bda120-cadf-4783-ba66-df239127e92e.png", "/lovable-uploads/9f04c017-2367-4865-b366-bed9918fc72b.png", "/lovable-uploads/e6fb9dd0-19b4-4d25-8b88-21e934258792.png", "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png", "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png"];
-  
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video with Reduced Overlay */}
       <div className="absolute inset-0">
@@ -46,20 +43,15 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Enhanced scroll indicator with pulse animation and better visibility */}
+      {/* Simplified scroll indicator with higher transparency */}
       <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3 z-30">
-        <a href="#services" className="flex flex-col items-center group">
-          <div className="bg-eco-600/90 text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 
-                        flex items-center gap-2 group-hover:-translate-y-1 mb-2 border border-eco-300/40 backdrop-blur-sm">
-            <span className="text-sm sm:text-base font-medium">Descubra Mais</span>
-            <ArrowDown className="animate-bounce w-5 h-5" />
-          </div>
-          <div className="h-16 w-1 bg-eco-300/40 rounded-full relative overflow-hidden">
-            <span className="absolute top-0 left-0 right-0 h-8 bg-eco-500/70 animate-[pulse-gentle_2s_infinite] rounded-full"></span>
+        <a href="#services" className="flex flex-col items-center text-white hover:text-eco-300 transition-all duration-300 group">
+          <span className="text-sm sm:text-base mb-2 group-hover:-translate-y-1 transition-transform duration-300 font-medium drop-shadow-md">Descubra Mais</span>
+          <div className="relative">
+            <ArrowDown className="animate-bounce bg-black/20 backdrop-blur-sm p-1 rounded-full group-hover:text-white group-hover:bg-eco-600/70 transition-all duration-300 w-7 h-7" />
           </div>
         </a>
       </div>
     </section>;
 };
-
 export default Hero;
