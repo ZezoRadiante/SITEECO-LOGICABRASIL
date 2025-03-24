@@ -11,47 +11,53 @@ const Hero = () => {
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video with Overlay */}
+      {/* Background Video with Reduced Overlay */}
       <div className="absolute inset-0">
-        {/* Video Background */}
-        <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay muted loop playsInline>
+        {/* Video Background - Made full size and more visible */}
+        <video 
+          className="absolute inset-0 w-full h-full object-cover z-0" 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          style={{ objectFit: 'cover' }}
+        >
           <source src="/background-nature.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/* Enhanced gradient overlay with new colors */}
-        <div className="absolute inset-0 bg-gradient-to-t from-eco-700/95 via-eco-600/70 to-eco-600/40 z-10"></div>
+        {/* Lightened overlay to make video more prominent */}
+        <div className="absolute inset-0 bg-gradient-to-t from-eco-700/60 via-eco-600/30 to-transparent z-10"></div>
       </div>
 
-      {/* Content with improved styling */}
-      <div className="relative z-30 max-w-5xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-8 backdrop-blur-sm py-12 sm:py-16 bg-black/0 rounded-3xl border border-eco-100/15 shadow-lg shadow-eco-700/20">        
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-          <span className="text-eco-100 block mb-3 hover:text-eco-50 transition-colors duration-300 drop-shadow-md">Soluções Sustentáveis</span>
-          <span className="text-foreground/95 font-light italic">para um Futuro Mais Verde</span>
+      {/* Content with more transparency and smaller footprint */}
+      <div className="relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6 backdrop-blur-sm py-8 sm:py-10 bg-black/10 rounded-3xl border border-eco-100/15 shadow-lg shadow-eco-700/20">        
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
+          <span className="text-white block mb-2 drop-shadow-lg hover:text-eco-50 transition-colors duration-300">Soluções Sustentáveis</span>
+          <span className="text-white/95 font-light italic drop-shadow-lg">para um Futuro Mais Verde</span>
         </h1>
         
-        <p className="max-w-3xl mx-auto text-xl sm:text-2xl md:text-2xl text-foreground/90 opacity-0 animate-fade-in-delay-2 text-balance leading-relaxed font-light">
+        <p className="max-w-2xl mx-auto text-lg sm:text-xl text-white/90 opacity-0 animate-fade-in-delay-2 text-balance leading-relaxed font-light drop-shadow-md">
           Fornecendo serviços especializados de consultoria ambiental que equilibram responsabilidade ecológica com soluções empresariais práticas.
         </p>
         
-        <div className="flex flex-col sm:flex-row justify-center gap-6 opacity-0 animate-fade-in-delay-3">
-          <a href="#services" className="px-8 sm:px-10 py-4 bg-eco-600 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden border border-eco-300 text-lg">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3">
+          <a href="#services" className="px-6 sm:px-8 py-3 bg-eco-600/80 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden border border-eco-300/50 text-base sm:text-lg">
             <span className="relative z-10">Nossos Serviços</span>
             <span className="absolute inset-0 bg-eco-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
           </a>
-          <a href="#contact" className="px-8 sm:px-10 py-4 border-2 border-eco-400 text-eco-50 rounded-full font-medium hover:bg-eco-700/70 hover:text-white transition-all duration-300 group relative overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 text-lg">
+          <a href="#contact" className="px-6 sm:px-8 py-3 border border-white/40 text-white rounded-full font-medium hover:bg-eco-700/70 hover:text-white transition-all duration-300 group relative overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg">
             <span className="relative z-10 group-hover:text-white transition-colors duration-300">Entre em Contato</span>
             <span className="absolute inset-0 bg-eco-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </a>
         </div>
       </div>
 
-      {/* Enhanced scroll indicator */}
+      {/* Simplified scroll indicator with higher transparency */}
       <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3 z-30">
-        <a href="#services" className="flex flex-col items-center text-eco-50 hover:text-eco-300 transition-all duration-300 group">
-          <span className="text-sm sm:text-base mb-3 group-hover:-translate-y-1 transition-transform duration-300 font-medium">Descubra Mais</span>
+        <a href="#services" className="flex flex-col items-center text-white hover:text-eco-300 transition-all duration-300 group">
+          <span className="text-sm sm:text-base mb-2 group-hover:-translate-y-1 transition-transform duration-300 font-medium drop-shadow-md">Descubra Mais</span>
           <div className="relative">
-            <div className="absolute -inset-1 bg-eco-600/30 rounded-full opacity-0 group-hover:opacity-100 blur transition-opacity duration-500"></div>
-            <ArrowDown className="animate-bounce group-hover:text-white group-hover:bg-eco-600 rounded-full group-hover:p-1 transition-all duration-300 w-8 h-8" />
+            <ArrowDown className="animate-bounce bg-black/20 backdrop-blur-sm p-1 rounded-full group-hover:text-white group-hover:bg-eco-600/70 transition-all duration-300 w-7 h-7" />
           </div>
         </a>
       </div>
