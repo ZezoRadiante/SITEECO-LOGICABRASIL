@@ -1,14 +1,10 @@
-
 import React from 'react';
 import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube } from 'lucide-react';
 import Logo from './Logo';
 import { Button } from './ui/button';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-eco-50/80 text-earth-800 relative">
+  return <footer className="bg-eco-50/80 text-earth-800 relative">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Top Section - Slogan */}
@@ -20,10 +16,7 @@ const Footer = () => {
             mais sustentável
           </h2>
           
-          <Button 
-            variant="outline" 
-            className="mt-6 border-2 border-eco-700 text-eco-700 rounded-full uppercase text-sm font-semibold px-6 py-2 hover:bg-eco-700 hover:text-white"
-          >
+          <Button variant="outline" className="mt-6 border-2 border-eco-700 text-eco-700 rounded-full uppercase text-sm font-semibold px-6 py-2 hover:bg-eco-700 hover:text-white">
             Conheça mais sobre nós
           </Button>
         </div>
@@ -39,23 +32,11 @@ const Footer = () => {
             {/* Pernambuco */}
             <div>
               <h4 className="font-semibold">Pernambuco</h4>
-              <a 
-                href="https://maps.google.com/?q=Rua+Ana+Granja+Arraes,+03,+Santo+Expedito,+Araripina+-+PE" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block hover:text-eco-700 transition-colors"
-                title="Ver no Google Maps"
-              >
+              <a href="https://maps.google.com/?q=Rua+Ana+Granja+Arraes,+03,+Santo+Expedito,+Araripina+-+PE" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-700 transition-colors" title="Ver no Google Maps">
                 <p className="text-sm">Rua Ana Granja Arraes, 03</p>
                 <p className="text-sm">Santo Expedito, Araripina - PE</p>
               </a>
-              <a 
-                href="https://wa.me/5581998874687" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-sm flex items-center gap-1 mt-1 hover:text-eco-700 transition-colors"
-                title="Conversar pelo WhatsApp"
-              >
+              <a href="https://wa.me/5581998874687" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-1 hover:text-eco-700 transition-colors" title="Conversar pelo WhatsApp">
                 <Phone size={14} className="text-eco-700" />
                 (81) 998874-4687
               </a>
@@ -64,23 +45,11 @@ const Footer = () => {
             {/* Ceará */}
             <div>
               <h4 className="font-semibold">Ceará</h4>
-              <a 
-                href="https://maps.google.com/?q=Rua+Maria+Balbino+da+Conceição,+503,+Jardim+-+CE" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block hover:text-eco-700 transition-colors"
-                title="Ver no Google Maps"
-              >
+              <a href="https://maps.google.com/?q=Rua+Maria+Balbino+da+Conceição,+503,+Jardim+-+CE" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-700 transition-colors" title="Ver no Google Maps">
                 <p className="text-sm">Rua Maria Balbino da Conceição,</p>
                 <p className="text-sm">503, Jardim - CE</p>
               </a>
-              <a 
-                href="https://wa.me/5588981238818" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-sm flex items-center gap-1 mt-1 hover:text-eco-700 transition-colors"
-                title="Conversar pelo WhatsApp"
-              >
+              <a href="https://wa.me/5588981238818" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-1 hover:text-eco-700 transition-colors" title="Conversar pelo WhatsApp">
                 <Phone size={14} className="text-eco-700" />
                 (88) 9 8123-8818
               </a>
@@ -89,23 +58,11 @@ const Footer = () => {
             {/* Rio Grande do Norte */}
             <div>
               <h4 className="font-semibold">Rio Grande do Norte</h4>
-              <a 
-                href="https://maps.google.com/?q=Av.+Olavo+Lacerda+Montenegro,+2835,+Central+Park+II,+Parnamirim+-+RN" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block hover:text-eco-700 transition-colors"
-                title="Ver no Google Maps"
-              >
+              <a href="https://maps.google.com/?q=Av.+Olavo+Lacerda+Montenegro,+2835,+Central+Park+II,+Parnamirim+-+RN" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-700 transition-colors" title="Ver no Google Maps">
                 <p className="text-sm">Av. Olavo Lacerda Montenegro, 2835,</p>
                 <p className="text-sm">Central Park II, Parnamirim - RN</p>
               </a>
-              <a 
-                href="https://wa.me/5584988147400" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-sm flex items-center gap-1 mt-1 hover:text-eco-700 transition-colors"
-                title="Conversar pelo WhatsApp"
-              >
+              <a href="https://wa.me/5584988147400" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-1 hover:text-eco-700 transition-colors" title="Conversar pelo WhatsApp">
                 <Phone size={14} className="text-eco-700" />
                 (84) 9 8814-7400
               </a>
@@ -115,11 +72,7 @@ const Footer = () => {
         
         {/* Map Image */}
         <div className="mt-8">
-          <img 
-            src="/lovable-uploads/9b4b2a79-3b81-4aae-a055-f33a0d5d6543.png" 
-            alt="Mapa de localização" 
-            className="w-full h-40 object-cover rounded-md"
-          />
+          
           
           {/* Indicator Dots */}
           <div className="flex justify-center gap-2 mt-2">
@@ -173,8 +126,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
