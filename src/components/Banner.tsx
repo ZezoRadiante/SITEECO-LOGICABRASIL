@@ -32,19 +32,19 @@ const Banner = () => {
     <section 
       id="banner" 
       ref={bannerRef}
-      className="py-10 md:py-12 bg-gradient-to-b from-white via-eco-50/30 to-eco-100/40 relative overflow-hidden transition-all duration-1000 ease-in-out"
+      className="py-6 md:py-8 bg-gradient-to-b from-white via-eco-50/30 to-eco-100/40 relative overflow-hidden transition-all duration-1000 ease-in-out"
     >
       {/* Enhanced top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-10 transition-opacity duration-700"></div>
       
       <div className="container mx-auto relative z-20">
         {/* Banner Content - With enhanced animations */}
-        <div className="w-full space-y-4 text-center px-4 md:px-8 mb-6 transform transition-all duration-700 hover:scale-[1.01] animate-on-scroll">
+        <div className="w-full space-y-3 text-center px-4 md:px-8 mb-0 transform transition-all duration-700 hover:scale-[1.01] animate-on-scroll">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-earth-800 leading-tight">
             Promovendo um <span className="text-[#71B707] italic transition-all duration-500 hover:text-eco-500">Futuro Verde</span> para as Novas Gerações
           </h2>
           
-          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full my-4 transition-all duration-500 hover:w-32"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full my-2 transition-all duration-500 hover:w-32"></div>
           
           <p className="text-lg text-earth-600 leading-relaxed max-w-3xl mx-auto font-normal transition-all duration-500 hover:text-earth-800">
             Através de nossas iniciativas de educação ambiental e reflorestamento, 
@@ -55,7 +55,7 @@ const Banner = () => {
       </div>
       
       {/* Banner Image - With enhanced hover effects */}
-      <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50 transition-all duration-1000 ease-in-out animate-on-scroll">
+      <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50 transition-all duration-1000 ease-in-out animate-on-scroll mt-2">
         <img 
           src="/lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png" 
           alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
