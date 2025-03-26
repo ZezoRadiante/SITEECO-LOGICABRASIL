@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { MapPin, Linkedin, Instagram, Youtube, Map, Phone } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 
@@ -34,21 +34,29 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Location 
                 state="Pernambuco"
-                address="Rua Ana ganga arroes, 03"
-                city="Santa expedita, Araripina - PE"
-                phone="(87) 3874-4087"
+                address="Rua Ana Granja Arraes, 03"
+                city="Santo Expedito, Araripina - PE"
+                phone="(81) 998874-4687"
+                mapUrl="https://maps.google.com/?q=Rua+Ana+Granja+Arraes,+03,+Santo+Expedito,+Araripina,+PE"
+                whatsappUrl="https://wa.me/5581998874687"
               />
 
               <Location 
                 state="Ceará"
-                address="Rua Maria Balbino da Conceição, 603, Jardim - CE"
-                phone="(88) 9.9123-8818"
+                address="Rua Maria Balbino da Conceição, 503"
+                city="Jardim - CE"
+                phone="(88) 9 8123-8818"
+                mapUrl="https://maps.google.com/?q=Rua+Maria+Balbino+da+Conceição,+503,+Jardim,+CE"
+                whatsappUrl="https://wa.me/5588981238818"
               />
 
               <Location 
                 state="Rio Grande do Norte"
-                address="AV. Olavo Lacerda Montenegro, 2835, Central Park II, Parnamirim - RN"
-                phone="(84) 9.8814-1400"
+                address="Av. Olavo Lacerda Montenegro, 2835"
+                city="Central Park II, Parnamirim - RN"
+                phone="(84) 9 8814-7400"
+                mapUrl="https://maps.google.com/?q=Av.+Olavo+Lacerda+Montenegro,+2835,+Central+Park+II,+Parnamirim,+RN"
+                whatsappUrl="https://wa.me/5584988147400"
               />
             </div>
           </div>
@@ -89,18 +97,45 @@ const About = () => {
   );
 };
 
-const Location = ({ state, address, city, phone }: { 
+const Location = ({ state, address, city, phone, mapUrl, whatsappUrl }: { 
   state: string;
   address: string;
   city?: string;
   phone: string;
+  mapUrl: string;
+  whatsappUrl: string;
 }) => {
   return (
     <div className="mb-4">
       <h4 className="font-medium text-earth-700">{state}</h4>
-      <p className="text-earth-600 text-sm">{address}</p>
-      {city && <p className="text-earth-600 text-sm">{city}</p>}
-      <p className="text-earth-600 text-sm">{phone}</p>
+      <a 
+        href={mapUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-earth-600 text-sm hover:text-[#71B707] transition-colors flex items-center group"
+      >
+        <span>{address}</span>
+        <Map className="ml-1 w-3 h-3 opacity-60 group-hover:opacity-100" />
+      </a>
+      {city && (
+        <a 
+          href={mapUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-earth-600 text-sm hover:text-[#71B707] transition-colors block"
+        >
+          {city}
+        </a>
+      )}
+      <a 
+        href={whatsappUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-earth-600 text-sm hover:text-[#71B707] transition-colors flex items-center group"
+      >
+        <span>{phone}</span>
+        <Phone className="ml-1 w-3 h-3 opacity-60 group-hover:opacity-100" />
+      </a>
     </div>
   );
 };
