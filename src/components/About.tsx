@@ -15,14 +15,14 @@ const About: React.FC = () => {
       }}
     >
       {/* Enhanced overlay with better transparency */}
-      <div className="absolute inset-0 bg-white/65 backdrop-blur-[2px] z-0"></div>
+      <div className="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-0"></div>
       
       {/* Top gradient transition - enhanced */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/60 to-transparent z-10"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="text-center mb-12">
-          <span className="inline-block text-sky-700 bg-sky-50/70 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-3 opacity-0 animate-fade-in shadow-sm">
+          <span className="inline-block text-sky-700 bg-sky-50/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-3 opacity-0 animate-fade-in shadow-sm">
             Nossa História
           </span>
           

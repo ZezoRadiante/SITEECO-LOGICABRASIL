@@ -1,8 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 @layer base {
   :root {
@@ -87,7 +88,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
     background: var(--main-gradient);
@@ -96,22 +97,24 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
+    letter-spacing: -0.02em;
   }
 
   section {
     position: relative;
+    overflow: hidden;
   }
 
   section::after {
     content: '';
     display: block;
-    height: 6px;
+    height: 4px;
     background: linear-gradient(90deg, transparent, rgba(226, 252, 179, 0.6), transparent);
     margin: 0 auto;
-    width: 80%;
-    border-radius: 3px;
+    width: 60%;
+    border-radius: 2px;
   }
 }
 
@@ -137,11 +140,21 @@
   }
   
   .eco-btn {
-    @apply bg-gradient-to-r from-eco-400 to-eco-300 text-earth-800 font-medium shadow-md hover:shadow-lg transition-all duration-300;
+    @apply bg-gradient-to-r from-eco-400 to-eco-300 text-earth-800 font-medium shadow-md hover:shadow-lg transition-all duration-300 rounded-md;
   }
   
   .earth-bg {
     @apply bg-gradient-to-b from-earth-700 via-earth-600 to-earth-500;
+  }
+  
+  .section-card {
+    @apply bg-white/90 backdrop-blur-md shadow-lg rounded-xl border border-eco-100 p-6 transition-all duration-300;
+  }
+  
+  .button-eco {
+    @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-eco-500 to-eco-400 
+           text-earth-800 font-medium px-6 py-2.5 shadow-md hover:shadow-lg transform hover:-translate-y-1
+           transition-all duration-300 focus:ring-2 focus:ring-eco-300 focus:outline-none;
   }
 }
 
@@ -168,6 +181,14 @@
   
   .glass-eco {
     @apply bg-eco-50/80 backdrop-blur-sm border border-eco-100/50 shadow-sm;
+  }
+  
+  .section-gradient-light {
+    @apply bg-gradient-to-b from-white via-eco-50/30 to-eco-100/40;
+  }
+  
+  .section-gradient-earth {
+    @apply bg-gradient-to-b from-eco-50/70 via-eco-100/50 to-earth-100/30;
   }
 }
 
@@ -257,4 +278,10 @@ html {
   overflow: hidden;
   height: 1.2em;
   line-height: 1.2;
+}
+
+/* Enhanced button states */
+button:focus, a:focus {
+  outline: 2px solid rgba(113, 183, 7, 0.4);
+  outline-offset: 2px;
 }
