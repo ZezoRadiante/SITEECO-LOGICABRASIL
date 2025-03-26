@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Leaf, Recycle, Sprout } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -112,7 +113,11 @@ const Services = () => {
     <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50 via-white to-eco-50/40">
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10"></div>
       
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-5 bg-repeat"></div>
+      {/* Background image with low opacity for texture */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-50 bg-repeat"></div>
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/4d6b4d69-c8b0-4435-a100-e840167b347c.png')] opacity-30 bg-no-repeat bg-center bg-cover"></div>
+      </div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
