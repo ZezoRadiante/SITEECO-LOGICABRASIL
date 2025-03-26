@@ -58,9 +58,9 @@ const About = () => {
         {/* Base white layer */}
         <div className="w-full h-full bg-white"></div>
         
-        {/* Background image with gradient */}
+        {/* Background image with corrected path and rendering */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-100" 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
           style={{ 
             backgroundImage: `url('/lovable-uploads/370525ba-f852-4a6e-8415-ae437cc892ad.png')`,
           }}
