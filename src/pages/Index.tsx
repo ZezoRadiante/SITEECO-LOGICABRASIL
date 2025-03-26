@@ -3,11 +3,11 @@ import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Banner from '@/components/Banner';
+import About from '@/components/About';
 import Services from '@/components/Services';
 import Projetos from '@/components/Projetos';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import About from '@/components/About';
 
 const Index = () => {
   useEffect(() => {
@@ -20,10 +20,10 @@ const Index = () => {
       <Navbar />
       <Hero />
       <Banner />
+      <About />
       <Services />
       <Projetos />
       <Contact />
-      <About />
       <Footer />
     </div>
   );

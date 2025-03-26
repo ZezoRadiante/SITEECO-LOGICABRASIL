@@ -1,153 +1,126 @@
 
 import React from 'react';
-import { MapPin, Linkedin, Instagram, Facebook, Map, MessageCircle } from 'lucide-react';
-import { Button } from './ui/button';
-import { cn } from '@/lib/utils';
+import { MapPin, Phone, Mail, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-const About = () => {
+const About: React.FC = () => {
   return (
-    <section id="about" className="w-full bg-eco-50/70 py-12 md:py-16 relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Hero text section */}
-          <div className="text-left mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-earth-800 mb-6">
-              Juntos,<br />
-              construindo<br />
-              um futuro<br />
-              mais sustentável
-            </h2>
+    <div 
+      id="about" 
+      className="relative bg-eco-50 min-h-screen"
+    >
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        {/* Main heading section */}
+        <div className="mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-earth-800 mb-6">
+            Juntos,<br/>
+            construindo<br/>
+            um futuro<br/>
+            mais sustentável
+          </h2>
+          
+          <Button
+            className="rounded-full border-2 border-earth-700 text-earth-800 px-8 py-2 bg-transparent hover:bg-eco-100 mt-4"
+          >
+            CONHEÇA MAIS SOBRE NÓS
+          </Button>
+        </div>
 
-            <Button variant="outline" className="border-2 border-[#71B707] text-[#71B707] hover:bg-[#71B707] hover:text-white uppercase rounded-full py-2 px-6 font-medium">
-              Conheça mais sobre nós
-            </Button>
-          </div>
-
-          {/* Locations Section */}
-          <div className="mt-10">
-            <h3 className="flex items-center text-lg font-medium text-earth-700 mb-4">
-              <MapPin className="mr-2" size={20} />
-              Nosso Localização e Contato
-            </h3>
-
-            {/* Locations grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Location 
-                state="Pernambuco"
-                address="Rua Ana Granja Arraes, 03"
-                city="Santo Expedito, Araripina - PE"
-                phone="(81) 998874-4687"
-                mapUrl="https://maps.google.com/?q=Rua+Ana+Granja+Arraes,+03,+Santo+Expedito,+Araripina,+PE"
-                whatsappUrl="https://wa.me/5581998874687"
-              />
-
-              <Location 
-                state="Ceará"
-                address="Rua Maria Balbino da Conceição, 503"
-                city="Jardim - CE"
-                phone="(88) 9 8123-8818"
-                mapUrl="https://maps.google.com/?q=Rua+Maria+Balbino+da+Conceição,+503,+Jardim,+CE"
-                whatsappUrl="https://wa.me/5588981238818"
-              />
-
-              <Location 
-                state="Rio Grande do Norte"
-                address="Av. Olavo Lacerda Montenegro, 2835"
-                city="Central Park II, Parnamirim - RN"
-                phone="(84) 9 8814-7400"
-                mapUrl="https://maps.google.com/?q=Av.+Olavo+Lacerda+Montenegro,+2835,+Central+Park+II,+Parnamirim,+RN"
-                whatsappUrl="https://wa.me/5584988147400"
-              />
+        {/* Locations section */}
+        <div className="mb-16">
+          <h3 className="flex items-center text-xl font-semibold mb-4 text-earth-800">
+            <MapPin className="mr-2 h-5 w-5" />
+            Nossa Localização e Contato
+          </h3>
+          
+          <div className="space-y-8">
+            <div>
+              <h4 className="font-bold text-lg text-earth-800">Pernambuco</h4>
+              <p className="text-earth-700">Rua Ana graça arroio, 03</p>
+              <p className="text-earth-700">Santa expedita, Araripina - PE</p>
+              <p className="flex items-center text-earth-700 mt-1">
+                <Phone className="h-4 w-4 mr-2" /> 
+                (81) 9074-4067
+              </p>
             </div>
-          </div>
-          
-          {/* Social Media */}
-          <div className="mt-8">
-            <h3 className="text-lg font-medium text-earth-700 mb-4">
-              Nossas redes
-            </h3>
-            <div className="flex gap-4 mb-8">
-              <a href="https://br.linkedin.com/company/eco-l%C3%B3gica-brasil-ltda-eco-l%C3%B3gica-tem-uma-conta" 
-                 target="_blank" 
-                 rel="noopener noreferrer" 
-                 className="text-earth-600 hover:text-[#71B707]" 
-                 aria-label="LinkedIn">
-                <Linkedin size={24} />
-              </a>
-              <a href="https://www.instagram.com/brasilecologica/" 
-                 target="_blank" 
-                 rel="noopener noreferrer" 
-                 className="text-earth-600 hover:text-[#71B707]" 
-                 aria-label="Instagram">
-                <Instagram size={24} />
-              </a>
-              <a href="https://www.facebook.com/eco.logicabrasilltda/?locale=pt_BR" 
-                 target="_blank" 
-                 rel="noopener noreferrer" 
-                 className="text-earth-600 hover:text-[#71B707]" 
-                 aria-label="Facebook">
-                <Facebook size={24} />
-              </a>
+            
+            <div>
+              <h4 className="font-bold text-lg text-earth-800">Ceará</h4>
+              <p className="text-earth-700">Rua Maria Balbino da Conceição,</p>
+              <p className="text-earth-700">603, Jardim - CE</p>
+              <p className="flex items-center text-earth-700 mt-1">
+                <Phone className="h-4 w-4 mr-2" /> 
+                (88) 9 9923-8818
+              </p>
             </div>
-          </div>
-          
-          {/* Footer links */}
-          <div className="border-t border-eco-200 pt-6 space-y-4 text-sm">
-            <p className="text-[#71B707] uppercase font-medium">Portfólios</p>
-            <p className="text-[#71B707] uppercase font-medium">Fale com nossos consultores</p>
-            <p className="text-[#71B707] uppercase font-medium">Política de Privacidade</p>
-            <p className="text-[#71B707] uppercase font-medium">Outros</p>
-          </div>
-          
-          {/* Copyright */}
-          <div className="mt-8 text-xs text-earth-600">
-            © Eco-lógica Brasil - Todos os direitos Reservados
+            
+            <div>
+              <h4 className="font-bold text-lg text-earth-800">Rio Grande do Norte</h4>
+              <p className="text-earth-700">AV. Olavo Lacerda Montenegro, 2835,</p>
+              <p className="text-earth-700">Central Park II, Parnamirim - RN</p>
+              <p className="flex items-center text-earth-700 mt-1">
+                <Phone className="h-4 w-4 mr-2" /> 
+                (84) 9 8814-1400
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
 
-const Location = ({ state, address, city, phone, mapUrl, whatsappUrl }: { 
-  state: string;
-  address: string;
-  city?: string;
-  phone: string;
-  mapUrl: string;
-  whatsappUrl: string;
-}) => {
-  return (
-    <div className="mb-4">
-      <h4 className="font-medium text-earth-700">{state}</h4>
-      <a 
-        href={mapUrl} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="text-earth-600 text-sm hover:text-[#71B707] transition-colors flex items-center group"
-      >
-        <span className="mr-2 hover:underline">{address}</span>
-        <Map className="w-4 h-4 opacity-60 group-hover:opacity-100 text-[#71B707]" />
-      </a>
-      {city && (
-        <a 
-          href={mapUrl} 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          className="text-earth-600 text-sm hover:text-[#71B707] transition-colors block mb-1"
-        >
-          {city}
-        </a>
-      )}
-      <a 
-        href={whatsappUrl} 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        className="text-earth-600 text-sm hover:text-[#71B707] transition-colors flex items-center group"
-      >
-        <span className="hover:underline">{phone}</span>
-        <MessageCircle className="w-5 h-5 ml-2 text-[#71B707] hover:text-green-600" />
-      </a>
+        {/* Map placeholder */}
+        <div className="w-full h-64 bg-sky-100 mb-16 rounded-lg overflow-hidden relative">
+          <img 
+            src="/lovable-uploads/bb73f526-b3af-4785-aa7e-8898461dc09f.png" 
+            alt="Map location" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Social Media section */}
+        <div className="mb-8">
+          <h3 className="text-xl font-semibold mb-4 text-earth-800">
+            Nossas redes
+          </h3>
+          <div className="flex space-x-4">
+            <a href="#" className="text-earth-700 hover:text-earth-900 transition-colors">
+              <Linkedin className="h-6 w-6" />
+            </a>
+            <a href="#" className="text-earth-700 hover:text-earth-900 transition-colors">
+              <Instagram className="h-6 w-6" />
+            </a>
+            <a href="#" className="text-earth-700 hover:text-earth-900 transition-colors">
+              <Youtube className="h-6 w-6" />
+            </a>
+          </div>
+        </div>
+
+        {/* Footer links */}
+        <div className="border-t border-eco-300 pt-6 space-y-4">
+          <a href="#" className="block text-earth-800 font-medium hover:text-eco-700 transition-colors">
+            PORTFÓLIOS
+          </a>
+          <a href="#" className="block text-earth-800 font-medium hover:text-eco-700 transition-colors">
+            FALE COM NOSSOS CONSULTORES
+          </a>
+          <a href="#" className="block text-earth-800 font-medium hover:text-eco-700 transition-colors">
+            Política de Privacidade
+          </a>
+          <a href="#" className="block text-earth-800 font-medium hover:text-eco-700 transition-colors">
+            Outros
+          </a>
+        </div>
+
+        {/* Copyright */}
+        <div className="mt-8 pt-4 border-t border-eco-300 text-earth-700 text-sm">
+          © Eco-lógica Brasil - Todos os direitos Reservados
+        </div>
+      </div>
+      
+      {/* Navigation dots */}
+      <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="w-2 h-2 rounded-full bg-eco-600"></div>
+        <div className="w-2 h-2 rounded-full bg-eco-300"></div>
+        <div className="w-2 h-2 rounded-full bg-eco-300"></div>
+      </div>
     </div>
   );
 };

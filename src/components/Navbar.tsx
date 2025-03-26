@@ -18,19 +18,11 @@ const Navbar = () => {
   }, []);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false); // Close mobile menu after clicking
-    }
-  };
 
   const navLinks = [
-    { href: 'services', label: 'Serviços' },
-    { href: 'about', label: 'Sobre' },
-    { href: 'contact', label: 'Contato' }
+    { href: '#services', label: 'Serviços' },
+    { href: '#about', label: 'Sobre' },
+    { href: '#contact', label: 'Contato' }
   ];
 
   return (
@@ -53,7 +45,7 @@ const Navbar = () => {
           {navLinks.map((link, index) => (
             <a 
               key={link.href} 
-              href={`#${link.href}`} 
+              href={link.href} 
               className={cn(
                 "text-foreground/90 hover:text-sky-400 transition-all duration-300 font-medium relative opacity-0", 
                 `animate-fade-in-delay-${index + 1}`,
@@ -90,14 +82,15 @@ const Navbar = () => {
       >
         <div className="px-6 py-4 flex flex-col space-y-4">
           {navLinks.map(link => (
-            <button
-              key={link.href}
-              onClick={() => scrollToSection(link.href)}
-              className="text-foreground/90 hover:text-sky-400 transition-all duration-300 py-3 font-medium border-b border-sky-300/10 flex items-center justify-between text-left w-full"
+            <a 
+              key={link.href} 
+              href={link.href} 
+              onClick={() => setIsMobileMenuOpen(false)} 
+              className="text-foreground/90 hover:text-sky-400 transition-all duration-300 py-3 font-medium border-b border-sky-300/10 flex items-center justify-between"
             >
               <span>{link.label}</span>
               <span className="text-sky-400">›</span>
-            </button>
+            </a>
           ))}
         </div>
       </div>
