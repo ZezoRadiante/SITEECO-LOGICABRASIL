@@ -55,16 +55,20 @@ const About = () => {
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {/* Updated gradient overlay - horizontal gradient from left (less visible) to right (more visible) */}
+        {/* Base white layer */}
         <div className="w-full h-full bg-white"></div>
+        
+        {/* Background image with horizontal gradient mask */}
         <div 
           className="absolute inset-0 bg-cover bg-center" 
           style={{ 
-            backgroundImage: "url('/lovable-uploads/caeb8142-ae5e-41c7-9909-914220b29b64.png')",
+            backgroundImage: "url('/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg')",
             maskImage: "linear-gradient(to right, transparent, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.9))",
             WebkitMaskImage: "linear-gradient(to right, transparent, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.9))"
           }}
         ></div>
+        
+        {/* Additional gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/50"></div>
       </div>
 
