@@ -2,15 +2,3 @@
 @import './styles/theme.css';
 @import './styles/animations.css';
 @import './styles/utilities.css';
-
-/* Improved intersection animations */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
