@@ -7,6 +7,7 @@ import Services from '@/components/Services';
 import Projetos from '@/components/Projetos';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import About from '@/components/About';
 
 const Index = () => {
   useEffect(() => {
@@ -22,6 +23,7 @@ const Index = () => {
       <Services />
       <Projetos />
       <Contact />
+      <About />
       <Footer />
     </div>
   );
