@@ -8,12 +8,12 @@ const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   
   // Pre-calculate animated values for each statistic
-  const animatedValues = [
-    useCountAnimation(isVisible ? 1000000 : 0, 2000),
-    useCountAnimation(isVisible ? 100000 : 0, 2000),
-    useCountAnimation(isVisible ? 300 : 0, 1500),
-    useCountAnimation(isVisible ? 10 : 0, 1000)
-  ];
+  const firstStat = useCountAnimation(isVisible ? 1000000 : 0, 2000);
+  const secondStat = useCountAnimation(isVisible ? 100000 : 0, 2000);
+  const thirdStat = useCountAnimation(isVisible ? 300 : 0, 1500);
+  const fourthStat = useCountAnimation(isVisible ? 10 : 0, 1000);
+  
+  const animatedValues = [firstStat, secondStat, thirdStat, fourthStat];
   
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -119,10 +119,37 @@ const About = () => {
                     <div className="mb-3 p-3 rounded-full bg-eco-800/40 backdrop-blur-sm">
                       {stat.icon}
                     </div>
-                    <div className="text-2xl md:text-3xl font-bold text-white mb-2 relative h-12 overflow-hidden">
+                    <div className="text-2xl md:text-3xl font-bold text-white mb-2 relative">
                       <div className="flex items-center justify-center">
                         <span>{stat.prefix}</span>
-                        <span className="tabular-nums">{animatedValues[index].toLocaleString()}</span>
+                        <div className="flex overflow-hidden h-10">
+                          {animatedValues[index].digits.map((digitData, digitIndex) => {
+                            // For the finished animation, just show the number
+                            if (!digitData.includes('|')) {
+                              return (
+                                <span key={digitIndex} className="tabular-nums">
+                                  {digitData}
+                                </span>
+                              );
+                            }
+                            
+                            // For the carousel effect, show the scrolling digits
+                            const [prev, current, next] = digitData.split('|');
+                            
+                            return (
+                              <div key={digitIndex} className="relative w-[1ch] h-10 inline-flex flex-col items-center overflow-hidden">
+                                <div className="absolute transition-transform duration-200 flex flex-col items-center" 
+                                     style={{
+                                       transform: isVisible ? 'translateY(0)' : 'translateY(-100%)'
+                                     }}>
+                                  <span className="h-10 flex items-center justify-center tabular-nums">{prev}</span>
+                                  <span className="h-10 flex items-center justify-center tabular-nums">{current}</span>
+                                  <span className="h-10 flex items-center justify-center tabular-nums">{next}</span>
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
                         {stat.suffix && <span>{stat.suffix}</span>}
                       </div>
                     </div>

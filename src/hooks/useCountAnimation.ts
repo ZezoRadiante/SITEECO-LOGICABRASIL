@@ -3,12 +3,14 @@ import { useState, useEffect, useRef } from 'react';
 
 export const useCountAnimation = (end: number, duration: number = 1000) => {
   const [count, setCount] = useState(0);
+  const [digits, setDigits] = useState<string[]>([]);
   const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
     // Reset the count if end changes to zero
     if (end === 0) {
       setCount(0);
+      setDigits([]);
       return;
     }
     
@@ -31,11 +33,38 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
       
       setCount(nextValue);
       
+      // Generate the carousel effect digits
+      if (end > 0) {
+        const endDigits = end.toString().split('');
+        const currentDigits = nextValue.toString().split('');
+        const paddedCurrentDigits = currentDigits.padStart(endDigits.length, '0').split('');
+        
+        // For each digit position, create a small carousel of digits
+        const digitCarousels = paddedCurrentDigits.map((digit, index) => {
+          const digitValue = parseInt(digit);
+          const targetDigit = parseInt(endDigits[index] || '0');
+          
+          // For carousel effect - show 3 digits for each position (previous, current, next)
+          // If we're at the final value, just show the current digit
+          if (progress === 1) {
+            return digit;
+          } else {
+            // Create a "window" of 3 visible digits for the carousel effect
+            const prevDigit = (digitValue === 0) ? '9' : (digitValue - 1).toString();
+            const nextDigit = (digitValue === 9) ? '0' : (digitValue + 1).toString();
+            return `${prevDigit}|${digit}|${nextDigit}`;
+          }
+        });
+        
+        setDigits(digitCarousels);
+      }
+      
       if (progress < 1) {
         frameRef.current = window.requestAnimationFrame(step);
       } else {
         // Ensure we end exactly at the target value
         setCount(end);
+        setDigits(end.toString().split(''));
         frameRef.current = null;
       }
     };
@@ -50,5 +79,5 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
     };
   }, [end, duration]);
 
-  return count;
+  return { count, digits };
 };
