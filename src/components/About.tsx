@@ -17,7 +17,7 @@ const About: React.FC = () => {
             rgba(255, 255, 255, 0.8) 60%,
             rgba(255, 255, 255, 0.85) 80%,
             rgba(255, 255, 255, 0.95) 100%),
-            url('/lovable-uploads/faef3529-0523-4e9d-a1d2-ac8a9092378e.png')`,
+            url('/lovable-uploads/bf8e3e00-e012-441e-ba97-a2274892e576.png')`,
           opacity: 0.9
         }}
       />
