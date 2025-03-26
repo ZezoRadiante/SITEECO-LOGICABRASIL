@@ -1,13 +1,15 @@
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from '@/components/ui/button';
 
-const Hero = () => {
+const Hero = ({ onVideoLoaded }: { onVideoLoaded?: () => void }) => {
   const isMobile = useIsMobile();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const plantingImages = ["/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png", "/lovable-uploads/23b71c4a-ae05-4ad7-b477-b35c8f494d1a.png", "/lovable-uploads/b90b4872-c28b-4a9e-967c-ee3cd4bbcdfe.png", "/lovable-uploads/4e99cd90-92f7-4e37-b085-3c4d9182f2a7.png", "/lovable-uploads/48d7d076-02b1-4af7-bff8-3b0d88c735fc.png", "/lovable-uploads/b3bda120-cadf-4783-ba66-df239127e92e.png", "/lovable-uploads/9f04c017-2367-4865-b366-bed9918fc72b.png", "/lovable-uploads/e6fb9dd0-19b4-4d25-8b88-21e934258792.png", "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png", "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png"];
   
   const scrollToNextSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -21,14 +23,45 @@ const Hero = () => {
     }
   };
   
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    
+    if (videoElement) {
+      const handleLoadedData = () => {
+        setIsVideoLoaded(true);
+        if (onVideoLoaded) onVideoLoaded();
+      };
+      
+      videoElement.addEventListener('loadeddata', handleLoadedData);
+      
+      // Check if video is already loaded
+      if (videoElement.readyState >= 3) {
+        handleLoadedData();
+      }
+      
+      return () => {
+        videoElement.removeEventListener('loadeddata', handleLoadedData);
+      };
+    }
+  }, [onVideoLoaded]);
+  
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Video with Enhanced Transitions */}
       <div className="absolute inset-0">
         {/* Video Background - Made full size and more visible */}
-        <video className="absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000" autoPlay muted loop playsInline style={{
-        objectFit: 'cover'
-      }}>
+        <video 
+          ref={videoRef}
+          className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`} 
+          autoPlay 
+          muted 
+          loop 
+          playsInline 
+          preload="auto"
+          style={{
+            objectFit: 'cover'
+          }}
+        >
           <source src="/background-nature.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -36,8 +69,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-eco-700/60 via-eco-600/30 to-transparent z-10 transition-all duration-1000"></div>
       </div>
 
-      {/* Content with enhanced animations */}
-      <div className="relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6 py-0 my-0 transition-all duration-700">        
+      {/* Content only shows when video is loaded */}
+      <div className={`relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6 py-0 my-0 transition-all duration-700 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}>        
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
           <span className="text-white block mb-3 drop-shadow-xl hover:text-eco-50 transition-colors duration-500 px-[72px]">Soluções Sustentáveis</span>
           <span className="font-light italic drop-shadow-xl text-sky-700 transition-all duration-700 hover:text-eco-500">para um Futuro Mais Verde</span>
@@ -54,7 +87,7 @@ const Hero = () => {
       </div>
 
       {/* Enhanced scroll indicator with better interaction */}
-      <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3 z-30">
+      <div className={`absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3 z-30 ${isVideoLoaded ? '' : 'hidden'}`}>
         <a 
           href="#services" 
           onClick={scrollToNextSection}
