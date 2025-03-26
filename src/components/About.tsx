@@ -15,9 +15,9 @@ const About: React.FC = () => {
       }}
     >
       {/* Enhanced overlay with better transparency */}
-      <div className="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/70 backdrop-blur-[1px] z-0"></div>
       
-      {/* Top gradient transition - enhanced */}
+      {/* Top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/60 to-transparent z-10"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
@@ -42,7 +42,7 @@ const About: React.FC = () => {
         </div>
       </div>
       
-      {/* Bottom gradient transition - enhanced */}
+      {/* Bottom gradient transition */}
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/50 to-transparent z-10"></div>
     </div>
   );

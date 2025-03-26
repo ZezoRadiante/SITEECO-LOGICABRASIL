@@ -5,9 +5,9 @@ import { ArrowRight } from 'lucide-react';
 
 export const AboutContent: React.FC = () => {
   return (
-    <div className="space-y-6 text-center max-w-3xl mx-auto opacity-0 animate-fade-in-delay-2 p-8 rounded-xl bg-white/80 backdrop-blur-sm shadow-lg border border-sky-100/50 transition-all hover:bg-white/90">
-      <div className="space-y-5 text-foreground/90 text-lg">
-        <p className="font-medium text-xl text-earth-800 leading-relaxed">
+    <div className="space-y-6 text-center max-w-3xl mx-auto opacity-0 animate-fade-in-delay-2 p-8 rounded-xl backdrop-blur-sm transition-all">
+      <div className="space-y-5 text-earth-800 text-lg">
+        <p className="font-medium text-xl leading-relaxed">
           Fundada em 2010, a Eco-lógica Brasil nasceu da paixão de um grupo de ambientalistas 
           determinados a fazer a diferença no cenário de conservação ambiental brasileiro.
         </p>
@@ -28,7 +28,7 @@ export const AboutContent: React.FC = () => {
       <div className="pt-6">
         <Button
           variant="eco"
-          className="rounded-full group px-6 py-2.5"
+          className="rounded-full group px-6 py-2.5 shadow-md hover:shadow-lg"
           asChild
         >
           <a href="#contact">
