@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import {
@@ -12,10 +11,10 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
 const projectImages = [
-  '/lovable-uploads/01566cac-c3d4-42af-87c7-693a6a9ef07d.png',
-  '/lovable-uploads/20688ebc-cc04-42a6-bfd2-becb99256cce.png',
-  '/lovable-uploads/a410349e-b006-48ec-bcf4-ca8887c95e8d.png',
-  '/lovable-uploads/dafeb1fc-267f-4881-9885-0c9fde0b64ef.png',
+  '/images/projeto1.jpg',
+  '/images/projeto2.jpg',
+  '/images/projeto3.jpg',
+  '/images/projeto4.jpg',
 ];
 
 const CarouselDots = ({ 
@@ -100,13 +99,14 @@ const Projetos = () => {
               {projectImages.map((image, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <div className="overflow-hidden rounded-lg border-2 border-eco-200 h-64 md:h-80 shadow-md">
-                      <img 
-                        src={image} 
-                        alt={`Projeto de conservação ${index + 1}`} 
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                        loading="lazy"
-                      />
+                    <div className="overflow-hidden rounded-lg border-2 border-eco-200 h-64 md:h-80 shadow-md bg-gray-100 flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <p className="text-earth-600 text-sm bg-white/80 p-2 rounded">
+                            Imagem {index + 1} a ser adicionada em: {image}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </CarouselItem>
