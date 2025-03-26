@@ -21,7 +21,6 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         eco: "bg-gradient-to-r from-eco-400 to-eco-300 text-earth-800 hover:from-eco-300 hover:to-eco-200",
         earth: "bg-gradient-to-r from-earth-600 to-earth-500 text-eco-50 hover:from-earth-500 hover:to-earth-400",
-        green: "bg-[#71B707] text-white hover:bg-[#E2FCB3] hover:text-earth-800 active:bg-[#E2FCB3] active:text-earth-800",
       },
       size: {
         default: "h-10 px-4 py-2",

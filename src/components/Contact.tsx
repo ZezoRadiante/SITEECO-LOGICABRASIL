@@ -146,7 +146,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center px-8 py-3 bg-[#71B707] text-white rounded-full font-medium hover:bg-[#E2FCB3] hover:text-earth-800 transition-all duration-300 disabled:opacity-70 active:bg-[#E2FCB3] active:text-earth-800"
+                  className="w-full flex items-center justify-center px-8 py-3 bg-eco-600 text-white rounded-full font-medium hover:bg-eco-700 transition-all duration-300 disabled:opacity-70"
                 >
                   {isSubmitting ? (
                     <>Processando<span className="ml-2 animate-pulse">...</span></>

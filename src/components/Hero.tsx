@@ -4,7 +4,6 @@ import { ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-
 const Hero = () => {
   const isMobile = useIsMobile();
   const plantingImages = ["/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png", "/lovable-uploads/23b71c4a-ae05-4ad7-b477-b35c8f494d1a.png", "/lovable-uploads/b90b4872-c28b-4a9e-967c-ee3cd4bbcdfe.png", "/lovable-uploads/4e99cd90-92f7-4e37-b085-3c4d9182f2a7.png", "/lovable-uploads/48d7d076-02b1-4af7-bff8-3b0d88c735fc.png", "/lovable-uploads/b3bda120-cadf-4783-ba66-df239127e92e.png", "/lovable-uploads/9f04c017-2367-4865-b366-bed9918fc72b.png", "/lovable-uploads/e6fb9dd0-19b4-4d25-8b88-21e934258792.png", "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png", "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png"];
@@ -33,13 +32,13 @@ const Hero = () => {
       </p>
         
         <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3 mt-60">
-          <a href="#services" className="px-6 sm:px-8 py-3 bg-[#71B707] text-white rounded-full font-medium hover:bg-[#E2FCB3] hover:text-earth-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden border border-eco-300/50 text-base sm:text-lg">
+          <a href="#services" className="px-6 sm:px-8 py-3 bg-sky-300/80 text-earth-800 rounded-full font-medium hover:bg-sky-400 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group relative overflow-hidden border border-eco-300/50 text-base sm:text-lg">
             <span className="relative z-10">Nossos Serviços</span>
-            <span className="absolute inset-0 bg-[#E2FCB3] translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+            <span className="absolute inset-0 bg-sky-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
           </a>
-          <a href="#contact" className="px-6 sm:px-8 py-3 border border-white/40 bg-[#71B707] text-white rounded-full font-medium hover:bg-[#E2FCB3] hover:text-earth-800 transition-all duration-300 group relative overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg">
+          <a href="#contact" className="px-6 sm:px-8 py-3 border border-white/40 text-white rounded-full font-medium hover:bg-sky-400/70 hover:text-earth-800 transition-all duration-300 group relative overflow-hidden shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg">
             <span className="relative z-10 group-hover:text-earth-800 transition-colors duration-300">Entre em Contato</span>
-            <span className="absolute inset-0 bg-[#E2FCB3] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <span className="absolute inset-0 bg-sky-300/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </a>
         </div>
       </div>
@@ -55,5 +54,4 @@ const Hero = () => {
       </div>
     </section>;
 };
-
 export default Hero;
