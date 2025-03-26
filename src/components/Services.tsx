@@ -26,7 +26,7 @@ const ServiceCard = ({
 }: ServiceCardProps) => {
   return (
     <div className={cn(
-      "glass rounded-lg p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-2 h-full border-l-4 border-sky-400 group", 
+      "glass rounded-lg p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-2 h-full border-l-4 border-sky-400 group bg-white/80 backdrop-blur-sm", 
       index === 0 ? "animate-fade-in" : index === 1 ? "animate-fade-in-delay-1" : "animate-fade-in-delay-2"
     )}>
       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-sky-100 to-sky-200 flex items-center justify-center mb-6 shadow-inner shadow-sky-200 group-hover:scale-110 transition-transform duration-300">
@@ -111,13 +111,21 @@ const Services = () => {
   }, [emblaApi]);
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50 via-white to-eco-50/40">
+    <section id="services" className="py-24 relative overflow-hidden">
+      {/* Background image with girl holding plant */}
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15" 
+        style={{ backgroundImage: `url('/lovable-uploads/449e9d43-1895-4430-ab8f-d6ba31fb5891.png')` }}>
+      </div>
+      
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-50/90 via-white/80 to-eco-50/70 z-0"></div>
+      
       {/* Top gradient transition - enhanced */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10"></div>
       
       <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-5 bg-repeat"></div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
         <div className="text-center mb-16">
           <span className="inline-block text-sky-700 bg-sky-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in shadow-sm">
             Nossa Especialidade
