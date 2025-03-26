@@ -28,20 +28,22 @@ const Index = () => {
     
     setLoadTimeout(timeout);
     
+    return () => {
+      if (loadTimeout) clearTimeout(loadTimeout);
+    };
+  }, []);
+
+  useEffect(() => {
     // Prepare to show content after video is loaded and minimum loading time has passed
-    if (videoLoaded) {
+    if (videoLoaded && !isLoading) {
       // Add a small delay to ensure smooth transition
       const timer = setTimeout(() => {
-        setIsLoading(false);
+        setContentReady(true);
       }, 300);
       
       return () => clearTimeout(timer);
     }
-    
-    return () => {
-      if (loadTimeout) clearTimeout(loadTimeout);
-    };
-  }, [videoLoaded, loadTimeout]);
+  }, [videoLoaded, isLoading]);
 
   useEffect(() => {
     // Initialize intersection observer for animations
@@ -63,13 +65,7 @@ const Index = () => {
         observer.observe(el);
       });
       
-      // Set content ready with a small delay for smoother transition
-      const timer = setTimeout(() => {
-        setContentReady(true);
-      }, 100);
-      
       return () => {
-        clearTimeout(timer);
         // Cleanup observer
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
           observer.unobserve(el);
@@ -81,6 +77,11 @@ const Index = () => {
   const handleVideoLoaded = () => {
     if (loadTimeout) clearTimeout(loadTimeout);
     setVideoLoaded(true);
+    
+    // Don't immediately hide loading screen to ensure smooth transition
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
   };
 
   return (

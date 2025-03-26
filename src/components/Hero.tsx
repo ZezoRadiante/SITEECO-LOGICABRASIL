@@ -63,7 +63,7 @@ const Hero = ({ onVideoLoaded }: { onVideoLoaded?: () => void }) => {
       setFallbackLoaded(true);
       if (onVideoLoaded) onVideoLoaded();
     }
-  }, [onVideoLoaded, isVideoLoaded]);
+  }, [onVideoLoaded]); // Remove isVideoLoaded from dependencies to prevent infinite loop
   
   const videoOrFallbackLoaded = isVideoLoaded || fallbackLoaded;
   
