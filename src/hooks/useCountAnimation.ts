@@ -3,14 +3,12 @@ import { useState, useEffect, useRef } from 'react';
 
 export const useCountAnimation = (end: number, duration: number = 1000) => {
   const [count, setCount] = useState(0);
-  const [displayValue, setDisplayValue] = useState<number[]>([]);
   const frameRef = useRef<number | null>(null);
 
   useEffect(() => {
     // Reset the count if end changes to zero
     if (end === 0) {
       setCount(0);
-      setDisplayValue([]);
       return;
     }
     
@@ -20,7 +18,7 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
     }
     
     let startTimestamp: number | null = null;
-    const startValue = count;
+    const startValue = count; // Start from current count for smoother transitions
     
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
@@ -33,25 +31,18 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
       
       setCount(nextValue);
       
-      // Generate display values for carousel effect
-      const currentStr = nextValue.toString();
-      const values = Array.from({ length: 3 }, (_, i) => {
-        const offset = i - 1;
-        return Math.max(0, parseInt(currentStr) + offset);
-      });
-      setDisplayValue(values);
-      
       if (progress < 1) {
         frameRef.current = window.requestAnimationFrame(step);
       } else {
+        // Ensure we end exactly at the target value
         setCount(end);
-        setDisplayValue([end]);
         frameRef.current = null;
       }
     };
     
     frameRef.current = window.requestAnimationFrame(step);
     
+    // Cleanup function to cancel animation when component unmounts or values change
     return () => {
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
@@ -59,5 +50,5 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
     };
   }, [end, duration]);
 
-  return { count, displayValue };
+  return count;
 };

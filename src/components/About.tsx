@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
 import { useCountAnimation } from '@/hooks/useCountAnimation';
@@ -121,19 +122,7 @@ const About = () => {
                     <div className="text-2xl md:text-3xl font-bold text-white mb-2 relative h-12 overflow-hidden">
                       <div className="flex items-center justify-center">
                         <span>{stat.prefix}</span>
-                        <div className="relative overflow-hidden h-12 tabular-nums">
-                          {animatedValues[index].displayValue.map((value, i) => (
-                            <div
-                              key={i}
-                              className="absolute w-full transition-transform duration-200"
-                              style={{
-                                transform: `translateY(${(i - 1) * 100}%)`,
-                              }}
-                            >
-                              {value.toLocaleString()}
-                            </div>
-                          ))}
-                        </div>
+                        <span className="tabular-nums">{animatedValues[index].toLocaleString()}</span>
                         {stat.suffix && <span>{stat.suffix}</span>}
                       </div>
                     </div>
