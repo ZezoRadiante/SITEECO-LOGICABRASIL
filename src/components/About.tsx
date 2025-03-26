@@ -25,7 +25,7 @@ const About = () => {
 
           {/* Locations Section */}
           <div className="mt-10">
-            <h3 className="flex items-center text-lg font-bold text-earth-700 mb-4">
+            <h3 className="flex items-center text-lg font-medium text-earth-700 mb-4">
               <MapPin className="mr-2" size={20} />
               Nosso Localização e Contato
             </h3>
@@ -55,7 +55,7 @@ const About = () => {
           
           {/* Social Media */}
           <div className="mt-8">
-            <h3 className="text-lg font-bold text-earth-700 mb-4">
+            <h3 className="text-lg font-medium text-earth-700 mb-4">
               Nossas redes
             </h3>
             <div className="flex gap-4 mb-8">
@@ -97,10 +97,10 @@ const Location = ({ state, address, city, phone }: {
 }) => {
   return (
     <div className="mb-4">
-      <h4 className="font-bold text-earth-700">{state}</h4>
-      <p className="text-earth-600">{address}</p>
-      {city && <p className="text-earth-600">{city}</p>}
-      <p className="text-earth-600">{phone}</p>
+      <h4 className="font-medium text-earth-700">{state}</h4>
+      <p className="text-earth-600 text-sm">{address}</p>
+      {city && <p className="text-earth-600 text-sm">{city}</p>}
+      <p className="text-earth-600 text-sm">{phone}</p>
     </div>
   );
 };
