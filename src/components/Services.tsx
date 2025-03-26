@@ -113,7 +113,7 @@ const Services = () => {
   return (
     <section id="services" className="py-24 relative overflow-hidden">
       {/* Background image with girl holding plant */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15" 
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50" 
         style={{ backgroundImage: `url('/lovable-uploads/449e9d43-1895-4430-ab8f-d6ba31fb5891.png')` }}>
       </div>
       
