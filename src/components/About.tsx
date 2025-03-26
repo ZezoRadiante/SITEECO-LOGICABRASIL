@@ -5,27 +5,20 @@ import { AboutContent } from './about/AboutContent';
 
 const About: React.FC = () => {
   return (
-    <div id="about" className="py-24 relative overflow-hidden">
-      {/* Background image with gradient overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" 
-        style={{
-          backgroundImage: `linear-gradient(to bottom, 
-            rgba(255, 255, 255, 1) 0%, 
-            rgba(255, 255, 255, 0.92) 20%, 
-            rgba(255, 255, 255, 0.85) 40%,
-            rgba(255, 255, 255, 0.8) 60%,
-            rgba(255, 255, 255, 0.85) 80%,
-            rgba(255, 255, 255, 0.95) 100%),
-            url('/lovable-uploads/bf8e3e00-e012-441e-ba97-a2274892e576.png')`,
-          opacity: 0.9
-        }}
-      />
+    <div 
+      id="about" 
+      className="py-24 relative bg-cover bg-center bg-no-repeat min-h-[600px]"
+      style={{
+        backgroundImage: `url('/lovable-uploads/1d078a3f-e9c5-42fc-9c75-5fbe78d30b86.png')`,
+      }}
+    >
+      {/* Overlay completo para melhorar legibilidade do conteúdo */}
+      <div className="absolute inset-0 bg-white/90 z-0"></div>
       
       {/* Top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-eco-100/40 to-transparent z-10"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="text-center mb-10">
           <span className="inline-block text-sky-700 px-3 py-1 text-sm font-medium mb-2 opacity-0 animate-fade-in">
             Nossa História
@@ -46,7 +39,7 @@ const About: React.FC = () => {
       </div>
       
       {/* Bottom gradient transition */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/30 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/30 to-transparent z-10"></div>
     </div>
   );
 };
