@@ -27,55 +27,53 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
       const elapsed = timestamp - startTimestamp;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Use easeOutBack for a nice slot machine like effect
-      const easeProgress = 1 - Math.pow(1 - progress, 4);
-      const nextValue = startValue + Math.floor(easeProgress * (end - startValue));
+      // Use easeOutExpo for a nice slot machine effect
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const nextValue = Math.floor(startValue + easeProgress * (end - startValue));
       
       setCount(nextValue);
       
-      // Generate the carousel effect digits
+      // Generate the slot machine effect with digits
       if (end > 0) {
-        const endDigits = end.toString().split('');
         const currentDigits = nextValue.toString().split('');
+        const endDigits = end.toString().split('');
         
-        // Calculate how many leading zeros we need
-        const paddingLength = endDigits.length - currentDigits.length;
-        const paddedCurrentDigits = paddingLength > 0 
-          ? [...Array(paddingLength).fill('0'), ...currentDigits]
-          : currentDigits;
+        // Pad with zeros if needed to match target length
+        while (currentDigits.length < endDigits.length) {
+          currentDigits.unshift('0');
+        }
         
-        // For each digit position, create a small carousel of digits
-        const digitCarousels = paddedCurrentDigits.map((digit, index) => {
-          const digitValue = parseInt(digit);
-          const targetDigit = parseInt(endDigits[index] || '0');
-          
-          // If we're at the final value, just show the current digit
+        // Create digit carousel for each position
+        const slotDigits = currentDigits.map((digit, index) => {
+          // For complete animation, just return the digit
           if (progress === 1) {
             return digit;
-          } else {
-            // Create a "window" of 3 visible digits for the carousel effect
-            const prevDigit = (digitValue === 0) ? '9' : (digitValue - 1).toString();
-            const nextDigit = (digitValue === 9) ? '0' : (digitValue + 1).toString();
-            return `${prevDigit}|${digit}|${nextDigit}`;
           }
+          
+          // For slot machine effect, create a small window of visible digits
+          const currentDigitValue = parseInt(digit);
+          const prevDigit = (currentDigitValue === 0) ? '9' : (currentDigitValue - 1).toString();
+          const nextDigit = (currentDigitValue === 9) ? '0' : (currentDigitValue + 1).toString();
+          
+          return `${prevDigit}|${digit}|${nextDigit}`;
         });
         
-        setDigits(digitCarousels);
+        setDigits(slotDigits);
       }
       
       if (progress < 1) {
-        frameRef.current = window.requestAnimationFrame(step);
+        frameRef.current = requestAnimationFrame(step);
       } else {
-        // Ensure we end exactly at the target value
+        // Ensure we end at the exact target value
         setCount(end);
         setDigits(end.toString().split(''));
         frameRef.current = null;
       }
     };
     
-    frameRef.current = window.requestAnimationFrame(step);
+    frameRef.current = requestAnimationFrame(step);
     
-    // Cleanup function to cancel animation when component unmounts or values change
+    // Cleanup function
     return () => {
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
