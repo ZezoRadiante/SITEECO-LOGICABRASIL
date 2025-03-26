@@ -54,13 +54,13 @@ const Banner = () => {
         </div>
       </div>
       
-      {/* Full-width Banner Image */}
+      {/* Full-width Banner Image - Focused on the child's helmet */}
       <div className="w-full relative overflow-hidden animate-on-scroll">
-        <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
+        <div className="relative w-full h-[350px] md:h-[450px] lg:h-[550px] overflow-hidden">
           <img 
             src="/lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png" 
             alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
-            className="w-full h-full object-cover object-center transform hover:scale-[1.03] transition-transform duration-1000 filter hover:brightness-105"
+            className="w-full h-full object-cover object-top transform hover:scale-[1.03] transition-transform duration-1000 filter hover:brightness-105"
           />
           
           {/* Subtle overlay effect on hover */}
