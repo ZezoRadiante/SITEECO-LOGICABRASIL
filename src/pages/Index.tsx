@@ -24,7 +24,7 @@ const Index = () => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
       setVideoLoaded(true);
-    }, 5000);
+    }, 3000); // Reduzido para 3 segundos para evitar espera longa
     
     setLoadTimeout(timeout);
     
@@ -96,7 +96,7 @@ const Index = () => {
         </div>
       )}
       
-      <div className={`min-h-screen transition-all duration-1000 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`min-h-screen w-full overflow-auto transition-all duration-1000 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>
         <Navbar />
         <Hero onVideoLoaded={handleVideoLoaded} />
         <Banner />

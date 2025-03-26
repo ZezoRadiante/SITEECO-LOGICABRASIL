@@ -50,6 +50,15 @@ const Navbar = () => {
     }
   };
 
+  // Adicionando um home link para scroll to top
+  const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <header className={cn(
       'fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 sm:px-6 lg:px-12 py-3 sm:py-4',
@@ -60,6 +69,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a 
           href="#" 
+          onClick={scrollToTop}
           className="flex items-center space-x-2 text-primary font-medium opacity-0 animate-fade-in"
         >
           <Logo size={24} className="text-sky-400 animate-pulse-gentle" />
@@ -100,12 +110,12 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - Improved transitions */}
+      {/* Mobile Menu - Improved transitions and scroll */}
       <div 
         className={cn(
           "absolute top-full left-0 right-0 glass transition-all duration-500 overflow-hidden md:hidden shadow-lg",
           isMobileMenuOpen 
-            ? "max-h-screen opacity-100 transform translate-y-0" 
+            ? "max-h-[300px] opacity-100 transform translate-y-0" 
             : "max-h-0 opacity-0 transform -translate-y-8"
         )}
       >

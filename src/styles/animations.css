@@ -72,3 +72,20 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+
+/* Ensure body has proper overflow settings */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Fix for mobile browsers */
+body {
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}

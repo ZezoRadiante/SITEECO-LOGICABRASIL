@@ -68,7 +68,7 @@ const Hero = ({ onVideoLoaded }: { onVideoLoaded?: () => void }) => {
   const videoOrFallbackLoaded = isVideoLoaded || fallbackLoaded;
   
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-visible">
       {/* Background Video with Enhanced Transitions */}
       <div className="absolute inset-0">
         {/* Video Background - Made full size and more visible */}
