@@ -2,36 +2,59 @@
 import React from 'react';
 import { MapPin, Linkedin, Instagram, Youtube } from 'lucide-react';
 import { Button } from './ui/button';
-import { cn } from '@/lib/utils';
 
 const About = () => {
   return (
-    <section id="about" className="w-full bg-eco-50/70 py-12 md:py-16 relative overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Hero text section */}
-          <div className="text-left mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-earth-800 mb-6">
-              Juntos,<br />
-              construindo<br />
-              um futuro<br />
-              mais sustentável
-            </h2>
-
-            <Button variant="outline" className="border-2 border-[#71B707] text-[#71B707] hover:bg-[#71B707] hover:text-white uppercase rounded-full py-2 px-6 font-medium">
-              Conheça mais sobre nós
+    <section id="about" className="bg-eco-50 py-12 pb-0 relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold text-center text-earth-800 mb-10">
+            ONDE ATUAMOS E AJUDAMOS O<br/>
+            MEIO AMBIENTE E A SOCIEDADE
+          </h2>
+          
+          {/* Green office image */}
+          <div className="rounded-lg overflow-hidden mb-8">
+            <img 
+              src="/lovable-uploads/b2251703-230b-4fb3-adfd-7249f11d3483.jpg" 
+              alt="Escritório sustentável" 
+              className="w-full h-auto object-cover"
+            />
+          </div>
+          
+          <p className="text-earth-700 text-center mb-8">
+            Através da inovação e comprometimento, a Eco-logica Brasil desenvolve soluções 
+            sustentáveis que fazem a diferença para as comunidades e o meio ambiente.
+          </p>
+        </div>
+      </div>
+      
+      {/* Contact and Footer section */}
+      <div className="bg-white py-12">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl font-bold text-center text-earth-800 mb-8">
+            Juntos,<br />
+            construindo um futuro<br />
+            mais sustentável
+          </h2>
+          
+          <div className="text-center mb-8">
+            <Button 
+              variant="outline" 
+              className="rounded-full border-2 border-eco-900 text-eco-900 hover:bg-eco-900 hover:text-white px-8 py-4"
+            >
+              CONHEÇA MAIS SOBRE NÓS
             </Button>
           </div>
-
-          {/* Locations Section */}
+          
+          {/* Locations */}
           <div className="mt-10">
-            <h3 className="flex items-center text-lg font-medium text-earth-700 mb-4">
+            <h3 className="flex items-center text-lg font-medium text-earth-700 mb-6">
               <MapPin className="mr-2" size={20} />
               Nosso Localização e Contato
             </h3>
 
-            {/* Locations grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
               <Location 
                 state="Pernambuco"
                 address="Rua Ana ganga arroes, 03"
@@ -54,18 +77,18 @@ const About = () => {
           </div>
           
           {/* Social Media */}
-          <div className="mt-8">
+          <div className="mb-8">
             <h3 className="text-lg font-medium text-earth-700 mb-4">
               Nossas redes
             </h3>
             <div className="flex gap-4 mb-8">
-              <a href="https://www.linkedin.com" className="text-earth-600 hover:text-[#71B707]" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com" className="text-earth-600 hover:text-eco-900" aria-label="LinkedIn">
                 <Linkedin size={24} />
               </a>
-              <a href="https://www.instagram.com" className="text-earth-600 hover:text-[#71B707]" aria-label="Instagram">
+              <a href="https://www.instagram.com" className="text-earth-600 hover:text-eco-900" aria-label="Instagram">
                 <Instagram size={24} />
               </a>
-              <a href="https://www.youtube.com" className="text-earth-600 hover:text-[#71B707]" aria-label="YouTube">
+              <a href="https://www.youtube.com" className="text-earth-600 hover:text-eco-900" aria-label="YouTube">
                 <Youtube size={24} />
               </a>
             </div>
@@ -73,10 +96,10 @@ const About = () => {
           
           {/* Footer links */}
           <div className="border-t border-eco-200 pt-6 space-y-4 text-sm">
-            <p className="text-[#71B707] uppercase font-medium">Portfólios</p>
-            <p className="text-[#71B707] uppercase font-medium">Fale com nossos consultores</p>
-            <p className="text-[#71B707] uppercase font-medium">Política de Privacidade</p>
-            <p className="text-[#71B707] uppercase font-medium">Outros</p>
+            <p className="text-eco-900 uppercase font-medium">Portfólios</p>
+            <p className="text-eco-900 uppercase font-medium">Fale com nossos consultores</p>
+            <p className="text-eco-900 uppercase font-medium">Política de Privacidade</p>
+            <p className="text-eco-900 uppercase font-medium">Outros</p>
           </div>
           
           {/* Copyright */}
