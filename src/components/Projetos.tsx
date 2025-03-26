@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import {
@@ -11,13 +10,11 @@ import {
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-// Updated array with direct paths to ensure images load properly
 const projectImages = [
-  'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800', // Forest image 1
-  'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800', // Forest image 2
-  'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800', // Forest image 3
-  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800', // Forest image 4
-  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800', // Forest image 5
+  '/lovable-uploads/dafeb1fc-267f-4881-9885-0c9fde0b64ef.png',
+  '/lovable-uploads/a410349e-b006-48ec-bcf4-ca8887c95e8d.png',
+  '/lovable-uploads/20688ebc-cc04-42a6-bfd2-becb99256cce.png',
+  '/lovable-uploads/01566cac-c3d4-42af-87c7-693a6a9ef07d.png',
 ];
 
 const CarouselDots = ({ 
@@ -56,7 +53,6 @@ const Projetos = () => {
     skipSnaps: false,
   }, [Autoplay({ delay: 5000, stopOnInteraction: true })]);
 
-  // Update active index when the carousel scrolls
   useEffect(() => {
     if (!emblaApi) return;
 
@@ -70,7 +66,6 @@ const Projetos = () => {
     };
   }, [emblaApi]);
 
-  // Function to handle dot click and scroll to respective slide
   const scrollTo = React.useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
@@ -92,12 +87,11 @@ const Projetos = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full mb-4"></div>
           
           <p className="max-w-3xl mx-auto text-lg text-earth-600 opacity-0 animate-fade-in-delay-2 leading-relaxed">
-            Confira alguns dos nossos projetos de conservação e sustentabilidade implementados em diferentes ecossistemas.
+            Confira alguns dos nossos projetos de conserva��ão e sustentabilidade implementados em diferentes ecossistemas.
           </p>
         </div>
       </div>
 
-      {/* Fixed carousel implementation with explicit dimensions and proper structure */}
       <div className="w-full relative overflow-hidden py-4">
         <div className="max-w-7xl mx-auto px-4">
           <Carousel ref={emblaRef} className="w-full">
@@ -123,7 +117,6 @@ const Projetos = () => {
         </div>
       </div>
 
-      {/* Indicator dots */}
       <div className="mt-4">
         <CarouselDots 
           activeIndex={activeIndex} 
