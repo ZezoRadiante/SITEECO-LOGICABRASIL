@@ -151,8 +151,8 @@ const About = () => {
                           digit
                         }
                       </span>
-                    )) ANOS
-                  }
+                    ))
+                  } ANOS
                 </span>
               </div>
               <p className="text-earth-600 text-lg md:text-xl text-center">
