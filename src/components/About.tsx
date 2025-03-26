@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
 import { useCountAnimation } from '@/hooks/useCountAnimation';
@@ -61,7 +62,7 @@ const About = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center opacity-100" 
           style={{ 
-            backgroundImage: `url('/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg')`,
+            backgroundImage: `url('/lovable-uploads/370525ba-f852-4a6e-8415-ae437cc892ad.png')`,
           }}
         ></div>
         
