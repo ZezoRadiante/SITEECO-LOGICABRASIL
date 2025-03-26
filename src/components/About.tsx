@@ -133,8 +133,8 @@ const Location = ({ state, address, city, phone, mapUrl, whatsappUrl }: {
         rel="noopener noreferrer" 
         className="text-earth-600 text-sm hover:text-[#71B707] transition-colors flex items-center group"
       >
-        <MessageCircle className="w-5 h-5 mr-2 text-[#71B707] hover:text-green-600" />
-        <span className="hover:underline">Falar no WhatsApp</span>
+        <span className="mr-2 hover:underline">{phone}</span>
+        <MessageCircle className="w-5 h-5 text-[#71B707] hover:text-green-600" />
       </a>
     </div>
   );
