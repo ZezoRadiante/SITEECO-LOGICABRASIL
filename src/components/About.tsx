@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
 import { useCountAnimation } from '@/hooks/useCountAnimation';
@@ -58,18 +57,16 @@ const About = () => {
         {/* Base white layer */}
         <div className="w-full h-full bg-white"></div>
         
-        {/* Background image with horizontal gradient mask */}
+        {/* Background image with gradient */}
         <div 
-          className="absolute inset-0 bg-cover bg-center" 
+          className="absolute inset-0 bg-cover bg-center opacity-100" 
           style={{ 
-            backgroundImage: "url('/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg')",
-            maskImage: "linear-gradient(to right, transparent, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.9))",
-            WebkitMaskImage: "linear-gradient(to right, transparent, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.9))"
+            backgroundImage: `url('/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg')`,
           }}
         ></div>
         
-        {/* Additional gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/50"></div>
+        {/* Gradient overlay - horizontal gradient from left (more white) to right (more transparent) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-white/30"></div>
       </div>
 
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent z-10"></div>
