@@ -11,7 +11,7 @@ const About: React.FC = () => {
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <span className="inline-block text-sky-700 bg-sky-100 px-3 py-1 rounded-full text-sm font-medium mb-2 opacity-0 animate-fade-in">
+          <span className="inline-block text-sky-700 px-3 py-1 text-sm font-medium mb-2 opacity-0 animate-fade-in">
             Nossa História
           </span>
           
