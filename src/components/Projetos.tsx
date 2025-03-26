@@ -11,7 +11,7 @@ import {
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-// Updated array with all the new project images
+// Updated array with all the project images
 const projectImages = [
   '/lovable-uploads/db5ebf76-3193-4c5f-ab32-2a690c3cd81a.png', // Casa dos Ventos
   '/lovable-uploads/8f5f563d-38c4-4b3c-9e59-0e251ed4a68a.png', // Rio do Vento
@@ -99,56 +99,30 @@ const Projetos = () => {
         </div>
       </div>
 
-      {/* Full width carousel - Enhanced with better transitions */}
+      {/* Fixed carousel implementation */}
       <div className="w-full relative overflow-hidden py-4">
-        <Carousel>
-          <div ref={emblaRef} className="overflow-hidden">
-            <div className="flex">
-              {projectImages.map((image, index) => {
-                // Calculate the distance from active index (handling loop)
-                const count = projectImages.length;
-                let distance = Math.abs(index - activeIndex);
-                if (distance > count / 2) {
-                  distance = count - distance;
-                }
-                
-                return (
-                  <div 
-                    key={index} 
-                    className={cn(
-                      "min-w-0 shrink-0 grow-0 basis-[75%] sm:basis-[45%] md:basis-[33.333%] lg:basis-[25%] px-3 transition-all duration-700",
-                      distance === 0 
-                        ? "scale-110 z-20 opacity-100" 
-                        : distance === 1 
-                          ? "scale-95 z-10 opacity-90" 
-                          : "scale-90 opacity-70"
-                    )}
-                  >
-                    <div className={cn(
-                      "overflow-hidden shadow-md rounded-lg border-2 transition-all duration-500",
-                      distance === 0 
-                        ? "h-72 md:h-96 border-eco-500" 
-                        : "h-60 md:h-80 border-eco-200"
-                    )}>
-                      <img 
-                        src={image} 
-                        alt={`Projeto de conservação ${index + 1}`} 
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                      />
-                    </div>
+        <Carousel ref={emblaRef} className="w-full max-w-7xl mx-auto">
+          <CarouselContent>
+            {projectImages.map((image, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
+                <div className="p-1">
+                  <div className="overflow-hidden rounded-lg border-2 border-eco-200 h-64 md:h-80 shadow-md">
+                    <img 
+                      src={image} 
+                      alt={`Projeto de conservação ${index + 1}`} 
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    />
                   </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Navigation arrows - Improved */}
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
           <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
           <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
         </Carousel>
       </div>
 
-      {/* Indicator dots - Improved */}
+      {/* Indicator dots */}
       <div className="mt-2">
         <CarouselDots 
           activeIndex={activeIndex} 
@@ -156,8 +130,6 @@ const Projetos = () => {
           onClick={scrollTo} 
         />
       </div>
-      
-      {/* Removed bottom gradient */}
     </section>
   );
 };
