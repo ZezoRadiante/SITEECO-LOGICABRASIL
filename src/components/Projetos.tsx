@@ -35,7 +35,7 @@ const CarouselDots = ({
           onClick={() => onClick(index)}
           className={cn(
             "w-3 h-3 rounded-full transition-all duration-300",
-            index === activeIndex ? "bg-sky-600" : "bg-sky-200"
+            index === activeIndex ? "bg-[#71B707]" : "bg-eco-200"
           )}
           aria-label={`Go to slide ${index + 1}`}
         />
@@ -75,19 +75,19 @@ const Projetos = () => {
   }, [emblaApi]);
 
   return (
-    <section id="projetos" className="py-24 overflow-hidden bg-gradient-to-b from-eco-50/30 to-sky-100/30 relative">
+    <section id="projetos" className="py-24 overflow-hidden relative eco-gradient-light">
       {/* Top gradient transition */}
-      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-eco-50/50 to-transparent z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-earth-100/50 to-transparent z-10"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <span className="inline-block text-sky-700 bg-sky-100 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in">
+          <span className="inline-block text-[#71B707] bg-eco-100 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in">
             Conheça Nosso Trabalho
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-delay-1 text-sky-700 text-center">
-            Nossos Projetos
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-delay-1 text-earth-700 text-center">
+            Nossos <span className="text-[#71B707]">Projetos</span>
           </h2>
-          <p className="max-w-3xl mx-auto text-lg text-foreground/70 opacity-0 animate-fade-in-delay-2">
+          <p className="max-w-3xl mx-auto text-lg text-earth-600 opacity-0 animate-fade-in-delay-2">
             Confira alguns dos nossos projetos de conservação e sustentabilidade implementados em diferentes ecossistemas.
           </p>
         </div>
@@ -106,7 +106,7 @@ const Projetos = () => {
                     activeIndex === index ? "scale-105 z-10" : "scale-100 opacity-80"
                   )}
                 >
-                  <div className="overflow-hidden h-64 md:h-80">
+                  <div className="overflow-hidden h-64 md:h-80 shadow-md">
                     <img 
                       src={image} 
                       alt={`Projeto de conservação ${index + 1}`} 
@@ -119,8 +119,8 @@ const Projetos = () => {
           </div>
 
           {/* Navigation arrows */}
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-eco-100/80 hover:bg-eco-200/80 border-eco-300" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-eco-100/80 hover:bg-eco-200/80 border-eco-300" />
         </Carousel>
       </div>
 
@@ -134,7 +134,7 @@ const Projetos = () => {
       </div>
       
       {/* Bottom gradient transition */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-100/40 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-eco-200/40 to-transparent"></div>
     </section>
   );
 };
