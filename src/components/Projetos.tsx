@@ -94,6 +94,11 @@ const Projetos = () => {
     }
   }, [emblaApi]);
 
+  // Log to confirm component is rendering
+  useEffect(() => {
+    console.log('Projetos component mounted');
+  }, []);
+
   return (
     <section id="projetos" className="py-12 overflow-hidden relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -125,6 +130,12 @@ const Projetos = () => {
                         src={project.image} 
                         alt={project.title} 
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.onerror = null;
+                          target.src = '/placeholder.svg';
+                          console.log(`Image failed to load: ${project.image}`);
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-transparent p-6 flex flex-col justify-end">
                         <h3 className="text-white text-2xl font-bold mb-1">{project.title}</h3>

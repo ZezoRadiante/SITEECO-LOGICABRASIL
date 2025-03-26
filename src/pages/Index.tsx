@@ -20,11 +20,12 @@ const Index = () => {
     // Reset scroll position when component mounts
     window.scrollTo(0, 0);
     
-    // Set a timeout to ensure loading doesn't hang forever
+    // Force content to display after a maximum timeout
     const timeout = setTimeout(() => {
       setIsLoading(false);
       setVideoLoaded(true);
-    }, 3000); // Reduzido para 3 segundos para evitar espera longa
+      setContentReady(true);
+    }, 2000); // Reduced to 2 seconds
     
     setLoadTimeout(timeout);
     
@@ -39,7 +40,7 @@ const Index = () => {
       // Add a small delay to ensure smooth transition
       const timer = setTimeout(() => {
         setContentReady(true);
-      }, 300);
+      }, 100); // Reduced delay
       
       return () => clearTimeout(timer);
     }
@@ -58,21 +59,19 @@ const Index = () => {
       { threshold: 0.1 }
     );
     
-    // Only observe elements after loading is complete
-    if (!isLoading) {
-      // Observe all elements with the animate-on-scroll class
+    // Observe elements regardless of loading state to ensure animations work
+    if (document.querySelectorAll('.animate-on-scroll').length > 0) {
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
       });
       
       return () => {
-        // Cleanup observer
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
           observer.unobserve(el);
         });
       };
     }
-  }, [isLoading]);
+  }, [contentReady]); // Changed to depend on contentReady
 
   const handleVideoLoaded = () => {
     if (loadTimeout) clearTimeout(loadTimeout);
@@ -81,8 +80,20 @@ const Index = () => {
     // Don't immediately hide loading screen to ensure smooth transition
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+      setContentReady(true); // Ensure content becomes visible
+    }, 300);
   };
+
+  // Force render content after 3 seconds even if loading states aren't resolved
+  useEffect(() => {
+    const forceRender = setTimeout(() => {
+      setIsLoading(false);
+      setVideoLoaded(true);
+      setContentReady(true);
+    }, 3000);
+    
+    return () => clearTimeout(forceRender);
+  }, []);
 
   return (
     <>
@@ -97,7 +108,7 @@ const Index = () => {
         </div>
       )}
       
-      <div className={`min-h-screen w-full overflow-auto transition-all duration-1000 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`min-h-screen w-full overflow-auto transition-all duration-1000 ${!isLoading ? 'opacity-100' : 'opacity-0'}`}>
         <Navbar />
         <Hero onVideoLoaded={handleVideoLoaded} />
         <Banner />

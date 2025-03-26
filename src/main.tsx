@@ -5,15 +5,25 @@ import './index.css';
 
 // Ensure scroll works correctly
 document.addEventListener('DOMContentLoaded', () => {
-  // Enable scroll on body
+  // Enable scroll on body and html
   document.body.style.overflow = 'auto';
+  document.documentElement.style.overflow = 'auto';
   
-  // Check if scroll is working
+  // Remove any height limitations
+  document.body.style.height = 'auto';
+  document.documentElement.style.height = 'auto';
+  
+  // Force content to be visible
   setTimeout(() => {
-    if (window.scrollY === 0 && document.body.scrollHeight > window.innerHeight) {
-      console.log('Document height:', document.body.scrollHeight, 'Window height:', window.innerHeight);
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      rootElement.style.opacity = '1';
+      rootElement.style.display = 'block';
     }
-  }, 1000);
+    
+    // Check if scroll is working
+    console.log('Document height:', document.body.scrollHeight, 'Window height:', window.innerHeight);
+  }, 500);
 });
 
 createRoot(document.getElementById("root")!).render(<App />);
