@@ -24,11 +24,11 @@ const Banner = () => {
         </div>
       </div>
       
-      {/* Banner Image - Using public folder image instead of uploaded file */}
+      {/* Banner Image - Using the new PNG from lovable uploads */}
       <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50">
         <img 
-          src="/banner-kids-planting.jpg" 
-          alt="Criança com capacete branco segurando uma muda em uma plantação" 
+          src="/lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png" 
+          alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
           className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
         />
       </div>
