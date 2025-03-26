@@ -18,8 +18,8 @@ export const StatCard: React.FC<StatCardProps> = ({
 }) => {
   return (
     <div className="stats-card relative overflow-hidden">
-      <div className="p-6 rounded-lg border-2 border-sky-700 bg-eco-50/70 shadow-md flex flex-col items-center justify-center transition-all hover:shadow-lg hover:border-sky-800">
-        <div className="text-earth-700 text-4xl md:text-5xl font-bold mb-4 flex items-center">
+      <div className="p-4 rounded-lg border-2 border-sky-700 bg-eco-50/70 shadow-md flex flex-col items-center justify-center transition-all hover:shadow-lg hover:border-sky-800">
+        <div className="text-earth-700 text-3xl md:text-4xl font-bold mb-2 flex items-center">
           <span className="text-sky-700">{prefix}</span>
           <span className="counter-value">
             {digits.length > 0 ? 
@@ -67,9 +67,9 @@ export const StatCard: React.FC<StatCardProps> = ({
               new Intl.NumberFormat('pt-BR').format(value)
             }
           </span>
-          {suffix && <span className="ml-2">{suffix}</span>}
+          {suffix && <span className="ml-1 text-xl">{suffix}</span>}
         </div>
-        <p className="text-earth-600 text-lg md:text-xl text-center" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
+        <p className="text-earth-600 text-sm md:text-base text-center" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
       </div>
     </div>
   );

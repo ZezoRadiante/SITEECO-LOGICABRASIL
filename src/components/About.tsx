@@ -20,11 +20,13 @@ const About: React.FC = () => {
           </h2>
         </div>
 
-        {/* Stats grid with slot machine animation */}
-        <StatsGrid />
-            
-        {/* Content */}
+        {/* Content first */}
         <AboutContent />
+            
+        {/* Stats grid with slot machine animation */}
+        <div className="mt-12">
+          <StatsGrid />
+        </div>
       </div>
       
       {/* Bottom gradient transition */}

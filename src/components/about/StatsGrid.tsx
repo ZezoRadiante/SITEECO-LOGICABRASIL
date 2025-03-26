@@ -27,7 +27,7 @@ export const StatsGrid: React.FC = () => {
   return (
     <div 
       ref={inViewRef} 
-      className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto opacity-0 animate-fade-in-delay-2"
+      className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto opacity-0 animate-fade-in-delay-3"
     >
       <StatCard 
         title="Mudas Produzidas\ne Plantadas" 
