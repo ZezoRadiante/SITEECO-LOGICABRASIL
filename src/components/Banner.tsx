@@ -6,10 +6,10 @@ import { ArrowRight } from 'lucide-react';
 const Banner = () => {
   return (
     <section id="banner" className="py-12 md:py-16 bg-gradient-to-b from-white to-eco-50 relative overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
-          {/* Banner Image - Simplified without border */}
-          <div className="w-full lg:w-1/2 rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02]">
+      <div className="container mx-auto px-0"> {/* Removed padding to allow full width */}
+        <div className="flex flex-col lg:flex-row items-center">
+          {/* Banner Image - Full width with no rounding on outer edges */}
+          <div className="w-full lg:w-1/2 overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02]">
             <img 
               src="/lovable-uploads/17f4d0f9-7c39-414b-aed2-5773efba9a0a.png" 
               alt="Criança com capacete branco segurando uma muda em uma plantação" 
@@ -17,8 +17,8 @@ const Banner = () => {
             />
           </div>
           
-          {/* Banner Content - Simplified */}
-          <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
+          {/* Banner Content - With padding */}
+          <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left px-4 md:px-8 lg:px-12">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-earth-800">
               Promovendo um <span className="text-[#71B707]">Futuro Verde</span> para as Novas Gerações
             </h2>
