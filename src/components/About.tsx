@@ -1,8 +1,40 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
 
 const About = () => {
+  const statisticsRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const statItems = entry.target.querySelectorAll('.stat-item');
+          statItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('animate-fade-in');
+              item.classList.remove('opacity-0');
+            }, index * 200);
+          });
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.3
+    });
+    
+    if (statisticsRef.current) {
+      observer.observe(statisticsRef.current);
+    }
+    
+    return () => {
+      if (statisticsRef.current) {
+        observer.unobserve(statisticsRef.current);
+      }
+    };
+  }, []);
+
   const statistics = [
     { icon: <Leaf className="h-10 w-10 text-green-100" />, value: "+1.000.000", label: "Mudas Produzidas e Plantadas" },
     { icon: <Globe className="h-10 w-10 text-green-100" />, value: "+100.000", label: "Hectares requalificados junto ao cliente" },
@@ -66,11 +98,11 @@ const About = () => {
           </div>
 
           <div className="animate-fade-in-left">
-            <div className="grid grid-cols-2 gap-6">
+            <div ref={statisticsRef} className="grid grid-cols-2 gap-6">
               {statistics.map((stat, index) => (
                 <div 
                   key={index} 
-                  className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300 hover:bg-white/15"
+                  className="stat-item opacity-0 p-6 rounded-lg transition-all duration-500 ease-out"
                 >
                   <div className="flex flex-col items-center text-center">
                     <div className="mb-3 p-3 rounded-full bg-eco-800/40 backdrop-blur-sm">
@@ -84,7 +116,7 @@ const About = () => {
             </div>
             
             {/* Nature-themed decorative element */}
-            <div className="mt-12 p-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg shadow-lg">
+            <div className="mt-12 p-6 backdrop-blur-sm rounded-lg opacity-0 stat-item">
               <div className="flex items-center justify-center space-x-4">
                 <CheckCircle2 className="h-6 w-6 text-green-300" />
                 <span className="text-white/90 italic">
