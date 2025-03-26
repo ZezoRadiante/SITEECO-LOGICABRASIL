@@ -24,25 +24,13 @@ const Banner = () => {
         </div>
       </div>
       
-      {/* Banner Image Grid - New layout with the new image */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 px-4 md:px-8 lg:px-16 overflow-hidden relative z-10">
-        {/* First image */}
-        <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-700">
-          <img 
-            src="/lovable-uploads/17f4d0f9-7c39-414b-aed2-5773efba9a0a.png" 
-            alt="Criança com capacete branco segurando uma muda" 
-            className="w-full h-auto object-cover"
-          />
-        </div>
-        
-        {/* New uploaded image */}
-        <div className="rounded-lg overflow-hidden shadow-lg transform hover:scale-[1.02] transition-transform duration-700">
-          <img 
-            src="/lovable-uploads/4d6b4d69-c8b0-4435-a100-e840167b347c.png" 
-            alt="Vista aérea de viveiro de mudas com pessoas trabalhando" 
-            className="w-full h-auto object-cover"
-          />
-        </div>
+      {/* Banner Image - Full width below text with subtle shadow */}
+      <div className="w-full overflow-hidden shadow-md relative z-10">
+        <img 
+          src="/lovable-uploads/17f4d0f9-7c39-414b-aed2-5773efba9a0a.png" 
+          alt="Criança com capacete branco segurando uma muda em uma plantação" 
+          className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
+        />
       </div>
       
       {/* Bottom gradient transition - enhanced */}
