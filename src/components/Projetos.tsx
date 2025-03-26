@@ -28,7 +28,7 @@ const CarouselDots = ({
   onClick: (index: number) => void;
 }) => {
   return (
-    <div className="flex justify-center space-x-3 mt-8">
+    <div className="flex justify-center space-x-3 mt-4">
       {Array.from({ length: count }).map((_, index) => (
         <button
           key={index}
@@ -77,20 +77,19 @@ const Projetos = () => {
   }, [emblaApi]);
 
   return (
-    <section id="projetos" className="py-24 overflow-hidden relative bg-gradient-to-b from-eco-50/40 via-eco-100/30 to-eco-200/20">
-      {/* Top gradient transition - enhanced */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/50 to-transparent z-10"></div>
+    <section id="projetos" className="py-12 overflow-hidden relative bg-white">
+      {/* Removed top gradient */}
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <span className="inline-block text-[#71B707] bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in shadow-sm">
+        <div className="text-center mb-8">
+          <span className="inline-block text-[#71B707] bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-2 opacity-0 animate-fade-in shadow-sm">
             Conheça Nosso Trabalho
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0 animate-fade-in-delay-1 text-earth-700 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-2 opacity-0 animate-fade-in-delay-1 text-earth-700 text-center">
             Nossos <span className="text-[#71B707]">Projetos</span>
           </h2>
           
-          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full mb-4"></div>
           
           <p className="max-w-3xl mx-auto text-lg text-earth-600 opacity-0 animate-fade-in-delay-2 leading-relaxed">
             Confira alguns dos nossos projetos de conservação e sustentabilidade implementados em diferentes ecossistemas.
@@ -99,7 +98,7 @@ const Projetos = () => {
       </div>
 
       {/* Full width carousel - Enhanced with better transitions */}
-      <div className="w-full relative overflow-hidden py-12">
+      <div className="w-full relative overflow-hidden py-4">
         <Carousel>
           <div ref={emblaRef} className="overflow-hidden">
             <div className="flex">
@@ -148,7 +147,7 @@ const Projetos = () => {
       </div>
 
       {/* Indicator dots - Improved */}
-      <div className="mt-4">
+      <div className="mt-2">
         <CarouselDots 
           activeIndex={activeIndex} 
           count={forestImages.length} 
@@ -156,8 +155,7 @@ const Projetos = () => {
         />
       </div>
       
-      {/* Bottom gradient transition - Enhanced */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/40 to-transparent"></div>
+      {/* Removed bottom gradient */}
     </section>
   );
 };

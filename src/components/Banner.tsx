@@ -32,13 +32,11 @@ const Banner = () => {
     <section 
       id="banner" 
       ref={bannerRef}
-      className="py-4 md:py-6 bg-white relative overflow-hidden transition-all duration-1000 ease-in-out" /* Changed to white background */
+      className="py-0 bg-white relative overflow-hidden transition-all duration-1000 ease-in-out"
     >
-      {/* Removed top gradient transition since background is now white */}
-      
       <div className="container mx-auto relative z-20">
-        {/* Banner Content - With enhanced animations */}
-        <div className="w-full space-y-2 text-center px-4 md:px-8 mb-0 transform transition-all duration-700 hover:scale-[1.01] animate-on-scroll">
+        {/* Banner Content - With reduced spacing */}
+        <div className="w-full space-y-1 text-center px-4 md:px-8 transform transition-all duration-700 hover:scale-[1.01] animate-on-scroll">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-earth-800 leading-tight">
             Promovendo um <span className="text-[#71B707] italic transition-all duration-500 hover:text-eco-500">Futuro Verde</span> para as Novas Gerações
           </h2>
@@ -53,7 +51,7 @@ const Banner = () => {
         </div>
       </div>
       
-      {/* Banner Image - With enhanced hover effects */}
+      {/* Banner Image - Without any gap */}
       <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50 transition-all duration-1000 ease-in-out animate-on-scroll mt-0">
         <img 
           src="/lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png" 
@@ -66,7 +64,7 @@ const Banner = () => {
       </div>
       
       {/* Changed bottom gradient to match white background */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-10 transition-opacity duration-700"></div>
+      <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent z-10 transition-opacity duration-700"></div>
     </section>
   );
 };
