@@ -24,21 +24,23 @@ export const StatCard: React.FC<StatCardProps> = ({
           <span className="counter-value">
             {digits.length > 0 ? 
               digits.map((digit, idx) => (
-                <span key={idx} className="digit-slot">
+                <span key={idx} className="inline-block relative overflow-hidden h-[1.2em] align-bottom w-[0.6em]">
                   {digit.includes('|') ? 
-                    digit.split('|').map((d, i) => (
-                      <span key={i} className="digit" style={{opacity: i === 1 ? 1 : 0.3}}>
-                        {d}
-                      </span>
-                    )) : 
-                    digit
+                    <span className="absolute animate-carousel">
+                      {digit.split('|').map((d, i) => (
+                        <span key={i} className="digit block h-[1.2em] leading-[1.2em]">
+                          {d}
+                        </span>
+                      ))}
+                    </span> : 
+                    <span className="digit">{digit}</span>
                   }
                 </span>
               )) : 
               new Intl.NumberFormat('pt-BR').format(value)
             }
-            {suffix && <> {suffix}</>}
           </span>
+          {suffix && <span className="ml-2">{suffix}</span>}
         </div>
         <p className="text-earth-600 text-lg md:text-xl text-center" dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
       </div>

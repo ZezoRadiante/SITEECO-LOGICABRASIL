@@ -20,20 +20,20 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
     }
     
     let startTimestamp: number | null = null;
-    const startValue = 0; // Always start from zero for slot machine effect
+    const startValue = 0; // Always start from zero for carousel effect
     
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const elapsed = timestamp - startTimestamp;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Use easeOutExpo for a nice slot machine effect
+      // Use easeOutExpo for a nice carousel effect
       const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
       const nextValue = Math.floor(startValue + easeProgress * (end - startValue));
       
       setCount(nextValue);
       
-      // Generate the slot machine effect with digits
+      // Generate the carousel effect with digits
       if (end > 0) {
         const currentDigits = nextValue.toString().split('');
         const endDigits = end.toString().split('');
@@ -44,21 +44,26 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
         }
         
         // Create digit carousel for each position
-        const slotDigits = currentDigits.map((digit, index) => {
+        const carouselDigits = currentDigits.map((digit, index) => {
           // For complete animation, just return the digit
           if (progress === 1) {
             return digit;
           }
           
-          // For slot machine effect, create a small window of visible digits
-          const currentDigitValue = parseInt(digit);
-          const prevDigit = (currentDigitValue === 0) ? '9' : (currentDigitValue - 1).toString();
-          const nextDigit = (currentDigitValue === 9) ? '0' : (currentDigitValue + 1).toString();
+          // For carousel effect, create a sequence of 5 digits for animation
+          const digitValue = parseInt(digit);
+          let sequence = [];
           
-          return `${prevDigit}|${digit}|${nextDigit}`;
+          // Create a sequence with 5 numbers leading up to the current digit
+          for (let i = -4; i <= 0; i++) {
+            const val = (digitValue + i + 10) % 10; // Ensure we get positive values
+            sequence.push(val.toString());
+          }
+          
+          return sequence.join('|');
         });
         
-        setDigits(slotDigits);
+        setDigits(carouselDigits);
       }
       
       if (progress < 1) {

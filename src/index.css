@@ -218,11 +218,10 @@ html {
   to { transform: scale(1); opacity: 1; }
 }
 
-@keyframes slot-machine {
-  0% { transform: translateY(100%); opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { transform: translateY(-100%); opacity: 0; }
+@keyframes carousel {
+  0% { transform: translateY(80%); }
+  80% { transform: translateY(0%); }
+  100% { transform: translateY(0%); }
 }
 
 /* Stats card specific animations */
@@ -237,8 +236,7 @@ html {
 .counter-value {
   font-variant-numeric: tabular-nums;
   position: relative;
-  overflow: hidden;
-  display: inline-block;
+  display: inline-flex;
 }
 
 /* Animation classes */
@@ -254,22 +252,15 @@ html {
   animation: grow 0.5s ease-out forwards;
 }
 
-/* Slot machine digit styling */
+.animate-carousel {
+  animation: carousel 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Digit styling */
 .digit-slot {
   display: inline-block;
   position: relative;
   overflow: hidden;
-  height: 1.2em;
-  line-height: 1;
-}
-
-.digit-carousel {
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.digit {
   height: 1.2em;
   line-height: 1.2;
 }
