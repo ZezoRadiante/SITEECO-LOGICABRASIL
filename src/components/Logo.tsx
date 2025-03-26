@@ -7,6 +7,6 @@ const Logo = ({
   className?: string;
   size?: number;
 }) => {
-  return <img src={LogoSvg} width={size} height={size} alt="Eco-logica Brasil" className="h-[100px] w-[300px]" />;
+  return <img src={LogoSvg} width={size} height={size} alt="Eco-logica Brasil" className="h-[100px] w-[100px]" />;
 };
 export default Logo;
