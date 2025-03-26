@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import useEmblaCarousel from 'embla-carousel-react';
 
 interface ServiceCardProps {
   title: string;
@@ -67,6 +68,8 @@ const CarouselDots = ({
 
 const Services = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const [emblaRef, emblaApi] = useEmblaCarousel();
+
   const services = [
     {
       title: "Consultoria Ambiental",
@@ -85,9 +88,27 @@ const Services = () => {
     }
   ];
 
-  const handleCarouselChange = React.useCallback((index: number) => {
-    setActiveIndex(index);
-  }, []);
+  // Update active index when the carousel scrolls
+  React.useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setActiveIndex(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on('select', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi]);
+
+  // Function to handle dot click and scroll to respective slide
+  const scrollTo = React.useCallback((index: number) => {
+    if (emblaApi) {
+      emblaApi.scrollTo(index);
+      setActiveIndex(index);
+    }
+  }, [emblaApi]);
 
   return (
     <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-background via-sky-50/30 to-background">
@@ -120,39 +141,30 @@ const Services = () => {
 
         {/* Mobile view - carousel */}
         <div className="md:hidden">
-          <Carousel 
-            className="w-full"
-            onSelect={(api) => {
-              if (api) {
-                handleCarouselChange(api.selectedScrollSnap());
-              }
-            }}
-          >
-            <CarouselContent>
-              {services.map((service, index) => (
-                <CarouselItem key={service.title}>
-                  <div className="p-1">
-                    <ServiceCard 
-                      title={service.title} 
-                      description={service.description} 
-                      icon={service.icon} 
-                      index={index} 
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-0" />
-            <CarouselNext className="right-0" />
-          </Carousel>
+          <div className="overflow-hidden" ref={emblaRef}>
+            <Carousel>
+              <CarouselContent>
+                {services.map((service, index) => (
+                  <CarouselItem key={service.title}>
+                    <div className="p-1">
+                      <ServiceCard 
+                        title={service.title} 
+                        description={service.description} 
+                        icon={service.icon} 
+                        index={index} 
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-0" />
+              <CarouselNext className="right-0" />
+            </Carousel>
+          </div>
           <CarouselDots 
             activeIndex={activeIndex} 
             count={services.length} 
-            onClick={(index) => {
-              // This would need to be connected to the carousel API to work
-              // For now it just updates the visual state
-              setActiveIndex(index);
-            }} 
+            onClick={scrollTo} 
           />
         </div>
       </div>
