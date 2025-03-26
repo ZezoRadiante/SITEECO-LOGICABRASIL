@@ -11,11 +11,13 @@ import {
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-const forestImages = [
-  '/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png',
-  '/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg',
-  '/lovable-uploads/b2251703-230b-4fb3-adfd-7249f11d3483.jpg',
-  '/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png',
+// Updated array with all the new project images
+const projectImages = [
+  '/lovable-uploads/db5ebf76-3193-4c5f-ab32-2a690c3cd81a.png', // Casa dos Ventos
+  '/lovable-uploads/8f5f563d-38c4-4b3c-9e59-0e251ed4a68a.png', // Rio do Vento
+  '/lovable-uploads/70989846-1815-480c-a4a0-96b303e06c30.png', // Umari
+  '/lovable-uploads/1283220f-1c35-4ffb-b19b-8e1836a1abbc.png', // Viveiro Florestal
+  '/lovable-uploads/9a834a35-468a-4f25-8f39-df5b938fe6d2.png', // Additional Rio do Vento image
 ];
 
 const CarouselDots = ({ 
@@ -102,9 +104,9 @@ const Projetos = () => {
         <Carousel>
           <div ref={emblaRef} className="overflow-hidden">
             <div className="flex">
-              {forestImages.map((image, index) => {
+              {projectImages.map((image, index) => {
                 // Calculate the distance from active index (handling loop)
-                const count = forestImages.length;
+                const count = projectImages.length;
                 let distance = Math.abs(index - activeIndex);
                 if (distance > count / 2) {
                   distance = count - distance;
@@ -150,7 +152,7 @@ const Projetos = () => {
       <div className="mt-2">
         <CarouselDots 
           activeIndex={activeIndex} 
-          count={forestImages.length} 
+          count={projectImages.length} 
           onClick={scrollTo} 
         />
       </div>
