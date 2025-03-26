@@ -1,23 +1,12 @@
-
 import React from 'react';
 import LogoSvg from '../assets/logo.svg';
-
 const Logo = ({
   className = "",
-  size = 32
+  size = 24
 }: {
   className?: string;
   size?: number;
 }) => {
-  return (
-    <img 
-      src={LogoSvg} 
-      width={size * 3} 
-      height={size} 
-      alt="Eco-logica Brasil" 
-      className={`h-[${size}px] w-auto object-contain ${className}`} 
-    />
-  );
+  return <img src={LogoSvg} width={size} height={size} alt="Eco-logica Brasil" className="h-[60px] w-[100px] object-contain" />;
 };
-
 export default Logo;
