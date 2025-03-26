@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: 140 33% 97%;
+    --background: 0 0% 100%; /* Changed to pure white */
     --foreground: 120 4% 15%;
 
     --card: 0 0% 100%;
@@ -45,8 +45,8 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Enhanced gradient background */
-    --main-gradient: linear-gradient(135deg, #ffffff 0%, #E2FCB3 100%);
+    /* Changed to pure white background */
+    --main-gradient: #ffffff;
   }
 
   .dark {
@@ -86,11 +86,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-white text-foreground; /* Changed to white background */
     font-family: 'Open Sans', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
-    background: var(--main-gradient);
+    background: var(--main-gradient); /* Now using solid white */
     background-attachment: fixed;
     min-height: 100vh;
     scroll-behavior: smooth;

@@ -41,11 +41,11 @@ const About: React.FC = () => {
         backgroundPosition: 'center',
       }}
     >
-      {/* Enhanced overlay with smoother blur effect and transition */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/70 backdrop-blur-[2px] z-0 transition-all duration-1000 hover:backdrop-blur-[3px]"></div>
+      {/* Modified overlay to have white background */}
+      <div className="absolute inset-0 bg-white/90 backdrop-blur-[2px] z-0 transition-all duration-1000 hover:backdrop-blur-[3px]"></div>
       
-      {/* Enhanced top gradient transition */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/60 to-transparent z-10 transition-opacity duration-700"></div>
+      {/* Changed top gradient to match white background */}
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white to-transparent z-10 transition-opacity duration-700"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="text-center mb-12 transform transition-all duration-700 hover:scale-[1.01] animate-on-scroll">
@@ -69,8 +69,8 @@ const About: React.FC = () => {
         </div>
       </div>
       
-      {/* Enhanced bottom gradient transition */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/50 to-transparent z-10 transition-opacity duration-700"></div>
+      {/* Changed bottom gradient to match white background */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent z-10 transition-opacity duration-700"></div>
     </div>
   );
 };
