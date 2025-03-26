@@ -8,7 +8,7 @@ const About: React.FC = () => {
     <div id="about" className="py-24 relative overflow-hidden">
       {/* Background image with gradient overlay */}
       <div 
-        className="absolute inset-0 z-0" 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat" 
         style={{
           backgroundImage: `linear-gradient(to bottom, 
             rgba(255, 255, 255, 1) 0%, 
@@ -18,9 +18,6 @@ const About: React.FC = () => {
             rgba(255, 255, 255, 0.85) 80%,
             rgba(255, 255, 255, 0.95) 100%),
             url('/lovable-uploads/faef3529-0523-4e9d-a1d2-ac8a9092378e.png')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
           opacity: 0.9
         }}
       />
