@@ -9,11 +9,11 @@ const About: React.FC = () => {
       id="about" 
       className="py-24 relative bg-cover bg-center bg-no-repeat min-h-[600px]"
       style={{
-        backgroundImage: `url('/lovable-uploads/1d078a3f-e9c5-42fc-9c75-5fbe78d30b86.png')`,
+        backgroundImage: `url('/lovable-uploads/c3a3f3f2-fb67-40c4-ace1-e5f3cbb61cbf.png')`,
       }}
     >
-      {/* Overlay completo para melhorar legibilidade do conteúdo */}
-      <div className="absolute inset-0 bg-white/90 z-0"></div>
+      {/* Overlay com opacidade reduzida para permitir melhor visualização da imagem */}
+      <div className="absolute inset-0 bg-white/80 z-0"></div>
       
       {/* Top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-eco-100/40 to-transparent z-10"></div>
