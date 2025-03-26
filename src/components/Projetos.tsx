@@ -11,11 +11,31 @@ import {
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-const projectImages = [
-  '/images/projeto1.jpg',
-  '/images/projeto2.jpg',
-  '/images/projeto3.jpg',
-  '/images/projeto4.jpg',
+const projects = [
+  {
+    id: 1,
+    image: '/images/projeto1.jpg',
+    title: 'Viveiro Florestal',
+    description: 'Capacidade Para 500 Mil Mudas',
+  },
+  {
+    id: 2,
+    image: '/images/projeto2.jpg',
+    title: 'Casa dos Ventos',
+    description: 'Projeto de Reposição Florestal Torres Anemométricas - 6.240 Mudas Plantadas',
+  },
+  {
+    id: 3,
+    image: '/images/projeto3.jpg',
+    title: 'Rio do Vento',
+    description: 'Projeto de Reposição Florestal - 174.764 Mudas Plantadas',
+  },
+  {
+    id: 4,
+    image: '/images/projeto4.jpg',
+    title: 'Umari',
+    description: 'Projeto de Reposição Florestal - 17.652 Mudas Plantadas',
+  },
 ];
 
 const CarouselDots = ({ 
@@ -97,16 +117,18 @@ const Projetos = () => {
         <div className="max-w-7xl mx-auto px-4">
           <Carousel ref={emblaRef} className="w-full">
             <CarouselContent>
-              {projectImages.map((image, index) => (
+              {projects.map((project, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <div className="overflow-hidden rounded-lg border-2 border-eco-200 h-64 md:h-80 shadow-md bg-gray-100 flex items-center justify-center">
-                      <div className="relative w-full h-full">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <p className="text-earth-600 text-sm bg-white/80 p-2 rounded">
-                            Imagem {index + 1} a ser adicionada em: {image}
-                          </p>
-                        </div>
+                    <div className="overflow-hidden rounded-lg border-2 border-eco-200 h-64 md:h-80 shadow-md bg-gray-100 flex items-center justify-center group relative">
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-transparent p-6 flex flex-col justify-end">
+                        <h3 className="text-white text-2xl font-bold mb-1">{project.title}</h3>
+                        <p className="text-eco-100 text-sm">{project.description}</p>
                       </div>
                     </div>
                   </div>
@@ -122,7 +144,7 @@ const Projetos = () => {
       <div className="mt-4">
         <CarouselDots 
           activeIndex={activeIndex} 
-          count={projectImages.length} 
+          count={projects.length} 
           onClick={scrollTo} 
         />
       </div>
