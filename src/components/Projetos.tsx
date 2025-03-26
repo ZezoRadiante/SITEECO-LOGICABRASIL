@@ -28,14 +28,16 @@ const CarouselDots = ({
   onClick: (index: number) => void;
 }) => {
   return (
-    <div className="flex justify-center space-x-2 mt-6">
+    <div className="flex justify-center space-x-3 mt-8">
       {Array.from({ length: count }).map((_, index) => (
         <button
           key={index}
           onClick={() => onClick(index)}
           className={cn(
-            "w-3 h-3 rounded-full transition-all duration-300",
-            index === activeIndex ? "bg-[#71B707]" : "bg-eco-200"
+            "transition-all duration-300",
+            index === activeIndex 
+              ? "w-8 h-3 bg-[#71B707] rounded-full" 
+              : "w-3 h-3 bg-eco-200 rounded-full"
           )}
           aria-label={`Go to slide ${index + 1}`}
         />
@@ -75,25 +77,28 @@ const Projetos = () => {
   }, [emblaApi]);
 
   return (
-    <section id="projetos" className="py-24 overflow-hidden relative eco-gradient-light">
-      {/* Top gradient transition */}
-      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-earth-100/50 to-transparent z-10"></div>
+    <section id="projetos" className="py-24 overflow-hidden relative bg-gradient-to-b from-eco-50/40 via-eco-100/30 to-eco-200/20">
+      {/* Top gradient transition - enhanced */}
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/50 to-transparent z-10"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <span className="inline-block text-[#71B707] bg-eco-100 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in">
+          <span className="inline-block text-[#71B707] bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in shadow-sm">
             Conheça Nosso Trabalho
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-delay-1 text-earth-700 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0 animate-fade-in-delay-1 text-earth-700 text-center">
             Nossos <span className="text-[#71B707]">Projetos</span>
           </h2>
-          <p className="max-w-3xl mx-auto text-lg text-earth-600 opacity-0 animate-fade-in-delay-2">
+          
+          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full mb-6"></div>
+          
+          <p className="max-w-3xl mx-auto text-lg text-earth-600 opacity-0 animate-fade-in-delay-2 leading-relaxed">
             Confira alguns dos nossos projetos de conservação e sustentabilidade implementados em diferentes ecossistemas.
           </p>
         </div>
       </div>
 
-      {/* Full width carousel */}
+      {/* Full width carousel - Enhanced with better transitions */}
       <div className="w-full relative overflow-hidden py-12">
         <Carousel>
           <div ref={emblaRef} className="overflow-hidden">
@@ -110,7 +115,7 @@ const Projetos = () => {
                   <div 
                     key={index} 
                     className={cn(
-                      "min-w-0 shrink-0 grow-0 basis-[75%] sm:basis-[45%] md:basis-[33.333%] lg:basis-[25%] px-2 transition-all duration-500",
+                      "min-w-0 shrink-0 grow-0 basis-[75%] sm:basis-[45%] md:basis-[33.333%] lg:basis-[25%] px-3 transition-all duration-700",
                       distance === 0 
                         ? "scale-110 z-20 opacity-100" 
                         : distance === 1 
@@ -127,7 +132,7 @@ const Projetos = () => {
                       <img 
                         src={image} 
                         alt={`Projeto de conservação ${index + 1}`} 
-                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                       />
                     </div>
                   </div>
@@ -136,13 +141,13 @@ const Projetos = () => {
             </div>
           </div>
 
-          {/* Navigation arrows */}
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/80 hover:bg-eco-200/80 border-eco-300" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/80 hover:bg-eco-200/80 border-eco-300" />
+          {/* Navigation arrows - Improved */}
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
         </Carousel>
       </div>
 
-      {/* Indicator dots */}
+      {/* Indicator dots - Improved */}
       <div className="mt-4">
         <CarouselDots 
           activeIndex={activeIndex} 
@@ -151,8 +156,8 @@ const Projetos = () => {
         />
       </div>
       
-      {/* Bottom gradient transition */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-eco-200/40 to-transparent"></div>
+      {/* Bottom gradient transition - Enhanced */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/40 to-transparent"></div>
     </section>
   );
 };

@@ -14,34 +14,36 @@ const About: React.FC = () => {
         backgroundPosition: 'center',
       }}
     >
-      {/* Reduzindo a opacidade do overlay para ver melhor a imagem */}
-      <div className="absolute inset-0 bg-white/60 z-0"></div>
+      {/* Enhanced overlay with better transparency */}
+      <div className="absolute inset-0 bg-white/65 backdrop-blur-[2px] z-0"></div>
       
-      {/* Top gradient transition */}
-      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-eco-100/40 to-transparent z-10"></div>
+      {/* Top gradient transition - enhanced */}
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/60 to-transparent z-10"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        <div className="text-center mb-10">
-          <span className="inline-block text-sky-700 px-3 py-1 text-sm font-medium mb-2 opacity-0 animate-fade-in">
+        <div className="text-center mb-12">
+          <span className="inline-block text-sky-700 bg-sky-50/70 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-3 opacity-0 animate-fade-in shadow-sm">
             Nossa História
           </span>
           
-          <h2 className="text-3xl md:text-4xl font-bold text-earth-800 opacity-0 animate-fade-in-delay-1">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-earth-800 opacity-0 animate-fade-in-delay-1 mb-4">
             Sobre a <span className="text-sky-700">Eco-lógica Brasil</span>
           </h2>
+          
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-700 to-eco-400 mx-auto rounded-full"></div>
         </div>
 
         {/* Content first */}
         <AboutContent />
             
         {/* Stats grid with slot machine animation */}
-        <div className="mt-12">
+        <div className="mt-16">
           <StatsGrid />
         </div>
       </div>
       
-      {/* Bottom gradient transition */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/30 to-transparent z-10"></div>
+      {/* Bottom gradient transition - enhanced */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/50 to-transparent z-10"></div>
     </div>
   );
 };

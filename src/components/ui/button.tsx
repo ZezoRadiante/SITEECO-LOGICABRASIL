@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 transition-all duration-300",
   {
     variants: {
       variant: {
@@ -19,14 +19,14 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        eco: "bg-gradient-to-r from-eco-400 to-eco-300 text-earth-800 hover:from-eco-300 hover:to-eco-200",
-        earth: "bg-gradient-to-r from-earth-600 to-earth-500 text-eco-50 hover:from-earth-500 hover:to-earth-400",
-        green: "bg-[#71B707] text-white hover:bg-[#E2FCB3] hover:text-earth-800 active:bg-[#E2FCB3] active:text-earth-800",
+        eco: "bg-gradient-to-r from-eco-400 to-eco-300 text-earth-800 hover:from-eco-300 hover:to-eco-200 shadow-md hover:shadow-lg transform hover:-translate-y-1",
+        earth: "bg-gradient-to-r from-earth-600 to-earth-500 text-eco-50 hover:from-earth-500 hover:to-earth-400 shadow-md hover:shadow-lg transform hover:-translate-y-1",
+        green: "bg-[#71B707] text-white hover:bg-[#E2FCB3] hover:text-earth-800 active:bg-[#E2FCB3] active:text-earth-800 shadow-md hover:shadow-lg transform hover:-translate-y-1",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
+        default: "h-10 px-5 py-2",
+        sm: "h-9 rounded-md px-4",
+        lg: "h-12 rounded-md px-8 text-base",
         icon: "h-10 w-10",
       },
     },
