@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { useCountAnimation } from '@/hooks/useCountAnimation';
 import { useInView } from 'react-intersection-observer';
 
-const About = () => {
+const About: React.FC = () => {
   const { ref: inViewRef, inView } = useInView({
     threshold: 0.3,
     triggerOnce: true,
@@ -139,20 +139,21 @@ const About = () => {
               <div className="text-earth-700 text-4xl md:text-5xl font-bold mb-4 flex items-center">
                 <span className="text-eco-800">+</span>
                 <span className="counter-value">
-                  {anosDigits.length > 0 ? 
-                    anosDigits.map((digit, idx) => (
+                  {anosDigits.length > 0 
+                    ? anosDigits.map((digit, idx) => (
                       <span key={idx} className="digit-slot">
-                        {digit.includes('|') ? 
-                          digit.split('|').map((d, i) => (
+                        {digit.includes('|') 
+                          ? digit.split('|').map((d, i) => (
                             <span key={i} className="digit" style={{opacity: i === 1 ? 1 : 0.3}}>
                               {d}
                             </span>
-                          )) : 
-                          digit
+                          )) 
+                          : digit
                         }
                       </span>
                     ))
-                  } ANOS
+                    : anosCount}{' '}
+                  ANOS
                 </span>
               </div>
               <p className="text-earth-600 text-lg md:text-xl text-center">
