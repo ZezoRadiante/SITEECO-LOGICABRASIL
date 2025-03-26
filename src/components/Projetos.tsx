@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import {
@@ -11,10 +12,10 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
 const projectImages = [
-  '/lovable-uploads/dafeb1fc-267f-4881-9885-0c9fde0b64ef.png',
-  '/lovable-uploads/a410349e-b006-48ec-bcf4-ca8887c95e8d.png',
-  '/lovable-uploads/20688ebc-cc04-42a6-bfd2-becb99256cce.png',
   '/lovable-uploads/01566cac-c3d4-42af-87c7-693a6a9ef07d.png',
+  '/lovable-uploads/20688ebc-cc04-42a6-bfd2-becb99256cce.png',
+  '/lovable-uploads/a410349e-b006-48ec-bcf4-ca8887c95e8d.png',
+  '/lovable-uploads/dafeb1fc-267f-4881-9885-0c9fde0b64ef.png',
 ];
 
 const CarouselDots = ({ 
@@ -87,7 +88,7 @@ const Projetos = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full mb-4"></div>
           
           <p className="max-w-3xl mx-auto text-lg text-earth-600 opacity-0 animate-fade-in-delay-2 leading-relaxed">
-            Confira alguns dos nossos projetos de conserva��ão e sustentabilidade implementados em diferentes ecossistemas.
+            Confira alguns dos nossos projetos de conservação e sustentabilidade implementados em diferentes ecossistemas.
           </p>
         </div>
       </div>
