@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, Linkedin, Instagram, Youtube, Map, Phone } from 'lucide-react';
+import { MapPin, Linkedin, Instagram, Youtube, Map, MessageCircle } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 
@@ -114,15 +114,15 @@ const Location = ({ state, address, city, phone, mapUrl, whatsappUrl }: {
         rel="noopener noreferrer" 
         className="text-earth-600 text-sm hover:text-[#71B707] transition-colors flex items-center group"
       >
-        <span>{address}</span>
-        <Map className="ml-1 w-3 h-3 opacity-60 group-hover:opacity-100" />
+        <span className="mr-2 hover:underline">{address}</span>
+        <Map className="w-4 h-4 opacity-60 group-hover:opacity-100 text-[#71B707]" />
       </a>
       {city && (
         <a 
           href={mapUrl} 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="text-earth-600 text-sm hover:text-[#71B707] transition-colors block"
+          className="text-earth-600 text-sm hover:text-[#71B707] transition-colors block mb-1"
         >
           {city}
         </a>
@@ -133,8 +133,8 @@ const Location = ({ state, address, city, phone, mapUrl, whatsappUrl }: {
         rel="noopener noreferrer" 
         className="text-earth-600 text-sm hover:text-[#71B707] transition-colors flex items-center group"
       >
-        <span>{phone}</span>
-        <Phone className="ml-1 w-3 h-3 opacity-60 group-hover:opacity-100" />
+        <MessageCircle className="w-5 h-5 mr-2 text-[#71B707] hover:text-green-600" />
+        <span className="hover:underline">Falar no WhatsApp</span>
       </a>
     </div>
   );
