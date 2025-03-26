@@ -1,14 +1,10 @@
-
 import React from 'react';
 import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import Logo from './Logo';
 import { Button } from './ui/button';
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
-  return (
-    <footer className="bg-earth-900 text-earth-100 relative">
+  return <footer className="bg-earth-900 text-earth-100 relative">
       {/* Top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-white to-transparent z-10"></div>
       
@@ -29,10 +25,7 @@ const Footer = () => {
                 mais sustentável
               </h2>
               
-              <Button variant="outline" className="mt-4 border-2 border-eco-700 text-eco-300 rounded-full uppercase text-sm font-semibold px-6 py-2 hover:bg-eco-700 hover:text-white group transition-all duration-500">
-                Conheça mais sobre nós
-                <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              
             </div>
           </div>
           
@@ -47,23 +40,11 @@ const Footer = () => {
               {/* Pernambuco */}
               <div className="p-3 rounded-lg hover:bg-earth-800/60 transition-colors duration-300">
                 <h4 className="font-semibold text-earth-300 font-playfair">Pernambuco</h4>
-                <a 
-                  href="https://maps.google.com/?q=Rua+Ana+Granja+Arraes,+03,+Santo+Expedito,+Araripina+-+PE" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="block hover:text-eco-300 transition-colors group" 
-                  title="Ver no Google Maps"
-                >
+                <a href="https://maps.google.com/?q=Rua+Ana+Granja+Arraes,+03,+Santo+Expedito,+Araripina+-+PE" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-300 transition-colors group" title="Ver no Google Maps">
                   <p className="text-sm group-hover:underline text-earth-400">Rua Ana Granja Arraes, 03</p>
                   <p className="text-sm group-hover:underline text-earth-400">Santo Expedito, Araripina - PE</p>
                 </a>
-                <a 
-                  href="https://wa.me/5581998874687" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" 
-                  title="Conversar pelo WhatsApp"
-                >
+                <a href="https://wa.me/5581998874687" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" title="Conversar pelo WhatsApp">
                   <Phone size={14} className="text-eco-500" />
                   (81) 998874-4687
                 </a>
@@ -72,23 +53,11 @@ const Footer = () => {
               {/* Ceará */}
               <div className="p-3 rounded-lg hover:bg-earth-800/60 transition-colors duration-300">
                 <h4 className="font-semibold text-earth-300 font-playfair">Ceará</h4>
-                <a 
-                  href="https://maps.google.com/?q=Rua+Maria+Balbino+da+Conceição,+503,+Jardim+-+CE" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="block hover:text-eco-300 transition-colors group" 
-                  title="Ver no Google Maps"
-                >
+                <a href="https://maps.google.com/?q=Rua+Maria+Balbino+da+Conceição,+503,+Jardim+-+CE" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-300 transition-colors group" title="Ver no Google Maps">
                   <p className="text-sm group-hover:underline text-earth-400">Rua Maria Balbino da Conceição,</p>
                   <p className="text-sm group-hover:underline text-earth-400">503, Jardim - CE</p>
                 </a>
-                <a 
-                  href="https://wa.me/5588981238818" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" 
-                  title="Conversar pelo WhatsApp"
-                >
+                <a href="https://wa.me/5588981238818" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" title="Conversar pelo WhatsApp">
                   <Phone size={14} className="text-eco-500" />
                   (88) 9 8123-8818
                 </a>
@@ -97,23 +66,11 @@ const Footer = () => {
               {/* Rio Grande do Norte */}
               <div className="p-3 rounded-lg hover:bg-earth-800/60 transition-colors duration-300">
                 <h4 className="font-semibold text-earth-300 font-playfair">Rio Grande do Norte</h4>
-                <a 
-                  href="https://maps.google.com/?q=Av.+Olavo+Lacerda+Montenegro,+2835,+Central+Park+II,+Parnamirim+-+RN" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="block hover:text-eco-300 transition-colors group" 
-                  title="Ver no Google Maps"
-                >
+                <a href="https://maps.google.com/?q=Av.+Olavo+Lacerda+Montenegro,+2835,+Central+Park+II,+Parnamirim+-+RN" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-300 transition-colors group" title="Ver no Google Maps">
                   <p className="text-sm group-hover:underline text-earth-400">Av. Olavo Lacerda Montenegro, 2835,</p>
                   <p className="text-sm group-hover:underline text-earth-400">Central Park II, Parnamirim - RN</p>
                 </a>
-                <a 
-                  href="https://wa.me/5584988147400" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" 
-                  title="Conversar pelo WhatsApp"
-                >
+                <a href="https://wa.me/5584988147400" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" title="Conversar pelo WhatsApp">
                   <Phone size={14} className="text-eco-500" />
                   (84) 9 8814-7400
                 </a>
@@ -130,28 +87,13 @@ const Footer = () => {
               </h3>
               
               <div className="flex gap-4">
-                <a 
-                  href="https://www.linkedin.com/company/eco-l%C3%B3gica-brasil-ltda-eco-l%C3%B3gica-tem-uma-conta" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-eco-500 hover:text-eco-300 bg-earth-800/50 hover:bg-earth-700 p-2 rounded-full transition-all duration-300"
-                >
+                <a href="https://www.linkedin.com/company/eco-l%C3%B3gica-brasil-ltda-eco-l%C3%B3gica-tem-uma-conta" target="_blank" rel="noopener noreferrer" className="text-eco-500 hover:text-eco-300 bg-earth-800/50 hover:bg-earth-700 p-2 rounded-full transition-all duration-300">
                   <Linkedin size={20} />
                 </a>
-                <a 
-                  href="https://www.instagram.com/brasilecologica/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-eco-500 hover:text-eco-300 bg-earth-800/50 hover:bg-earth-700 p-2 rounded-full transition-all duration-300"
-                >
+                <a href="https://www.instagram.com/brasilecologica/" target="_blank" rel="noopener noreferrer" className="text-eco-500 hover:text-eco-300 bg-earth-800/50 hover:bg-earth-700 p-2 rounded-full transition-all duration-300">
                   <Instagram size={20} />
                 </a>
-                <a 
-                  href="#" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-eco-500 hover:text-eco-300 bg-earth-800/50 hover:bg-earth-700 p-2 rounded-full transition-all duration-300"
-                >
+                <a href="#" target="_blank" rel="noopener noreferrer" className="text-eco-500 hover:text-eco-300 bg-earth-800/50 hover:bg-earth-700 p-2 rounded-full transition-all duration-300">
                   <Youtube size={20} />
                 </a>
               </div>
@@ -192,8 +134,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
