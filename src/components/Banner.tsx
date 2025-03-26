@@ -5,11 +5,11 @@ import { ArrowRight } from 'lucide-react';
 
 const Banner = () => {
   return (
-    <section id="banner" className="py-12 md:py-16 bg-white relative overflow-hidden">
+    <section id="banner" className="py-12 md:py-16 bg-gradient-to-b from-white to-eco-50 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
-          {/* Banner Image with rounded corners */}
-          <div className="w-full lg:w-3/5 rounded-3xl overflow-hidden border-4 border-[#71B707] shadow-xl">
+          {/* Banner Image - Simplified without border */}
+          <div className="w-full lg:w-1/2 rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-[1.02]">
             <img 
               src="/lovable-uploads/17f4d0f9-7c39-414b-aed2-5773efba9a0a.png" 
               alt="Criança com capacete branco segurando uma muda em uma plantação" 
@@ -17,8 +17,8 @@ const Banner = () => {
             />
           </div>
           
-          {/* Banner Content */}
-          <div className="w-full lg:w-2/5 space-y-6 text-center lg:text-left">
+          {/* Banner Content - Simplified */}
+          <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-earth-800">
               Promovendo um <span className="text-[#71B707]">Futuro Verde</span> para as Novas Gerações
             </h2>
@@ -45,9 +45,8 @@ const Banner = () => {
         </div>
       </div>
       
-      {/* Decorative Background Elements */}
-      <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-eco-100 rounded-full opacity-50"></div>
-      <div className="absolute top-20 -right-20 w-60 h-60 bg-eco-200 rounded-full opacity-30"></div>
+      {/* Subtle Decorative Elements */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-eco-100/20 to-transparent"></div>
     </section>
   );
 };
