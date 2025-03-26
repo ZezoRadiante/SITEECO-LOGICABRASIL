@@ -9,14 +9,13 @@ const About: React.FC = () => {
       id="about" 
       className="py-24 relative bg-cover bg-center bg-no-repeat min-h-[600px]"
       style={{
-        backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), url('/lovable-uploads/310b9220-0a09-4732-a2b9-034f7a6173ae.png')`,
+        backgroundImage: `url('/lovable-uploads/c3a3f3f2-fb67-40c4-ace1-e5f3cbb61cbf.png')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
       }}
     >
       {/* Enhanced overlay with better transparency */}
-      <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] z-0"></div>
+      <div className="absolute inset-0 bg-white/70 backdrop-blur-[1px] z-0"></div>
       
       {/* Top gradient transition - enhanced */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/60 to-transparent z-10"></div>
