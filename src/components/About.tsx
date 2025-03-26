@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
 import { useCountAnimation } from '@/hooks/useCountAnimation';
@@ -7,7 +6,6 @@ const About = () => {
   const statisticsRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   
-  // Pre-calculate animated values for each statistic
   const firstStat = useCountAnimation(isVisible ? 1000000 : 0, 2000);
   const secondStat = useCountAnimation(isVisible ? 100000 : 0, 2000);
   const thirdStat = useCountAnimation(isVisible ? 300 : 0, 1500);
@@ -55,13 +53,11 @@ const About = () => {
 
   return (
     <section id="about" className="py-24 relative overflow-hidden">
-      {/* Background with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full bg-gradient-to-b from-eco-800 via-eco-700 to-eco-600"></div>
         <div className="absolute inset-0 bg-[url('/lovable-uploads/bb178d77-ee49-49d9-9ada-f4656c233e12.png')] opacity-15 bg-cover bg-center mix-blend-overlay"></div>
       </div>
 
-      {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent z-10"></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
@@ -124,7 +120,6 @@ const About = () => {
                         <span>{stat.prefix}</span>
                         <div className="flex overflow-hidden h-10">
                           {animatedValues[index].digits.map((digitData, digitIndex) => {
-                            // For the finished animation, just show the number
                             if (!digitData.includes('|')) {
                               return (
                                 <span key={digitIndex} className="tabular-nums">
@@ -133,7 +128,6 @@ const About = () => {
                               );
                             }
                             
-                            // For the carousel effect, show the scrolling digits
                             const [prev, current, next] = digitData.split('|');
                             
                             return (
@@ -159,7 +153,6 @@ const About = () => {
               ))}
             </div>
             
-            {/* Nature-themed decorative element */}
             <div className="mt-12 p-6 backdrop-blur-sm rounded-lg opacity-0 stat-item">
               <div className="flex items-center justify-center space-x-4">
                 <CheckCircle2 className="h-6 w-6 text-green-300" />

@@ -86,3 +86,4 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
 
   return { count, digits };
 };
+
