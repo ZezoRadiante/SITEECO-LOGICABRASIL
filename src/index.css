@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 @layer base {
   :root {
@@ -87,7 +87,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
     background: var(--main-gradient);
@@ -96,7 +96,8 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
   }
 
   section {
@@ -145,7 +146,6 @@
 }
 
 @layer utilities {
-  /* Enhanced gradient utilities */
   .eco-gradient-light {
     @apply bg-gradient-to-br from-white via-eco-50 to-eco-100;
   }
@@ -171,12 +171,10 @@
   }
 }
 
-/* Smooth scrolling behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -194,7 +192,6 @@ html {
   background: rgba(113, 183, 7, 0.7);
 }
 
-/* Enhanced Animation Keyframes */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -224,7 +221,6 @@ html {
   100% { transform: translateY(0%); }
 }
 
-/* Stats card specific animations */
 .stats-card {
   transition: all 0.3s ease;
 }
@@ -239,7 +235,6 @@ html {
   display: inline-flex;
 }
 
-/* Animation classes */
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
@@ -256,7 +251,6 @@ html {
   animation: carousel 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Digit styling */
 .digit-slot {
   display: inline-block;
   position: relative;

@@ -16,7 +16,7 @@ const Banner = () => {
           
           <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full my-4"></div>
           
-          <p className="text-lg text-earth-600 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg text-earth-600 leading-relaxed max-w-3xl mx-auto font-normal">
             Através de nossas iniciativas de educação ambiental e reflorestamento, 
             inspiramos crianças a se tornarem guardiões da natureza, criando um 
             impacto positivo que atravessa gerações.
