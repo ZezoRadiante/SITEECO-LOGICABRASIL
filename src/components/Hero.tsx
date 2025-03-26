@@ -1,19 +1,22 @@
-
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from '@/components/ui/button';
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image - Full width and height */}
+  const isMobile = useIsMobile();
+  const plantingImages = ["/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png", "/lovable-uploads/23b71c4a-ae05-4ad7-b477-b35c8f494d1a.png", "/lovable-uploads/b90b4872-c28b-4a9e-967c-ee3cd4bbcdfe.png", "/lovable-uploads/4e99cd90-92f7-4e37-b085-3c4d9182f2a7.png", "/lovable-uploads/48d7d076-02b1-4af7-bff8-3b0d88c735fc.png", "/lovable-uploads/b3bda120-cadf-4783-ba66-df239127e92e.png", "/lovable-uploads/9f04c017-2367-4865-b366-bed9918fc72b.png", "/lovable-uploads/e6fb9dd0-19b4-4d25-8b88-21e934258792.png", "/lovable-uploads/06e415cd-48ec-4571-a425-96cf1321203f.png", "/lovable-uploads/aa84e6f2-e9cc-47b3-a34d-8f864dbc4cc4.png"];
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Video with Reduced Overlay */}
       <div className="absolute inset-0">
-        {/* Child with plant image as background */}
-        <img 
-          src="/lovable-uploads/4d6b4d69-c8b0-4435-a100-e840167b347c.png" 
-          alt="Criança segurando uma planta" 
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
+        {/* Video Background - Made full size and more visible */}
+        <video className="absolute inset-0 w-full h-full object-cover z-0" autoPlay muted loop playsInline style={{
+        objectFit: 'cover'
+      }}>
+          <source src="/background-nature.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         {/* Improved overlay gradient for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-eco-700/60 via-eco-600/30 to-transparent z-10"></div>
       </div>
@@ -30,11 +33,11 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3 mt-10">
-          <Button variant="green" className="rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 bg-eco-600 hover:bg-eco-700 text-white">
-            Conheça Nossos Serviços
+          <Button variant="green" asChild className="rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 bg-eco-600 hover:bg-eco-700 text-white">
+            
           </Button>
-          <Button variant="outline" className="border-2 border-white/60 text-white rounded-full hover:bg-[#E2FCB3] hover:text-earth-800 hover:border-transparent shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6">
-            Entre em Contato
+          <Button variant="outline" asChild className="border-2 border-white/60 text-white rounded-full hover:bg-[#E2FCB3] hover:text-earth-800 hover:border-transparent shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6">
+            
           </Button>
         </div>
       </div>
@@ -51,8 +54,6 @@ const Hero = () => {
       
       {/* Bottom gradient transition to Banner section */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-20"></div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
