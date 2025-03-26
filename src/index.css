@@ -218,16 +218,27 @@ html {
   to { transform: scale(1); opacity: 1; }
 }
 
-.animate-float {
-  animation: float 4s ease-in-out infinite;
+@keyframes slot-machine {
+  0% { transform: translateY(100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
 }
 
-.animate-leaf-sway {
-  animation: leaf-sway 5s ease-in-out infinite;
+/* Stats card specific animations */
+.stats-card {
+  transition: all 0.3s ease;
 }
 
-.animate-grow {
-  animation: grow 0.5s ease-out forwards;
+.stats-card:hover {
+  transform: translateY(-5px);
+}
+
+.counter-value {
+  font-variant-numeric: tabular-nums;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
 /* Animation classes */
@@ -241,4 +252,24 @@ html {
 
 .animate-grow {
   animation: grow 0.5s ease-out forwards;
+}
+
+/* Slot machine digit styling */
+.digit-slot {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 1.2em;
+  line-height: 1;
+}
+
+.digit-carousel {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.digit {
+  height: 1.2em;
+  line-height: 1.2;
 }

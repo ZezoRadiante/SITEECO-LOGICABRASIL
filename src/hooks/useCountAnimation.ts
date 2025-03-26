@@ -20,15 +20,15 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
     }
     
     let startTimestamp: number | null = null;
-    const startValue = count; // Start from current count for smoother transitions
+    const startValue = 0; // Always start from zero for slot machine effect
     
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const elapsed = timestamp - startTimestamp;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Use easeOutQuint for a nice acceleration curve
-      const easeProgress = 1 - Math.pow(1 - progress, 3);
+      // Use easeOutBack for a nice slot machine like effect
+      const easeProgress = 1 - Math.pow(1 - progress, 4);
       const nextValue = startValue + Math.floor(easeProgress * (end - startValue));
       
       setCount(nextValue);
@@ -49,7 +49,6 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
           const digitValue = parseInt(digit);
           const targetDigit = parseInt(endDigits[index] || '0');
           
-          // For carousel effect - show 3 digits for each position (previous, current, next)
           // If we're at the final value, just show the current digit
           if (progress === 1) {
             return digit;
@@ -86,4 +85,3 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
 
   return { count, digits };
 };
-
