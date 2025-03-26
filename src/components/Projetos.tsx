@@ -92,31 +92,33 @@ const Projetos = () => {
 
       {/* Full width carousel */}
       <div className="w-full relative overflow-hidden">
-        <div ref={emblaRef} className="overflow-hidden -mx-4">
-          <div className="flex py-4">
-            {forestImages.map((image, index) => (
-              <div 
-                key={index} 
-                className={cn(
-                  "min-w-0 shrink-0 grow-0 basis-[70%] sm:basis-[40%] md:basis-[30%] lg:basis-[25%] px-4 transition-all duration-300",
-                  activeIndex === index ? "scale-110 z-10" : "scale-100 opacity-70"
-                )}
-              >
-                <div className="rounded-lg overflow-hidden h-64 md:h-80 shadow-lg">
-                  <img 
-                    src={image} 
-                    alt={`Projeto de conservação ${index + 1}`} 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                  />
+        <Carousel>
+          <div ref={emblaRef} className="overflow-hidden -mx-4">
+            <div className="flex py-4">
+              {forestImages.map((image, index) => (
+                <div 
+                  key={index} 
+                  className={cn(
+                    "min-w-0 shrink-0 grow-0 basis-[70%] sm:basis-[40%] md:basis-[30%] lg:basis-[25%] px-4 transition-all duration-300",
+                    activeIndex === index ? "scale-110 z-10" : "scale-100 opacity-70"
+                  )}
+                >
+                  <div className="rounded-lg overflow-hidden h-64 md:h-80 shadow-lg">
+                    <img 
+                      src={image} 
+                      alt={`Projeto de conservação ${index + 1}`} 
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Navigation arrows */}
-        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
-        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+          {/* Navigation arrows */}
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
+        </Carousel>
       </div>
 
       {/* Indicator dots */}
