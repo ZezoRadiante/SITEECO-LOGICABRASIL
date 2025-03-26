@@ -111,7 +111,10 @@ const Services = () => {
   }, [emblaApi]);
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-background via-sky-50/30 to-background">
+    <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50/30 via-sky-50/20 to-eco-50/30">
+      {/* Top gradient transition */}
+      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-sky-50/50 to-transparent z-10"></div>
+      
       <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-5 bg-repeat"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -169,8 +172,8 @@ const Services = () => {
         </div>
       </div>
       
-      {/* Nature-inspired decorative elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-sky-50/20 to-transparent"></div>
+      {/* Bottom gradient transition - Enhanced */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-eco-50/50 to-transparent"></div>
     </section>
   );
 };

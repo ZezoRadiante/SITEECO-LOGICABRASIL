@@ -75,7 +75,10 @@ const Projetos = () => {
   }, [emblaApi]);
 
   return (
-    <section id="projetos" className="py-24 overflow-hidden bg-gradient-to-b from-background to-sky-50/30">
+    <section id="projetos" className="py-24 overflow-hidden bg-gradient-to-b from-eco-50/30 to-sky-100/30 relative">
+      {/* Top gradient transition */}
+      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-eco-50/50 to-transparent z-10"></div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <span className="inline-block text-sky-700 bg-sky-100 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in">
@@ -129,6 +132,9 @@ const Projetos = () => {
           onClick={scrollTo} 
         />
       </div>
+      
+      {/* Bottom gradient transition */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-100/40 to-transparent"></div>
     </section>
   );
 };

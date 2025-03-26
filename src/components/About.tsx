@@ -1,175 +1,77 @@
-
-import React, { useEffect, useRef, useState } from 'react';
-import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
-import { useCountAnimation } from '@/hooks/useCountAnimation';
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const About = () => {
-  const statisticsRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-  
-  const firstStat = useCountAnimation(isVisible ? 1000000 : 0, 2000);
-  const secondStat = useCountAnimation(isVisible ? 100000 : 0, 2000);
-  const thirdStat = useCountAnimation(isVisible ? 300 : 0, 1500);
-  const fourthStat = useCountAnimation(isVisible ? 10 : 0, 1000);
-  
-  const animatedValues = [firstStat, secondStat, thirdStat, fourthStat];
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          const statItems = entry.target.querySelectorAll('.stat-item');
-          statItems.forEach((item, index) => {
-            setTimeout(() => {
-              item.classList.add('animate-fade-in');
-              item.classList.remove('opacity-0');
-            }, index * 200);
-          });
-        }
-      });
-    }, {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3
-    });
-    
-    if (statisticsRef.current) {
-      observer.observe(statisticsRef.current);
-    }
-    
-    return () => {
-      if (statisticsRef.current) {
-        observer.unobserve(statisticsRef.current);
-      }
-    };
-  }, []);
-
-  const statistics = [
-    { icon: <Leaf className="h-10 w-10 text-earth-700" />, value: 1000000, label: "Mudas Produzidas e Plantadas", prefix: "+" },
-    { icon: <Globe className="h-10 w-10 text-earth-700" />, value: 100000, label: "Hectares requalificados junto ao cliente", prefix: "+" },
-    { icon: <FileCheck className="h-10 w-10 text-earth-700" />, value: 300, label: "Licenças ambientais emitidas", prefix: "+" },
-    { icon: <Clock className="h-10 w-10 text-earth-700" />, value: 10, label: "De experiência ambiental", prefix: "+", suffix: " ANOS" }
-  ];
-
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
-      {/* Background image with gradient overlay */}
-      <div className="absolute inset-0 w-full h-full">
-        <img 
-          src="/lovable-uploads/91648c89-4929-4df8-b49c-0fa8b8849b67.png" 
-          alt="Background" 
-          className="w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-white/30"></div>
-      </div>
-
-      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent z-10"></div>
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
-        <div className="text-center mb-16 animate-fade-in">
-          <span className="inline-block bg-sky-300/90 text-earth-800 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm">
-            NOSSA HISTÓRIA
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-earth-800 drop-shadow-md">
-            SOMOS O PRINCIPAL PARCEIRO EM <br />
-            <span className="text-sky-600">CONSULTORIA AMBIENTAL NO BRASIL</span>
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8 animate-fade-in-right">
-            <p className="text-earth-800 leading-relaxed text-lg font-medium">
-              Fundada em 2015 por engenheiros visionários, a Eco-Lógica
-              Brasil se destaca pela excelência em estudos ambientais e
-              na produção e plantio de mudas em larga escala. Com
-              capacidade técnica para produzir e plantar mais de 500 mil
-              mudas por ano, nossa empresa é sinônimo de excelência e
-              inovação.
-            </p>
+    <section id="about" className="py-24 relative overflow-hidden bg-gradient-to-b from-earth-100/30 to-sky-50/20">
+      {/* Top gradient transition */}
+      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-eco-100/40 to-transparent z-10"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Image with decorative elements */}
+          <div className="relative order-2 md:order-1">
+            <div className="rounded-lg overflow-hidden shadow-xl relative z-10 opacity-0 animate-fade-in">
+              <img 
+                src="/lovable-uploads/b2251703-230b-4fb3-adfd-7249f11d3483.jpg" 
+                alt="Equipe da Eco-lógica Brasil em ação" 
+                className="w-full h-auto object-cover"
+              />
+            </div>
             
-            <p className="text-earth-800 leading-relaxed text-lg font-medium">
-              Além disso, a Eco-Lógica Brasil adota práticas sustentáveis
-              e tecnologias avançadas em todas as suas operações,
-              reforçando o compromisso com a preservação ambiental e o
-              desenvolvimento sustentável.
-            </p>
+            {/* Decorative elements */}
+            <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-eco-200 rounded-full opacity-70 z-0 animate-float"></div>
+            <div className="absolute -top-6 -right-6 w-16 h-16 bg-sky-200 rounded-full opacity-70 z-0 animate-float"></div>
+          </div>
+          
+          {/* Content */}
+          <div className="order-1 md:order-2 space-y-6">
+            <span className="inline-block text-sky-700 bg-sky-100 px-3 py-1 rounded-full text-sm font-medium mb-2 opacity-0 animate-fade-in">
+              Nossa História
+            </span>
             
-            <p className="text-earth-800 leading-relaxed text-lg font-medium">
-              Com uma equipe altamente qualificada e motivada, a empresa busca constantemente soluções inovadoras para contribuir com a recuperação de ecossistemas e a melhoria da
-              qualidade de vida das comunidades onde atua.
-            </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-earth-800 opacity-0 animate-fade-in-delay-1">
+              Sobre a <span className="text-sky-700">Eco-lógica Brasil</span>
+            </h2>
             
-            <div className="mt-12">
-              <a 
-                href="#contact" 
-                className="inline-block px-8 py-4 bg-sky-300 text-earth-800 rounded-full font-semibold hover:bg-sky-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            <div className="space-y-4 text-foreground/70 opacity-0 animate-fade-in-delay-2">
+              <p>
+                Fundada em 2010, a Eco-lógica Brasil nasceu da paixão de um grupo de ambientalistas 
+                determinados a fazer a diferença no cenário de conservação ambiental brasileiro.
+              </p>
+              
+              <p>
+                Nossa missão é promover soluções sustentáveis que harmonizem o desenvolvimento 
+                econômico com a preservação ambiental, criando um legado positivo para as 
+                futuras gerações.
+              </p>
+              
+              <p>
+                Com uma equipe multidisciplinar de especialistas em biologia, engenharia ambiental, 
+                gestão de recursos naturais e educação, oferecemos serviços abrangentes que 
+                atendem às necessidades específicas de cada cliente e comunidade.
+              </p>
+            </div>
+            
+            <div className="pt-4 opacity-0 animate-fade-in-delay-3">
+              <Button
+                variant="outline"
+                className="rounded-full border-sky-300 text-sky-700 hover:bg-sky-50 group"
+                asChild
               >
-                CONHEÇA A EMPRESA
-              </a>
-            </div>
-          </div>
-
-          <div className="animate-fade-in-left">
-            <div ref={statisticsRef} className="grid grid-cols-2 gap-6">
-              {statistics.map((stat, index) => (
-                <div 
-                  key={index} 
-                  className="stat-item opacity-0 p-6 rounded-lg transition-all duration-500 ease-out bg-white/80 backdrop-blur-sm border border-sky-300/30 shadow-md"
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="mb-3 p-3 rounded-full bg-sky-100/70 shadow-inner">
-                      {stat.icon}
-                    </div>
-                    <div className="text-2xl md:text-3xl font-bold text-sky-800 mb-2 relative">
-                      <div className="flex items-center justify-center">
-                        <span>{stat.prefix}</span>
-                        <div className="flex overflow-hidden h-10">
-                          {animatedValues[index].digits.map((digitData, digitIndex) => {
-                            if (!digitData.includes('|')) {
-                              return (
-                                <span key={digitIndex} className="tabular-nums">
-                                  {digitData}
-                                </span>
-                              );
-                            }
-                            
-                            const [prev, current, next] = digitData.split('|');
-                            
-                            return (
-                              <div key={digitIndex} className="relative w-[1ch] h-10 inline-flex flex-col items-center overflow-hidden">
-                                <div className="absolute transition-transform duration-200 flex flex-col items-center" 
-                                     style={{
-                                       transform: isVisible ? 'translateY(0)' : 'translateY(-100%)'
-                                     }}>
-                                  <span className="h-10 flex items-center justify-center tabular-nums">{prev}</span>
-                                  <span className="h-10 flex items-center justify-center tabular-nums">{current}</span>
-                                  <span className="h-10 flex items-center justify-center tabular-nums">{next}</span>
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
-                        {stat.suffix && <span>{stat.suffix}</span>}
-                      </div>
-                    </div>
-                    <div className="text-sm text-earth-700 font-medium">{stat.label}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-12 p-6 backdrop-blur-sm rounded-lg opacity-0 stat-item bg-sky-300/80 border border-sky-400/30 shadow-md">
-              <div className="flex items-center justify-center space-x-4">
-                <CheckCircle2 className="h-6 w-6 text-earth-800" />
-                <span className="text-earth-800 italic font-medium">
-                  "Comprometidos com a sustentabilidade e excelência em cada projeto ambiental."
-                </span>
-              </div>
+                <a href="#contact">
+                  Fale Conosco
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </Button>
             </div>
           </div>
         </div>
       </div>
+      
+      {/* Bottom gradient transition */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/30 to-transparent"></div>
     </section>
   );
 };

@@ -6,6 +6,9 @@ import { ArrowRight } from 'lucide-react';
 const Banner = () => {
   return (
     <section id="banner" className="py-12 md:py-16 bg-gradient-to-b from-white to-eco-50 relative overflow-hidden">
+      {/* Top gradient transition */}
+      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-sky-50/30 to-transparent z-10"></div>
+      
       <div className="container mx-auto">
         {/* Banner Content - Now above the image */}
         <div className="w-full space-y-6 text-center px-4 md:px-8 mb-8">
@@ -43,8 +46,8 @@ const Banner = () => {
         />
       </div>
       
-      {/* Subtle Decorative Elements */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-eco-100/20 to-transparent"></div>
+      {/* Bottom gradient transition - Enhanced */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-earth-100/40 to-transparent"></div>
     </section>
   );
 };
