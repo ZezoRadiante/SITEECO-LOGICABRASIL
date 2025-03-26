@@ -1,126 +1,138 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube } from 'lucide-react';
 import Logo from './Logo';
+import { Button } from './ui/button';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
-  return <footer className="bg-eco-700 text-background/90 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent"></div>
-      
+  return (
+    <footer className="bg-eco-50/80 text-earth-800 relative">
       {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-          <div>
-            <div className="flex items-center space-x-2 text-background font-medium mb-6">
-              <Logo size={24} className="text-white" />
-              
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        {/* Top Section - Slogan */}
+        <div className="mb-10 text-left">
+          <h2 className="text-3xl font-bold text-earth-800 leading-tight mb-1">
+            Juntos, <br />
+            construindo <br />
+            um futuro <br />
+            mais sustentável
+          </h2>
+          
+          <Button 
+            variant="outline" 
+            className="mt-6 border-2 border-eco-700 text-eco-700 rounded-full uppercase text-sm font-semibold px-6 py-2 hover:bg-eco-700 hover:text-white"
+          >
+            Conheça mais sobre nós
+          </Button>
+        </div>
+        
+        {/* Location and Contact Section */}
+        <div className="mt-10 text-left border-t border-eco-200 pt-6">
+          <h3 className="flex items-center gap-2 text-earth-800 font-semibold mb-4">
+            <MapPin size={18} className="text-eco-700" />
+            Nosso Localização e Contato
+          </h3>
+          
+          <div className="space-y-8">
+            {/* Pernambuco */}
+            <div>
+              <h4 className="font-semibold">Pernambuco</h4>
+              <p className="text-sm">Rua Ano graça arroés, 03</p>
+              <p className="text-sm">Santa expedita, Arapina - PE</p>
+              <p className="text-sm flex items-center gap-1 mt-1">
+                <Phone size={14} className="text-eco-700" />
+                (81) 9974-4867
+              </p>
             </div>
-            <p className="text-background/70 mb-6">
-              Fornecendo soluções ambientais sustentáveis com integridade e expertise para um amanhã mais verde.
-            </p>
-            <div className="flex space-x-4">
-              <a href="https://www.facebook.com/eco.logicabrasilltda/?locale=pt_BR" target="_blank" rel="noopener noreferrer" className="text-background/70 hover:text-white transition-colors duration-300">
-                <Facebook size={20} />
-              </a>
-              <a href="https://br.linkedin.com/company/eco-l%C3%B3gica-brasil-ltda-eco-l%C3%B3gica-tem-uma-conta" target="_blank" rel="noopener noreferrer" className="text-background/70 hover:text-white transition-colors duration-300">
-                <Linkedin size={20} />
-              </a>
-              <a href="https://www.instagram.com/brasilecologica/" target="_blank" rel="noopener noreferrer" className="text-background/70 hover:text-white transition-colors duration-300">
-                <Instagram size={20} />
-              </a>
+            
+            {/* Ceará */}
+            <div>
+              <h4 className="font-semibold">Ceará</h4>
+              <p className="text-sm">Rua Maria Balbino da Conceição,</p>
+              <p className="text-sm">603, Jardim - CE</p>
+              <p className="text-sm flex items-center gap-1 mt-1">
+                <Phone size={14} className="text-eco-700" />
+                (88) 9 9123-8818
+              </p>
+            </div>
+            
+            {/* Rio Grande do Norte */}
+            <div>
+              <h4 className="font-semibold">Rio Grande do Norte</h4>
+              <p className="text-sm">AV. Olavo Lacerda Montenegro, 2835,</p>
+              <p className="text-sm">Central Park II, Parnamirim - RN</p>
+              <p className="text-sm flex items-center gap-1 mt-1">
+                <Phone size={14} className="text-eco-700" />
+                (84) 9 8614-1400
+              </p>
             </div>
           </div>
+        </div>
+        
+        {/* Map Image */}
+        <div className="mt-8">
+          <img 
+            src="/lovable-uploads/9b4b2a79-3b81-4aae-a055-f33a0d5d6543.png" 
+            alt="Mapa de localização" 
+            className="w-full h-40 object-cover rounded-md"
+          />
           
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Serviços</h3>
-            <ul className="space-y-4">
-              <li>
-                <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
-                  Consultoria Ambiental
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
-                  Gestão de Resíduos
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
-                  Educação Ambiental
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
-                  Planejamento de Sustentabilidade
-                </a>
-              </li>
-            </ul>
+          {/* Indicator Dots */}
+          <div className="flex justify-center gap-2 mt-2">
+            <div className="w-2 h-2 rounded-full bg-eco-700"></div>
+            <div className="w-2 h-2 rounded-full bg-eco-200"></div>
+            <div className="w-2 h-2 rounded-full bg-eco-200"></div>
           </div>
+        </div>
+        
+        {/* Social Media Section */}
+        <div className="mt-8 border-t border-eco-200 pt-6 text-left">
+          <h3 className="text-earth-800 font-semibold mb-4">
+            Nossas redes
+          </h3>
           
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Empresa</h3>
-            <ul className="space-y-4">
-              <li>
-                <a href="#about" className="text-background/70 hover:text-white transition-colors duration-300">
-                  Sobre Nós
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
-                  Nossa Equipe
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-background/70 hover:text-white transition-colors duration-300">
-                  Carreiras
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-background/70 hover:text-white transition-colors duration-300">
-                  Contato
-                </a>
-              </li>
-            </ul>
+          <div className="flex gap-4">
+            <a href="https://www.linkedin.com/company/eco-l%C3%B3gica-brasil-ltda-eco-l%C3%B3gica-tem-uma-conta" target="_blank" rel="noopener noreferrer" className="text-eco-700 hover:text-eco-800 transition-colors">
+              <Linkedin size={22} />
+            </a>
+            <a href="https://www.instagram.com/brasilecologica/" target="_blank" rel="noopener noreferrer" className="text-eco-700 hover:text-eco-800 transition-colors">
+              <Instagram size={22} />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="text-eco-700 hover:text-eco-800 transition-colors">
+              <Youtube size={22} />
+            </a>
           </div>
-          
-          <div>
-            <h3 className="text-xl font-semibold mb-6">Contato</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin className="text-white mr-3 mt-1 flex-shrink-0" />
-                <span className="text-background/70">Rua Eco 123, São Paulo, SP 01234-567</span>
-              </li>
-              <li className="flex items-start">
-                <Phone className="text-white mr-3 mt-1 flex-shrink-0" />
-                <span className="text-background/70">(11) 3456-7890</span>
-              </li>
-              <li className="flex items-start">
-                <Mail className="text-white mr-3 mt-1 flex-shrink-0" />
-                <span className="text-background/70">info@ecologicabrasil.com</span>
-              </li>
-            </ul>
-          </div>
+        </div>
+        
+        {/* Links Section */}
+        <div className="mt-8 space-y-4 text-left">
+          <a href="#" className="block text-eco-700 font-semibold uppercase text-sm hover:text-eco-800 transition-colors">
+            Portfólios
+          </a>
+          <a href="#contact" className="block text-eco-700 font-semibold uppercase text-sm hover:text-eco-800 transition-colors">
+            Fale com nossos consultores
+          </a>
+          <a href="#" className="block text-eco-700 font-semibold uppercase text-sm hover:text-eco-800 transition-colors">
+            Política de Privacidade
+          </a>
+          <a href="#" className="block text-eco-700 font-semibold uppercase text-sm hover:text-eco-800 transition-colors">
+            Outros
+          </a>
         </div>
       </div>
       
-      <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-background/70 text-sm">
-            © {currentYear} Eco-logica Brasil. Todos os direitos reservados.
+      {/* Copyright Section */}
+      <div className="border-t border-eco-200 mt-8">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <p className="text-earth-600 text-sm text-center">
+            © Eco-lógica Brasil - Todos os direitos Reservados
           </p>
-          <div className="flex space-x-6 mt-4 sm:mt-0">
-            <a href="#" className="text-background/70 hover:text-white transition-colors duration-300 text-sm">
-              Política de Privacidade
-            </a>
-            <a href="#" className="text-background/70 hover:text-white transition-colors duration-300 text-sm">
-              Termos de Serviço
-            </a>
-          </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
 
 export default Footer;
