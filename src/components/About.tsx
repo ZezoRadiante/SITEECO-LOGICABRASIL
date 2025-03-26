@@ -58,11 +58,13 @@ const About = () => {
         {/* Base white layer */}
         <div className="w-full h-full bg-white"></div>
         
-        {/* Background image with corrected path and rendering */}
+        {/* Background image with corrected path */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
           style={{ 
             backgroundImage: `url('/lovable-uploads/370525ba-f852-4a6e-8415-ae437cc892ad.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         ></div>
         
