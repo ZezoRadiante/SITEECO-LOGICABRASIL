@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -64,8 +65,8 @@ export default {
           500: '#CCF887',
           600: '#C2F671',
           700: '#B8F45B',
-          800: '#A3E246',
-          900: '#8EC531',
+          800: '#91C137', // Adjusted to match design
+          900: '#71B707', // Adjusted to match design
         },
         earth: {
           100: '#F1EBE4',

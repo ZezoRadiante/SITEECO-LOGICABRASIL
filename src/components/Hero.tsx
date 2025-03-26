@@ -1,59 +1,73 @@
 
 import React from 'react';
-import { ArrowDown } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from '@/components/ui/button';
 
 const Hero = () => {
-  const isMobile = useIsMobile();
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Full-width background image */}
-      <div className="absolute inset-0">
-        <img 
-          src="/lovable-uploads/5dd5503f-329d-40f1-8e00-133df0a69f1a.png" 
-          alt="Criança plantando uma muda" 
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
-        {/* Improved overlay gradient for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-eco-700/60 via-eco-600/30 to-transparent z-10"></div>
-      </div>
-
-      {/* Content with no background, only text */}
-      <div className="relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6 py-0 my-0">        
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-          <span className="text-white block mb-3 drop-shadow-xl hover:text-eco-50 transition-colors duration-300">Soluções Sustentáveis</span>
-          <span className="text-sky-300 font-light italic drop-shadow-xl">para um Futuro Mais Verde</span>
-        </h1>
-        
-        <p className="max-w-2xl mx-auto text-lg sm:text-xl text-white font-medium opacity-0 animate-fade-in-delay-2 leading-relaxed drop-shadow-lg py-4">
-          Ajudamos empresas e comunidades a implementar práticas ecológicas que protegem nossos recursos naturais para as gerações futuras.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3 mt-10">
-          <Button variant="green" asChild className="rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 bg-eco-600 hover:bg-eco-700 text-white">
-            Nossos Projetos
-          </Button>
-          <Button variant="outline" asChild className="border-2 border-white/60 text-white rounded-full hover:bg-[#E2FCB3] hover:text-earth-800 hover:border-transparent shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6">
-            Saiba Mais
-          </Button>
+    <section className="relative min-h-screen bg-eco-50 pt-14">
+      {/* Hero Content */}
+      <div className="container mx-auto px-6 py-12">
+        <div className="max-w-xl">
+          <h1 className="text-3xl md:text-4xl font-bold text-eco-900 mb-4">
+            Promovendo um <br />
+            <span className="text-eco-900">Futuro mais Sustentável</span>
+          </h1>
+          
+          <p className="text-base text-earth-800 mb-8 leading-relaxed">
+            A Eco-logica Brasil está comprometida com o futuro do nosso planeta. Trabalhamos para desenvolver soluções que alinham crescimento econômico com responsabilidade ambiental.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <Button 
+              variant="green" 
+              className="rounded-full bg-eco-900 hover:bg-eco-800 text-white px-6 py-5"
+            >
+              Conheça-nos Melhor
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delay-3 z-30">
-        <a href="#services" className="flex flex-col items-center text-white hover:text-sky-300 transition-all duration-300 group">
-          <span className="text-sm sm:text-base mb-2 group-hover:-translate-y-1 transition-transform duration-300 font-medium drop-shadow-md">Descubra Mais</span>
-          <div className="relative">
-            <ArrowDown className="animate-bounce bg-black/30 backdrop-blur-sm p-1.5 rounded-full group-hover:text-white group-hover:bg-sky-400/70 transition-all duration-300 w-8 h-8" />
-          </div>
-        </a>
+      {/* Hero Image */}
+      <div className="w-full mt-6">
+        <img 
+          src="/lovable-uploads/2c958347-a96c-4881-b071-2f20b42301b8.png" 
+          alt="Criança com capacete segurando uma planta" 
+          className="w-full h-auto object-cover"
+        />
       </div>
-      
-      {/* Bottom gradient transition */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-20"></div>
+
+      {/* Stats Section */}
+      <div className="bg-white py-8 px-6">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div className="flex flex-col items-center">
+              <p className="text-3xl font-bold text-eco-900">+100.000</p>
+              <p className="text-sm text-earth-700">Árvores Plantadas</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-3xl font-bold text-eco-900">+100.000</p>
+              <p className="text-sm text-earth-700">Árvores Plantadas</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-3xl font-bold text-eco-900">+500</p>
+              <p className="text-sm text-earth-700">Áreas recuperadas</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-3xl font-bold text-eco-900">+10 Anos</p>
+              <p className="text-sm text-earth-700">De experiência</p>
+            </div>
+          </div>
+          <div className="mt-8 text-center">
+            <Button 
+              variant="outline" 
+              className="rounded-full border-2 border-eco-900 text-eco-900 hover:bg-eco-900 hover:text-white px-6 py-3"
+            >
+              Conheça o Impacto
+            </Button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };

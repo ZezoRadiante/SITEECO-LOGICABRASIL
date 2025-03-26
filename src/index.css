@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,10 +16,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 120 4% 15%;
 
-    --primary: 82 94% 84%; /* #E2FCB3 */
+    --primary: 82 94% 84%; 
     --primary-foreground: 120 4% 15%;
 
-    --secondary: 82 89% 72%; /* #C2F671 */
+    --secondary: 82 89% 72%; 
     --secondary-foreground: 120 4% 15%;
 
     --muted: 84 70% 94%;
@@ -35,52 +36,8 @@
     --ring: 82 94% 84%;
 
     --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-
-    /* Enhanced gradient background */
-    --main-gradient: linear-gradient(135deg, #ffffff 0%, #E2FCB3 100%);
   }
 
-  .dark {
-    --background: 120 15% 5%;
-    --foreground: 120 6% 93%;
-
-    --card: 120 15% 8%;
-    --card-foreground: 120 6% 93%;
-
-    --popover: 120 15% 8%;
-    --popover-foreground: 120 6% 93%;
-
-    --primary: 82 94% 84%; /* #E2FCB3 */
-    --primary-foreground: 120 15% 5%;
-
-    --secondary: 82 89% 72%; /* #C2F671 */
-    --secondary-foreground: 120 15% 5%;
-
-    --muted: 82 15% 15%;
-    --muted-foreground: 120 6% 65%;
-
-    --accent: 82 15% 15%;
-    --accent-foreground: 82 89% 72%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 120 10% 20%;
-    --input: 120 10% 20%;
-    --ring: 82 89% 72%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
@@ -90,85 +47,21 @@
     font-family: 'Montserrat', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
-    background: var(--main-gradient);
-    background-attachment: fixed;
-    min-height: 100vh;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
   }
-
-  section {
-    position: relative;
-  }
-
-  section::after {
-    content: '';
-    display: block;
-    height: 6px;
-    background: linear-gradient(90deg, transparent, rgba(226, 252, 179, 0.6), transparent);
-    margin: 0 auto;
-    width: 80%;
-    border-radius: 3px;
-  }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/80 backdrop-blur-lg shadow-md border border-white/40;
-  }
-  
-  .glass-dark {
-    @apply bg-black/30 backdrop-blur-lg shadow-md border border-white/10;
-  }
-  
-  .text-balance {
-    text-wrap: balance;
-  }
-  
-  .bio-gradient {
-    @apply bg-gradient-to-r from-eco-50 to-eco-100 text-earth-900;
-  }
-  
-  .nature-card {
-    @apply bg-gradient-to-br from-eco-50 to-eco-100/50 backdrop-blur-sm border border-eco-200 shadow-md hover:shadow-lg transition-all duration-300;
-  }
-  
   .eco-btn {
-    @apply bg-gradient-to-r from-eco-400 to-eco-300 text-earth-800 font-medium shadow-md hover:shadow-lg transition-all duration-300;
+    @apply bg-eco-900 text-white font-medium rounded-full hover:bg-eco-800 transition-all duration-300;
   }
   
-  .earth-bg {
-    @apply bg-gradient-to-b from-earth-700 via-earth-600 to-earth-500;
-  }
-}
-
-@layer utilities {
-  /* Enhanced gradient utilities */
-  .eco-gradient-light {
-    @apply bg-gradient-to-br from-white via-eco-50 to-eco-100;
-  }
-  
-  .eco-gradient-medium {
-    @apply bg-gradient-to-br from-eco-100 via-eco-200 to-eco-300;
-  }
-  
-  .eco-gradient-strong {
-    @apply bg-gradient-to-br from-eco-300 via-eco-400 to-eco-500;
-  }
-  
-  .sky-gradient-light {
-    @apply bg-gradient-to-br from-white via-sky-50 to-sky-100;
-  }
-  
-  .earth-gradient {
-    @apply bg-gradient-to-br from-earth-100 via-earth-200 to-earth-300;
-  }
-  
-  .glass-eco {
-    @apply bg-eco-50/80 backdrop-blur-sm border border-eco-100/50 shadow-sm;
+  .eco-btn-outline {
+    @apply border-2 border-eco-900 text-eco-900 font-medium rounded-full hover:bg-eco-900 hover:text-white transition-all duration-300;
   }
 }
 
@@ -179,7 +72,7 @@ html {
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -193,75 +86,4 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(113, 183, 7, 0.7);
-}
-
-/* Enhanced Animation Keyframes */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes pulse-gentle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes leaf-sway {
-  0% { transform: rotate(0deg); }
-  25% { transform: rotate(5deg); }
-  50% { transform: rotate(0deg); }
-  75% { transform: rotate(-5deg); }
-  100% { transform: rotate(0deg); }
-}
-
-@keyframes grow {
-  from { transform: scale(0.9); opacity: 0.5; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes carousel {
-  0% { transform: translateY(80%); }
-  80% { transform: translateY(0%); }
-  100% { transform: translateY(0%); }
-}
-
-/* Stats card specific animations */
-.stats-card {
-  transition: all 0.3s ease;
-}
-
-.stats-card:hover {
-  transform: translateY(-5px);
-}
-
-.counter-value {
-  font-variant-numeric: tabular-nums;
-  position: relative;
-  display: inline-flex;
-}
-
-/* Animation classes */
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-.animate-leaf-sway {
-  animation: leaf-sway 5s ease-in-out infinite;
-}
-
-.animate-grow {
-  animation: grow 0.5s ease-out forwards;
-}
-
-.animate-carousel {
-  animation: carousel 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* Digit styling */
-.digit-slot {
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  height: 1.2em;
-  line-height: 1.2;
 }
