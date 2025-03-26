@@ -1,6 +1,7 @@
 
 import React from 'react';
 import LogoSvg from '../assets/logo.svg';
+import { cn } from '@/lib/utils';
 
 const Logo = ({
   className = "",
