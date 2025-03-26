@@ -96,17 +96,17 @@ const Projetos = () => {
       {/* Full width carousel */}
       <div className="w-full relative overflow-hidden">
         <Carousel>
-          <div ref={emblaRef} className="overflow-hidden -mx-4">
-            <div className="flex py-4">
+          <div ref={emblaRef} className="overflow-hidden">
+            <div className="flex">
               {forestImages.map((image, index) => (
                 <div 
                   key={index} 
                   className={cn(
-                    "min-w-0 shrink-0 grow-0 basis-[70%] sm:basis-[40%] md:basis-[30%] lg:basis-[25%] px-4 transition-all duration-300",
-                    activeIndex === index ? "scale-110 z-10" : "scale-100 opacity-70"
+                    "min-w-0 shrink-0 grow-0 basis-[75%] sm:basis-[45%] md:basis-[33.333%] lg:basis-[25%] transition-all duration-300",
+                    activeIndex === index ? "scale-105 z-10" : "scale-100 opacity-80"
                   )}
                 >
-                  <div className="rounded-lg overflow-hidden h-64 md:h-80 shadow-lg">
+                  <div className="overflow-hidden h-64 md:h-80">
                     <img 
                       src={image} 
                       alt={`Projeto de conservação ${index + 1}`} 
