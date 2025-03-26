@@ -54,15 +54,15 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
         eco: {
-          100: '#F0F7E6',
-          200: '#E1EFCC',
-          300: '#C3DEA2',
-          400: '#A6CE78',
-          500: '#8ABE4F',
-          600: '#71B107', // The lighter green from the provided colors
-          700: '#548400', // The darker green from the provided colors
-          800: '#466F00',
-          900: '#385A00',
+          100: '#F5FDDF',
+          200: '#EDFCC9',
+          300: '#E2FCB3', // Cor principal solicitada
+          400: '#D7FA9D',
+          500: '#CCF887',
+          600: '#C2F671', // Substituindo o verde mais claro anterior
+          700: '#B8F45B', // Substituindo o verde mais escuro anterior
+          800: '#A3E246',
+          900: '#8EC531',
         },
         earth: {
           100: '#F1EBE4',
