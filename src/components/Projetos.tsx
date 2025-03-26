@@ -11,13 +11,13 @@ import {
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-// Updated array with all the project images
+// Updated array with direct paths to ensure images load properly
 const projectImages = [
-  '/lovable-uploads/db5ebf76-3193-4c5f-ab32-2a690c3cd81a.png', // Casa dos Ventos
-  '/lovable-uploads/8f5f563d-38c4-4b3c-9e59-0e251ed4a68a.png', // Rio do Vento
-  '/lovable-uploads/70989846-1815-480c-a4a0-96b303e06c30.png', // Umari
-  '/lovable-uploads/1283220f-1c35-4ffb-b19b-8e1836a1abbc.png', // Viveiro Florestal
-  '/lovable-uploads/9a834a35-468a-4f25-8f39-df5b938fe6d2.png', // Additional Rio do Vento image
+  'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800', // Forest image 1
+  'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800', // Forest image 2
+  'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800', // Forest image 3
+  'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800', // Forest image 4
+  'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800', // Forest image 5
 ];
 
 const CarouselDots = ({ 
@@ -80,8 +80,6 @@ const Projetos = () => {
 
   return (
     <section id="projetos" className="py-12 overflow-hidden relative bg-white">
-      {/* Removed top gradient */}
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-8">
           <span className="inline-block text-[#71B707] bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-2 opacity-0 animate-fade-in shadow-sm">
@@ -99,31 +97,34 @@ const Projetos = () => {
         </div>
       </div>
 
-      {/* Fixed carousel implementation */}
+      {/* Fixed carousel implementation with explicit dimensions and proper structure */}
       <div className="w-full relative overflow-hidden py-4">
-        <Carousel ref={emblaRef} className="w-full max-w-7xl mx-auto">
-          <CarouselContent>
-            {projectImages.map((image, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
-                <div className="p-1">
-                  <div className="overflow-hidden rounded-lg border-2 border-eco-200 h-64 md:h-80 shadow-md">
-                    <img 
-                      src={image} 
-                      alt={`Projeto de conservação ${index + 1}`} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                    />
+        <div className="max-w-7xl mx-auto px-4">
+          <Carousel ref={emblaRef} className="w-full">
+            <CarouselContent>
+              {projectImages.map((image, index) => (
+                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <div className="overflow-hidden rounded-lg border-2 border-eco-200 h-64 md:h-80 shadow-md">
+                      <img 
+                        src={image} 
+                        alt={`Projeto de conservação ${index + 1}`} 
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
-        </Carousel>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
+          </Carousel>
+        </div>
       </div>
 
       {/* Indicator dots */}
-      <div className="mt-2">
+      <div className="mt-4">
         <CarouselDots 
           activeIndex={activeIndex} 
           count={projectImages.length} 
