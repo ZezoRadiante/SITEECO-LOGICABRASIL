@@ -91,9 +91,23 @@
     font-family: 'Open Sans', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
     line-height: 1.6;
-    background: var(--main-gradient);
-    background-attachment: fixed;
+    background: var(--main-gradient), 
+                url('/lovable-uploads/310b9220-0a09-4732-a2b9-034f7a6173ae.png') no-repeat center center fixed;
+    background-blend-mode: overlay;
+    background-size: cover;
     min-height: 100vh;
+    position: relative;
+  }
+  
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.95), rgba(255,255,255,0.8));
+    z-index: -1;
   }
   
   h1, h2, h3, h4, h5, h6 {

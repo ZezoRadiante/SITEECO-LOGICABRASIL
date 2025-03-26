@@ -24,13 +24,16 @@ const Banner = () => {
         </div>
       </div>
       
-      {/* Banner Image - Full width below text with subtle shadow */}
+      {/* Banner Image - Using the new image with a gradient overlay */}
       <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50">
-        <img 
-          src="/lovable-uploads/17f4d0f9-7c39-414b-aed2-5773efba9a0a.png" 
-          alt="Criança com capacete branco segurando uma muda em uma plantação" 
-          className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
-        />
+        <div className="relative">
+          <img 
+            src="/lovable-uploads/9d992bf4-113d-4908-ba4a-145e7f5f7519.png" 
+            alt="Criança com capacete branco segurando uma muda" 
+            className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-eco-500/20 to-transparent mix-blend-overlay"></div>
+        </div>
       </div>
       
       {/* Bottom gradient transition - enhanced */}

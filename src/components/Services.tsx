@@ -111,7 +111,12 @@ const Services = () => {
   }, [emblaApi]);
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50 via-white to-eco-50/40">
+    <section id="services" className="py-24 relative overflow-hidden" style={{
+      backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(253,253,253,0.85)), url('/lovable-uploads/9d992bf4-113d-4908-ba4a-145e7f5f7519.png')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
+    }}>
       {/* Top gradient transition - enhanced */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10"></div>
       
