@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -109,11 +108,19 @@
   }
   
   .bio-gradient {
-    @apply bg-gradient-to-r from-eco-50 to-eco-100 text-eco-900;
+    @apply bg-gradient-to-r from-eco-50 to-eco-100 text-earth-900;
   }
   
   .nature-card {
     @apply bg-gradient-to-br from-eco-50 to-eco-100/50 backdrop-blur-sm border border-eco-200 shadow-md hover:shadow-lg transition-all duration-300;
+  }
+  
+  .eco-btn {
+    @apply bg-gradient-to-r from-eco-400 to-eco-300 text-earth-800 font-medium shadow-md hover:shadow-lg transition-all duration-300;
+  }
+  
+  .earth-bg {
+    @apply bg-gradient-to-b from-earth-700 via-earth-600 to-earth-500;
   }
 }
 
