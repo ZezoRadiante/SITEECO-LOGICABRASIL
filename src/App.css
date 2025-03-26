@@ -56,3 +56,13 @@ img {
 .animate-carousel-left {
   will-change: transform;
 }
+
+/* Project carousel specific styles */
+.embla__slide {
+  transition: all 0.5s ease;
+}
+
+.embla__slide--active {
+  z-index: 10;
+  transform: scale(1.1);
+}
