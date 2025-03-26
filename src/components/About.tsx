@@ -1,14 +1,16 @@
-
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
+import { useCountAnimation } from '@/hooks/useCountAnimation';
 
 const About = () => {
   const statisticsRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          setIsVisible(true);
           const statItems = entry.target.querySelectorAll('.stat-item');
           statItems.forEach((item, index) => {
             setTimeout(() => {
@@ -36,10 +38,10 @@ const About = () => {
   }, []);
 
   const statistics = [
-    { icon: <Leaf className="h-10 w-10 text-green-100" />, value: "+1.000.000", label: "Mudas Produzidas e Plantadas" },
-    { icon: <Globe className="h-10 w-10 text-green-100" />, value: "+100.000", label: "Hectares requalificados junto ao cliente" },
-    { icon: <FileCheck className="h-10 w-10 text-green-100" />, value: "+300", label: "Licenças ambientais emitidas" },
-    { icon: <Clock className="h-10 w-10 text-green-100" />, value: "+10 ANOS", label: "De experiência ambiental" }
+    { icon: <Leaf className="h-10 w-10 text-green-100" />, value: 1000000, label: "Mudas Produzidas e Plantadas", prefix: "+" },
+    { icon: <Globe className="h-10 w-10 text-green-100" />, value: 100000, label: "Hectares requalificados junto ao cliente", prefix: "+" },
+    { icon: <FileCheck className="h-10 w-10 text-green-100" />, value: 300, label: "Licenças ambientais emitidas", prefix: "+" },
+    { icon: <Clock className="h-10 w-10 text-green-100" />, value: 10, label: "De experiência ambiental", prefix: "+", suffix: " ANOS" }
   ];
 
   return (
@@ -99,20 +101,26 @@ const About = () => {
 
           <div className="animate-fade-in-left">
             <div ref={statisticsRef} className="grid grid-cols-2 gap-6">
-              {statistics.map((stat, index) => (
-                <div 
-                  key={index} 
-                  className="stat-item opacity-0 p-6 rounded-lg transition-all duration-500 ease-out"
-                >
-                  <div className="flex flex-col items-center text-center">
-                    <div className="mb-3 p-3 rounded-full bg-eco-800/40 backdrop-blur-sm">
-                      {stat.icon}
+              {statistics.map((stat, index) => {
+                const animatedValue = isVisible ? useCountAnimation(stat.value, 1500) : 0;
+                
+                return (
+                  <div 
+                    key={index} 
+                    className="stat-item opacity-0 p-6 rounded-lg transition-all duration-500 ease-out"
+                  >
+                    <div className="flex flex-col items-center text-center">
+                      <div className="mb-3 p-3 rounded-full bg-eco-800/40 backdrop-blur-sm">
+                        {stat.icon}
+                      </div>
+                      <div className="text-2xl md:text-3xl font-bold text-white mb-2">
+                        {stat.prefix}{animatedValue.toLocaleString()}{stat.suffix}
+                      </div>
+                      <div className="text-sm text-green-100">{stat.label}</div>
                     </div>
-                    <div className="text-2xl md:text-3xl font-bold text-white mb-2">{stat.value}</div>
-                    <div className="text-sm text-green-100">{stat.label}</div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             
             {/* Nature-themed decorative element */}
