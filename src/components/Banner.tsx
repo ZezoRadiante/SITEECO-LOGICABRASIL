@@ -1,11 +1,9 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 
 const Banner = () => {
   return (
-    <section id="banner" className="py-12 md:py-16 bg-gradient-to-b from-white to-eco-50 relative overflow-hidden">
+    <section id="banner" className="py-12 md:py-16 eco-gradient-light relative overflow-hidden">
       {/* Top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-sky-50/30 to-transparent z-10"></div>
       
@@ -21,19 +19,6 @@ const Banner = () => {
             inspiramos crianças a se tornarem guardiões da natureza, criando um 
             impacto positivo que atravessa gerações.
           </p>
-          
-          <div className="pt-4">
-            <Button
-              variant="green"
-              className="rounded-full text-base sm:text-lg group"
-              asChild
-            >
-              <a href="#about">
-                Conheça Nossos Projetos
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-          </div>
         </div>
       </div>
       
