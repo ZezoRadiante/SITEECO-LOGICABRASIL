@@ -56,7 +56,7 @@ const Banner = () => {
       
       {/* Full-width Banner Image - Focused on the child's helmet */}
       <div className="w-full relative overflow-hidden animate-on-scroll">
-        <div className="relative w-full h-[350px] md:h-[450px] lg:h-[550px] overflow-hidden">
+        <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
           <img 
             src="/lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png" 
             alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
