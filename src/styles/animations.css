@@ -66,38 +66,76 @@
   }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-gentle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes leaf-sway {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes grow {
+  from { transform: scale(0.9); opacity: 0.5; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes carousel {
+  0% { transform: translateY(80%); }
+  80% { transform: translateY(0%); }
+  100% { transform: translateY(0%); }
+}
+
+.stats-card {
+  transition: all 0.3s ease;
+}
+
+.stats-card:hover {
+  transform: translateY(-5px);
+}
+
+.counter-value {
+  font-variant-numeric: tabular-nums;
+  position: relative;
+  display: inline-flex;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-leaf-sway {
+  animation: leaf-sway 5s ease-in-out infinite;
+}
+
+.animate-grow {
+  animation: grow 0.5s ease-out forwards;
+}
+
+.animate-carousel {
+  animation: carousel 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.digit-slot {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 1.2em;
+  line-height: 1.2;
+}
+
 /* Glass effect classes */
 .glass {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
-
-/* Critical scroll fixes */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: auto !important;
-  scroll-behavior: smooth;
-}
-
-body {
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Ensure root has proper styling */
-#root {
-  min-height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Enable scrolling containers */
-.overflow-auto {
-  overflow: auto !important;
 }
