@@ -60,7 +60,10 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
             sequence.push(val.toString());
           }
           
-          return sequence.join('|');
+          // Assign a different direction to each digit
+          // Use modulo to create alternating directions
+          const direction = index % 4;
+          return `${sequence.join('|')}|${direction}`;
         });
         
         setDigits(carouselDigits);

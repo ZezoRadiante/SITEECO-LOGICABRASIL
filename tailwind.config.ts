@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -57,11 +56,11 @@ export default {
           50: '#F9FEF0',
           100: '#F5FDDF',
           200: '#EDFCC9',
-          300: '#E2FCB3', // Cor principal solicitada
+          300: '#E2FCB3',
           400: '#D7FA9D',
           500: '#CCF887',
-          600: '#C2F671', // Verde mais claro harmonizado
-          700: '#B8F45B', // Verde mais escuro harmonizado
+          600: '#C2F671',
+          700: '#B8F45B',
           800: '#A3E246',
           900: '#8EC531',
         },
@@ -79,7 +78,7 @@ export default {
         sky: {
           100: '#E8F4F7',
           200: '#DAE9EF',
-          300: '#C8E4EC', // The color requested by the user
+          300: '#C8E4EC',
           400: '#B0D4E0',
           500: '#8BBFD2',
           600: '#5FA3BD',
@@ -144,10 +143,25 @@ export default {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
         },
-        'carousel': {
+        'carousel-up': {
           '0%': { transform: 'translateY(80%)' },
           '80%': { transform: 'translateY(0%)' },
           '100%': { transform: 'translateY(0%)' }
+        },
+        'carousel-right': {
+          '0%': { transform: 'translateX(-80%)' },
+          '80%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(0%)' }
+        },
+        'carousel-down': {
+          '0%': { transform: 'translateY(-80%)' },
+          '80%': { transform: 'translateY(0%)' },
+          '100%': { transform: 'translateY(0%)' }
+        },
+        'carousel-left': {
+          '0%': { transform: 'translateX(80%)' },
+          '80%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(0%)' }
         }
 			},
 			animation: {
@@ -162,7 +176,10 @@ export default {
         'float': 'float 4s ease-in-out infinite',
         'pulse-gentle': 'pulse-gentle 3s ease-in-out infinite',
         'spin-slow': 'spin-slow 20s linear infinite',
-        'carousel': 'carousel 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
+        'carousel-up': 'carousel-up 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'carousel-right': 'carousel-right 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'carousel-down': 'carousel-down 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'carousel-left': 'carousel-left 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
 			}
 		}
 	},

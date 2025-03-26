@@ -23,20 +23,47 @@ export const StatCard: React.FC<StatCardProps> = ({
           <span className="text-eco-800">{prefix}</span>
           <span className="counter-value">
             {digits.length > 0 ? 
-              digits.map((digit, idx) => (
-                <span key={idx} className="inline-block relative overflow-hidden h-[1.2em] align-bottom w-[0.6em]">
-                  {digit.includes('|') ? 
-                    <span className="absolute animate-carousel">
-                      {digit.split('|').map((d, i) => (
-                        <span key={i} className="digit block h-[1.2em] leading-[1.2em]">
-                          {d}
-                        </span>
-                      ))}
-                    </span> : 
-                    <span className="digit">{digit}</span>
+              digits.map((digit, idx) => {
+                if (digit.includes('|')) {
+                  // Extract the direction from the digit string
+                  const parts = digit.split('|');
+                  const direction = parseInt(parts.pop() || '0');
+                  const sequence = parts;
+                  
+                  // Assign an animation class based on the direction
+                  let animationClass = '';
+                  switch (direction) {
+                    case 0:
+                      animationClass = 'animate-carousel-up';
+                      break;
+                    case 1:
+                      animationClass = 'animate-carousel-right';
+                      break;
+                    case 2:
+                      animationClass = 'animate-carousel-down';
+                      break;
+                    case 3:
+                      animationClass = 'animate-carousel-left';
+                      break;
+                    default:
+                      animationClass = 'animate-carousel-up';
                   }
-                </span>
-              )) : 
+                  
+                  return (
+                    <span key={idx} className="inline-block relative overflow-hidden h-[1.2em] align-bottom w-[0.6em]">
+                      <span className={`absolute ${animationClass}`}>
+                        {sequence.map((d, i) => (
+                          <span key={i} className="digit block h-[1.2em] leading-[1.2em]">
+                            {d}
+                          </span>
+                        ))}
+                      </span>
+                    </span>
+                  );
+                } else {
+                  return <span key={idx} className="digit">{digit}</span>;
+                }
+              }) : 
               new Intl.NumberFormat('pt-BR').format(value)
             }
           </span>
