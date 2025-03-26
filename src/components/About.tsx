@@ -45,40 +45,51 @@ const About = () => {
   );
 
   return (
-    <section id="about" className="py-24 bg-secondary/70 relative overflow-hidden">
+    <section id="about" className="py-24 relative overflow-hidden">
+      {/* Background Image with Gradient Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/lovable-uploads/68232ead-bdd2-4328-b22e-5690c41824b6.png" 
+          alt="Vista aérea de área verde preservada" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/60 to-background/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-eco-600/20 to-transparent"></div>
+      </div>
+
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent"></div>
-      <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-background to-transparent"></div>
-      <div className="absolute -left-16 top-1/3 opacity-10">
+      <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent z-10"></div>
+      <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-background to-transparent z-10"></div>
+      <div className="absolute -left-16 top-1/3 opacity-10 z-10">
         <Logo size={300} className="text-eco-600 transform rotate-12" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-2 lg:order-1">
-            <span className="inline-block text-eco-600 bg-eco-50 px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in-right">
+            <span className="inline-block text-eco-600 bg-eco-50/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in-right shadow-sm">
               Sobre Nós
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-right" style={{ animationDelay: '0.1s' }}>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-right text-white drop-shadow-md" style={{ animationDelay: '0.1s' }}>
               Comprometidos com a Excelência Ambiental
             </h2>
             
-            <p className="text-foreground/70 mb-8 opacity-0 animate-fade-in-right" style={{ animationDelay: '0.2s' }}>
+            <p className="text-white/90 mb-8 opacity-0 animate-fade-in-right backdrop-blur-sm bg-black/10 p-4 rounded-lg shadow-sm" style={{ animationDelay: '0.2s' }}>
               Fundada nos princípios de administração ecológica e desenvolvimento sustentável, nossa equipe de especialistas ambientais traz décadas de experiência combinada para cada projeto. Acreditamos que responsabilidade ambiental e sucesso empresarial podem — e devem — andar de mãos dadas.
             </p>
             
-            <div className="space-y-4 mb-8 opacity-0 animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
+            <div className="space-y-4 mb-8 opacity-0 animate-fade-in-right backdrop-blur-sm bg-black/10 p-4 rounded-lg shadow-sm" style={{ animationDelay: '0.3s' }}>
               {values.map((value, index) => (
                 <div key={index} className="flex items-center">
                   <CheckCircle2 className="text-eco-600 mr-3 flex-shrink-0" />
-                  <span>{value}</span>
+                  <span className="text-white">{value}</span>
                 </div>
               ))}
             </div>
             
             <a 
               href="#contact" 
-              className="inline-block px-8 py-3 border border-eco-600 text-eco-600 rounded-full font-medium hover:bg-eco-600/10 transition-all duration-300 opacity-0 animate-fade-in-right"
+              className="inline-block px-8 py-3 border border-eco-600 text-eco-600 bg-white/80 backdrop-blur-sm rounded-full font-medium hover:bg-eco-600/10 transition-all duration-300 opacity-0 animate-fade-in-right shadow-sm hover:shadow-md"
               style={{ animationDelay: '0.4s' }}
             >
               Saiba Mais
