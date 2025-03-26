@@ -9,10 +9,10 @@ const About = () => {
   
   // Pre-calculate animated values for each statistic
   const animatedValues = [
-    useCountAnimation(isVisible ? 1000000 : 0, 1500),
-    useCountAnimation(isVisible ? 100000 : 0, 1500),
+    useCountAnimation(isVisible ? 1000000 : 0, 2000),
+    useCountAnimation(isVisible ? 100000 : 0, 2000),
     useCountAnimation(isVisible ? 300 : 0, 1500),
-    useCountAnimation(isVisible ? 10 : 0, 1500)
+    useCountAnimation(isVisible ? 10 : 0, 1000)
   ];
   
   useEffect(() => {
@@ -119,8 +119,12 @@ const About = () => {
                     <div className="mb-3 p-3 rounded-full bg-eco-800/40 backdrop-blur-sm">
                       {stat.icon}
                     </div>
-                    <div className="text-2xl md:text-3xl font-bold text-white mb-2">
-                      {stat.prefix}{animatedValues[index].toLocaleString()}{stat.suffix}
+                    <div className="text-2xl md:text-3xl font-bold text-white mb-2 relative h-12 overflow-hidden">
+                      <div className="flex items-center justify-center">
+                        <span>{stat.prefix}</span>
+                        <span className="tabular-nums">{animatedValues[index].toLocaleString()}</span>
+                        {stat.suffix && <span>{stat.suffix}</span>}
+                      </div>
                     </div>
                     <div className="text-sm text-green-100">{stat.label}</div>
                   </div>
