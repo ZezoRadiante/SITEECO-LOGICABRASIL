@@ -54,13 +54,14 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
         eco: {
+          50: '#F9FEF0',
           100: '#F5FDDF',
           200: '#EDFCC9',
           300: '#E2FCB3', // Cor principal solicitada
           400: '#D7FA9D',
           500: '#CCF887',
-          600: '#C2F671', // Substituindo o verde mais claro anterior
-          700: '#B8F45B', // Substituindo o verde mais escuro anterior
+          600: '#C2F671', // Verde mais claro harmonizado
+          700: '#B8F45B', // Verde mais escuro harmonizado
           800: '#A3E246',
           900: '#8EC531',
         },
