@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 import Logo from './Logo';
 import {
@@ -15,10 +15,10 @@ import Autoplay from 'embla-carousel-autoplay';
 
 const About = () => {
   const values = [
-    "Integridade Ecológica",
-    "Liderança em Sustentabilidade",
-    "Inovação e Expertise",
-    "Parceria com Clientes"
+    "Práticas sustentáveis",
+    "Tecnologias avançadas",
+    "Compromisso com a preservação",
+    "Desenvolvimento sustentável"
   ];
 
   const plantingImages = [
@@ -44,65 +44,92 @@ const About = () => {
     })
   );
 
+  const statistics = [
+    { icon: <Leaf className="h-10 w-10 text-green-200" />, value: "+1.000.000", label: "Mudas Produzidas e Plantadas" },
+    { icon: <Globe className="h-10 w-10 text-green-200" />, value: "+100.000", label: "Hectares requalificados junto ao cliente" },
+    { icon: <FileCheck className="h-10 w-10 text-green-200" />, value: "+300", label: "Licenças ambientais emitidas" },
+    { icon: <Clock className="h-10 w-10 text-green-200" />, value: "+10 ANOS", label: "De experiência ambiental" }
+  ];
+
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/lovable-uploads/68232ead-bdd2-4328-b22e-5690c41824b6.png" 
-          alt="Vista aérea de área verde preservada" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/60 to-background/90"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-eco-600/20 to-transparent"></div>
+        <div className="w-full h-full bg-gradient-to-b from-eco-700 to-eco-600"></div>
+        <div className="absolute inset-0 bg-[url('/lovable-uploads/bb178d77-ee49-49d9-9ada-f4656c233e12.png')] opacity-10 bg-cover bg-center mix-blend-overlay"></div>
       </div>
 
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent z-10"></div>
-      <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-background to-transparent z-10"></div>
-      <div className="absolute -left-16 top-1/3 opacity-10 z-10">
-        <Logo size={300} className="text-eco-600 transform rotate-12" />
+      <div className="absolute -left-16 top-1/3 opacity-5 z-10">
+        <Logo size={300} className="text-white transform rotate-12" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
+        <div className="text-center mb-16">
+          <span className="inline-block text-green-200 bg-green-800/50 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium mb-4">
+            NOSSA HISTÓRIA
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+            SOMOS O PRINCIPAL PARCEIRO EM <br />
+            CONSULTORIA AMBIENTAL NO BRASIL
+          </h2>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1">
-            <span className="inline-block text-eco-600 bg-eco-50/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in-right shadow-sm">
-              Sobre Nós
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in-right text-white drop-shadow-md" style={{ animationDelay: '0.1s' }}>
-              Comprometidos com a Excelência Ambiental
-            </h2>
-            
-            <p className="text-white/90 mb-8 opacity-0 animate-fade-in-right backdrop-blur-sm bg-black/10 p-4 rounded-lg shadow-sm" style={{ animationDelay: '0.2s' }}>
-              Fundada nos princípios de administração ecológica e desenvolvimento sustentável, nossa equipe de especialistas ambientais traz décadas de experiência combinada para cada projeto. Acreditamos que responsabilidade ambiental e sucesso empresarial podem — e devem — andar de mãos dadas.
+          <div>
+            <p className="text-white/90 mb-8 leading-relaxed">
+              Fundada em 2015 por engenheiros visionários, a Eco-Lógica
+              Brasil se destaca pela excelência em estudos ambientais e
+              na produção e plantio de mudas em larga escala. Com
+              capacidade técnica para produzir e plantar mais de 500 mil
+              mudas por ano, nossa empresa é sinônimo de excelência e
+              inovação.
             </p>
             
-            <div className="space-y-4 mb-8 opacity-0 animate-fade-in-right backdrop-blur-sm bg-black/10 p-4 rounded-lg shadow-sm" style={{ animationDelay: '0.3s' }}>
-              {values.map((value, index) => (
-                <div key={index} className="flex items-center">
-                  <CheckCircle2 className="text-eco-600 mr-3 flex-shrink-0" />
-                  <span className="text-white">{value}</span>
+            <p className="text-white/90 mb-8 leading-relaxed">
+              Além disso, a Eco-Lógica Brasil adota práticas sustentáveis
+              e tecnologias avançadas em todas as suas operações,
+              reforçando o compromisso com a preservação ambiental e o
+              desenvolvimento sustentável.
+            </p>
+            
+            <p className="text-white/90 mb-8 leading-relaxed">
+              Com uma equipe altamente qualificada e motivada, a empresa busca constantemente soluções inovadoras para contribuir com a recuperação de ecossistemas e a melhoria da
+              qualidade de vida das comunidades onde atua.
+            </p>
+            
+            <div className="mt-12">
+              <a 
+                href="#contact" 
+                className="inline-block px-8 py-3 bg-eco-800 text-white rounded-full font-medium hover:bg-eco-900 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                CONHEÇA A EMPRESA
+              </a>
+            </div>
+          </div>
+
+          <div className="space-y-12">
+            <div className="grid grid-cols-2 gap-6">
+              {statistics.map((stat, index) => (
+                <div key={index} className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20 shadow-lg">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="mb-2">
+                      {stat.icon}
+                    </div>
+                    <div className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</div>
+                    <div className="text-sm text-green-100">{stat.label}</div>
+                  </div>
                 </div>
               ))}
             </div>
             
-            <a 
-              href="#contact" 
-              className="inline-block px-8 py-3 border border-eco-600 text-eco-600 bg-white/80 backdrop-blur-sm rounded-full font-medium hover:bg-eco-600/10 transition-all duration-300 opacity-0 animate-fade-in-right shadow-sm hover:shadow-md"
-              style={{ animationDelay: '0.4s' }}
-            >
-              Saiba Mais
-            </a>
-          </div>
-
-          <div className="order-1 lg:order-2 opacity-0 animate-fade-in-left">
             <Carousel 
-              className="w-full" 
+              className="w-full mt-8" 
               opts={{
                 loop: true,
-                dragFree: true, // allows continuous dragging
-                duration: 100, // slower transitions
+                dragFree: true,
+                duration: 100,
               }}
               plugins={[autoplayPlugin.current]}
             >
@@ -114,7 +141,7 @@ const About = () => {
                         <AspectRatio ratio={1/1}>
                           <img 
                             src={image}
-                            alt={`Crianças plantando ou cuidando de mudas de plantas - imagem ${index + 1}`}
+                            alt={`Projetos ambientais - imagem ${index + 1}`}
                             className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                           />
                         </AspectRatio>
@@ -126,16 +153,6 @@ const About = () => {
               <CarouselPrevious className="left-2" />
               <CarouselNext className="right-2" />
             </Carousel>
-            
-            <div className="mt-8 glass rounded-lg p-4 max-w-xs shadow-lg ml-auto">
-              <div className="flex items-center mb-2">
-                <Logo size={20} className="text-eco-600 mr-2" />
-                <h4 className="font-semibold">Nossa Missão</h4>
-              </div>
-              <p className="text-sm text-foreground/70">
-                Impulsionar mudanças ambientais positivas através de soluções inovadoras e educação.
-              </p>
-            </div>
           </div>
         </div>
       </div>
