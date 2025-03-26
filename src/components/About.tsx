@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { CheckCircle2, Leaf, Globe, FileCheck, Clock } from 'lucide-react';
 import { useCountAnimation } from '@/hooks/useCountAnimation';
@@ -5,6 +6,14 @@ import { useCountAnimation } from '@/hooks/useCountAnimation';
 const About = () => {
   const statisticsRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  
+  // Pre-calculate animated values for each statistic
+  const animatedValues = [
+    useCountAnimation(isVisible ? 1000000 : 0, 1500),
+    useCountAnimation(isVisible ? 100000 : 0, 1500),
+    useCountAnimation(isVisible ? 300 : 0, 1500),
+    useCountAnimation(isVisible ? 10 : 0, 1500)
+  ];
   
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -101,26 +110,22 @@ const About = () => {
 
           <div className="animate-fade-in-left">
             <div ref={statisticsRef} className="grid grid-cols-2 gap-6">
-              {statistics.map((stat, index) => {
-                const animatedValue = isVisible ? useCountAnimation(stat.value, 1500) : 0;
-                
-                return (
-                  <div 
-                    key={index} 
-                    className="stat-item opacity-0 p-6 rounded-lg transition-all duration-500 ease-out"
-                  >
-                    <div className="flex flex-col items-center text-center">
-                      <div className="mb-3 p-3 rounded-full bg-eco-800/40 backdrop-blur-sm">
-                        {stat.icon}
-                      </div>
-                      <div className="text-2xl md:text-3xl font-bold text-white mb-2">
-                        {stat.prefix}{animatedValue.toLocaleString()}{stat.suffix}
-                      </div>
-                      <div className="text-sm text-green-100">{stat.label}</div>
+              {statistics.map((stat, index) => (
+                <div 
+                  key={index} 
+                  className="stat-item opacity-0 p-6 rounded-lg transition-all duration-500 ease-out"
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <div className="mb-3 p-3 rounded-full bg-eco-800/40 backdrop-blur-sm">
+                      {stat.icon}
                     </div>
+                    <div className="text-2xl md:text-3xl font-bold text-white mb-2">
+                      {stat.prefix}{animatedValues[index].toLocaleString()}{stat.suffix}
+                    </div>
+                    <div className="text-sm text-green-100">{stat.label}</div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
             </div>
             
             {/* Nature-themed decorative element */}
