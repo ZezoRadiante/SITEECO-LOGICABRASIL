@@ -37,7 +37,7 @@ const Navbar = () => {
           href="#" 
           className="flex items-center space-x-2 text-primary font-medium opacity-0 animate-fade-in"
         >
-          <Logo size={24} className="text-eco-600 animate-pulse-gentle" />
+          <Logo size={24} className="text-sky-400 animate-pulse-gentle" />
         </a>
 
         {/* Desktop Navigation */}
@@ -47,9 +47,9 @@ const Navbar = () => {
               key={link.href} 
               href={link.href} 
               className={cn(
-                "text-foreground/90 hover:text-primary transition-all duration-300 font-medium relative opacity-0", 
+                "text-foreground/90 hover:text-sky-400 transition-all duration-300 font-medium relative opacity-0", 
                 `animate-fade-in-delay-${index + 1}`,
-                "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                "after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:w-0 after:bg-sky-300 after:transition-all after:duration-300 hover:after:w-full"
               )}
             >
               {link.label}
@@ -60,7 +60,7 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button 
           onClick={toggleMobileMenu} 
-          className="md:hidden text-foreground opacity-0 animate-fade-in p-1 rounded-full hover:bg-eco-100 active:bg-eco-200 transition-colors" 
+          className="md:hidden text-foreground opacity-0 animate-fade-in p-1 rounded-full hover:bg-sky-100 active:bg-sky-200 transition-colors" 
           aria-label="Abrir menu mobile"
         >
           {isMobileMenuOpen ? (
@@ -86,10 +86,10 @@ const Navbar = () => {
               key={link.href} 
               href={link.href} 
               onClick={() => setIsMobileMenuOpen(false)} 
-              className="text-foreground/90 hover:text-primary transition-all duration-300 py-3 font-medium border-b border-primary/10 flex items-center justify-between"
+              className="text-foreground/90 hover:text-sky-400 transition-all duration-300 py-3 font-medium border-b border-sky-300/10 flex items-center justify-between"
             >
               <span>{link.label}</span>
-              <span className="text-primary">›</span>
+              <span className="text-sky-400">›</span>
             </a>
           ))}
         </div>

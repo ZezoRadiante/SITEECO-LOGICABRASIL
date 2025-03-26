@@ -68,12 +68,12 @@ const About = () => {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
         <div className="text-center mb-16 animate-fade-in">
-          <span className="inline-block text-earth-800 bg-eco-200/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm">
+          <span className="inline-block bg-sky-300/90 text-earth-800 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm">
             NOSSA HISTÓRIA
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-earth-800 drop-shadow-md">
             SOMOS O PRINCIPAL PARCEIRO EM <br />
-            CONSULTORIA AMBIENTAL NO BRASIL
+            <span className="text-sky-600">CONSULTORIA AMBIENTAL NO BRASIL</span>
           </h2>
         </div>
 
@@ -103,7 +103,7 @@ const About = () => {
             <div className="mt-12">
               <a 
                 href="#contact" 
-                className="inline-block px-8 py-4 bg-eco-400 text-earth-800 rounded-full font-semibold hover:bg-eco-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="inline-block px-8 py-4 bg-sky-300 text-earth-800 rounded-full font-semibold hover:bg-sky-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 CONHEÇA A EMPRESA
               </a>
@@ -115,13 +115,13 @@ const About = () => {
               {statistics.map((stat, index) => (
                 <div 
                   key={index} 
-                  className="stat-item opacity-0 p-6 rounded-lg transition-all duration-500 ease-out bg-white/80 backdrop-blur-sm border border-eco-300/30 shadow-md"
+                  className="stat-item opacity-0 p-6 rounded-lg transition-all duration-500 ease-out bg-white/80 backdrop-blur-sm border border-sky-300/30 shadow-md"
                 >
                   <div className="flex flex-col items-center text-center">
-                    <div className="mb-3 p-3 rounded-full bg-eco-100/70 shadow-inner">
+                    <div className="mb-3 p-3 rounded-full bg-sky-100/70 shadow-inner">
                       {stat.icon}
                     </div>
-                    <div className="text-2xl md:text-3xl font-bold text-earth-800 mb-2 relative">
+                    <div className="text-2xl md:text-3xl font-bold text-sky-800 mb-2 relative">
                       <div className="flex items-center justify-center">
                         <span>{stat.prefix}</span>
                         <div className="flex overflow-hidden h-10">
@@ -159,9 +159,9 @@ const About = () => {
               ))}
             </div>
             
-            <div className="mt-12 p-6 backdrop-blur-sm rounded-lg opacity-0 stat-item bg-white/80 border border-eco-300/30 shadow-md">
+            <div className="mt-12 p-6 backdrop-blur-sm rounded-lg opacity-0 stat-item bg-sky-300/80 border border-sky-400/30 shadow-md">
               <div className="flex items-center justify-center space-x-4">
-                <CheckCircle2 className="h-6 w-6 text-eco-600" />
+                <CheckCircle2 className="h-6 w-6 text-earth-800" />
                 <span className="text-earth-800 italic font-medium">
                   "Comprometidos com a sustentabilidade e excelência em cada projeto ambiental."
                 </span>

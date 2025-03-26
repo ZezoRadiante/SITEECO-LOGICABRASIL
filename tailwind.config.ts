@@ -76,6 +76,17 @@ export default {
           800: '#423A2F',
           900: '#2D2823',
         },
+        sky: {
+          100: '#E8F4F7',
+          200: '#DAE9EF',
+          300: '#C8E4EC', // The color requested by the user
+          400: '#B0D4E0',
+          500: '#8BBFD2',
+          600: '#5FA3BD',
+          700: '#4387A2',
+          800: '#326878',
+          900: '#204551',
+        },
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
