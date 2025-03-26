@@ -24,10 +24,10 @@ const Banner = () => {
         </div>
       </div>
       
-      {/* Banner Image - Full width below text with subtle shadow */}
+      {/* Banner Image - Using public folder image instead of uploaded file */}
       <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50">
         <img 
-          src="/lovable-uploads/17f4d0f9-7c39-414b-aed2-5773efba9a0a.png" 
+          src="/banner-kids-planting.jpg" 
           alt="Criança com capacete branco segurando uma muda em uma plantação" 
           className="w-full h-auto object-cover transform hover:scale-[1.02] transition-transform duration-700"
         />
