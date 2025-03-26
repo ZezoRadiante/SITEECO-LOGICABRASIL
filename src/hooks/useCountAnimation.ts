@@ -47,10 +47,10 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
         const carouselDigits = currentDigits.map((digit, index) => {
           // For complete animation, just return the digit
           if (progress === 1) {
-            return digit;
+            return endDigits[index] || digit;
           }
           
-          // For carousel effect, create a sequence of 5 digits for animation
+          // For carousel effect, create a sequence of digits for animation
           const digitValue = parseInt(digit);
           let sequence = [];
           
