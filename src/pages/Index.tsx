@@ -4,11 +4,14 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Banner from '@/components/Banner';
 import Services from '@/components/Services';
-import About from '@/components/About';
+import Projetos from '@/components/Projetos';
+import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import About from '@/components/About';
 
 const Index = () => {
   useEffect(() => {
+    // Reset scroll position when component mounts
     window.scrollTo(0, 0);
   }, []);
 
@@ -18,6 +21,8 @@ const Index = () => {
       <Hero />
       <Banner />
       <Services />
+      <Projetos />
+      <Contact />
       <About />
       <Footer />
     </div>
