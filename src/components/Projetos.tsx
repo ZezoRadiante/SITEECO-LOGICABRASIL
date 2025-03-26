@@ -11,31 +11,11 @@ import {
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-const projects = [
-  {
-    id: 1,
-    image: '/images/projeto1.jpg',
-    title: 'Viveiro Florestal',
-    description: 'Capacidade Para 500 Mil Mudas',
-  },
-  {
-    id: 2,
-    image: '/images/projeto2.jpg',
-    title: 'Casa dos Ventos',
-    description: 'Projeto de Reposição Florestal Torres Anemométricas - 6.240 Mudas Plantadas',
-  },
-  {
-    id: 3,
-    image: '/images/projeto3.jpg',
-    title: 'Rio do Vento',
-    description: 'Projeto de Reposição Florestal - 174.764 Mudas Plantadas',
-  },
-  {
-    id: 4,
-    image: '/images/projeto4.jpg',
-    title: 'Umari',
-    description: 'Projeto de Reposição Florestal - 17.652 Mudas Plantadas',
-  },
+const forestImages = [
+  '/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png',
+  '/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg',
+  '/lovable-uploads/b2251703-230b-4fb3-adfd-7249f11d3483.jpg',
+  '/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png',
 ];
 
 const CarouselDots = ({ 
@@ -48,7 +28,7 @@ const CarouselDots = ({
   onClick: (index: number) => void;
 }) => {
   return (
-    <div className="flex justify-center space-x-3 mt-4">
+    <div className="flex justify-center space-x-3 mt-8">
       {Array.from({ length: count }).map((_, index) => (
         <button
           key={index}
@@ -74,6 +54,7 @@ const Projetos = () => {
     skipSnaps: false,
   }, [Autoplay({ delay: 5000, stopOnInteraction: true })]);
 
+  // Update active index when the carousel scrolls
   useEffect(() => {
     if (!emblaApi) return;
 
@@ -87,6 +68,7 @@ const Projetos = () => {
     };
   }, [emblaApi]);
 
+  // Function to handle dot click and scroll to respective slide
   const scrollTo = React.useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
@@ -94,23 +76,21 @@ const Projetos = () => {
     }
   }, [emblaApi]);
 
-  // Log to confirm component is rendering
-  useEffect(() => {
-    console.log('Projetos component mounted');
-  }, []);
-
   return (
-    <section id="projetos" className="py-12 overflow-hidden relative bg-white">
+    <section id="projetos" className="py-24 overflow-hidden relative bg-gradient-to-b from-eco-50/40 via-eco-100/30 to-eco-200/20">
+      {/* Top gradient transition - enhanced */}
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/50 to-transparent z-10"></div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-8">
-          <span className="inline-block text-[#71B707] bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-2 opacity-0 animate-fade-in shadow-sm">
+        <div className="text-center mb-16">
+          <span className="inline-block text-[#71B707] bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in shadow-sm">
             Conheça Nosso Trabalho
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-2 opacity-0 animate-fade-in-delay-1 text-earth-700 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0 animate-fade-in-delay-1 text-earth-700 text-center">
             Nossos <span className="text-[#71B707]">Projetos</span>
           </h2>
           
-          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full mb-4"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full mb-6"></div>
           
           <p className="max-w-3xl mx-auto text-lg text-earth-600 opacity-0 animate-fade-in-delay-2 leading-relaxed">
             Confira alguns dos nossos projetos de conservação e sustentabilidade implementados em diferentes ecossistemas.
@@ -118,47 +98,66 @@ const Projetos = () => {
         </div>
       </div>
 
-      <div className="w-full relative overflow-hidden py-4">
-        <div className="max-w-7xl mx-auto px-4">
-          <Carousel ref={emblaRef} className="w-full">
-            <CarouselContent>
-              {projects.map((project, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <div className="overflow-hidden rounded-lg border-2 border-eco-200 h-64 md:h-80 shadow-md bg-gray-100 flex items-center justify-center group relative">
+      {/* Full width carousel - Enhanced with better transitions */}
+      <div className="w-full relative overflow-hidden py-12">
+        <Carousel>
+          <div ref={emblaRef} className="overflow-hidden">
+            <div className="flex">
+              {forestImages.map((image, index) => {
+                // Calculate the distance from active index (handling loop)
+                const count = forestImages.length;
+                let distance = Math.abs(index - activeIndex);
+                if (distance > count / 2) {
+                  distance = count - distance;
+                }
+                
+                return (
+                  <div 
+                    key={index} 
+                    className={cn(
+                      "min-w-0 shrink-0 grow-0 basis-[75%] sm:basis-[45%] md:basis-[33.333%] lg:basis-[25%] px-3 transition-all duration-700",
+                      distance === 0 
+                        ? "scale-110 z-20 opacity-100" 
+                        : distance === 1 
+                          ? "scale-95 z-10 opacity-90" 
+                          : "scale-90 opacity-70"
+                    )}
+                  >
+                    <div className={cn(
+                      "overflow-hidden shadow-md rounded-lg border-2 transition-all duration-500",
+                      distance === 0 
+                        ? "h-72 md:h-96 border-eco-500" 
+                        : "h-60 md:h-80 border-eco-200"
+                    )}>
                       <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.onerror = null;
-                          target.src = '/placeholder.svg';
-                          console.log(`Image failed to load: ${project.image}`);
-                        }}
+                        src={image} 
+                        alt={`Projeto de conservação ${index + 1}`} 
+                        className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-earth-900/80 via-transparent to-transparent p-6 flex flex-col justify-end">
-                        <h3 className="text-white text-2xl font-bold mb-1">{project.title}</h3>
-                        <p className="text-eco-100 text-sm">{project.description}</p>
-                      </div>
                     </div>
                   </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
-          </Carousel>
-        </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Navigation arrows - Improved */}
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
+        </Carousel>
       </div>
 
+      {/* Indicator dots - Improved */}
       <div className="mt-4">
         <CarouselDots 
           activeIndex={activeIndex} 
-          count={projects.length} 
+          count={forestImages.length} 
           onClick={scrollTo} 
         />
       </div>
+      
+      {/* Bottom gradient transition - Enhanced */}
+      <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/40 to-transparent"></div>
     </section>
   );
 };

@@ -14,37 +14,21 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [contentReady, setContentReady] = useState(false);
-  const [loadTimeout, setLoadTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Reset scroll position when component mounts
     window.scrollTo(0, 0);
     
-    // Force content to display after a maximum timeout
-    const timeout = setTimeout(() => {
-      setIsLoading(false);
-      setVideoLoaded(true);
-      setContentReady(true);
-    }, 2000); // Reduced to 2 seconds
-    
-    setLoadTimeout(timeout);
-    
-    return () => {
-      if (loadTimeout) clearTimeout(loadTimeout);
-    };
-  }, []);
-
-  useEffect(() => {
     // Prepare to show content after video is loaded and minimum loading time has passed
-    if (videoLoaded && !isLoading) {
+    if (videoLoaded) {
       // Add a small delay to ensure smooth transition
       const timer = setTimeout(() => {
-        setContentReady(true);
-      }, 100); // Reduced delay
+        setIsLoading(false);
+      }, 300);
       
       return () => clearTimeout(timer);
     }
-  }, [videoLoaded, isLoading]);
+  }, [videoLoaded]);
 
   useEffect(() => {
     // Initialize intersection observer for animations
@@ -59,41 +43,31 @@ const Index = () => {
       { threshold: 0.1 }
     );
     
-    // Observe elements regardless of loading state to ensure animations work
-    if (document.querySelectorAll('.animate-on-scroll').length > 0) {
+    // Only observe elements after loading is complete
+    if (!isLoading) {
+      // Observe all elements with the animate-on-scroll class
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
       });
       
+      // Set content ready with a small delay for smoother transition
+      const timer = setTimeout(() => {
+        setContentReady(true);
+      }, 100);
+      
       return () => {
+        clearTimeout(timer);
+        // Cleanup observer
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
           observer.unobserve(el);
         });
       };
     }
-  }, [contentReady]); // Changed to depend on contentReady
+  }, [isLoading]);
 
   const handleVideoLoaded = () => {
-    if (loadTimeout) clearTimeout(loadTimeout);
     setVideoLoaded(true);
-    
-    // Don't immediately hide loading screen to ensure smooth transition
-    setTimeout(() => {
-      setIsLoading(false);
-      setContentReady(true); // Ensure content becomes visible
-    }, 300);
   };
-
-  // Force render content after 3 seconds even if loading states aren't resolved
-  useEffect(() => {
-    const forceRender = setTimeout(() => {
-      setIsLoading(false);
-      setVideoLoaded(true);
-      setContentReady(true);
-    }, 3000);
-    
-    return () => clearTimeout(forceRender);
-  }, []);
 
   return (
     <>
@@ -108,7 +82,7 @@ const Index = () => {
         </div>
       )}
       
-      <div className={`min-h-screen w-full overflow-auto transition-all duration-1000 ${!isLoading ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`min-h-screen transition-all duration-1000 ${contentReady ? 'opacity-100' : 'opacity-0'}`}>
         <Navbar />
         <Hero onVideoLoaded={handleVideoLoaded} />
         <Banner />
