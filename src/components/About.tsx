@@ -53,28 +53,6 @@ const About = () => {
             </div>
           </div>
           
-          {/* Map image */}
-          <div className="mt-8 mb-12">
-            <img 
-              src="/lovable-uploads/c86c314c-0e2b-41cf-94cf-a6615f0f6dea.png" 
-              alt="Mapa de localização" 
-              className="w-full h-auto rounded-md border border-eco-200"
-            />
-            
-            {/* Location indicators */}
-            <div className="flex justify-center mt-4 gap-2">
-              {[1, 2, 3].map((dot, index) => (
-                <div 
-                  key={index} 
-                  className={cn(
-                    "h-2 w-2 rounded-full",
-                    index === 0 ? "bg-[#71B707]" : "bg-eco-200"
-                  )}
-                ></div>
-              ))}
-            </div>
-          </div>
-          
           {/* Social Media */}
           <div className="mt-8">
             <h3 className="text-lg font-bold text-earth-700 mb-4">
