@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -94,6 +93,7 @@
     background: var(--main-gradient);
     background-attachment: fixed;
     min-height: 100vh;
+    scroll-behavior: smooth;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -105,6 +105,7 @@
   section {
     position: relative;
     overflow: hidden;
+    transition: all 0.8s ease-in-out;
   }
 
   section::after {
@@ -115,6 +116,11 @@
     margin: 0 auto;
     width: 60%;
     border-radius: 2px;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  section:hover::after {
+    width: 70%;
   }
 }
 
@@ -197,20 +203,23 @@ html {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(226, 252, 179, 0.2);
+  background: rgba(226, 252, 179, 0.15);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(113, 183, 7, 0.5);
-  border-radius: 4px;
+  background: linear-gradient(rgba(113, 183, 7, 0.5), rgba(113, 183, 7, 0.7));
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(113, 183, 7, 0.7);
+  background: linear-gradient(rgba(113, 183, 7, 0.7), rgba(113, 183, 7, 0.9));
 }
 
 @keyframes float {
@@ -284,4 +293,21 @@ html {
 button:focus, a:focus {
   outline: 2px solid rgba(113, 183, 7, 0.4);
   outline-offset: 2px;
+}
+
+/* Enhanced transitions for all sections */
+section {
+  transition: background-color 0.8s ease, transform 0.5s ease;
+}
+
+/* Improved intersection animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
