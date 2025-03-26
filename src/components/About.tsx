@@ -26,7 +26,7 @@ const About = () => {
   }, [inView]);
 
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-gradient-to-b from-earth-100/30 to-sky-50/20">
+    <div id="about" className="py-24 relative overflow-hidden bg-gradient-to-b from-earth-100/30 to-sky-50/20">
       {/* Top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-eco-100/40 to-transparent z-10"></div>
       
@@ -200,7 +200,7 @@ const About = () => {
       
       {/* Bottom gradient transition */}
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-sky-50/30 to-transparent"></div>
-    </section>
+    </div>
   );
 };
 
