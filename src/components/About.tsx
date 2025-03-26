@@ -57,7 +57,7 @@ const About = () => {
       {/* Background image with gradient overlay */}
       <div className="absolute inset-0 w-full h-full">
         <img 
-          src="/lovable-uploads/370525ba-f852-4a6e-8415-ae437cc892ad.png" 
+          src="/lovable-uploads/91648c89-4929-4df8-b49c-0fa8b8849b67.png" 
           alt="Background" 
           className="w-full h-full object-cover object-center"
         />
