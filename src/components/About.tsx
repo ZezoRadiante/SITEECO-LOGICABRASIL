@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MapPin, Linkedin, Instagram, Youtube, Map, MessageCircle } from 'lucide-react';
+import { MapPin, Linkedin, Instagram, Facebook, Map, MessageCircle } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 
@@ -67,14 +67,26 @@ const About = () => {
               Nossas redes
             </h3>
             <div className="flex gap-4 mb-8">
-              <a href="https://www.linkedin.com" className="text-earth-600 hover:text-[#71B707]" aria-label="LinkedIn">
+              <a href="https://br.linkedin.com/company/eco-l%C3%B3gica-brasil-ltda-eco-l%C3%B3gica-tem-uma-conta" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 className="text-earth-600 hover:text-[#71B707]" 
+                 aria-label="LinkedIn">
                 <Linkedin size={24} />
               </a>
-              <a href="https://www.instagram.com" className="text-earth-600 hover:text-[#71B707]" aria-label="Instagram">
+              <a href="https://www.instagram.com/brasilecologica/" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 className="text-earth-600 hover:text-[#71B707]" 
+                 aria-label="Instagram">
                 <Instagram size={24} />
               </a>
-              <a href="https://www.youtube.com" className="text-earth-600 hover:text-[#71B707]" aria-label="YouTube">
-                <Youtube size={24} />
+              <a href="https://www.facebook.com/eco.logicabrasilltda/?locale=pt_BR" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 className="text-earth-600 hover:text-[#71B707]" 
+                 aria-label="Facebook">
+                <Facebook size={24} />
               </a>
             </div>
           </div>
@@ -133,8 +145,8 @@ const Location = ({ state, address, city, phone, mapUrl, whatsappUrl }: {
         rel="noopener noreferrer" 
         className="text-earth-600 text-sm hover:text-[#71B707] transition-colors flex items-center group"
       >
-        <MessageCircle className="w-5 h-5 mr-2 text-[#71B707] hover:text-green-600" />
-        <span className="hover:underline">Falar no WhatsApp</span>
+        <span className="hover:underline">{phone}</span>
+        <MessageCircle className="w-5 h-5 ml-2 text-[#71B707] hover:text-green-600" />
       </a>
     </div>
   );
