@@ -3,18 +3,18 @@ import React from 'react';
 
 const Banner = () => {
   return (
-    <section id="banner" className="py-16 md:py-20 bg-gradient-to-b from-white via-eco-50/30 to-eco-100/40 relative overflow-hidden">
+    <section id="banner" className="py-16 md:py-20 bg-gradient-to-b from-white via-eco-50/30 to-eco-100/40 relative overflow-hidden transition-all duration-500 ease-in-out">
       {/* Top gradient transition - enhanced */}
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-10"></div>
       
       <div className="container mx-auto relative z-20">
         {/* Banner Content - Now with better padding and formatting */}
-        <div className="w-full space-y-6 text-center px-4 md:px-8 mb-16">
+        <div className="w-full space-y-6 text-center px-4 md:px-8 mb-16 transform transition-all duration-700 hover:scale-[1.01]">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-earth-800 leading-tight">
             Promovendo um <span className="text-[#71B707] italic">Futuro Verde</span> para as Novas Gerações
           </h2>
           
-          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full my-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full my-6 transition-all duration-500 hover:w-28"></div>
           
           <p className="text-lg text-earth-600 leading-relaxed max-w-3xl mx-auto font-normal">
             Através de nossas iniciativas de educação ambiental e reflorestamento, 
@@ -25,7 +25,7 @@ const Banner = () => {
       </div>
       
       {/* Banner Image - Using the new PNG from lovable uploads */}
-      <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50">
+      <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50 transition-transform duration-1000 ease-in-out">
         <img 
           src="/lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png" 
           alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
