@@ -37,7 +37,12 @@ export const useCountAnimation = (end: number, duration: number = 1000) => {
       if (end > 0) {
         const endDigits = end.toString().split('');
         const currentDigits = nextValue.toString().split('');
-        const paddedCurrentDigits = currentDigits.padStart(endDigits.length, '0').split('');
+        
+        // Calculate how many leading zeros we need
+        const paddingLength = endDigits.length - currentDigits.length;
+        const paddedCurrentDigits = paddingLength > 0 
+          ? [...Array(paddingLength).fill('0'), ...currentDigits]
+          : currentDigits;
         
         // For each digit position, create a small carousel of digits
         const digitCarousels = paddedCurrentDigits.map((digit, index) => {
