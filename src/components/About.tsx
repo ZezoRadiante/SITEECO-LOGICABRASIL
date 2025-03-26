@@ -55,13 +55,17 @@ const About = () => {
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gradient-to-b from-white to-white/80"></div>
-        {/* Background image with gradient overlay */}
+        {/* Updated gradient overlay - horizontal gradient from left (less visible) to right (more visible) */}
+        <div className="w-full h-full bg-white"></div>
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-multiply" 
-          style={{ backgroundImage: "url('/lovable-uploads/caeb8142-ae5e-41c7-9909-914220b29b64.png')" }}
+          className="absolute inset-0 bg-cover bg-center" 
+          style={{ 
+            backgroundImage: "url('/lovable-uploads/caeb8142-ae5e-41c7-9909-914220b29b64.png')",
+            maskImage: "linear-gradient(to right, transparent, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.9))",
+            WebkitMaskImage: "linear-gradient(to right, transparent, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.9))"
+          }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/40 to-white/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/50"></div>
       </div>
 
       <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-background to-transparent z-10"></div>
