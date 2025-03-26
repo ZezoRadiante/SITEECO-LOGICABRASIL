@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Leaf, Recycle, Sprout } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -68,8 +67,8 @@ const CarouselDots = ({
 
 const Services = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel();
-
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  
   const services = [
     {
       title: "Consultoria Ambiental",
@@ -88,7 +87,6 @@ const Services = () => {
     }
   ];
 
-  // Update active index when the carousel scrolls
   React.useEffect(() => {
     if (!emblaApi) return;
 
@@ -97,22 +95,21 @@ const Services = () => {
     };
 
     emblaApi.on('select', onSelect);
+    onSelect();
+    
     return () => {
       emblaApi.off('select', onSelect);
     };
   }, [emblaApi]);
 
-  // Function to handle dot click and scroll to respective slide
   const scrollTo = React.useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
-      setActiveIndex(index);
     }
   }, [emblaApi]);
 
   return (
     <section id="services" className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50 via-white to-eco-50/40">
-      {/* Top gradient transition - enhanced */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10"></div>
       
       <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-5 bg-repeat"></div>
@@ -132,7 +129,6 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Desktop view - grid with enhanced spacing */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard 
@@ -145,27 +141,22 @@ const Services = () => {
           ))}
         </div>
 
-        {/* Mobile view - carousel with improved dots */}
         <div className="md:hidden">
           <div className="overflow-hidden" ref={emblaRef}>
-            <Carousel>
-              <CarouselContent>
-                {services.map((service, index) => (
-                  <CarouselItem key={service.title}>
-                    <div className="p-1">
-                      <ServiceCard 
-                        title={service.title} 
-                        description={service.description} 
-                        icon={service.icon} 
-                        index={index} 
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-0 bg-white/80 border-sky-200 text-sky-600" />
-              <CarouselNext className="right-0 bg-white/80 border-sky-200 text-sky-600" />
-            </Carousel>
+            <div className="flex">
+              {services.map((service, index) => (
+                <div key={service.title} className="flex-[0_0_100%] min-w-0 pl-4">
+                  <div className="p-1">
+                    <ServiceCard 
+                      title={service.title} 
+                      description={service.description} 
+                      icon={service.icon} 
+                      index={index} 
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
           <CarouselDots 
             activeIndex={activeIndex} 
@@ -175,7 +166,6 @@ const Services = () => {
         </div>
       </div>
       
-      {/* Bottom gradient transition - Enhanced */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-eco-100/50 to-transparent"></div>
     </section>
   );
