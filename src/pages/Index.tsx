@@ -14,10 +14,19 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [contentReady, setContentReady] = useState(false);
+  const [loadTimeout, setLoadTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     // Reset scroll position when component mounts
     window.scrollTo(0, 0);
+    
+    // Set a timeout to ensure loading doesn't hang forever
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+      setVideoLoaded(true);
+    }, 5000);
+    
+    setLoadTimeout(timeout);
     
     // Prepare to show content after video is loaded and minimum loading time has passed
     if (videoLoaded) {
@@ -28,7 +37,11 @@ const Index = () => {
       
       return () => clearTimeout(timer);
     }
-  }, [videoLoaded]);
+    
+    return () => {
+      if (loadTimeout) clearTimeout(loadTimeout);
+    };
+  }, [videoLoaded, loadTimeout]);
 
   useEffect(() => {
     // Initialize intersection observer for animations
@@ -66,6 +79,7 @@ const Index = () => {
   }, [isLoading]);
 
   const handleVideoLoaded = () => {
+    if (loadTimeout) clearTimeout(loadTimeout);
     setVideoLoaded(true);
   };
 
