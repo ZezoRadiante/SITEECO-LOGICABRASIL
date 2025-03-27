@@ -1,16 +1,11 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import ProjectItem from './ProjectItem';
 import { projectImages } from '@/data/projectData';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import CarouselDots from './CarouselDots';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ProjectCarousel: React.FC = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
@@ -18,7 +13,8 @@ const ProjectCarousel: React.FC = () => {
     loop: true,
     align: 'center',
     skipSnaps: false,
-  }, [Autoplay({ delay: 5000, stopOnInteraction: true })]);
+    inViewThreshold: 0.7,
+  }, [Autoplay({ delay: 5000, stopOnInteraction: true, rootNode: (emblaRoot) => emblaRoot.parentElement })]);
 
   // Update active index when the carousel scrolls
   useEffect(() => {
@@ -35,7 +31,7 @@ const ProjectCarousel: React.FC = () => {
   }, [emblaApi]);
 
   // Function to handle dot click and scroll to respective slide
-  const scrollTo = React.useCallback((index: number) => {
+  const scrollTo = useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
       setActiveIndex(index);
@@ -52,12 +48,16 @@ const ProjectCarousel: React.FC = () => {
     return distance;
   };
 
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
   return (
-    <>
-      <div className="w-full relative overflow-hidden py-12">
-        <Carousel>
-          <div ref={emblaRef} className="overflow-hidden">
-            <div className="flex">
+    <div className="w-full relative overflow-hidden py-12">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Carousel Container */}
+        <div className="relative">
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex py-8">
               {projectImages.map((project, index) => (
                 <ProjectItem 
                   key={index} 
@@ -68,19 +68,34 @@ const ProjectCarousel: React.FC = () => {
             </div>
           </div>
 
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-eco-100/90 hover:bg-eco-200/90 border-eco-300 text-earth-700" />
-        </Carousel>
-      </div>
+          {/* Custom Navigation Buttons */}
+          <button 
+            onClick={scrollPrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md hover:bg-eco-100 text-earth-700 border border-eco-200 shadow-lg flex items-center justify-center transform transition-all duration-300 hover:scale-110"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          
+          <button 
+            onClick={scrollNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md hover:bg-eco-100 text-earth-700 border border-eco-200 shadow-lg flex items-center justify-center transform transition-all duration-300 hover:scale-110"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
 
-      <div className="mt-4">
-        <CarouselDots 
-          activeIndex={activeIndex} 
-          count={projectImages.length} 
-          onClick={scrollTo} 
-        />
+        {/* Pagination Dots */}
+        <div className="mt-8">
+          <CarouselDots 
+            activeIndex={activeIndex} 
+            count={projectImages.length} 
+            onClick={scrollTo} 
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 
