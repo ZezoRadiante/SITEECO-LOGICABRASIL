@@ -32,7 +32,7 @@ const Navbar = () => {
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const navLinks = [
-    { href: '#services', label: 'Serviços' },
+    { href: '#services', label: 'Soluções' },
     { href: '#about', label: 'Sobre' },
     { href: '#contact', label: 'Contato' }
   ];
