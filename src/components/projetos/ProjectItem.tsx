@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 
 interface ProjectItemProps {
@@ -14,6 +14,11 @@ interface ProjectItemProps {
 }
 
 const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }) => {
+  const [imageError, setImageError] = useState(false);
+  
+  // Fallback images from public folder
+  const fallbackImage = '/placeholder.svg';
+  
   return (
     <div 
       className={cn(
@@ -32,12 +37,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
           : "h-[400px] md:h-[450px] shadow-md"
       )}>
         <img 
-          src={project.src} 
+          src={imageError ? fallbackImage : project.src} 
           alt={`Projeto ${project.title}`} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           onError={(e) => {
             console.error(`Error loading image: ${project.src}`);
-            e.currentTarget.src = '/placeholder.svg'; // Fallback to placeholder
+            setImageError(true);
           }}
         />
         
