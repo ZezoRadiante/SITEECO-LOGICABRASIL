@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -5,6 +6,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import { Button } from '@/components/ui/button';
 import { heroImages } from '@/data/projectData';
+
 const Hero = ({
   onVideoLoaded
 }: {
@@ -13,6 +15,7 @@ const Hero = ({
   const isMobile = useIsMobile();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  
   const scrollToNextSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const targetSection = document.querySelector('#services');
@@ -23,6 +26,7 @@ const Hero = ({
       });
     }
   };
+  
   useEffect(() => {
     const videoElement = videoRef.current;
     if (videoElement) {
@@ -41,7 +45,10 @@ const Hero = ({
       };
     }
   }, [onVideoLoaded]);
-  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Added pt-20 to give more space for the larger logo */}
+      
       {/* Background Video with Enhanced Transitions */}
       <div className="absolute inset-0">
         <video ref={videoRef} className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`} autoPlay muted loop playsInline preload="auto" style={{
@@ -84,4 +91,5 @@ const Hero = ({
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent z-20 transition-all duration-1000"></div>
     </section>;
 };
+
 export default Hero;

@@ -60,9 +60,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a 
           href="#" 
-          className="flex items-center space-x-2 text-primary font-medium opacity-0 animate-fade-in"
+          className="flex items-center space-x-2 text-primary font-medium opacity-0 animate-fade-in -ml-2 sm:ml-0"
         >
-          <Logo size={24} className="text-sky-400 animate-pulse-gentle" />
+          <Logo size={48} className="text-sky-400 animate-pulse-gentle" />
         </a>
 
         {/* Desktop Navigation - Enhanced with active states */}
