@@ -12,66 +12,62 @@ import { Loading } from '@/components/ui/loading';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
   const [contentReady, setContentReady] = useState(false);
   const sectionsRef = useRef<HTMLDivElement>(null);
 
-  // Fallback timer to prevent infinite loading screen
+  // Improved loading management with shorter timeout
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       if (isLoading) {
-        console.warn("Forcing content display after timeout");
+        console.log("Forcing content display after timeout");
         setIsLoading(false);
-        setVideoLoaded(true);
         setContentReady(true);
       }
-    }, 5000);
+    }, 3000); // Reduced from 5000ms to 3000ms
     
     return () => clearTimeout(loadingTimeout);
   }, [isLoading]);
+
+  // Handle video load event from Hero component
+  const handleContentLoaded = () => {
+    console.log("Content loaded successfully");
+    // Add a small delay to ensure smooth transition
+    setTimeout(() => {
+      setIsLoading(false);
+      setContentReady(true);
+    }, 300);
+  };
 
   useEffect(() => {
     // Reset scroll position when component mounts
     window.scrollTo(0, 0);
     
-    // Prepare to show content after video is loaded and minimum loading time has passed
-    if (videoLoaded) {
-      // Add a small delay to ensure smooth transition
-      const timer = setTimeout(() => {
-        setIsLoading(false);
-      }, 300);
-      
-      return () => clearTimeout(timer);
-    }
-  }, [videoLoaded]);
-
-  useEffect(() => {
-    // Enhanced intersection observer with better options
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Add visible class to trigger animation
-            entry.target.classList.add('visible');
-            
-            // For sections, add an attribute to track active section
-            if (entry.target.tagName.toLowerCase() === 'section') {
-              const sectionId = entry.target.id;
-              if (sectionId) {
-                document.body.setAttribute('data-active-section', sectionId);
+    // Only set up observers after loading is complete
+    if (!isLoading && contentReady) {
+      // Enhanced intersection observer with better options
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // Add visible class to trigger animation
+              entry.target.classList.add('visible');
+              
+              // For sections, add an attribute to track active section
+              if (entry.target.tagName.toLowerCase() === 'section') {
+                const sectionId = entry.target.id;
+                if (sectionId) {
+                  document.body.setAttribute('data-active-section', sectionId);
+                }
               }
             }
-          }
-        });
-      },
-      { 
-        threshold: 0.15, // Trigger when 15% of the element is visible
-        rootMargin: '-80px 0px -20% 0px' // Adjust trigger area
-      }
-    );
-    
-    // Only observe elements after loading is complete
-    if (!isLoading) {
+          });
+        },
+        { 
+          threshold: 0.15,
+          rootMargin: '-80px 0px -20% 0px'
+        }
+      );
+      
       // Observe all elements with the animate-on-scroll class
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
@@ -82,24 +78,14 @@ const Index = () => {
         observer.observe(el);
       });
       
-      // Set content ready with a small delay for smoother transition
-      const timer = setTimeout(() => {
-        setContentReady(true);
-      }, 100);
-      
       return () => {
-        clearTimeout(timer);
         // Cleanup observer
         document.querySelectorAll('.animate-on-scroll, section').forEach(el => {
           observer.unobserve(el);
         });
       };
     }
-  }, [isLoading]);
-
-  const handleVideoLoaded = () => {
-    setVideoLoaded(true);
-  };
+  }, [isLoading, contentReady]);
 
   return (
     <>
@@ -128,10 +114,10 @@ const Index = () => {
       
       <div 
         ref={sectionsRef}
-        className={`min-h-screen transition-all duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        className={`min-h-screen transition-all duration-1000 ${!contentReady ? 'opacity-0' : 'opacity-100'}`}
       >
         <Navbar />
-        <Hero onVideoLoaded={handleVideoLoaded} />
+        <Hero onVideoLoaded={handleContentLoaded} />
         <Banner />
         <About />
         <Solucoes />

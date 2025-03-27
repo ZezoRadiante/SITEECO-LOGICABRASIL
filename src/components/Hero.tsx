@@ -15,6 +15,7 @@ const Hero = ({
   const isMobile = useIsMobile();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [showFallbackImage, setShowFallbackImage] = useState(false);
   
   const scrollToNextSection = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -29,64 +30,89 @@ const Hero = ({
   
   useEffect(() => {
     const videoElement = videoRef.current;
+    
+    const handleLoadedData = () => {
+      console.log("Video loaded successfully");
+      setIsVideoLoaded(true);
+      setShowFallbackImage(false);
+      if (onVideoLoaded) onVideoLoaded();
+    };
+    
+    const handleError = (e: ErrorEvent) => {
+      console.error("Video failed to load:", e);
+      setShowFallbackImage(true);
+      setIsVideoLoaded(true); // Consider it "loaded" to remove loading screen
+      if (onVideoLoaded) onVideoLoaded();
+    };
+    
     if (videoElement) {
-      const handleLoadedData = () => {
-        setIsVideoLoaded(true);
-        if (onVideoLoaded) onVideoLoaded();
-      };
       videoElement.addEventListener('loadeddata', handleLoadedData);
-
+      videoElement.addEventListener('error', handleError);
+      
       // Check if video is already loaded
       if (videoElement.readyState >= 3) {
         handleLoadedData();
       }
       
-      // Add error handling for video
-      const handleError = () => {
-        console.error("Video failed to load, setting loaded state anyway to prevent white screen");
-        setIsVideoLoaded(true);
-        if (onVideoLoaded) onVideoLoaded();
-      };
-      
-      videoElement.addEventListener('error', handleError);
-      
-      // Fallback if video takes too long to load
+      // Fallback if video takes too long to load (2 seconds)
       const timeoutId = setTimeout(() => {
         if (!isVideoLoaded) {
-          console.warn("Video load timeout, setting loaded state to prevent white screen");
+          console.warn("Video load timeout, using fallback");
+          setShowFallbackImage(true);
           setIsVideoLoaded(true);
           if (onVideoLoaded) onVideoLoaded();
         }
-      }, 3000);
+      }, 2000); // Reduced from 3000ms to 2000ms
       
       return () => {
         videoElement.removeEventListener('loadeddata', handleLoadedData);
         videoElement.removeEventListener('error', handleError);
         clearTimeout(timeoutId);
       };
+    } else {
+      // If video element is not available for some reason
+      console.warn("Video element not available, triggering fallback");
+      setShowFallbackImage(true);
+      setIsVideoLoaded(true);
+      if (onVideoLoaded) onVideoLoaded();
     }
   }, [onVideoLoaded, isVideoLoaded]);
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Video with Enhanced Transitions */}
+      {/* Background Video or Fallback Image with Enhanced Transitions */}
       <div className="absolute inset-0">
-        <video 
-          ref={videoRef} 
-          className={cn(
-            "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000",
+        {showFallbackImage ? (
+          // Fallback image when video fails to load
+          <div className={cn(
+            "absolute inset-0 w-full h-full z-0 transition-opacity duration-1000",
             isVideoLoaded ? 'opacity-100' : 'opacity-0'
-          )} 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          preload="auto"
-          style={{ objectFit: 'cover' }}
-        >
-          <source src={heroImages.video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          )}>
+            <img 
+              src={heroImages.fallback || "/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg"}
+              alt="Background" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          // Video background
+          <video 
+            ref={videoRef} 
+            className={cn(
+              "absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000",
+              isVideoLoaded ? 'opacity-100' : 'opacity-0'
+            )} 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            preload="auto"
+            style={{ objectFit: 'cover' }}
+          >
+            <source src={heroImages.video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-eco-700/60 via-eco-600/30 to-transparent z-10 transition-all duration-1000"></div>
       </div>
 
@@ -96,8 +122,8 @@ const Hero = ({
         isVideoLoaded ? 'opacity-100' : 'opacity-0'
       )}>        
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-          <span className="text-white block mb-3 drop-shadow-xl hover:text-eco-50 transition-colors duration-500 px-[72px]"></span>
-          <span className="font-light italic drop-shadow-xl text-sky-700 transition-all duration-700 hover:text-eco-500"></span>
+          <span className="text-white block mb-3 drop-shadow-xl hover:text-eco-50 transition-colors duration-500">Eco-lógica Brasil</span>
+          <span className="font-light italic drop-shadow-xl text-sky-700 transition-all duration-700 hover:text-eco-500">Consultoria Ambiental</span>
         </h1>
         
         <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3 mt-10 transition-all duration-700">
