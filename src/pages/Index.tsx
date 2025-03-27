@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Banner from '@/components/Banner';
 import About from '@/components/About';
-import Services from '@/components/Services';
+import Solucoes from '@/components/Services';
 import Projetos from '@/components/Projetos';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -108,7 +108,7 @@ const Index = () => {
         <Hero onVideoLoaded={handleVideoLoaded} />
         <Banner />
         <About />
-        <Services />
+        <Solucoes />
         <Projetos />
         <Contact />
         <Footer />

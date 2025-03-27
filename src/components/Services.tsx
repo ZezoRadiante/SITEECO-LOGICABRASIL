@@ -67,7 +67,7 @@ const CarouselDots = ({
   );
 };
 
-const Services = () => {
+const Solucoes = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel();
   const servicesRef = useRef<HTMLElement>(null);
@@ -162,15 +162,14 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
         <div className="text-center mb-16 animate-on-scroll">
           <span className="inline-block text-sky-700 bg-sky-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm transition-all duration-500 hover:shadow-md hover:bg-sky-50">
-            Nossa Especialidade
+            Nossas Soluções
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sky-700 text-center transition-all duration-500 hover:text-sky-600">Nossos Serviços</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sky-700 text-center transition-all duration-500 hover:text-sky-600">SOLUÇÕES PARA CONSTRUIR UM FUTURO MAIS SUSTENTÁVEL</h2>
           
           <div className="w-24 h-1 bg-gradient-to-r from-sky-600 to-sky-400 mx-auto rounded-full mb-6 transition-all duration-500 hover:w-32"></div>
           
           <p className="max-w-3xl mx-auto text-lg text-foreground/70 leading-relaxed">
-            Oferecemos soluções ambientais especializadas e adaptadas às suas necessidades específicas, 
-            com foco em práticas sustentáveis e responsabilidade ecológica.
+            Oferecemos um portfólio de produtos e soluções costumizadas para atendes às demandas de diferentes perfis de consumo.
           </p>
         </div>
 
@@ -224,4 +223,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Solucoes;
