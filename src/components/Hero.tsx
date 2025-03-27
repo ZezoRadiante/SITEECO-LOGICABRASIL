@@ -38,8 +38,9 @@ const Hero = ({
       if (onVideoLoaded) onVideoLoaded();
     };
     
-    const handleError = (e: ErrorEvent) => {
+    const handleError = (e: any) => {
       console.error("Video failed to load:", e);
+      console.error("Video source was:", heroImages.video);
       setShowFallbackImage(true);
       setIsVideoLoaded(true); // Consider it "loaded" to remove loading screen
       if (onVideoLoaded) onVideoLoaded();
@@ -47,7 +48,7 @@ const Hero = ({
     
     if (videoElement) {
       videoElement.addEventListener('loadeddata', handleLoadedData);
-      videoElement.addEventListener('error', handleError);
+      videoElement.addEventListener('error', handleError, true);
       
       // Check if video is already loaded
       if (videoElement.readyState >= 3) {
@@ -62,11 +63,11 @@ const Hero = ({
           setIsVideoLoaded(true);
           if (onVideoLoaded) onVideoLoaded();
         }
-      }, 2000); // Reduced from 3000ms to 2000ms
+      }, 3000); // Increased from 2000ms to 3000ms for production environments
       
       return () => {
         videoElement.removeEventListener('loadeddata', handleLoadedData);
-        videoElement.removeEventListener('error', handleError);
+        videoElement.removeEventListener('error', handleError, true);
         clearTimeout(timeoutId);
       };
     } else {
@@ -110,6 +111,8 @@ const Hero = ({
             style={{ objectFit: 'cover' }}
           >
             <source src={heroImages.video} type="video/mp4" />
+            <source src="./background-nature.mp4" type="video/mp4" /> {/* Backup source with alternate path */}
+            <source src="/background-nature.mp4" type="video/mp4" /> {/* Another backup source */}
             Your browser does not support the video tag.
           </video>
         )}

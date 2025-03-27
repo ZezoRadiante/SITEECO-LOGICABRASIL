@@ -23,7 +23,7 @@ const Index = () => {
         setIsLoading(false);
         setContentReady(true);
       }
-    }, 3000); // Reduced from 5000ms to 3000ms
+    }, 4000); // Increased timeout to give more time for video loading in production
     
     return () => clearTimeout(loadingTimeout);
   }, [isLoading]);

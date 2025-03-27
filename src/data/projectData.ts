@@ -27,9 +27,9 @@ export const projectImages = [
   }
 ];
 
-// Hero section images - centralized image management
+// Hero section images - centralized image management with fixed paths
 export const heroImages = {
-  video: '/background-nature.mp4',
+  video: './background-nature.mp4', // Changed from '/background-nature.mp4' to use relative path
   overlay: '/lovable-uploads/c3a3f3f2-fb67-40c4-ace1-e5f3cbb61cbf.png',
   fallback: '/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg'
 };

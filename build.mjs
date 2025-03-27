@@ -22,10 +22,28 @@ async function buildProject() {
         emptyOutDir: true,
         minify: true,
         sourcemap: false,
+        assetsInlineLimit: 0, // Don't inline any assets as base64
       },
     });
     
     console.log('Build completed successfully!');
+    
+    // Ensure video file is properly copied
+    try {
+      const videoExists = await fs.access(resolve(__dirname, 'dist', 'background-nature.mp4'))
+        .then(() => true)
+        .catch(() => false);
+      
+      if (!videoExists) {
+        console.log('Manually copying background video...');
+        await fs.copyFile(
+          resolve(__dirname, 'public', 'background-nature.mp4'),
+          resolve(__dirname, 'dist', 'background-nature.mp4')
+        );
+      }
+    } catch (err) {
+      console.warn('Video file check/copy failed:', err);
+    }
     
     // Create a simple server file for deployment environments
     await fs.writeFile(
