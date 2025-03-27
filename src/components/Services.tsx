@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Leaf, Recycle, Sprout } from 'lucide-react';
+import { Leaf, Recycle, Sprout, Circle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Carousel,
@@ -48,17 +48,23 @@ const CarouselDots = ({
   onClick: (index: number) => void;
 }) => {
   return (
-    <div className="flex justify-center space-x-2 mt-6">
+    <div className="flex justify-center space-x-3 mt-6">
       {Array.from({ length: count }).map((_, index) => (
         <button
           key={index}
           onClick={() => onClick(index)}
           className={cn(
-            "w-3 h-3 rounded-full transition-all duration-300",
-            index === activeIndex ? "bg-sky-600 w-6" : "bg-sky-200"
+            "transition-all duration-300 relative",
+            index === activeIndex 
+              ? "w-8 h-2 bg-sky-400/80 rounded-full shadow-sm" 
+              : "w-2 h-2 bg-sky-200/60 rounded-full hover:bg-sky-300/70"
           )}
           aria-label={`Go to slide ${index + 1}`}
-        />
+        >
+          {index === activeIndex && (
+            <span className="absolute inset-0 rounded-full animate-pulse-gentle bg-sky-300/30 -z-10"></span>
+          )}
+        </button>
       ))}
     </div>
   );
@@ -114,7 +120,6 @@ const Solucoes = () => {
     }
   ];
 
-  // Update active index when the carousel scrolls
   React.useEffect(() => {
     if (!emblaApi) return;
 
@@ -123,7 +128,6 @@ const Solucoes = () => {
     };
 
     emblaApi.on('select', onSelect);
-    // Call once to set initial state
     onSelect();
     
     return () => {
@@ -131,7 +135,6 @@ const Solucoes = () => {
     };
   }, [emblaApi]);
 
-  // Function to handle dot click and scroll to respective slide
   const scrollTo = React.useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
@@ -145,15 +148,12 @@ const Solucoes = () => {
       className="py-24 relative overflow-hidden transition-all duration-1000 ease-in-out"
       data-section="services"
     >
-      {/* Background image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-opacity duration-1000" 
         style={{ backgroundImage: `url('${servicesImages.background}')` }}>
       </div>
       
-      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-sky-50/90 via-white/80 to-eco-50/70 z-0 transition-all duration-1000"></div>
       
-      {/* Top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10 transition-all duration-700"></div>
       
       <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-5 bg-repeat"></div>
@@ -172,7 +172,6 @@ const Solucoes = () => {
           </p>
         </div>
 
-        {/* Desktop view - grid with enhanced spacing */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll stagger-children">
           {services.map((service, index) => (
             <div key={service.title} className="animate-on-scroll" style={{ transitionDelay: `${index * 150}ms` }}>
@@ -186,7 +185,6 @@ const Solucoes = () => {
           ))}
         </div>
 
-        {/* Mobile view - carousel with improved dots */}
         <div className="md:hidden animate-on-scroll">
           <div className="overflow-hidden" ref={emblaRef}>
             <Carousel>
@@ -204,7 +202,6 @@ const Solucoes = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              {/* Navigation arrows removed */}
             </Carousel>
           </div>
           <CarouselDots 
@@ -215,7 +212,6 @@ const Solucoes = () => {
         </div>
       </div>
       
-      {/* Bottom gradient transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-eco-100/50 to-transparent z-10 transition-all duration-700"></div>
     </section>
   );
