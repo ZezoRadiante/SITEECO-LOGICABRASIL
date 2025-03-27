@@ -65,12 +65,12 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
           <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-earth-900/90 to-transparent">
             <h3 className="text-3xl font-bold text-white text-center">{project.title}</h3>
             
-            {/* Show details button only for active slide */}
+            {/* Show details button only for active slide - Updated for subtle, transparent styling */}
             {isActive && !showInfo && (
               <div className="flex justify-center mt-4">
                 <button 
                   onClick={() => setShowInfo(true)}
-                  className="bg-eco-600 hover:bg-eco-700 text-white px-4 py-2 rounded-full transition-colors"
+                  className="bg-transparent backdrop-blur-sm hover:bg-eco-600/20 text-white/90 border border-white/30 px-5 py-2 rounded-full transition-all text-sm"
                 >
                   Mostrar detalhes
                 </button>
@@ -97,7 +97,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
                         e.stopPropagation();
                         setShowInfo(false);
                       }}
-                      className="bg-earth-800 hover:bg-earth-700 text-white px-4 py-2 rounded-full transition-colors"
+                      className="bg-earth-800/60 hover:bg-earth-700 text-white px-4 py-2 rounded-full transition-colors backdrop-blur-sm"
                     >
                       Fechar detalhes
                     </button>
