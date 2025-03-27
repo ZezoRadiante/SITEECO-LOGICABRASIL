@@ -162,10 +162,15 @@ const Projetos = () => {
                         ? "h-72 md:h-96 border-eco-500" 
                         : "h-60 md:h-80 border-eco-200"
                     )}>
+                      {/* Add error handling for image loading */}
                       <img 
                         src={project.src} 
                         alt={`Projeto ${project.title}`} 
                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                        onError={(e) => {
+                          console.error(`Error loading image: ${project.src}`);
+                          e.currentTarget.src = '/placeholder.svg'; // Fallback to placeholder
+                        }}
                       />
                       
                       {/* Project info overlay - enhanced with better visibility */}
