@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -20,9 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Open Sans', 'sans-serif'],
-				nunito: ['Nunito', 'sans-serif'],
-				playfair: ['Playfair Display', 'serif'],
+				sans: ['Spice And Salt Mono SC', 'monospace'],
+				nunito: ['Spice And Salt Mono SC', 'monospace'],
+				playfair: ['Spice And Salt Mono SC', 'monospace'],
+				salt: ['Spice And Salt Mono SC', 'monospace'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
