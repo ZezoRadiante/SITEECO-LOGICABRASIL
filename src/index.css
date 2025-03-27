@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -94,6 +95,7 @@
     background-attachment: fixed;
     min-height: 100vh;
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -105,7 +107,9 @@
   section {
     position: relative;
     overflow: hidden;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateZ(0);
+    will-change: transform, opacity;
   }
 
   section::after {
@@ -116,11 +120,16 @@
     margin: 0 auto;
     width: 60%;
     border-radius: 2px;
-    transition: width 0.5s ease-in-out;
+    transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   
   section:hover::after {
     width: 70%;
+  }
+
+  /* Improve scrolling experience */
+  html {
+    scroll-padding-top: 100px; /* Prevents section headers from being hidden under fixed navbar */
   }
 }
 
@@ -161,6 +170,27 @@
     @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-eco-500 to-eco-400 
            text-earth-800 font-medium px-6 py-2.5 shadow-md hover:shadow-lg transform hover:-translate-y-1
            transition-all duration-300 focus:ring-2 focus:ring-eco-300 focus:outline-none;
+  }
+
+  /* Enhanced section transitions */
+  .section-transition {
+    @apply transition-all duration-1000 ease-in-out;
+  }
+  
+  .section-enter {
+    @apply opacity-0 translate-y-10;
+  }
+  
+  .section-enter-active {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .section-exit {
+    @apply opacity-100;
+  }
+  
+  .section-exit-active {
+    @apply opacity-0 -translate-y-10;
   }
 }
 
@@ -251,8 +281,42 @@ html {
   100% { transform: translateY(0%); }
 }
 
+/* Enhanced transitions */
+@keyframes fade-up {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-down {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-30px);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.95); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
 .stats-card {
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .stats-card:hover {
@@ -274,11 +338,23 @@ html {
 }
 
 .animate-grow {
-  animation: grow 0.5s ease-out forwards;
+  animation: grow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .animate-carousel {
   animation: carousel 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-fade-down {
+  animation: fade-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .digit-slot {
@@ -304,10 +380,17 @@ section {
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Staggered animation delays for children */
+.stagger-children > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children > *:nth-child(2) { transition-delay: 100ms; }
+.stagger-children > *:nth-child(3) { transition-delay: 200ms; }
+.stagger-children > *:nth-child(4) { transition-delay: 300ms; }
+.stagger-children > *:nth-child(5) { transition-delay: 400ms; }

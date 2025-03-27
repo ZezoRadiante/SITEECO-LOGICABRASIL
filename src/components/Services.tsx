@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Leaf, Recycle, Sprout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -70,6 +70,34 @@ const CarouselDots = ({
 const Services = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel();
+  const servicesRef = useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '-50px 0px'
+      }
+    );
+    
+    const elements = servicesRef.current?.querySelectorAll('.animate-on-scroll');
+    elements?.forEach(el => {
+      observer.observe(el);
+    });
+    
+    return () => {
+      elements?.forEach(el => {
+        observer.unobserve(el);
+      });
+    };
+  }, []);
 
   const services = [
     {
@@ -112,50 +140,56 @@ const Services = () => {
   }, [emblaApi]);
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
+    <section 
+      id="services" 
+      ref={servicesRef}
+      className="py-24 relative overflow-hidden transition-all duration-1000 ease-in-out"
+      data-section="services"
+    >
       {/* Background image */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50" 
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-opacity duration-1000" 
         style={{ backgroundImage: `url('${servicesImages.background}')` }}>
       </div>
       
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-sky-50/90 via-white/80 to-eco-50/70 z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-sky-50/90 via-white/80 to-eco-50/70 z-0 transition-all duration-1000"></div>
       
       {/* Top gradient transition */}
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10 transition-all duration-700"></div>
       
       <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-5 bg-repeat"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
-        <div className="text-center mb-16">
-          <span className="inline-block text-sky-700 bg-sky-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in shadow-sm">
+        <div className="text-center mb-16 animate-on-scroll">
+          <span className="inline-block text-sky-700 bg-sky-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm transition-all duration-500 hover:shadow-md hover:bg-sky-50">
             Nossa Especialidade
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0 animate-fade-in-delay-1 text-sky-700 text-center">Nossos Serviços</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sky-700 text-center transition-all duration-500 hover:text-sky-600">Nossos Serviços</h2>
           
-          <div className="w-24 h-1 bg-gradient-to-r from-sky-600 to-sky-400 mx-auto rounded-full mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-600 to-sky-400 mx-auto rounded-full mb-6 transition-all duration-500 hover:w-32"></div>
           
-          <p className="max-w-3xl mx-auto text-lg text-foreground/70 opacity-0 animate-fade-in-delay-2 leading-relaxed">
+          <p className="max-w-3xl mx-auto text-lg text-foreground/70 leading-relaxed">
             Oferecemos soluções ambientais especializadas e adaptadas às suas necessidades específicas, 
             com foco em práticas sustentáveis e responsabilidade ecológica.
           </p>
         </div>
 
         {/* Desktop view - grid with enhanced spacing */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll stagger-children">
           {services.map((service, index) => (
-            <ServiceCard 
-              key={service.title} 
-              title={service.title} 
-              description={service.description} 
-              icon={service.icon} 
-              index={index} 
-            />
+            <div key={service.title} className="animate-on-scroll" style={{ transitionDelay: `${index * 150}ms` }}>
+              <ServiceCard 
+                title={service.title} 
+                description={service.description} 
+                icon={service.icon} 
+                index={index} 
+              />
+            </div>
           ))}
         </div>
 
         {/* Mobile view - carousel with improved dots */}
-        <div className="md:hidden">
+        <div className="md:hidden animate-on-scroll">
           <div className="overflow-hidden" ref={emblaRef}>
             <Carousel>
               <CarouselContent>
@@ -172,8 +206,8 @@ const Services = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="left-0 bg-white/80 border-sky-200 text-sky-600" />
-              <CarouselNext className="right-0 bg-white/80 border-sky-200 text-sky-600" />
+              <CarouselPrevious className="left-0 bg-white/80 border-sky-200 text-sky-600 transition-all duration-300 hover:bg-white" />
+              <CarouselNext className="right-0 bg-white/80 border-sky-200 text-sky-600 transition-all duration-300 hover:bg-white" />
             </Carousel>
           </div>
           <CarouselDots 
@@ -185,7 +219,7 @@ const Services = () => {
       </div>
       
       {/* Bottom gradient transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-eco-100/50 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-eco-100/50 to-transparent z-10 transition-all duration-700"></div>
     </section>
   );
 };
