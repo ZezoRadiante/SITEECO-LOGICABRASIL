@@ -27,9 +27,9 @@ export const projectImages = [
   }
 ];
 
-// Hero section images - usando caminhos relativos para garantir compatibilidade com Netlify
+// Hero section images - caminho simplificado para o video e imagens
 export const heroImages = {
-  video: './background-nature.mp4',
+  video: 'background-nature.mp4', // Simplificado - sem ./ no início
   overlay: './lovable-uploads/c3a3f3f2-fb67-40c4-ace1-e5f3cbb61cbf.png',
   fallback: './lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg'
 };

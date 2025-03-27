@@ -35,6 +35,17 @@ async function copyPublicFiles() {
       console.log(`Copied: ${file}`);
     }
     
+    // Copia explícita do arquivo de vídeo (para garantir)
+    const videoPath = resolve(publicDir, 'background-nature.mp4');
+    const videoDestPath = resolve(__dirname, 'dist', 'background-nature.mp4');
+    
+    try {
+      await fs.copyFile(videoPath, videoDestPath);
+      console.log('Explicitly copied background video file');
+    } catch (err) {
+      console.error('Failed to explicitly copy video file:', err);
+    }
+    
     console.log('All public files copied successfully!');
   } catch (err) {
     console.error('Failed to copy public files:', err);
@@ -113,6 +124,24 @@ app.listen(PORT, () => {
     await fs.writeFile(
       resolve(__dirname, 'dist', '_redirects'),
       `/*    /index.html   200`
+    );
+    
+    // Create a Netlify _headers file for cache control
+    await fs.writeFile(
+      resolve(__dirname, 'dist', '_headers'),
+      `
+# All files in the build directory
+/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Static assets
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Explicitly set no cache for video files to prevent issues
+*.mp4
+  Cache-Control: no-cache
+`
     );
     
     console.log('Deployment files created successfully!');

@@ -38,61 +38,68 @@ const Hero = ({
       if (onVideoLoaded) onVideoLoaded();
     };
     
-    const handleError = (e: any) => {
-      console.error("Video failed to load:", e);
-      console.error("Video source was:", heroImages.video);
-      setShowFallbackImage(true);
-      setIsVideoLoaded(true); // Consider it "loaded" to remove loading screen
-      if (onVideoLoaded) onVideoLoaded();
-    };
+    // Lista de possíveis caminhos para o vídeo em diferentes ambientes
+    const possibleVideoPaths = [
+      heroImages.video,
+      './background-nature.mp4',
+      '/background-nature.mp4',
+      'background-nature.mp4'
+    ];
     
-    // Função para tentar carregar o vídeo com vários caminhos
-    const tryLoadVideo = () => {
-      if (!videoElement) return;
-      
-      const possiblePaths = [
-        heroImages.video,
-        './background-nature.mp4',
-        '/background-nature.mp4',
-        'background-nature.mp4'
-      ];
-      
-      // Tentar carregar o vídeo com o primeiro caminho
-      videoElement.src = possiblePaths[0];
-      
-      // Se falhar, tentar os próximos caminhos
-      videoElement.addEventListener('error', function tryNextPath(e) {
-        console.warn("Video load failed for path:", videoElement.src);
-        const currentIndex = possiblePaths.indexOf(videoElement.src);
-        if (currentIndex < possiblePaths.length - 1) {
-          // Tente o próximo caminho
-          videoElement.src = possiblePaths[currentIndex + 1];
-        } else {
-          // Todos os caminhos falharam, use a imagem de fallback
-          console.warn("Video load timeout, using fallback");
-          videoElement.removeEventListener('error', tryNextPath);
+    let currentPathIndex = 0;
+    let videoLoaded = false;
+    
+    const tryNextVideoPath = () => {
+      if (!videoElement || videoLoaded || currentPathIndex >= possibleVideoPaths.length) {
+        // Se todas as tentativas falharam, mostrar imagem fallback
+        if (!videoLoaded) {
+          console.warn("Video loading failed for all paths, using fallback image");
           setShowFallbackImage(true);
           setIsVideoLoaded(true);
           if (onVideoLoaded) onVideoLoaded();
         }
-      }, { once: false });
+        return;
+      }
+      
+      const path = possibleVideoPaths[currentPathIndex];
+      console.log(`Trying to load video from path: ${path}`);
+      
+      videoElement.src = path;
+      
+      // Removendo qualquer listener anterior antes de adicionar um novo
+      videoElement.removeEventListener('loadeddata', handleVideoSuccess);
+      videoElement.removeEventListener('error', handleVideoError);
+      
+      // Adicionando novos listeners
+      videoElement.addEventListener('loadeddata', handleVideoSuccess, { once: true });
+      videoElement.addEventListener('error', handleVideoError, { once: true });
+      
+      // Tentar carregar explicitamente
+      videoElement.load();
+      
+      currentPathIndex++;
+    };
+    
+    const handleVideoSuccess = () => {
+      console.log(`Video loaded successfully from path: ${videoElement?.src}`);
+      videoLoaded = true;
+      handleLoadedData();
+    };
+    
+    const handleVideoError = (e: Event) => {
+      console.error(`Video failed to load from path: ${videoElement?.src}`, e);
+      // Tentar o próximo caminho
+      tryNextVideoPath();
     };
     
     if (videoElement) {
-      videoElement.addEventListener('loadeddata', handleLoadedData);
+      // Iniciar o processo de tentativas
+      tryNextVideoPath();
       
-      // Inicie o processo de carregamento com vários caminhos
-      tryLoadVideo();
-      
-      // Check if video is already loaded
-      if (videoElement.readyState >= 3) {
-        handleLoadedData();
-      }
-      
-      // Fallback se o vídeo demorar muito para carregar (5 segundos)
+      // Fallback com timeout (caso nenhuma tentativa dispare evento)
       const timeoutId = setTimeout(() => {
-        if (!isVideoLoaded) {
-          console.warn("Video load timeout, using fallback");
+        if (!videoLoaded) {
+          console.warn("Video load timeout after 5 seconds, using fallback");
           setShowFallbackImage(true);
           setIsVideoLoaded(true);
           if (onVideoLoaded) onVideoLoaded();
@@ -100,17 +107,19 @@ const Hero = ({
       }, 5000);
       
       return () => {
-        videoElement.removeEventListener('loadeddata', handleLoadedData);
+        // Limpar listeners e timeout ao desmontar
+        videoElement.removeEventListener('loadeddata', handleVideoSuccess);
+        videoElement.removeEventListener('error', handleVideoError);
         clearTimeout(timeoutId);
       };
     } else {
-      // Se o elemento de vídeo não estiver disponível por algum motivo
+      // Se o elemento de vídeo não estiver disponível
       console.warn("Video element not available, triggering fallback");
       setShowFallbackImage(true);
       setIsVideoLoaded(true);
       if (onVideoLoaded) onVideoLoaded();
     }
-  }, [onVideoLoaded, isVideoLoaded]);
+  }, [onVideoLoaded]);
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -148,7 +157,6 @@ const Hero = ({
             preload="auto"
             style={{ objectFit: 'cover' }}
           >
-            {/* Não usamos mais source tags, carregamos dinamicamente via JS */}
             Your browser does not support the video tag.
           </video>
         )}
