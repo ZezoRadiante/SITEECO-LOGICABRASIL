@@ -1,22 +1,19 @@
-
 import React from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-
 const Contact = () => {
-  return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50/40 via-sky-100/20 to-eco-100/30">
+  return <section id="contact" className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50/40 via-sky-100/20 to-eco-100/30">
       {/* Top gradient transition - Enhanced */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-sky-50/50 to-transparent z-10"></div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 bg-[#000070]/0">
         <div className="text-center mb-16">
           <span className="inline-block text-eco-700 bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 opacity-0 animate-fade-in shadow-sm">
             Entre em Contato
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0 animate-fade-in-delay-1 text-eco-700">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 opacity-0 animate-fade-in-delay-1 text-sky-700">
             Vamos Conversar
           </h2>
           
@@ -30,7 +27,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-12 bg-white/60 backdrop-blur-sm p-8 rounded-xl shadow-md border border-sky-100/50">
           {/* Contact Information */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold mb-8 text-eco-700 border-b-2 border-eco-200 pb-2 inline-block">Informações de Contato</h3>
+            <h3 className="text-2xl font-semibold mb-8 border-b-2 border-eco-200 pb-2 inline-block text-sky-700">Informações de Contato</h3>
             <ul className="space-y-6">
               <li className="flex items-start group">
                 <div className="bg-eco-100 p-3 rounded-full mr-4 group-hover:bg-eco-200 transition-colors">
@@ -79,8 +76,6 @@ const Contact = () => {
       
       {/* Bottom gradient transition - Enhanced */}
       <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-eco-700/40 to-transparent"></div>
-    </section>
-  );
+    </section>;
 };
-
 export default Contact;
