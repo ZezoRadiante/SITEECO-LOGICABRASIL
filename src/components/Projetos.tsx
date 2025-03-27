@@ -11,11 +11,32 @@ import {
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-const forestImages = [
-  '/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png',
-  '/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg',
-  '/lovable-uploads/b2251703-230b-4fb3-adfd-7249f11d3483.jpg',
-  '/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png',
+// Atualizar o array de imagens com as novas imagens fornecidas
+const projectImages = [
+  {
+    src: '/lovable-uploads/4aca43c0-b4e8-4b93-b419-6cbadf7aed43.png',
+    title: 'Casa dos Ventos',
+    description: 'Projeto de Reposição Florestal Torres Anemométricas',
+    stats: '6.240 Mudas Plantadas'
+  },
+  {
+    src: '/lovable-uploads/91bcd95f-7670-4aa2-8753-1e2f108076a8.png',
+    title: 'Rio do Vento',
+    description: 'Projeto de Reposição Florestal',
+    stats: '174.764 Mudas Plantadas'
+  },
+  {
+    src: '/lovable-uploads/0255b0b5-10bc-48bb-9be1-b4ba29fa2b2f.png',
+    title: 'Umari',
+    description: 'Projeto de Reposição Florestal',
+    stats: '17.652 Mudas Plantadas'
+  },
+  {
+    src: '/lovable-uploads/ee65366d-26d5-4458-bcf6-916132fd73ce.png',
+    title: 'Viveiro Florestal',
+    description: 'Viveiro Florestal com Capacidade Para',
+    stats: '500 Mil Mudas'
+  },
 ];
 
 const CarouselDots = ({ 
@@ -103,9 +124,9 @@ const Projetos = () => {
         <Carousel>
           <div ref={emblaRef} className="overflow-hidden">
             <div className="flex">
-              {forestImages.map((image, index) => {
+              {projectImages.map((project, index) => {
                 // Calculate the distance from active index (handling loop)
-                const count = forestImages.length;
+                const count = projectImages.length;
                 let distance = Math.abs(index - activeIndex);
                 if (distance > count / 2) {
                   distance = count - distance;
@@ -115,7 +136,7 @@ const Projetos = () => {
                   <div 
                     key={index} 
                     className={cn(
-                      "min-w-0 shrink-0 grow-0 basis-[75%] sm:basis-[45%] md:basis-[33.333%] lg:basis-[25%] px-3 transition-all duration-700",
+                      "min-w-0 shrink-0 grow-0 basis-[85%] sm:basis-[60%] md:basis-[50%] lg:basis-[35%] px-3 transition-all duration-700",
                       distance === 0 
                         ? "scale-110 z-20 opacity-100" 
                         : distance === 1 
@@ -124,16 +145,23 @@ const Projetos = () => {
                     )}
                   >
                     <div className={cn(
-                      "overflow-hidden shadow-md rounded-lg border-2 transition-all duration-500",
+                      "overflow-hidden rounded-lg border-2 transition-all duration-500 relative",
                       distance === 0 
                         ? "h-72 md:h-96 border-eco-500" 
                         : "h-60 md:h-80 border-eco-200"
                     )}>
                       <img 
-                        src={image} 
-                        alt={`Projeto de conservação ${index + 1}`} 
+                        src={project.src} 
+                        alt={`Projeto ${project.title}`} 
                         className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                       />
+                      
+                      {/* Project info overlay - enhanced with better visibility */}
+                      <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-1 text-white">{project.title}</h3>
+                        <p className="text-sm md:text-base text-white/90">{project.description}</p>
+                        <p className="text-lg md:text-xl font-semibold text-eco-300">{project.stats}</p>
+                      </div>
                     </div>
                   </div>
                 );
@@ -151,7 +179,7 @@ const Projetos = () => {
       <div className="mt-4">
         <CarouselDots 
           activeIndex={activeIndex} 
-          count={forestImages.length} 
+          count={projectImages.length} 
           onClick={scrollTo} 
         />
       </div>
