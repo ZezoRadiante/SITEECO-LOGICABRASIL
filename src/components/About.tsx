@@ -42,6 +42,16 @@ const About: React.FC = () => {
         backgroundPosition: 'center',
       }}
     >
+      {/* Subtle worker image as decorative element */}
+      <div 
+        className="absolute right-0 bottom-0 w-full h-full bg-right-bottom bg-no-repeat opacity-5 transition-opacity duration-700 hover:opacity-10"
+        style={{ 
+          backgroundImage: `url('/lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')`,
+          backgroundSize: '30%',
+          backgroundPosition: 'right bottom'
+        }}
+      ></div>
+      
       {/* Enhanced overlay with smoother blur effect and transition */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/70 backdrop-blur-[2px] z-0 transition-all duration-1000 hover:backdrop-blur-[3px]"></div>
       

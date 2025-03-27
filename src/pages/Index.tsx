@@ -100,6 +100,18 @@ const Index = () => {
         </div>
       )}
       
+      {/* Background pattern using the new image with very low opacity */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
+        style={{ 
+          backgroundImage: `url('/lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')`,
+          backgroundSize: '20%',
+          backgroundRepeat: 'repeat',
+          backgroundBlendMode: 'soft-light',
+          filter: 'blur(0.5px)'
+        }}
+      ></div>
+      
       <div 
         ref={sectionsRef}
         className={`min-h-screen transition-all duration-1000 ${contentReady ? 'opacity-100' : 'opacity-0'}`}

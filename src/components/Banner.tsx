@@ -35,6 +35,12 @@ const Banner = () => {
       ref={bannerRef}
       className="py-6 md:py-8 bg-gradient-to-b from-white via-eco-50/30 to-eco-100/40 relative overflow-hidden transition-all duration-1000 ease-in-out"
     >
+      {/* Subtle background image - added with low opacity */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center opacity-10 transition-opacity duration-700 hover:opacity-15"
+        style={{ backgroundImage: `url('/lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')` }}
+      ></div>
+      
       {/* Enhanced top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white to-transparent z-10 transition-opacity duration-700"></div>
       
