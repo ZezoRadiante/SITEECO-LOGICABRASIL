@@ -1,31 +1,34 @@
-
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-
 const Contact = () => {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
     message: ''
   });
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { toast } = useToast();
-
+  const {
+    toast
+  } = useToast();
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormState(prev => ({ ...prev, [name]: value }));
+    const {
+      name,
+      value
+    } = e.target;
+    setFormState(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -33,28 +36,27 @@ const Contact = () => {
       toast({
         title: "Mensagem enviada!",
         description: "Entraremos em contato em breve.",
-        variant: "default",
+        variant: "default"
       });
-      
+
       // Reset form after success
       setTimeout(() => {
-        setFormState({ name: '', email: '', message: '' });
+        setFormState({
+          name: '',
+          email: '',
+          message: ''
+        });
         setIsSuccess(false);
       }, 3000);
     }, 1500);
   };
-
-  return <section 
-    id="contact" 
-    className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50/40 via-sky-100/20 to-eco-100/30 transition-all duration-1000 ease-in-out"
-    data-section="contact"
-  >
+  return <section id="contact" className="py-24 relative overflow-hidden bg-gradient-to-b from-sky-50/40 via-sky-100/20 to-eco-100/30 transition-all duration-1000 ease-in-out" data-section="contact">
       {/* Top gradient transition - Enhanced */}
       <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-sky-50/50 to-transparent z-10 transition-all duration-700"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 bg-[#000070]/0">
         <div className="text-center mb-16 animate-on-scroll">
-          <span className="inline-block text-eco-700 bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm transition-all duration-500 hover:shadow-md hover:bg-eco-200/70">
+          <span className="inline-block bg-eco-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm transition-all duration-500 hover:shadow-md hover:bg-eco-200/70 text-sky-700">
             Entre em Contato
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sky-700 transition-all duration-500 hover:text-sky-600">
@@ -109,57 +111,23 @@ const Contact = () => {
             </h3>
             <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="transform transition-all duration-300 hover:-translate-y-1">
-                <Input 
-                  type="text" 
-                  name="name"
-                  value={formState.name}
-                  onChange={handleInputChange}
-                  placeholder="Seu Nome" 
-                  className="rounded-md border-eco-200 focus:border-eco-400 py-6 shadow-sm focus:shadow-md transition-shadow duration-300" 
-                  required
-                />
+                <Input type="text" name="name" value={formState.name} onChange={handleInputChange} placeholder="Seu Nome" className="rounded-md border-eco-200 focus:border-eco-400 py-6 shadow-sm focus:shadow-md transition-shadow duration-300" required />
               </div>
               <div className="transform transition-all duration-300 hover:-translate-y-1">
-                <Input 
-                  type="email" 
-                  name="email"
-                  value={formState.email}
-                  onChange={handleInputChange}
-                  placeholder="Seu Email" 
-                  className="rounded-md border-eco-200 focus:border-eco-400 py-6 shadow-sm focus:shadow-md transition-shadow duration-300" 
-                  required
-                />
+                <Input type="email" name="email" value={formState.email} onChange={handleInputChange} placeholder="Seu Email" className="rounded-md border-eco-200 focus:border-eco-400 py-6 shadow-sm focus:shadow-md transition-shadow duration-300" required />
               </div>
               <div className="transform transition-all duration-300 hover:-translate-y-1">
-                <Textarea 
-                  name="message"
-                  value={formState.message}
-                  onChange={handleInputChange}
-                  placeholder="Sua Mensagem" 
-                  className="rounded-md border-eco-200 focus:border-eco-400 min-h-[120px] shadow-sm focus:shadow-md transition-shadow duration-300" 
-                  rows={4} 
-                  required
-                />
+                <Textarea name="message" value={formState.message} onChange={handleInputChange} placeholder="Sua Mensagem" className="rounded-md border-eco-200 focus:border-eco-400 min-h-[120px] shadow-sm focus:shadow-md transition-shadow duration-300" rows={4} required />
               </div>
               <div>
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting || isSuccess}
-                  className="w-full rounded-full bg-gradient-to-r from-eco-600 to-eco-400 text-white hover:from-eco-500 hover:to-eco-300 py-6 flex items-center justify-center group shadow-md hover:shadow-lg transition-all duration-500 hover:-translate-y-1 disabled:opacity-80"
-                >
-                  {isSubmitting ? (
-                    "Enviando..."
-                  ) : isSuccess ? (
-                    <>
+                <Button type="submit" disabled={isSubmitting || isSuccess} className="w-full rounded-full bg-gradient-to-r from-eco-600 to-eco-400 text-white hover:from-eco-500 hover:to-eco-300 py-6 flex items-center justify-center group shadow-md hover:shadow-lg transition-all duration-500 hover:-translate-y-1 disabled:opacity-80">
+                  {isSubmitting ? "Enviando..." : isSuccess ? <>
                       Mensagem Enviada
                       <CheckCircle className="ml-2 w-4 h-4" />
-                    </>
-                  ) : (
-                    <>
+                    </> : <>
                       Enviar Mensagem
                       <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </>
-                  )}
+                    </>}
                 </Button>
               </div>
             </form>
