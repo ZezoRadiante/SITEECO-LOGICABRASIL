@@ -37,7 +37,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
   return (
     <div 
       className={cn(
-        "min-w-0 shrink-0 grow-0 basis-[85%] sm:basis-[60%] md:basis-[42%] lg:basis-[32%] px-3 transition-all duration-700",
+        "min-w-0 shrink-0 grow-0 basis-[100%] sm:basis-[100%] md:basis-[100%] lg:basis-[100%] transition-all duration-700",
         isActive 
           ? "scale-100 z-20 opacity-100" 
           : distance === 1 

@@ -50,10 +50,10 @@ const ProjectCarousel: React.FC = () => {
 
   return (
     <div className="w-full relative overflow-hidden py-20">
-      <div className="max-w-8xl mx-auto px-4">
+      <div className="w-full mx-auto">
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex py-10">
+            <div className="flex">
               {projectImages.map((project, index) => (
                 <ProjectItem 
                   key={index} 
