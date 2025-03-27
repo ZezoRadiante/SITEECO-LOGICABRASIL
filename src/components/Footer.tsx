@@ -1,7 +1,9 @@
+
 import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube, ArrowRight, ExternalLink, WhatsApp } from 'lucide-react';
 import Logo from './Logo';
 import { Button } from './ui/button';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return <footer className="bg-earth-900 text-earth-100 relative">
@@ -40,39 +42,96 @@ const Footer = () => {
               {/* Pernambuco */}
               <div className="p-3 rounded-lg hover:bg-earth-800/60 transition-colors duration-300">
                 <h4 className="font-semibold text-earth-300 font-playfair">Pernambuco</h4>
-                <a href="https://maps.google.com/?q=Rua+Ana+Granja+Arraes,+03,+Santo+Expedito,+Araripina+-+PE" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-300 transition-colors group" title="Ver no Google Maps">
-                  <p className="text-sm group-hover:underline text-earth-400">Rua Ana Granja Arraes, 03</p>
-                  <p className="text-sm group-hover:underline text-earth-400">Santo Expedito, Araripina - PE</p>
-                </a>
-                <a href="https://wa.me/5581998874687" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" title="Conversar pelo WhatsApp">
-                  <Phone size={14} className="text-eco-500" />
-                  (81) 998874-4687
+                <div className="mb-2">
+                  <a 
+                    href="https://maps.google.com/?q=Rua+Ana+Granja+Arraes,+03,+Santo+Expedito,+Araripina+-+PE" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="block hover:text-eco-300 transition-colors group flex items-center gap-1.5" 
+                    title="Ver no Google Maps"
+                  >
+                    <MapPin size={14} className="text-eco-500 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm group-hover:underline text-earth-400">Rua Ana Granja Arraes, 03</p>
+                      <p className="text-sm group-hover:underline text-earth-400">Santo Expedito, Araripina - PE</p>
+                    </div>
+                    <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1">abrir no mapa</span>
+                  </a>
+                </div>
+                <a 
+                  href="https://wa.me/5581987444687" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sm flex items-center gap-1.5 mt-2 hover:text-eco-300 transition-colors text-earth-400 group" 
+                  title="Conversar pelo WhatsApp"
+                >
+                  <WhatsApp size={14} className="text-eco-500" />
+                  (81) 9874-4687
+                  <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1 group-hover:bg-earth-700">falar no whatsapp</span>
                 </a>
               </div>
               
               {/* Ceará */}
               <div className="p-3 rounded-lg hover:bg-earth-800/60 transition-colors duration-300">
                 <h4 className="font-semibold text-earth-300 font-playfair">Ceará</h4>
-                <a href="https://maps.google.com/?q=Rua+Maria+Balbino+da+Conceição,+503,+Jardim+-+CE" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-300 transition-colors group" title="Ver no Google Maps">
-                  <p className="text-sm group-hover:underline text-earth-400">Rua Maria Balbino da Conceição,</p>
-                  <p className="text-sm group-hover:underline text-earth-400">503, Jardim - CE</p>
-                </a>
-                <a href="https://wa.me/5588981238818" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" title="Conversar pelo WhatsApp">
-                  <Phone size={14} className="text-eco-500" />
+                <div className="mb-2">
+                  <a 
+                    href="https://maps.google.com/?q=Rua+Maria+Balbino+da+Conceição,+503,+Jardim+-+CE" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="block hover:text-eco-300 transition-colors group flex items-center gap-1.5" 
+                    title="Ver no Google Maps"
+                  >
+                    <MapPin size={14} className="text-eco-500 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm group-hover:underline text-earth-400">Rua Maria Balbino da Conceição,</p>
+                      <p className="text-sm group-hover:underline text-earth-400">503, Jardim - CE</p>
+                    </div>
+                    <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1">abrir no mapa</span>
+                  </a>
+                </div>
+                <a 
+                  href="https://wa.me/5588981238818" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sm flex items-center gap-1.5 mt-2 hover:text-eco-300 transition-colors text-earth-400 group" 
+                  title="Conversar pelo WhatsApp"
+                >
+                  <WhatsApp size={14} className="text-eco-500" />
                   (88) 9 8123-8818
+                  <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1 group-hover:bg-earth-700">falar no whatsapp</span>
                 </a>
               </div>
               
               {/* Rio Grande do Norte */}
               <div className="p-3 rounded-lg hover:bg-earth-800/60 transition-colors duration-300">
                 <h4 className="font-semibold text-earth-300 font-playfair">Rio Grande do Norte</h4>
-                <a href="https://maps.google.com/?q=Av.+Olavo+Lacerda+Montenegro,+2835,+Central+Park+II,+Parnamirim+-+RN" target="_blank" rel="noopener noreferrer" className="block hover:text-eco-300 transition-colors group" title="Ver no Google Maps">
-                  <p className="text-sm group-hover:underline text-earth-400">Av. Olavo Lacerda Montenegro, 2835,</p>
-                  <p className="text-sm group-hover:underline text-earth-400">Central Park II, Parnamirim - RN</p>
-                </a>
-                <a href="https://wa.me/5584988147400" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center gap-1 mt-2 hover:text-eco-300 transition-colors text-earth-400" title="Conversar pelo WhatsApp">
-                  <Phone size={14} className="text-eco-500" />
+                <div className="mb-2">
+                  <a 
+                    href="https://maps.google.com/?q=Av.+Olavo+Lacerda+Montenegro,+2835,+Central+Park+II,+Parnamirim+-+RN" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="block hover:text-eco-300 transition-colors group flex items-center gap-1.5" 
+                    title="Ver no Google Maps"
+                  >
+                    <MapPin size={14} className="text-eco-500 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm group-hover:underline text-earth-400">Av. Olavo Lacerda Montenegro, 2835,</p>
+                      <p className="text-sm group-hover:underline text-earth-400">Central Park II, Parnamirim - RN</p>
+                    </div>
+                    <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1">abrir no mapa</span>
+                  </a>
+                </div>
+                <a 
+                  href="https://wa.me/5584988147400" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sm flex items-center gap-1.5 mt-2 hover:text-eco-300 transition-colors text-earth-400 group" 
+                  title="Conversar pelo WhatsApp"
+                >
+                  <WhatsApp size={14} className="text-eco-500" />
                   (84) 9 8814-7400
+                  <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1 group-hover:bg-earth-700">falar no whatsapp</span>
                 </a>
               </div>
             </div>
