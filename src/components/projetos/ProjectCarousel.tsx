@@ -1,5 +1,5 @@
 
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import ProjectItem from './ProjectItem';
@@ -8,13 +8,13 @@ import CarouselDots from './CarouselDots';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ProjectCarousel: React.FC = () => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: 'center',
     skipSnaps: false,
     inViewThreshold: 0.7,
-  }, [Autoplay({ delay: 5000, stopOnInteraction: true, rootNode: (emblaRoot) => emblaRoot.parentElement })]);
+  }, [Autoplay({ delay: 6000, stopOnInteraction: true, rootNode: (emblaRoot) => emblaRoot.parentElement })]);
 
   // Update active index when the carousel scrolls
   useEffect(() => {
@@ -25,6 +25,8 @@ const ProjectCarousel: React.FC = () => {
     };
 
     emblaApi.on('select', onSelect);
+    onSelect(); // Call once to set initial state
+    
     return () => {
       emblaApi.off('select', onSelect);
     };
@@ -52,8 +54,8 @@ const ProjectCarousel: React.FC = () => {
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   return (
-    <div className="w-full relative overflow-hidden py-12">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="w-full relative overflow-hidden py-16">
+      <div className="max-w-8xl mx-auto px-4">
         {/* Carousel Container */}
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
@@ -62,7 +64,8 @@ const ProjectCarousel: React.FC = () => {
                 <ProjectItem 
                   key={index} 
                   project={project} 
-                  distance={getDistance(index)} 
+                  distance={getDistance(index)}
+                  isActive={index === activeIndex}
                 />
               ))}
             </div>
@@ -71,23 +74,29 @@ const ProjectCarousel: React.FC = () => {
           {/* Custom Navigation Buttons */}
           <button 
             onClick={scrollPrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md hover:bg-eco-100 text-earth-700 border border-eco-200 shadow-lg flex items-center justify-center transform transition-all duration-300 hover:scale-110"
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full 
+                      bg-white/15 backdrop-blur-md hover:bg-eco-100/90 text-earth-700 border border-eco-200/50 
+                      shadow-lg flex items-center justify-center transform transition-all duration-300 
+                      hover:scale-110 focus:outline-none focus:ring-2 focus:ring-eco-400"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-7 h-7" />
           </button>
           
           <button 
             onClick={scrollNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md hover:bg-eco-100 text-earth-700 border border-eco-200 shadow-lg flex items-center justify-center transform transition-all duration-300 hover:scale-110"
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-14 h-14 rounded-full 
+                      bg-white/15 backdrop-blur-md hover:bg-eco-100/90 text-earth-700 border border-eco-200/50 
+                      shadow-lg flex items-center justify-center transform transition-all duration-300 
+                      hover:scale-110 focus:outline-none focus:ring-2 focus:ring-eco-400"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-7 h-7" />
           </button>
         </div>
 
         {/* Pagination Dots */}
-        <div className="mt-8">
+        <div className="mt-10">
           <CarouselDots 
             activeIndex={activeIndex} 
             count={projectImages.length} 

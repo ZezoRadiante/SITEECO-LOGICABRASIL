@@ -10,7 +10,7 @@ interface CarouselDotsProps {
 
 const CarouselDots: React.FC<CarouselDotsProps> = ({ activeIndex, count, onClick }) => {
   return (
-    <div className="flex justify-center space-x-3 mt-4">
+    <div className="flex justify-center space-x-4 mt-6">
       {Array.from({ length: count }).map((_, index) => (
         <button
           key={index}
@@ -18,7 +18,7 @@ const CarouselDots: React.FC<CarouselDotsProps> = ({ activeIndex, count, onClick
           className={cn(
             "transition-all duration-300 relative",
             index === activeIndex 
-              ? "w-10 h-3 bg-[#71B707] rounded-full shadow-md" 
+              ? "w-12 h-3 bg-[#71B707] rounded-full shadow-md" 
               : "w-3 h-3 bg-eco-200 rounded-full hover:bg-eco-300"
           )}
           aria-label={`Go to slide ${index + 1}`}
