@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { StatsGrid } from './about/StatsGrid';
 import { AboutContent } from './about/AboutContent';
+import { aboutImages } from '@/data/projectData';
 
 const About: React.FC = () => {
   const aboutRef = useRef<HTMLDivElement>(null);
@@ -36,7 +37,7 @@ const About: React.FC = () => {
       ref={aboutRef}
       className="py-24 relative bg-cover bg-center bg-no-repeat min-h-[600px] transition-all duration-1000 ease-in-out"
       style={{
-        backgroundImage: `url('/lovable-uploads/c3a3f3f2-fb67-40c4-ace1-e5f3cbb61cbf.png')`,
+        backgroundImage: `url('${aboutImages.background}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
+import { bannerImages } from '@/data/projectData';
 
 const Banner = () => {
   const bannerRef = useRef<HTMLElement>(null);
@@ -57,7 +58,7 @@ const Banner = () => {
       {/* Banner Image - With enhanced hover effects */}
       <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50 transition-all duration-1000 ease-in-out animate-on-scroll mt-2">
         <img 
-          src="/lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png" 
+          src={bannerImages.main} 
           alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
           className="w-full h-auto object-cover transform hover:scale-[1.03] transition-transform duration-1000 filter hover:brightness-105"
         />

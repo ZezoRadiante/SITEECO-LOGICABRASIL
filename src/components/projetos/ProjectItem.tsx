@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { fallbackImages } from '@/data/projectData';
 
 interface ProjectItemProps {
   project: {
@@ -15,9 +16,6 @@ interface ProjectItemProps {
 
 const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }) => {
   const [imageError, setImageError] = useState(false);
-  
-  // Fallback images from public folder
-  const fallbackImage = '/placeholder.svg';
   
   return (
     <div 
@@ -37,20 +35,16 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
           : "h-[400px] md:h-[450px] shadow-md"
       )}>
         <img 
-          src={imageError ? fallbackImage : project.src} 
+          src={imageError ? fallbackImages.default : project.src} 
           alt={`Projeto ${project.title}`} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          onError={(e) => {
-            console.error(`Error loading image: ${project.src}`);
-            setImageError(true);
-          }}
+          onError={() => setImageError(true)}
         />
         
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-earth-900/90 via-earth-900/40 to-transparent opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 bg-gradient-to-t from-earth-900/90 via-earth-900/40 to-transparent">
           {/* Text content container */}
           <div className="absolute bottom-0 left-0 w-full p-6 text-left">
-            {/* Heading and stats */}
             <div className="space-y-2 mb-2">
               <h3 className="text-3xl md:text-4xl font-bold text-white">{project.title}</h3>
               <div className="w-20 h-1.5 bg-eco-400 rounded-full mb-3"></div>

@@ -10,6 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import useEmblaCarousel from 'embla-carousel-react';
+import { servicesImages } from '@/data/projectData';
 
 interface ServiceCardProps {
   title: string;
@@ -112,15 +113,15 @@ const Services = () => {
 
   return (
     <section id="services" className="py-24 relative overflow-hidden">
-      {/* Background image with girl holding plant */}
+      {/* Background image */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50" 
-        style={{ backgroundImage: `url('/lovable-uploads/449e9d43-1895-4430-ab8f-d6ba31fb5891.png')` }}>
+        style={{ backgroundImage: `url('${servicesImages.background}')` }}>
       </div>
       
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-sky-50/90 via-white/80 to-eco-50/70 z-0"></div>
       
-      {/* Top gradient transition - enhanced */}
+      {/* Top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10"></div>
       
       <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-5 bg-repeat"></div>
@@ -183,7 +184,7 @@ const Services = () => {
         </div>
       </div>
       
-      {/* Bottom gradient transition - Enhanced */}
+      {/* Bottom gradient transition */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-eco-100/50 to-transparent"></div>
     </section>
   );
