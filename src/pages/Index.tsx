@@ -14,27 +14,53 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [contentReady, setContentReady] = useState(false);
   const sectionsRef = useRef<HTMLDivElement>(null);
+  const loadingTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Improved loading management with shorter timeout
+  // Improved loading management with safety timeouts
   useEffect(() => {
-    const loadingTimeout = setTimeout(() => {
+    // Garanta que, depois de 7 segundos, a página sempre será exibida
+    // independentemente do carregamento do vídeo
+    loadingTimeoutRef.current = setTimeout(() => {
       if (isLoading) {
         console.log("Forcing content display after timeout");
         setIsLoading(false);
         setContentReady(true);
       }
-    }, 4000); // Increased timeout to give more time for video loading in production
+    }, 7000); // Aumentado para 7 segundos para dar mais tempo para carregar em ambientes de produção
     
-    return () => clearTimeout(loadingTimeout);
-  }, [isLoading]);
+    // Failsafe: Se algo realmente der errado, exiba o conteúdo após 10 segundos
+    const failsafeTimeout = setTimeout(() => {
+      setIsLoading(false);
+      setContentReady(true);
+      document.body.classList.remove('loading');
+      console.warn("Failsafe timeout triggered - forcing content display");
+    }, 10000);
+    
+    // Adicione uma classe ao body para evitar interações durante o carregamento
+    document.body.classList.add('loading');
+    
+    return () => {
+      if (loadingTimeoutRef.current) {
+        clearTimeout(loadingTimeoutRef.current);
+      }
+      clearTimeout(failsafeTimeout);
+      document.body.classList.remove('loading');
+    };
+  }, []);
 
   // Handle video load event from Hero component
   const handleContentLoaded = () => {
     console.log("Content loaded successfully");
+    // Limpe o timeout de segurança
+    if (loadingTimeoutRef.current) {
+      clearTimeout(loadingTimeoutRef.current);
+    }
+    
     // Add a small delay to ensure smooth transition
     setTimeout(() => {
       setIsLoading(false);
       setContentReady(true);
+      document.body.classList.remove('loading');
     }, 300);
   };
 
@@ -104,7 +130,7 @@ const Index = () => {
       <div 
         className="fixed inset-0 pointer-events-none z-0 opacity-[0.03]"
         style={{ 
-          backgroundImage: `url('/lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')`,
+          backgroundImage: `url('./lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')`,
           backgroundSize: '20%',
           backgroundRepeat: 'repeat',
           backgroundBlendMode: 'soft-light',

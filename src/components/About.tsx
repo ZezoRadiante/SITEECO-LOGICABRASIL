@@ -46,7 +46,7 @@ const About: React.FC = () => {
       <div 
         className="absolute right-0 bottom-0 w-full h-full bg-right-bottom bg-no-repeat opacity-5 transition-opacity duration-700 hover:opacity-10"
         style={{ 
-          backgroundImage: `url('/lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')`,
+          backgroundImage: `url('./lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')`,
           backgroundSize: '30%',
           backgroundPosition: 'right bottom'
         }}

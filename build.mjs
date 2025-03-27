@@ -5,9 +5,41 @@ import { build } from 'vite';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 import fs from 'fs/promises';
+import path from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+async function copyPublicFiles() {
+  console.log('Copying public files to dist...');
+  
+  try {
+    // Obter todos os arquivos da pasta public
+    const publicDir = resolve(__dirname, 'public');
+    const files = await fs.readdir(publicDir, { recursive: true });
+    
+    for (const file of files) {
+      const srcPath = resolve(publicDir, file);
+      const stat = await fs.stat(srcPath);
+      
+      // Pular diretórios
+      if (stat.isDirectory()) continue;
+      
+      const destPath = resolve(__dirname, 'dist', file);
+      
+      // Certificar-se de que o diretório de destino exista
+      await fs.mkdir(path.dirname(destPath), { recursive: true }).catch(() => {});
+      
+      // Copiar o arquivo
+      await fs.copyFile(srcPath, destPath);
+      console.log(`Copied: ${file}`);
+    }
+    
+    console.log('All public files copied successfully!');
+  } catch (err) {
+    console.error('Failed to copy public files:', err);
+  }
+}
 
 async function buildProject() {
   console.log('Building the project...');
@@ -28,22 +60,8 @@ async function buildProject() {
     
     console.log('Build completed successfully!');
     
-    // Ensure video file is properly copied
-    try {
-      const videoExists = await fs.access(resolve(__dirname, 'dist', 'background-nature.mp4'))
-        .then(() => true)
-        .catch(() => false);
-      
-      if (!videoExists) {
-        console.log('Manually copying background video...');
-        await fs.copyFile(
-          resolve(__dirname, 'public', 'background-nature.mp4'),
-          resolve(__dirname, 'dist', 'background-nature.mp4')
-        );
-      }
-    } catch (err) {
-      console.warn('Video file check/copy failed:', err);
-    }
+    // Copiar todos os arquivos da pasta public
+    await copyPublicFiles();
     
     // Create a simple server file for deployment environments
     await fs.writeFile(
@@ -89,6 +107,12 @@ app.listen(PORT, () => {
           start: 'node server.js'
         }
       }, null, 2)
+    );
+    
+    // Create a Netlify redirect file for SPA routing
+    await fs.writeFile(
+      resolve(__dirname, 'dist', '_redirects'),
+      `/*    /index.html   200`
     );
     
     console.log('Deployment files created successfully!');

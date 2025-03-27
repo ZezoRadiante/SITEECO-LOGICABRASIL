@@ -18,6 +18,22 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
   const [imageError, setImageError] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   
+  // Função para tentar caminhos alternativos para imagens
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const img = e.currentTarget;
+    console.error(`Image failed to load: ${img.src}`);
+    
+    // Se já usamos o caminho com ./ tente com /
+    if (img.src.startsWith('./') && !imageError) {
+      const newPath = img.src.replace('./', '/');
+      console.log(`Trying alternative path: ${newPath}`);
+      img.src = newPath;
+    } else {
+      // Se todos os caminhos falharem, use a imagem de fallback
+      setImageError(true);
+    }
+  };
+  
   return (
     <div 
       className={cn(
@@ -42,7 +58,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
           src={imageError ? fallbackImages.default : project.src} 
           alt={`Projeto ${project.title}`} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          onError={() => setImageError(true)}
+          onError={handleImageError}
         />
         
         {/* Text overlay that appears when clicked */}

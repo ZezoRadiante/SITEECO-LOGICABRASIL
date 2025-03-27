@@ -46,16 +46,50 @@ const Hero = ({
       if (onVideoLoaded) onVideoLoaded();
     };
     
+    // Função para tentar carregar o vídeo com vários caminhos
+    const tryLoadVideo = () => {
+      if (!videoElement) return;
+      
+      const possiblePaths = [
+        heroImages.video,
+        './background-nature.mp4',
+        '/background-nature.mp4',
+        'background-nature.mp4'
+      ];
+      
+      // Tentar carregar o vídeo com o primeiro caminho
+      videoElement.src = possiblePaths[0];
+      
+      // Se falhar, tentar os próximos caminhos
+      videoElement.addEventListener('error', function tryNextPath(e) {
+        console.warn("Video load failed for path:", videoElement.src);
+        const currentIndex = possiblePaths.indexOf(videoElement.src);
+        if (currentIndex < possiblePaths.length - 1) {
+          // Tente o próximo caminho
+          videoElement.src = possiblePaths[currentIndex + 1];
+        } else {
+          // Todos os caminhos falharam, use a imagem de fallback
+          console.warn("Video load timeout, using fallback");
+          videoElement.removeEventListener('error', tryNextPath);
+          setShowFallbackImage(true);
+          setIsVideoLoaded(true);
+          if (onVideoLoaded) onVideoLoaded();
+        }
+      }, { once: false });
+    };
+    
     if (videoElement) {
       videoElement.addEventListener('loadeddata', handleLoadedData);
-      videoElement.addEventListener('error', handleError, true);
+      
+      // Inicie o processo de carregamento com vários caminhos
+      tryLoadVideo();
       
       // Check if video is already loaded
       if (videoElement.readyState >= 3) {
         handleLoadedData();
       }
       
-      // Fallback if video takes too long to load (2 seconds)
+      // Fallback se o vídeo demorar muito para carregar (5 segundos)
       const timeoutId = setTimeout(() => {
         if (!isVideoLoaded) {
           console.warn("Video load timeout, using fallback");
@@ -63,15 +97,14 @@ const Hero = ({
           setIsVideoLoaded(true);
           if (onVideoLoaded) onVideoLoaded();
         }
-      }, 3000); // Increased from 2000ms to 3000ms for production environments
+      }, 5000);
       
       return () => {
         videoElement.removeEventListener('loadeddata', handleLoadedData);
-        videoElement.removeEventListener('error', handleError, true);
         clearTimeout(timeoutId);
       };
     } else {
-      // If video element is not available for some reason
+      // Se o elemento de vídeo não estiver disponível por algum motivo
       console.warn("Video element not available, triggering fallback");
       setShowFallbackImage(true);
       setIsVideoLoaded(true);
@@ -90,9 +123,14 @@ const Hero = ({
             isVideoLoaded ? 'opacity-100' : 'opacity-0'
           )}>
             <img 
-              src={heroImages.fallback || "/lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg"}
+              src={heroImages.fallback || "./lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg"}
               alt="Background" 
               className="w-full h-full object-cover"
+              onError={(e) => {
+                console.error("Fallback image failed to load, trying alternative path");
+                // Se a imagem falhar, tente um caminho alternativo
+                (e.target as HTMLImageElement).src = "./lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg";
+              }}
             />
           </div>
         ) : (
@@ -110,9 +148,7 @@ const Hero = ({
             preload="auto"
             style={{ objectFit: 'cover' }}
           >
-            <source src={heroImages.video} type="video/mp4" />
-            <source src="./background-nature.mp4" type="video/mp4" /> {/* Backup source with alternate path */}
-            <source src="/background-nature.mp4" type="video/mp4" /> {/* Another backup source */}
+            {/* Não usamos mais source tags, carregamos dinamicamente via JS */}
             Your browser does not support the video tag.
           </video>
         )}

@@ -38,7 +38,7 @@ const Banner = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-10 transition-opacity duration-700 hover:opacity-15" 
         style={{
-          backgroundImage: `url('/lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')`
+          backgroundImage: `url('./lovable-uploads/7002d398-a9f7-424a-a14e-12c232731bc1.png')`
         }}
       />
       
@@ -65,7 +65,12 @@ const Banner = () => {
         <img 
           src={bannerImages.main} 
           alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
-          className="w-full h-auto object-cover transform hover:scale-[1.03] transition-transform duration-1000 filter hover:brightness-105" 
+          className="w-full h-auto object-cover transform hover:scale-[1.03] transition-transform duration-1000 filter hover:brightness-105"
+          onError={(e) => {
+            console.error("Banner image failed to load, trying alternative path");
+            // Se a imagem falhar, tente um caminho alternativo
+            (e.target as HTMLImageElement).src = "./lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png";
+          }}
         />
         
         {/* Add a subtle overlay effect on hover */}
