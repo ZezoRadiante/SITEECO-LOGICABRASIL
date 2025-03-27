@@ -1,7 +1,5 @@
-
 import React, { useEffect, useCallback, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
 import ProjectItem from './ProjectItem';
 import { projectImages } from '@/data/projectData';
 import CarouselDots from './CarouselDots';
@@ -14,9 +12,8 @@ const ProjectCarousel: React.FC = () => {
     align: 'center',
     skipSnaps: false,
     inViewThreshold: 0.7,
-  }, [Autoplay({ delay: 8000, stopOnInteraction: true, rootNode: (emblaRoot) => emblaRoot.parentElement })]);
+  });
 
-  // Update active index when the carousel scrolls
   useEffect(() => {
     if (!emblaApi) return;
 
@@ -32,7 +29,6 @@ const ProjectCarousel: React.FC = () => {
     };
   }, [emblaApi]);
 
-  // Function to handle dot click and scroll to respective slide
   const scrollTo = useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
@@ -40,7 +36,6 @@ const ProjectCarousel: React.FC = () => {
     }
   }, [emblaApi]);
 
-  // Calculate the distance from active index (handling loop)
   const getDistance = (index: number) => {
     const count = projectImages.length;
     let distance = Math.abs(index - activeIndex);
@@ -56,7 +51,6 @@ const ProjectCarousel: React.FC = () => {
   return (
     <div className="w-full relative overflow-hidden py-20">
       <div className="max-w-8xl mx-auto px-4">
-        {/* Carousel Container */}
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex py-10">
@@ -71,14 +65,12 @@ const ProjectCarousel: React.FC = () => {
             </div>
           </div>
 
-          {/* Custom Navigation Buttons */}
           <CarouselNavigation 
             onPrevClick={scrollPrev}
             onNextClick={scrollNext}
           />
         </div>
 
-        {/* Pagination Dots */}
         <div className="mt-12">
           <CarouselDots 
             activeIndex={activeIndex} 
