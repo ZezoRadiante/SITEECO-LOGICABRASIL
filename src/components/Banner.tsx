@@ -61,8 +61,8 @@ const Banner = () => {
         </div>
       </div>
       
-      {/* Banner Image - With enhanced hover effects */}
-      <div className="w-full overflow-hidden shadow-lg relative z-10 border-y-4 border-white/50 transition-all duration-1000 ease-in-out animate-on-scroll mt-2">
+      {/* Banner Image - With enhanced hover effects and no border */}
+      <div className="w-full overflow-hidden relative z-10 transition-all duration-1000 ease-in-out animate-on-scroll mt-2">
         <img 
           src={bannerImages.main} 
           alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
