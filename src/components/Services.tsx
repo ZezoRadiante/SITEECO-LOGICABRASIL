@@ -1,5 +1,6 @@
+
 import React, { useRef, useEffect } from 'react';
-import { Leaf, Recycle, Sprout, Circle } from 'lucide-react';
+import { Leaf, Recycle, Sprout } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   Carousel,
@@ -168,7 +169,7 @@ const Solucoes = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-sky-600 to-sky-400 mx-auto rounded-full mb-6 transition-all duration-500 hover:w-32"></div>
           
           <p className="max-w-3xl mx-auto text-lg text-foreground/70 leading-relaxed">
-            Oferecemos um portfólio de produtos e soluções costumizadas para atendes às demandas de diferentes perfis de consumo.
+            Oferecemos um portfólio de produtos e soluções customizadas para atender às demandas de diferentes perfis de consumo.
           </p>
         </div>
 
