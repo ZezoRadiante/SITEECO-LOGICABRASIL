@@ -54,15 +54,15 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
         )}
         onClick={() => isActive && setShowInfo(!showInfo)}
       >
-        <img 
-          src={imageError ? fallbackImages.default : project.src} 
-          alt={`Projeto ${project.title}`} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          onError={handleImageError}
-        />
-        
-        {/* Text overlay that appears when clicked */}
-        {isActive && showInfo && (
+        <div className="relative w-full h-full">
+          <img 
+            src={imageError ? fallbackImages.default : project.src} 
+            alt={`Projeto ${project.title}`} 
+            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            onError={handleImageError}
+          />
+          
+          {/* Always show text overlay */}
           <div 
             className="absolute inset-0 bg-gradient-to-t from-earth-900/90 via-earth-900/50 to-transparent backdrop-blur-sm"
           >
@@ -75,14 +75,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
               </div>
             </div>
           </div>
-        )}
-        
-        {/* More subtle indicator when active */}
-        {isActive && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-xs bg-black/20 px-2.5 py-0.5 rounded-full backdrop-blur-sm animate-pulse-gentle">
-            {showInfo ? "Fechar" : "Ver detalhes"}
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );
