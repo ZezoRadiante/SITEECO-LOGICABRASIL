@@ -67,6 +67,18 @@ const Hero = ({
           <span className="font-light italic drop-shadow-xl text-sky-700 transition-all duration-700 hover:text-eco-500"></span>
         </h1>
         
+        {/* Featured image with circular frame */}
+        <div className="flex justify-center mt-8 mb-12 opacity-0 animate-fade-in-delay-2">
+          <div className="relative overflow-hidden rounded-full border-4 border-eco-300/70 shadow-xl transform hover:scale-105 transition-all duration-700">
+            <img 
+              src="/public/lovable-uploads/dc137ab4-ce00-449a-9821-6b77dbdc48fe.png" 
+              alt="Criança com capacete branco segurando uma muda de planta" 
+              className="w-72 h-72 sm:w-80 sm:h-80 object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-eco-700/30 to-transparent opacity-0 hover:opacity-100 transition-all duration-500"></div>
+          </div>
+        </div>
+        
         <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3 mt-10 transition-all duration-700">
           <Button variant="green" asChild className="rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 transition-all duration-500">
             
