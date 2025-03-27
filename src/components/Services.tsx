@@ -6,6 +6,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious
 } from "@/components/ui/carousel";
 import useEmblaCarousel from 'embla-carousel-react';
 import { servicesImages } from '@/data/projectData';
@@ -73,7 +75,7 @@ const CarouselDots = ({
 
 const Solucoes = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const servicesRef = useRef<HTMLElement>(null);
   
   useEffect(() => {
@@ -187,29 +189,29 @@ const Solucoes = () => {
         </div>
 
         <div className="md:hidden animate-on-scroll">
-          <div className="overflow-hidden" ref={emblaRef}>
-            <Carousel>
-              <CarouselContent>
-                {services.map((service, index) => (
-                  <CarouselItem key={service.title}>
-                    <div className="p-1">
-                      <ServiceCard 
-                        title={service.title} 
-                        description={service.description} 
-                        icon={service.icon} 
-                        index={index} 
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
-          <CarouselDots 
-            activeIndex={activeIndex} 
-            count={services.length} 
-            onClick={scrollTo} 
-          />
+          <Carousel>
+            <CarouselContent ref={emblaRef}>
+              {services.map((service, index) => (
+                <CarouselItem key={service.title}>
+                  <div className="p-1">
+                    <ServiceCard 
+                      title={service.title} 
+                      description={service.description} 
+                      icon={service.icon} 
+                      index={index} 
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="mt-4 flex justify-center">
+              <CarouselDots
+                activeIndex={activeIndex}
+                count={services.length}
+                onClick={scrollTo}
+              />
+            </div>
+          </Carousel>
         </div>
       </div>
       

@@ -16,6 +16,20 @@ const Index = () => {
   const [contentReady, setContentReady] = useState(false);
   const sectionsRef = useRef<HTMLDivElement>(null);
 
+  // Fallback timer to prevent infinite loading screen
+  useEffect(() => {
+    const loadingTimeout = setTimeout(() => {
+      if (isLoading) {
+        console.warn("Forcing content display after timeout");
+        setIsLoading(false);
+        setVideoLoaded(true);
+        setContentReady(true);
+      }
+    }, 5000);
+    
+    return () => clearTimeout(loadingTimeout);
+  }, [isLoading]);
+
   useEffect(() => {
     // Reset scroll position when component mounts
     window.scrollTo(0, 0);
@@ -114,7 +128,7 @@ const Index = () => {
       
       <div 
         ref={sectionsRef}
-        className={`min-h-screen transition-all duration-1000 ${contentReady ? 'opacity-100' : 'opacity-0'}`}
+        className={`min-h-screen transition-all duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
       >
         <Navbar />
         <Hero onVideoLoaded={handleVideoLoaded} />

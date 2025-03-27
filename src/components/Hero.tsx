@@ -40,11 +40,32 @@ const Hero = ({
       if (videoElement.readyState >= 3) {
         handleLoadedData();
       }
+      
+      // Add error handling for video
+      const handleError = () => {
+        console.error("Video failed to load, setting loaded state anyway to prevent white screen");
+        setIsVideoLoaded(true);
+        if (onVideoLoaded) onVideoLoaded();
+      };
+      
+      videoElement.addEventListener('error', handleError);
+      
+      // Fallback if video takes too long to load
+      const timeoutId = setTimeout(() => {
+        if (!isVideoLoaded) {
+          console.warn("Video load timeout, setting loaded state to prevent white screen");
+          setIsVideoLoaded(true);
+          if (onVideoLoaded) onVideoLoaded();
+        }
+      }, 3000);
+      
       return () => {
         videoElement.removeEventListener('loadeddata', handleLoadedData);
+        videoElement.removeEventListener('error', handleError);
+        clearTimeout(timeoutId);
       };
     }
-  }, [onVideoLoaded]);
+  }, [onVideoLoaded, isVideoLoaded]);
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -85,14 +106,14 @@ const Hero = ({
             asChild 
             className="rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 transition-all duration-500"
           >
-            
+            <a href="#contact">Entre em Contato</a>
           </Button>
           <Button 
             variant="outline" 
             asChild 
             className="border-2 border-white/60 text-white rounded-full hover:bg-[#E2FCB3] hover:text-earth-800 hover:border-transparent shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 transition-all duration-500"
           >
-            
+            <a href="#about">Saiba Mais</a>
           </Button>
         </div>
       </div>
