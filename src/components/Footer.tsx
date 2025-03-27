@@ -55,8 +55,8 @@ const Footer = () => {
                       <p className="text-sm group-hover:underline text-earth-400">Rua Ana Granja Arraes, 03</p>
                       <p className="text-sm group-hover:underline text-earth-400">Santo Expedito, Araripina - PE</p>
                     </div>
-                    <span className="inline-flex items-center justify-center text-xs bg-earth-800 p-1 rounded text-eco-300 ml-1">
-                      <MapPin size={12} />
+                    <span className="inline-flex items-center justify-center text-xs bg-earth-800 p-1.5 rounded text-eco-300 ml-1 w-6 h-6">
+                      <MapPin size={14} />
                     </span>
                   </a>
                 </div>
@@ -89,8 +89,8 @@ const Footer = () => {
                       <p className="text-sm group-hover:underline text-earth-400">Rua Maria Balbino da Conceição,</p>
                       <p className="text-sm group-hover:underline text-earth-400">503, Jardim - CE</p>
                     </div>
-                    <span className="inline-flex items-center justify-center text-xs bg-earth-800 p-1 rounded text-eco-300 ml-1">
-                      <MapPin size={12} />
+                    <span className="inline-flex items-center justify-center text-xs bg-earth-800 p-1.5 rounded text-eco-300 ml-1 w-6 h-6">
+                      <MapPin size={14} />
                     </span>
                   </a>
                 </div>
@@ -123,8 +123,8 @@ const Footer = () => {
                       <p className="text-sm group-hover:underline text-earth-400">Av. Olavo Lacerda Montenegro, 2835,</p>
                       <p className="text-sm group-hover:underline text-earth-400">Central Park II, Parnamirim - RN</p>
                     </div>
-                    <span className="inline-flex items-center justify-center text-xs bg-earth-800 p-1 rounded text-eco-300 ml-1">
-                      <MapPin size={12} />
+                    <span className="inline-flex items-center justify-center text-xs bg-earth-800 p-1.5 rounded text-eco-300 ml-1 w-6 h-6">
+                      <MapPin size={14} />
                     </span>
                   </a>
                 </div>
