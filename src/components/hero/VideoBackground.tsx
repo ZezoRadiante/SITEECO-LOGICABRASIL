@@ -16,17 +16,12 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [showFallback, setShowFallback] = useState(false);
-  const loadAttemptRef = useRef(0);
 
   useEffect(() => {
-    // Preload the fallback image in case we need it
-    const preloadFallbackImage = new Image();
-    preloadFallbackImage.src = fallbackImage;
-    
     const videoElement = videoRef.current;
     
-    const handleVideoSuccess = () => {
-      console.log(`Video loaded successfully from path: ${videoElement?.src}`);
+    const handleLoadedData = () => {
+      console.log("Video loaded successfully");
       setIsLoaded(true);
       setShowFallback(false);
       onMediaLoaded();
@@ -37,90 +32,88 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
       videoSrc,
       './background-nature.mp4',
       '/background-nature.mp4',
-      'background-nature.mp4',
-      '/public/background-nature.mp4',
-      'https://storage.googleapis.com/lovable-static/background-nature.mp4',
+      'background-nature.mp4'
     ];
     
-    if (!videoElement) {
+    let currentPathIndex = 0;
+    let videoLoaded = false;
+    
+    const tryNextVideoPath = () => {
+      if (!videoElement || videoLoaded || currentPathIndex >= possibleVideoPaths.length) {
+        // Se todas as tentativas falharam, mostrar imagem fallback
+        if (!videoLoaded) {
+          console.warn("Video loading failed for all paths, using fallback image");
+          setShowFallback(true);
+          setIsLoaded(true);
+          onMediaLoaded();
+        }
+        return;
+      }
+      
+      const path = possibleVideoPaths[currentPathIndex];
+      console.log(`Trying to load video from path: ${path}`);
+      
+      videoElement.src = path;
+      
+      // Removendo qualquer listener anterior antes de adicionar um novo
+      videoElement.removeEventListener('loadeddata', handleVideoSuccess);
+      videoElement.removeEventListener('error', handleVideoError);
+      
+      // Adicionando novos listeners
+      videoElement.addEventListener('loadeddata', handleVideoSuccess, { once: true });
+      videoElement.addEventListener('error', handleVideoError, { once: true });
+      
+      // Tentar carregar explicitamente
+      videoElement.load();
+      
+      currentPathIndex++;
+    };
+    
+    const handleVideoSuccess = () => {
+      console.log(`Video loaded successfully from path: ${videoElement?.src}`);
+      videoLoaded = true;
+      handleLoadedData();
+    };
+    
+    const handleVideoError = (e: Event) => {
+      console.error(`Video failed to load from path: ${videoElement?.src}`, e);
+      // Tentar o próximo caminho
+      tryNextVideoPath();
+    };
+    
+    if (videoElement) {
+      // Iniciar o processo de tentativas
+      tryNextVideoPath();
+      
+      // Fallback com timeout (caso nenhuma tentativa dispare evento)
+      const timeoutId = setTimeout(() => {
+        if (!videoLoaded) {
+          console.warn("Video load timeout after 5 seconds, using fallback");
+          setShowFallback(true);
+          setIsLoaded(true);
+          onMediaLoaded();
+        }
+      }, 5000);
+      
+      return () => {
+        // Limpar listeners e timeout ao desmontar
+        videoElement.removeEventListener('loadeddata', handleVideoSuccess);
+        videoElement.removeEventListener('error', handleVideoError);
+        clearTimeout(timeoutId);
+      };
+    } else {
+      // Se o elemento de vídeo não estiver disponível
       console.warn("Video element not available, triggering fallback");
       setShowFallback(true);
       setIsLoaded(true);
       onMediaLoaded();
-      return;
     }
-    
-    // Better error tracking
-    const handleVideoError = (e: Event) => {
-      const currentAttempt = loadAttemptRef.current;
-      console.error(`Video failed to load attempt ${currentAttempt + 1}/${possibleVideoPaths.length} from path: ${videoElement?.src}`, e);
-      
-      // Try next path or fallback to image
-      if (currentAttempt < possibleVideoPaths.length - 1) {
-        loadAttemptRef.current += 1;
-        const nextPath = possibleVideoPaths[loadAttemptRef.current];
-        console.log(`Trying next video path: ${nextPath}`);
-        
-        // Remove and add event listeners to ensure they're fresh
-        cleanupEventListeners();
-        addEventListeners();
-        
-        // Set new source and load
-        videoElement.src = nextPath;
-        
-        // Use low quality first to get faster initial load
-        videoElement.preload = "auto";
-        videoElement.load();
-      } else {
-        console.warn("All video paths failed, using fallback image");
-        setShowFallback(true);
-        setIsLoaded(true);
-        onMediaLoaded();
-      }
-    };
-    
-    // Create a single function to add event listeners
-    const addEventListeners = () => {
-      videoElement.addEventListener('loadeddata', handleVideoSuccess, { once: true });
-      videoElement.addEventListener('canplaythrough', handleVideoSuccess, { once: true });
-      videoElement.addEventListener('error', handleVideoError, { once: true });
-    };
-    
-    // Create a single function to remove event listeners
-    const cleanupEventListeners = () => {
-      videoElement.removeEventListener('loadeddata', handleVideoSuccess);
-      videoElement.removeEventListener('canplaythrough', handleVideoSuccess);
-      videoElement.removeEventListener('error', handleVideoError);
-    };
-    
-    // Setup initial event listeners
-    addEventListeners();
-    
-    // Start with the first path
-    videoElement.src = possibleVideoPaths[0];
-    videoElement.preload = "auto";
-    videoElement.load();
-    
-    // Fallback timeout - shorter than before for better UX
-    const timeoutId = setTimeout(() => {
-      if (!isLoaded) {
-        console.warn("Video load timeout after 3 seconds, using fallback");
-        setShowFallback(true);
-        setIsLoaded(true);
-        onMediaLoaded();
-      }
-    }, 3000);
-    
-    return () => {
-      cleanupEventListeners();
-      clearTimeout(timeoutId);
-    };
-  }, [videoSrc, fallbackImage, onMediaLoaded, isLoaded]);
+  }, [videoSrc, fallbackImage, onMediaLoaded]);
 
   return (
     <div className="absolute inset-0">
       {showFallback ? (
-        // Fallback image with improved error handling
+        // Fallback image when video fails to load
         <div className={cn(
           "absolute inset-0 w-full h-full z-0 transition-opacity duration-1000",
           isLoaded ? 'opacity-100' : 'opacity-0'
@@ -129,20 +122,15 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
             src={fallbackImage}
             alt="Background" 
             className="w-full h-full object-cover"
-            onLoad={() => {
-              console.log("Fallback image loaded successfully");
-              setIsLoaded(true);
-              onMediaLoaded();
-            }}
             onError={(e) => {
               console.error("Fallback image failed to load, trying alternative path");
-              // Try a more reliable fallback path
+              // Se a imagem falhar, tente um caminho alternativo
               (e.target as HTMLImageElement).src = "./lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg";
             }}
           />
         </div>
       ) : (
-        // Video background with improved loading attributes
+        // Video background
         <video 
           ref={videoRef} 
           className={cn(
@@ -155,12 +143,10 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
           playsInline 
           preload="auto"
           style={{ objectFit: 'cover' }}
-          poster={fallbackImage} // Use fallback as poster for better perceived performance
         >
           Your browser does not support the video tag.
         </video>
       )}
-      
       {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-eco-700/60 via-eco-600/30 to-transparent z-10 transition-all duration-1000"></div>
     </div>
