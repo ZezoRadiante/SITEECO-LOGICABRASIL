@@ -54,12 +54,12 @@ const ProjectCarousel: React.FC = () => {
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   return (
-    <div className="w-full relative overflow-hidden py-16">
+    <div className="w-full relative overflow-hidden py-20">
       <div className="max-w-8xl mx-auto px-4">
         {/* Carousel Container */}
         <div className="relative">
           <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex py-8">
+            <div className="flex py-10">
               {projectImages.map((project, index) => (
                 <ProjectItem 
                   key={index} 
@@ -79,7 +79,7 @@ const ProjectCarousel: React.FC = () => {
         </div>
 
         {/* Pagination Dots */}
-        <div className="mt-10">
+        <div className="mt-12">
           <CarouselDots 
             activeIndex={activeIndex} 
             count={projectImages.length} 

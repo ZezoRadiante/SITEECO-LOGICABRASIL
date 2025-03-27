@@ -31,8 +31,8 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
       <div className={cn(
         "overflow-hidden rounded-3xl transition-all duration-500 relative group",
         isActive 
-          ? "h-[450px] md:h-[500px] shadow-xl ring-2 ring-eco-600" 
-          : "h-[400px] md:h-[450px] shadow-md"
+          ? "h-[500px] md:h-[550px] shadow-xl ring-2 ring-eco-600" 
+          : "h-[450px] md:h-[500px] shadow-md"
       )}>
         <img 
           src={imageError ? fallbackImages.default : project.src} 
@@ -40,19 +40,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           onError={() => setImageError(true)}
         />
-        
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-earth-900/90 via-earth-900/40 to-transparent">
-          {/* Text content container */}
-          <div className="absolute bottom-0 left-0 w-full p-6 text-left">
-            <div className="space-y-2 mb-2">
-              <h3 className="text-3xl md:text-4xl font-bold text-white">{project.title}</h3>
-              <div className="w-20 h-1.5 bg-eco-400 rounded-full mb-3"></div>
-              <p className="text-md text-white/80 font-light">{project.description}</p>
-              <p className="text-2xl md:text-3xl font-semibold text-eco-300 mt-2">{project.stats}</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
