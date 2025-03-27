@@ -14,7 +14,7 @@ const ProjectCarousel: React.FC = () => {
     align: 'center',
     skipSnaps: false,
     inViewThreshold: 0.7,
-  }, [Autoplay({ delay: 6000, stopOnInteraction: true, rootNode: (emblaRoot) => emblaRoot.parentElement })]);
+  }, [Autoplay({ delay: 8000, stopOnInteraction: true, rootNode: (emblaRoot) => emblaRoot.parentElement })]);
 
   // Update active index when the carousel scrolls
   useEffect(() => {

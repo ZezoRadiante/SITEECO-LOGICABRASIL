@@ -16,6 +16,7 @@ interface ProjectItemProps {
 
 const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }) => {
   const [imageError, setImageError] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
   
   return (
     <div 
@@ -28,18 +29,44 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
             : "scale-90 opacity-70"
       )}
     >
-      <div className={cn(
-        "overflow-hidden rounded-3xl transition-all duration-500 relative group",
-        isActive 
-          ? "h-[500px] md:h-[550px] shadow-xl ring-2 ring-eco-600" 
-          : "h-[450px] md:h-[500px] shadow-md"
-      )}>
+      <div 
+        className={cn(
+          "overflow-hidden rounded-3xl transition-all duration-500 relative group cursor-pointer",
+          isActive 
+            ? "h-[500px] md:h-[550px] shadow-xl ring-2 ring-eco-600" 
+            : "h-[450px] md:h-[500px] shadow-md"
+        )}
+        onClick={() => isActive && setShowInfo(!showInfo)}
+      >
         <img 
           src={imageError ? fallbackImages.default : project.src} 
           alt={`Projeto ${project.title}`} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           onError={() => setImageError(true)}
         />
+        
+        {/* Text overlay that appears when clicked */}
+        {isActive && showInfo && (
+          <div 
+            className="absolute inset-0 bg-gradient-to-t from-earth-900/90 via-earth-900/50 to-transparent backdrop-blur-sm"
+          >
+            <div className="absolute bottom-0 left-0 w-full p-8 text-center">
+              <div className="space-y-4">
+                <h3 className="text-3xl md:text-4xl font-bold text-white animate-carousel-up">{project.title}</h3>
+                <div className="w-20 h-1.5 bg-eco-400 rounded-full mx-auto mb-2 animate-carousel-right"></div>
+                <p className="text-lg text-white/90 font-light animate-carousel-up">{project.description}</p>
+                <p className="text-2xl md:text-3xl font-semibold text-eco-300 mt-3 animate-carousel-down">{project.stats}</p>
+              </div>
+            </div>
+          </div>
+        )}
+        
+        {/* Subtle indicator when active */}
+        {isActive && (
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm animate-pulse-gentle">
+            {showInfo ? "Clique para ocultar" : "Clique para detalhes"}
+          </div>
+        )}
       </div>
     </div>
   );
