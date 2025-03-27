@@ -1,4 +1,3 @@
-
 import React, { useRef, useEffect } from 'react';
 import { Leaf, Recycle, Sprout } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -6,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import useEmblaCarousel from 'embla-carousel-react';
 import { servicesImages } from '@/data/projectData';
@@ -126,6 +123,9 @@ const Solucoes = () => {
     };
 
     emblaApi.on('select', onSelect);
+    // Call once to set initial state
+    onSelect();
+    
     return () => {
       emblaApi.off('select', onSelect);
     };
@@ -135,7 +135,6 @@ const Solucoes = () => {
   const scrollTo = React.useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
-      setActiveIndex(index);
     }
   }, [emblaApi]);
 
@@ -205,8 +204,7 @@ const Solucoes = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="left-0 bg-white/80 border-sky-200 text-sky-600 transition-all duration-300 hover:bg-white" />
-              <CarouselNext className="right-0 bg-white/80 border-sky-200 text-sky-600 transition-all duration-300 hover:bg-white" />
+              {/* Navigation arrows removed */}
             </Carousel>
           </div>
           <CarouselDots 

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useCallback, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import ProjectItem from './ProjectItem';
@@ -32,7 +33,6 @@ const ProjectCarousel: React.FC = () => {
   const scrollTo = useCallback((index: number) => {
     if (emblaApi) {
       emblaApi.scrollTo(index);
-      setActiveIndex(index);
     }
   }, [emblaApi]);
 
