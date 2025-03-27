@@ -1,4 +1,3 @@
-
 // Project data for the carousel with improved structure
 export const projectImages = [
   {
@@ -24,12 +23,6 @@ export const projectImages = [
     title: 'Rio do Vento Expansão',
     description: 'Projeto de Reposição Florestal',
     stats: '101.614 Mudas Plantadas'
-  },
-  {
-    src: '/lovable-uploads/b2251703-230b-4fb3-adfd-7249f11d3483.jpg',
-    title: 'Viveiro Florestal',
-    description: 'Viveiro Florestal com Capacidade Para',
-    stats: '500 Mil Mudas'
   }
 ];
 

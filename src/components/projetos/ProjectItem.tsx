@@ -61,10 +61,10 @@ const ProjectItem: React.FC<ProjectItemProps> = ({ project, distance, isActive }
           </div>
         )}
         
-        {/* Subtle indicator when active */}
+        {/* More subtle indicator when active */}
         {isActive && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 text-sm bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm animate-pulse-gentle">
-            {showInfo ? "Clique para ocultar" : "Clique para detalhes"}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-xs bg-black/20 px-2.5 py-0.5 rounded-full backdrop-blur-sm animate-pulse-gentle">
+            {showInfo ? "Fechar" : "Ver detalhes"}
           </div>
         )}
       </div>
