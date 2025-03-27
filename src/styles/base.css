@@ -7,6 +7,7 @@
 
 @layer base {
   :root {
+    /* Refined color palette with more harmonious values */
     --background: 140 33% 97%;
     --foreground: 120 4% 15%;
 
@@ -16,6 +17,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 120 4% 15%;
 
+    /* Brightened primary colors for better contrast */
     --primary: 82 94% 84%; /* #E2FCB3 */
     --primary-foreground: 120 4% 15%;
 
@@ -37,6 +39,7 @@
 
     --radius: 0.75rem;
 
+    /* Sidebar colors for consistent navigation */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -134,7 +137,7 @@
   }
 }
 
-/* Scrollbar styling */
+/* Refined scrollbar styling */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;

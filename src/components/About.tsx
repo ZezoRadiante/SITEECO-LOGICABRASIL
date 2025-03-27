@@ -35,7 +35,7 @@ const About: React.FC = () => {
     <div 
       id="about" 
       ref={aboutRef}
-      className="py-24 relative bg-cover bg-center bg-no-repeat min-h-[600px] transition-all duration-1000 ease-in-out"
+      className="py-24 relative bg-cover bg-center bg-no-repeat min-h-[600px] section-transition"
       style={{
         backgroundImage: `url('${aboutImages.background}')`,
         backgroundSize: 'cover',
@@ -52,14 +52,14 @@ const About: React.FC = () => {
         }}
       ></div>
       
-      {/* Enhanced overlay with smoother blur effect and transition */}
+      {/* Enhanced overlay with smoother blur effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/60 to-white/70 backdrop-blur-[2px] z-0 transition-all duration-1000 hover:backdrop-blur-[3px]"></div>
       
       {/* Enhanced top gradient transition */}
       <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-eco-100/60 to-transparent z-10 transition-opacity duration-700"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-        <div className="text-center mb-12 transform transition-all duration-700 hover:scale-[1.01] animate-on-scroll">
+        <div className="text-center mb-12 transform transition-bounce hover:scale-[1.01] animate-on-scroll">
           <span className="inline-block text-sky-700 bg-sky-50/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium mb-3 shadow-sm transition-all duration-500 hover:shadow-md hover:bg-sky-50/90">
             Nossa História
           </span>

@@ -33,7 +33,7 @@ const Banner = () => {
     <section 
       id="banner" 
       ref={bannerRef}
-      className="py-6 md:py-8 bg-gradient-to-b from-white via-eco-50/30 to-eco-100/40 relative overflow-hidden transition-all duration-1000 ease-in-out"
+      className="py-6 md:py-8 section-gradient-light relative overflow-hidden section-transition"
     >
       {/* Subtle background image - added with low opacity */}
       <div 
@@ -46,7 +46,7 @@ const Banner = () => {
       
       <div className="container mx-auto relative z-20">
         {/* Banner Content - With enhanced animations */}
-        <div className="w-full space-y-3 text-center px-4 md:px-8 mb-0 transform transition-all duration-700 hover:scale-[1.01] animate-on-scroll">
+        <div className="w-full space-y-3 text-center px-4 md:px-8 mb-0 transform transition-bounce hover:scale-[1.01] animate-on-scroll">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-earth-800 leading-tight">
             Promovendo um <span className="text-[#71B707] italic transition-all duration-500 hover:text-eco-500">Futuro Verde</span> para as Novas Gerações
           </h2>

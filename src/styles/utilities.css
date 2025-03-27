@@ -1,5 +1,6 @@
 
 @layer utilities {
+  /* Base utility classes */
   .glass {
     @apply bg-white/80 backdrop-blur-lg shadow-md border border-white/40;
   }
@@ -12,6 +13,7 @@
     text-wrap: balance;
   }
   
+  /* Enhanced gradient classes */
   .bio-gradient {
     @apply bg-gradient-to-r from-eco-50 to-eco-100 text-earth-900;
   }
@@ -20,6 +22,7 @@
     @apply bg-gradient-to-br from-eco-50 to-eco-100/50 backdrop-blur-sm border border-eco-200 shadow-md hover:shadow-lg transition-all duration-300;
   }
   
+  /* Button styles */
   .eco-btn {
     @apply bg-gradient-to-r from-eco-400 to-eco-300 text-earth-800 font-medium shadow-md hover:shadow-lg transition-all duration-300 rounded-md;
   }
@@ -28,6 +31,7 @@
     @apply bg-gradient-to-b from-earth-700 via-earth-600 to-earth-500;
   }
   
+  /* Card and section styles */
   .section-card {
     @apply bg-white/90 backdrop-blur-md shadow-lg rounded-xl border border-eco-100 p-6 transition-all duration-300;
   }
@@ -38,7 +42,7 @@
            transition-all duration-300 focus:ring-2 focus:ring-eco-300 focus:outline-none;
   }
 
-  /* Enhanced section transitions */
+  /* Section transitions */
   .section-transition {
     @apply transition-all duration-1000 ease-in-out;
   }
@@ -60,6 +64,7 @@
   }
 }
 
+/* Gradient utilities for consistent color schemes */
 @layer utilities {
   .eco-gradient-light {
     @apply bg-gradient-to-br from-white via-eco-50 to-eco-100;
@@ -85,6 +90,7 @@
     @apply bg-eco-50/80 backdrop-blur-sm border border-eco-100/50 shadow-sm;
   }
   
+  /* Consistent section gradients */
   .section-gradient-light {
     @apply bg-gradient-to-b from-white via-eco-50/30 to-eco-100/40;
   }
@@ -94,7 +100,7 @@
   }
 }
 
-/* Additional UI component styles */
+/* Enhanced component styles */
 .stats-card {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -117,13 +123,13 @@
   line-height: 1.2;
 }
 
-/* Enhanced button states */
+/* Enhanced button states for better accessibility */
 button:focus, a:focus {
   outline: 2px solid rgba(113, 183, 7, 0.4);
   outline-offset: 2px;
 }
 
-/* Enhanced transitions for all sections */
+/* Consistent section transitions */
 section {
   transition: background-color 0.8s ease, transform 0.5s ease;
 }

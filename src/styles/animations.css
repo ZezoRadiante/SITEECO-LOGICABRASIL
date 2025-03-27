@@ -1,4 +1,5 @@
 
+/* Refined animations with more natural timing functions */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
@@ -22,13 +23,7 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-@keyframes carousel {
-  0% { transform: translateY(80%); }
-  80% { transform: translateY(0%); }
-  100% { transform: translateY(0%); }
-}
-
-/* Enhanced transitions */
+/* Enhanced transitions with better easing functions */
 @keyframes fade-up {
   0% { 
     opacity: 0; 
@@ -75,23 +70,7 @@
   animation: grow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-.animate-carousel {
-  animation: carousel 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.animate-fade-up {
-  animation: fade-up 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.animate-fade-down {
-  animation: fade-down 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.animate-fade-in-scale {
-  animation: fade-in-scale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* Animation for intersection observer */
+/* Enhanced animation for intersection observer */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
@@ -109,3 +88,44 @@
 .stagger-children > *:nth-child(3) { transition-delay: 200ms; }
 .stagger-children > *:nth-child(4) { transition-delay: 300ms; }
 .stagger-children > *:nth-child(5) { transition-delay: 400ms; }
+
+/* Carousel animations */
+.animate-carousel-up {
+  animation: carousel-up 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-carousel-right {
+  animation: carousel-right 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-carousel-down {
+  animation: carousel-down 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-carousel-left {
+  animation: carousel-left 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes carousel-up {
+  0% { transform: translateY(80%); }
+  80% { transform: translateY(0%); }
+  100% { transform: translateY(0%); }
+}
+
+@keyframes carousel-right {
+  0% { transform: translateX(-80%); }
+  80% { transform: translateX(0%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes carousel-down {
+  0% { transform: translateY(-80%); }
+  80% { transform: translateY(0%); }
+  100% { transform: translateY(0%); }
+}
+
+@keyframes carousel-left {
+  0% { transform: translateX(80%); }
+  80% { transform: translateX(0%); }
+  100% { transform: translateX(0%); }
+}
