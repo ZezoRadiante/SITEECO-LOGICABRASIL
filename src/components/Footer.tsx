@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube, ArrowRight, ExternalLink, WhatsApp } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Instagram, Youtube, ArrowRight, ExternalLink, MessageCircle } from 'lucide-react';
 import Logo from './Logo';
 import { Button } from './ui/button';
 
@@ -65,7 +65,7 @@ const Footer = () => {
                   className="text-sm flex items-center gap-1.5 mt-2 hover:text-eco-300 transition-colors text-earth-400 group" 
                   title="Conversar pelo WhatsApp"
                 >
-                  <WhatsApp size={14} className="text-eco-500" />
+                  <MessageCircle size={14} className="text-eco-500" />
                   (81) 9874-4687
                   <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1 group-hover:bg-earth-700">falar no whatsapp</span>
                 </a>
@@ -97,7 +97,7 @@ const Footer = () => {
                   className="text-sm flex items-center gap-1.5 mt-2 hover:text-eco-300 transition-colors text-earth-400 group" 
                   title="Conversar pelo WhatsApp"
                 >
-                  <WhatsApp size={14} className="text-eco-500" />
+                  <MessageCircle size={14} className="text-eco-500" />
                   (88) 9 8123-8818
                   <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1 group-hover:bg-earth-700">falar no whatsapp</span>
                 </a>
@@ -129,7 +129,7 @@ const Footer = () => {
                   className="text-sm flex items-center gap-1.5 mt-2 hover:text-eco-300 transition-colors text-earth-400 group" 
                   title="Conversar pelo WhatsApp"
                 >
-                  <WhatsApp size={14} className="text-eco-500" />
+                  <MessageCircle size={14} className="text-eco-500" />
                   (84) 9 8814-7400
                   <span className="text-xs bg-earth-800 px-1.5 py-0.5 rounded text-eco-300 ml-1 group-hover:bg-earth-700">falar no whatsapp</span>
                 </a>
