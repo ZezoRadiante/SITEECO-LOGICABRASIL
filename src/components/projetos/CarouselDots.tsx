@@ -1,35 +1,35 @@
 
 import React from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils";
 
 interface CarouselDotsProps {
-  activeIndex: number;
-  count: number;
-  onClick: (index: number) => void;
+  selectedIndex: number;
+  dotsCount: number;
+  onDotClick: (index: number) => void;
 }
 
-const CarouselDots: React.FC<CarouselDotsProps> = ({ activeIndex, count, onClick }) => {
+const CarouselDots: React.FC<CarouselDotsProps> = ({ 
+  selectedIndex, 
+  dotsCount, 
+  onDotClick 
+}) => {
   return (
-    <div className="flex justify-center space-x-3 mt-4">
-      {Array.from({ length: count }).map((_, index) => (
+    <div className="flex justify-center space-x-2 mt-4">
+      {Array.from({ length: dotsCount }).map((_, index) => (
         <button
           key={index}
-          onClick={() => onClick(index)}
+          onClick={() => onDotClick(index)}
           className={cn(
-            "transition-all duration-300 relative",
-            index === activeIndex 
-              ? "w-8 h-2 bg-eco-400/80 rounded-full shadow-sm" 
-              : "w-2 h-2 bg-eco-200/60 rounded-full hover:bg-eco-300/70"
+            "w-3 h-3 rounded-full transition-colors duration-300",
+            index === selectedIndex 
+              ? "bg-sky-700" 
+              : "bg-sky-700/30 hover:bg-sky-700/50"
           )}
-          aria-label={`Go to slide ${index + 1}`}
-        >
-          {index === activeIndex && (
-            <span className="absolute inset-0 rounded-full animate-pulse-gentle bg-eco-300/30 -z-10"></span>
-          )}
-        </button>
+        />
       ))}
     </div>
   );
 };
 
 export default CarouselDots;
+
