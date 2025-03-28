@@ -30,25 +30,25 @@ export const StatsGrid: React.FC = () => {
       className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto opacity-0 animate-fade-in-delay-3"
     >
       <StatCard 
-        title="Mudas Produzidas\ne Plantadas" 
+        title="Mudas Produzidas e Plantadas" 
         value={mudasCount} 
         digits={mudasDigits} 
       />
       
       <StatCard 
-        title="Hectares regularizados\njunto ao INCRA" 
+        title="Hectares regularizados junto ao INCRA" 
         value={hectaresCount} 
         digits={hectaresDigits} 
       />
       
       <StatCard 
-        title="Licenças ambientais\nemitidas" 
+        title="Licenças ambientais emitidas" 
         value={licencasCount} 
         digits={licencasDigits} 
       />
       
       <StatCard 
-        title="De atuação no setor\nambiental" 
+        title="De atuação no setor ambiental" 
         value={anosCount} 
         digits={anosDigits} 
         suffix="ANOS"
