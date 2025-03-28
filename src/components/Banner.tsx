@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { bannerImages } from '@/data/projectData';
 
@@ -53,8 +54,6 @@ const Banner = () => {
         console.error("Banner image failed to load, trying alternative path");
         (e.target as HTMLImageElement).src = "./lovable-uploads/becbdbe4-e862-4db5-bde6-5636d0c06f24.png";
       }} />
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-eco-300/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-700" />
       </div>
     </section>;
 };
