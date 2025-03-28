@@ -26,11 +26,8 @@ export const AboutContent: React.FC = () => {
       <div className="space-y-5 text-earth-800 text-lg">
         <p className="font-medium text-xl leading-relaxed transition-all duration-500 hover:text-sky-700 transform hover:translate-y-[-2px]">SOMOS O PRINCIPAL PARCEIRO EM CONSULTORIA AMBIENTAL NO BRASIL</p>
         
-        <p className="leading-relaxed transition-all duration-500 hover:text-sky-700 transform hover:translate-y-[-2px]">
-          Nossa missão é promover soluções sustentáveis que harmonizem o desenvolvimento 
-          econômico com a preservação ambiental, criando um legado positivo para as 
-          futuras gerações.
-        </p>
+        <p className="leading-relaxed transition-all duration-500 hover:text-sky-700 transform hover:translate-y-[-2px]">Fundada em 2015 por engenheiros visionários, a Eco-Lógica Brasil se destaca pela experiência em estudos ambientais e na produção e plantio de mudas em larga escala. Com capacidade técnica para produzir e plantar mais de 500 mil mudas por ano, nossa empresa é sinônimo de excelêcia e inovação.
+Além disso, a Eco-Lógica Brasil adota práticas sustentáveis e tecnologias avançadas em todos os seus processos, reforçando o compromisso com a preservação ambiental e o desenvolvimento sustentável.</p>
         
         <p className="leading-relaxed transition-all duration-500 hover:text-sky-700 transform hover:translate-y-[-2px]">
           Com uma equipe multidisciplinar de especialistas em biologia, engenharia ambiental, 
