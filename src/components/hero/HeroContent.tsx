@@ -1,26 +1,35 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+
 interface HeroContentProps {
   isVisible: boolean;
 }
+
 const HeroContent: React.FC<HeroContentProps> = ({
   isVisible
 }) => {
-  return <div className={cn("relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6 py-0 my-0 transition-all duration-700", isVisible ? 'opacity-100' : 'opacity-0')}>        
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1">
-        
-        
+  return (
+    <div className={cn("relative z-30 max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center space-y-6 py-0 my-0 transition-all duration-700", isVisible ? 'opacity-100' : 'opacity-0')}>        
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight opacity-0 animate-fade-in-delay-1 text-white">
+        Eco-Lógica Brasil
       </h1>
       
+      <p className="text-xl md:text-2xl text-white/90 font-medium mt-4 opacity-0 animate-fade-in-delay-2">
+        Consultoria ambiental para um futuro sustentável
+      </p>
+      
       <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-delay-3 mt-10 transition-all duration-700">
-        <Button variant="green" asChild className="rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 transition-all duration-500">
-          
+        <Button variant="green" className="rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 transition-all duration-500">
+          Nossos Serviços
         </Button>
-        <Button variant="outline" asChild className="border-2 border-white/60 text-white rounded-full hover:bg-[#E2FCB3] hover:text-earth-800 hover:border-transparent shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 transition-all duration-500">
-          
+        <Button variant="outline" className="border-2 border-white/60 text-white rounded-full hover:bg-[#E2FCB3] hover:text-earth-800 hover:border-transparent shadow-lg hover:shadow-xl hover:-translate-y-1 text-base sm:text-lg px-8 py-6 transition-all duration-500">
+          Contate-nos
         </Button>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default HeroContent;
