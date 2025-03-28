@@ -1,33 +1,24 @@
-
 import React, { useState } from 'react';
 import ServiceDecorations from './services/ServiceDecorations';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
-} from '@/components/ui/carousel';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { useMediaQuery } from '@/hooks/use-media-query';
 import CarouselDots from './projetos/CarouselDots';
 import { useEffect } from 'react';
-
 const Services = () => {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [api, setApi] = useState<any>(null);
   const slides = 5; // Total number of slides/services
-  
+
   // Use embla-carousel API to track current slide and setup navigation
   useEffect(() => {
     if (!api) return;
-
     api.on('select', () => {
       setCurrentSlide(api.selectedScrollSnap());
     });
-    
+
     // Cleanup
     return () => {
       api.off('select');
@@ -38,9 +29,7 @@ const Services = () => {
   const scrollToSlide = (index: number) => {
     api?.scrollTo(index);
   };
-  
-  return (
-    <section id="services" className="py-20 bg-background relative overflow-hidden">
+  return <section id="services" className="py-20 bg-background relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"></div>
       
@@ -56,16 +45,12 @@ const Services = () => {
         
         {/* Services Carousel */}
         <div className="w-full max-w-5xl mx-auto">
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-              skipSnaps: false,
-              containScroll: "trimSnaps",
-            }}
-            setApi={setApi}
-            className="w-full"
-          >
+          <Carousel opts={{
+          align: "start",
+          loop: true,
+          skipSnaps: false,
+          containScroll: "trimSnaps"
+        }} setApi={setApi} className="w-full">
             <CarouselContent className="-ml-2 md:-ml-4">
               {/* Serviço 1 */}
               <CarouselItem className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
@@ -80,9 +65,7 @@ const Services = () => {
                     Facilitamos todo o processo de licenciamento ambiental para sua empresa, garantindo conformidade legal.
                   </p>
                   <Button variant="link" className="p-0 h-auto font-medium group text-eco-800 hover:text-eco-600" asChild>
-                    <a href="#contact">
-                      Saiba mais <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    
                   </Button>
                 </div>
               </CarouselItem>
@@ -100,9 +83,7 @@ const Services = () => {
                     Avaliamos seus processos e identificamos oportunidades para melhorar seu desempenho ambiental.
                   </p>
                   <Button variant="link" className="p-0 h-auto font-medium group text-eco-800 hover:text-eco-600" asChild>
-                    <a href="#contact">
-                      Saiba mais <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    
                   </Button>
                 </div>
               </CarouselItem>
@@ -120,9 +101,7 @@ const Services = () => {
                     Desenvolvemos e implementamos estratégias eficientes para gestão de resíduos industriais e comerciais.
                   </p>
                   <Button variant="link" className="p-0 h-auto font-medium group text-eco-800 hover:text-eco-600" asChild>
-                    <a href="#contact">
-                      Saiba mais <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    
                   </Button>
                 </div>
               </CarouselItem>
@@ -140,9 +119,7 @@ const Services = () => {
                     Oferecemos soluções para reduzir o consumo de energia e promover o uso de fontes renováveis.
                   </p>
                   <Button variant="link" className="p-0 h-auto font-medium group text-eco-800 hover:text-eco-600" asChild>
-                    <a href="#contact">
-                      Saiba mais <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    
                   </Button>
                 </div>
               </CarouselItem>
@@ -160,26 +137,18 @@ const Services = () => {
                     Programas de conscientização e treinamento para funcionários e comunidades sobre práticas sustentáveis.
                   </p>
                   <Button variant="link" className="p-0 h-auto font-medium group text-eco-800 hover:text-eco-600" asChild>
-                    <a href="#contact">
-                      Saiba mais <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    
                   </Button>
                 </div>
               </CarouselItem>
             </CarouselContent>
             
             <div className="mt-8 md:mt-10 flex items-center justify-center">
-              <CarouselDots 
-                activeIndex={currentSlide} 
-                count={slides} 
-                onClick={scrollToSlide} 
-              />
+              <CarouselDots activeIndex={currentSlide} count={slides} onClick={scrollToSlide} />
             </div>
           </Carousel>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Services;
