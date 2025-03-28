@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 
 interface VideoBackgroundProps {
@@ -14,14 +13,33 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        console.error("Error playing video:", error);
-      });
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      // Try to play the video as soon as it's available
+      const playVideo = () => {
+        videoElement.play().catch(error => {
+          console.error("Error playing video:", error);
+        });
+      };
+      
+      if (videoElement.readyState >= 3) {
+        // If video is already loaded enough to play
+        playVideo();
+      } else {
+        // Otherwise wait for it to load
+        videoElement.addEventListener('canplay', playVideo);
+      }
+      
+      return () => {
+        if (videoElement) {
+          videoElement.removeEventListener('canplay', playVideo);
+        }
+      };
     }
   }, []);
 
   const handleVideoLoaded = () => {
+    console.log("Video loaded successfully");
     setIsVideoLoaded(true);
     onMediaLoaded();
   };
@@ -39,7 +57,7 @@ const VideoBackground: React.FC<VideoBackgroundProps> = ({
         id="hero-background-video"
         onLoadedData={handleVideoLoaded}
       >
-        <source src={videoSrc} type="video/mp4" />
+        <source src={`/${videoSrc}`} type="video/mp4" />
         Your browser does not support HTML5 videos.
       </video>
       <div className="absolute inset-0 bg-black/40 z-10"></div>
