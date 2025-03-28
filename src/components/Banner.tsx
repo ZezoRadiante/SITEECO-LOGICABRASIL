@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { bannerImages } from '@/data/projectData';
 const Banner = () => {
@@ -41,7 +42,11 @@ const Banner = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-[#71B707] to-eco-300 mx-auto rounded-full my-2 transition-all duration-500 hover:w-32" />
           
           <p className="text-earth-600 leading-relaxed max-w-3xl mx-auto transition-all duration-500 hover:text-earth-800 font-normal text-center text-lg">
-            A Eco-Lógica Brasil é uma empresa referência em consultoria e engenharia ambiental no Nordeste brasileiro, focada em soluções sustentáveis. Com serviços prestados em todas as regiões do país, somos referência em projetos ambientais de grande escala.
+            A Eco-Lógica Brasil é uma empresa referência em consultoria e engenharia ambiental no Nordeste brasileiro, focada em soluções sustentáveis.
+          </p>
+          
+          <p className="text-earth-600 leading-relaxed max-w-3xl mx-auto transition-all duration-500 hover:text-earth-800 font-normal text-center text-lg">
+            Com serviços prestados em todas as regiões do país, somos referência em projetos ambientais de grande escala.
           </p>
         </div>
       </div>
