@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { bannerImages } from '@/data/projectData';
 
@@ -50,7 +51,7 @@ const Banner = () => {
       
       <div className="w-full overflow-hidden relative z-10 transition-all duration-1000 ease-in-out animate-on-scroll -mt-4">
         <img 
-          src="./lovable-uploads/b41d8379-8f3d-4a27-8bb6-def91834b645.png" 
+          src="./lovable-uploads/00770c6b-a0d1-4478-8551-42887c849476.png" 
           alt="Criança com capacete branco segurando uma muda em um viveiro de plantas" 
           className="w-full h-auto object-cover transform hover:scale-[1.03] transition-transform duration-1000 filter hover:brightness-105" 
           onError={e => {
