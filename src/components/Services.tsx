@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import ServiceDecorations from './services/ServiceDecorations';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -11,9 +11,33 @@ import {
   CarouselPrevious 
 } from '@/components/ui/carousel';
 import { useMediaQuery } from '@/hooks/use-media-query';
+import CarouselDots from './projetos/CarouselDots';
+import { useEffect } from 'react';
 
 const Services = () => {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [api, setApi] = useState<any>(null);
+  const slides = 5; // Total number of slides/services
+  
+  // Use embla-carousel API to track current slide and setup navigation
+  useEffect(() => {
+    if (!api) return;
+
+    api.on('select', () => {
+      setCurrentSlide(api.selectedScrollSnap());
+    });
+    
+    // Cleanup
+    return () => {
+      api.off('select');
+    };
+  }, [api]);
+
+  // Handler for dot navigation
+  const scrollToSlide = (index: number) => {
+    api?.scrollTo(index);
+  };
   
   return (
     <section id="services" className="py-20 bg-background relative overflow-hidden">
@@ -39,6 +63,7 @@ const Services = () => {
               skipSnaps: false,
               containScroll: "trimSnaps",
             }}
+            setApi={setApi}
             className="w-full"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
@@ -143,9 +168,12 @@ const Services = () => {
               </CarouselItem>
             </CarouselContent>
             
-            <div className="mt-8 md:mt-10 flex items-center justify-center gap-2">
-              <CarouselPrevious className="relative h-8 w-8 rounded-full static ml-0 mr-2 translate-y-0" />
-              <CarouselNext className="relative h-8 w-8 rounded-full static ml-2 mr-0 translate-y-0" />
+            <div className="mt-8 md:mt-10 flex items-center justify-center">
+              <CarouselDots 
+                activeIndex={currentSlide} 
+                count={slides} 
+                onClick={scrollToSlide} 
+              />
             </div>
           </Carousel>
         </div>
