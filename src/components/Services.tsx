@@ -1,223 +1,83 @@
 
-import React, { useRef, useEffect } from 'react';
-import { Leaf, Recycle, Sprout } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious
-} from "@/components/ui/carousel";
-import useEmblaCarousel from 'embla-carousel-react';
-import { servicesImages } from '@/data/projectData';
+import React from 'react';
+import ServiceDecorations from './services/ServiceDecorations';
+import { ArrowRight } from 'lucide-react';
+import { Button } from './ui/button';
 
-interface ServiceCardProps {
-  title: string;
-  description: string;
-  icon: React.ReactNode;
-  index: number;
-}
-
-const ServiceCard = ({
-  title,
-  description,
-  icon,
-  index
-}: ServiceCardProps) => {
+const Services = () => {
   return (
-    <div className={cn(
-      "glass rounded-lg p-8 transition-all duration-500 hover:shadow-lg hover:-translate-y-2 h-full border-l-4 border-sky-400 group bg-white/80 backdrop-blur-sm", 
-      index === 0 ? "animate-fade-in" : index === 1 ? "animate-fade-in-delay-1" : "animate-fade-in-delay-2"
-    )}>
-      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-sky-100 to-sky-200 flex items-center justify-center mb-6 shadow-inner shadow-sky-200 group-hover:scale-110 transition-transform duration-300">
-        <div className="text-sky-700">
-          {icon}
-        </div>
-      </div>
-      <h3 className="text-xl font-semibold mb-4 text-sky-700 group-hover:text-sky-600 transition-colors">{title}</h3>
-      <p className="text-foreground/70 leading-relaxed">{description}</p>
-    </div>
-  );
-};
-
-const CarouselDots = ({ 
-  activeIndex, 
-  count, 
-  onClick 
-}: { 
-  activeIndex: number; 
-  count: number; 
-  onClick: (index: number) => void;
-}) => {
-  return (
-    <div className="flex justify-center space-x-3 mt-6">
-      {Array.from({ length: count }).map((_, index) => (
-        <button
-          key={index}
-          onClick={() => onClick(index)}
-          className={cn(
-            "transition-all duration-300 relative",
-            index === activeIndex 
-              ? "w-8 h-2 bg-sky-400/80 rounded-full shadow-sm" 
-              : "w-2 h-2 bg-sky-200/60 rounded-full hover:bg-sky-300/70"
-          )}
-          aria-label={`Go to slide ${index + 1}`}
-        >
-          {index === activeIndex && (
-            <span className="absolute inset-0 rounded-full animate-pulse-gentle bg-sky-300/30 -z-10"></span>
-          )}
-        </button>
-      ))}
-    </div>
-  );
-};
-
-const Solucoes = () => {
-  const [activeIndex, setActiveIndex] = React.useState(0);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const servicesRef = useRef<HTMLElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { 
-        threshold: 0.1,
-        rootMargin: '-50px 0px'
-      }
-    );
-    
-    const elements = servicesRef.current?.querySelectorAll('.animate-on-scroll');
-    elements?.forEach(el => {
-      observer.observe(el);
-    });
-    
-    return () => {
-      elements?.forEach(el => {
-        observer.unobserve(el);
-      });
-    };
-  }, []);
-
-  const services = [
-    {
-      title: "Consultoria Ambiental",
-      description: "Avaliações abrangentes e soluções personalizadas para garantir conformidade regulatória enquanto avançamos nas metas de sustentabilidade para sua organização.",
-      icon: <Leaf size={32} />
-    }, 
-    {
-      title: "Gestão de Resíduos",
-      description: "Planejamento estratégico e implementação de sistemas eficientes de redução de resíduos projetados para minimizar o impacto ambiental e maximizar a recuperação de recursos.",
-      icon: <Recycle size={32} />
-    }, 
-    {
-      title: "Educação Ambiental",
-      description: "Programas e workshops envolventes que cultivam a conscientização ambiental e promovem práticas sustentáveis dentro de comunidades e organizações.",
-      icon: <Sprout size={32} />
-    }
-  ];
-
-  React.useEffect(() => {
-    if (!emblaApi) return;
-
-    const onSelect = () => {
-      setActiveIndex(emblaApi.selectedScrollSnap());
-    };
-
-    emblaApi.on('select', onSelect);
-    onSelect();
-    
-    return () => {
-      emblaApi.off('select', onSelect);
-    };
-  }, [emblaApi]);
-
-  const scrollTo = React.useCallback((index: number) => {
-    if (emblaApi) {
-      emblaApi.scrollTo(index);
-    }
-  }, [emblaApi]);
-
-  return (
-    <section 
-      id="services" 
-      ref={servicesRef}
-      className="py-24 relative overflow-hidden transition-all duration-1000 ease-in-out"
-      data-section="services"
-    >
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50 transition-opacity duration-1000" 
-        style={{ backgroundImage: `url('${servicesImages.background}')` }}>
-      </div>
+    <section id="services" className="py-20 bg-background relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"></div>
       
-      <div className="absolute inset-0 bg-gradient-to-b from-sky-50/90 via-white/80 to-eco-50/70 z-0 transition-all duration-1000"></div>
-      
-      <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-earth-100/60 to-transparent z-10 transition-all duration-700"></div>
-      
-      <div className="absolute inset-0 bg-[url('/lovable-uploads/d2ed2b6b-6558-4a93-8c71-95038edaa049.png')] opacity-5 bg-repeat"></div>
-      
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-20">
-        <div className="text-center mb-16 animate-on-scroll">
-          <span className="inline-block text-sky-700 bg-sky-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 shadow-sm transition-all duration-500 hover:shadow-md hover:bg-sky-50">
-            Nossas Soluções
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sky-700 text-center transition-all duration-500 hover:text-sky-600">SOLUÇÕES PARA CONSTRUIR UM FUTURO MAIS SUSTENTÁVEL</h2>
-          
-          <div className="w-24 h-1 bg-gradient-to-r from-sky-600 to-sky-400 mx-auto rounded-full mb-6 transition-all duration-500 hover:w-32"></div>
-          
-          <p className="max-w-3xl mx-auto text-lg text-foreground/70 leading-relaxed">
-            Oferecemos um portfólio de produtos e soluções customizadas para atender às demandas de diferentes perfis de consumo.
+      <div className="container relative px-4 mx-auto">
+        <ServiceDecorations />
+        
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Nossos Serviços</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Oferecemos soluções ambientais completas, desde consultoria até implementação de projetos sustentáveis.
           </p>
         </div>
-
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll stagger-children">
-          {services.map((service, index) => (
-            <div key={service.title} className="animate-on-scroll" style={{ transitionDelay: `${index * 150}ms` }}>
-              <ServiceCard 
-                title={service.title} 
-                description={service.description} 
-                icon={service.icon} 
-                index={index} 
-              />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Serviço 1 */}
+          <div className="bg-card rounded-lg p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+            <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+              </svg>
             </div>
-          ))}
-        </div>
-
-        <div className="md:hidden animate-on-scroll">
-          <Carousel>
-            <CarouselContent ref={emblaRef}>
-              {services.map((service, index) => (
-                <CarouselItem key={service.title}>
-                  <div className="p-1">
-                    <ServiceCard 
-                      title={service.title} 
-                      description={service.description} 
-                      icon={service.icon} 
-                      index={index} 
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="mt-4 flex justify-center">
-              <CarouselDots
-                activeIndex={activeIndex}
-                count={services.length}
-                onClick={scrollTo}
-              />
+            <h3 className="text-xl font-semibold mb-3">Licenciamento Ambiental</h3>
+            <p className="text-muted-foreground mb-6">
+              Facilitamos todo o processo de licenciamento ambiental para sua empresa, garantindo conformidade legal.
+            </p>
+            <Button variant="link" className="p-0 h-auto font-medium group" asChild>
+              <a href="#contact">
+                Saiba mais <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </div>
+          
+          {/* Serviço 2 */}
+          <div className="bg-card rounded-lg p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+            <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
             </div>
-          </Carousel>
+            <h3 className="text-xl font-semibold mb-3">Consultoria Ambiental</h3>
+            <p className="text-muted-foreground mb-6">
+              Avaliamos seus processos e identificamos oportunidades para melhorar seu desempenho ambiental.
+            </p>
+            <Button variant="link" className="p-0 h-auto font-medium group" asChild>
+              <a href="#contact">
+                Saiba mais <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </div>
+          
+          {/* Serviço 3 */}
+          <div className="bg-card rounded-lg p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
+            <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 className="text-xl font-semibold mb-3">Gestão de Resíduos</h3>
+            <p className="text-muted-foreground mb-6">
+              Desenvolvemos e implementamos estratégias eficientes para gestão de resíduos industriais e comerciais.
+            </p>
+            <Button variant="link" className="p-0 h-auto font-medium group" asChild>
+              <a href="#contact">
+                Saiba mais <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
-      
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-eco-100/50 to-transparent z-10 transition-all duration-700"></div>
     </section>
   );
 };
 
-export default Solucoes;
+export default Services;
