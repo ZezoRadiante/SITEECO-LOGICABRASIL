@@ -21,10 +21,9 @@ const Hero = ({
   
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Video or Fallback Image with Enhanced Transitions */}
+      {/* Video Background as Primary Content */}
       <VideoBackground 
         videoSrc={heroImages.video} 
-        fallbackImage={heroImages.fallback || "./lovable-uploads/5b48fe05-0bbc-4168-b053-956b46e28792.jpg"}
         onMediaLoaded={handleMediaLoaded}
       />
 
