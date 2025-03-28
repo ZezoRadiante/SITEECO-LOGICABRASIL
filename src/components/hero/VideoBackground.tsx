@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface VideoBackgroundProps {
   videoSrc: string;
-  fallbackImage?: string; // Made optional
   onMediaLoaded: () => void;
 }
 
