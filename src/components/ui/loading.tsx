@@ -23,7 +23,7 @@ export function Loading({
   };
   
   const variantClasses = {
-    default: 'text-sky-500',
+    default: 'text-earth-800',
     eco: 'text-eco-500',
   };
 
