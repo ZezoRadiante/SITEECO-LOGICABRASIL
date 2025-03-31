@@ -24,7 +24,7 @@ export function Loading({
   
   const variantClasses = {
     default: 'text-earth-800',
-    eco: 'text-eco-500',
+    eco: 'text-earth-800',
   };
 
   return (
